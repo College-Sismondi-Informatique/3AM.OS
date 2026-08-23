@@ -1,0 +1,347 @@
+\begin{center}
+\textbsc{Réponses}
+\end{center}
+
+\everymath{\displaystyle}
+
+
+\begin{enumerate}[label=R4.\arabic*, font=\bfseries, itemsep=8mm,labelsep*=4mm]
+\item
+%\leavevmode\vspace{-\dimexpr\baselineskip+\topsep}% Solution pour alignement trouvée sur https://tex.stackexchange.com/questions/456914/item-number-not-aligned-with-tasks
+%\begin{minipage}[t][][b]{0.95\textwidth}
+Choisissons la fonction $f(x)=x^2-3$ qui est continue sur $\mathbb{R}$ et dont l'unique zéro positif est $\sqrt{3}$.\\
+Comme $1^2=1<3<4=2^2$ alors $1<\sqrt{3}<2$. Nous constatons également que $f(1)\cdot f(2)<0$ et donc $f$ change de signe dans l'intervalle $[1;2]$.
+
+En appliquant l'algorithme de dichotomie dans l'intervalle $[1;2]$ nous obtenons les valeurs :
+$$
+\begin{array}{ll}
+  a_0 = 1			& b_0 = 2 \\
+  a_1 = 1,5			& b_1 = 2 \\
+  a_2 = 1,5		& b_2 = 1,75 \\
+  a_3 = 1,625		& b_3 = 1,75 \\
+  a_4 = 1,6875		& b_4 = 1,75 \\
+  a_5 = 1,71875		& b_5 = 1,75 \\
+\end{array}
+$$
+Ce qui permet d'affirmer que $1,71<\sqrt{3}<1,75$ et donc $\sqrt{3}= 1,7...$
+
+
+
+
+
+
+\item
+Non, cela ne serait pas pus efficace. Bien que la précision à chaque étape soit améliorée d'un facteur 2, le nombre d'évaluations de la fonction est, en moyenne, doublé. Le bilan est donc nul.
+
+
+
+
+
+
+
+\item
+\insertcode{Chapitre_3_analyse_numerique/Programmes/fonction.py}{0.35}{}
+\insertcode{Chapitre_3_analyse_numerique/Programmes/dichotomie_etape.py}{0.58}{}
+
+
+
+
+\item
+\insertcode{Chapitre_3_analyse_numerique/Programmes/dichotomie_etape_indiquee.py}{0.58}{}
+
+
+
+
+
+
+
+\item
+Il faut 18 étapes pour être sûr que la 5\up{ème} décimale soit correcte.
+
+
+
+
+
+
+\item
+On a $f(2)=4\cdot 2^4-12\cdot 2^3+2^2+12\cdot 2+4=0$.
+Cependant, il n'est pas difficile de constater que $2$ est un zéro de multiplicité 2, c'est-à-dire que la fonction ne change pas de signe autour de $x=2$.
+
+L'algorithme de dichotomie ne permet pas de localiser un tel zéro.
+
+
+
+
+
+
+\item
+Comme $0\leqslant b-a\leqslant 1$ alors $\log\left(b-a\right)\leqslant 0$. D'où $n\geqslant \frac{N}{\log(2)}$.
+%\begin{multicols}{3}
+\begin{enumerate}[label=\roman*), itemsep=3mm]
+\item $n\geqslant \frac{10}{\log(2)}\simeq 34$ itérations.
+\item $n\geqslant \frac{100}{\log(2)}\simeq 333$ itérations.
+\item $n\geqslant \frac{1000}{\log(2)}\simeq 3321$ itérations.
+\end{enumerate}
+%\end{multicols}
+
+
+
+
+
+
+\item
+Le nombre d'étapes nécessaires pour obtenir une décimale supplémentaire de précision est de :
+$$\frac{(N+1)+\log(b-a)}{\log(2)}-\frac{N+\log(b-a)}{\log(2)}=\frac{1}{\log(2)}\simeq 3.32$$
+Il faut donc entre 3 et 4 étapes supplémentaires pour améliorer la précision d'une décimale.
+
+
+
+
+
+
+
+\item
+\insertcode{Chapitre_3_analyse_numerique/Programmes/dichotomie_precision.py}{0.58}{}
+
+
+
+
+
+
+
+\item
+\begin{enumerate}[label=\roman*),itemsep=4mm]
+\item Geogebra montre que la fonction $f(x)=e^{x-1}-\frac{x^4}{4}$ \eh{1} a 3 zéros;
+
+\medskip
+$x_1\in[-1;0]$ \et{3}\comp{dichotomie\_precision(-1,0,0.001)} $\imply \eh{2} x_1\simeq -0.8837$%-0,8837\leqslant x_1\leqslant -0,8829$
+
+\medskip
+$x_2\in[1;2]$ \et{3}\comp{dichotomie\_precision(1,3,0.001)} $\imply \eh{2} x_2\simeq 1.6728$%1,6728\leqslant x_2\leqslant 1,6739$
+
+\medskip
+$x_3\in[7;8]$ \et{3}\comp{dichotomie\_precision(7,8,0.001)} $\imply \eh{2} x_3\simeq 7.8613$%7,8613\leqslant x_3\leqslant 7,8624$
+\item La fonction $g(x)=\sin^2(x)+\frac{x}{3}$ \eh{1} a un zéro évident en $x_0=0$. Geogebra montre qu'elle possède 2 autres zéros;
+
+\medskip
+$x_1\in[-3;-2]$ \et{3}\comp{dichotomie\_precision(-3,-2,0.0001)} $\imply \eh{2} x_1\simeq -2.1369$%\leqslant x_1\leqslant -0,883$
+
+\medskip
+$x_2\in[-1;0]$ \et{3}\comp{dichotomie\_precision(-1,0,0.0001)} $\imply \eh{2} x_2\simeq -0.3470$%\leqslant x_2\leqslant 1,673$
+\end{enumerate}
+
+\bigskip
+\textit{A noter que pour être certain d'avoir la précision désirée, il faut fournir une décimale supplémentaire.}
+
+
+
+
+
+%\clearpage
+\item $u_{n+1} = u_n - \frac{u_n^2-a}{2u_n}= \frac{2u_n}{2} - \frac{u_n^2-a}{2u_n} = \frac{1}{2}\left(2u_n - \frac{u_n\cdot \cancel{u_n}}{\cancel{u_n}}+\frac{a}{u_n} \right)=\frac{1}{2}\left(u_n + \frac{a}{u_n}\right)$
+
+
+
+
+
+
+
+\item
+\renewcommand{\arraystretch}{2.5}
+\begin{minipage}[t][][b]{1\textwidth}\vspace{-8.5mm}
+$\everymath{\textstyle}\begin{array}{l}
+  u_0 = 1     \\
+  u_1 = \frac12 \left(u_0+\frac{2}{u_0}\right) = \frac12\left(1+\frac{2}{1}\right) = \frac{3}{2} = 1,\textcolor{red!60!lightgray}{5} \\
+  u_2 = \frac12 \left(u_1+\frac{2}{u_1}\right) = \frac12\left(\tfrac{3}{2}+\frac{2}{\tfrac{3}{2}}\right)
+  = \frac{17}{12} = 1.41\textcolor{red!60!lightgray}{6}\ldots \\
+  u_3 = \frac12 \left(u_2+\frac{2}{u_2}\right) = \frac12\left(\tfrac{17}{12}+\frac{2}{\tfrac{17}{12}}\right) = \frac{577}{408} = 1,41421\textcolor{red!60!lightgray}{5} \ldots \\
+  u_4 = \frac12 \left(u_3+\frac{2}{u_3}\right) = \frac12\left(\tfrac{577}{408}+\frac{2}{\tfrac{577}{408}}\right) = 1,41421356237\textcolor{red!60!lightgray}{4}\ldots
+\end{array}\everymath{\displaystyle}$
+\end{minipage} 
+
+\medskip
+Pour $u_4$ on obtient $\sqrt{2} \simeq 1,41421356237$
+avec $11$ décimales exactes.
+
+
+
+
+
+
+
+\item
+Avec la méthode de dichotomie il fallait effectuer 18 étapes pour obtenir 5 décimales correctes, alors que la méthode de Newton fournit déjà 11 décimales à la 4\up{ème} itération.\\
+Sans équivoque, la méthode de Newton converge bien plus rapidement que la méthode de dichotomie vers un zéro de la fonction $f$. 
+
+
+
+
+
+
+
+\item
+\insertcode{Chapitre_3_analyse_numerique/Programmes/heron_racine_carree.py}{0.58}{}
+
+
+
+
+
+
+
+\item
+Non, on ne peut pas appliquer la méthode de newton à la fonction $\sqrt[3]{x}$ car la dérivée de la fonction dans n'importe quel intervalle contenant 0 n'est pas continue.
+
+
+
+
+
+
+
+\item
+\begin{enumerate}[label=\roman*),itemsep=3mm]
+\item $D_{g_1}=\R$
+
+\smallskip
+$D_{g_2}=[-2;+\infty[$
+
+\smallskip
+$D_{g_3}=\R^{\ast}$
+
+\smallskip
+$\textstyle D_{g_4}=\R\setminus [\frac{1-\sqrt{5}}{2};\frac{1+\sqrt{5}}{2}]$
+\item $g_1(x)=x \Rightarrow x^2-2=x \Rightarrow x^2-x-2=0$
+
+\smallskip
+$g_2(x)=x \Rightarrow \sqrt{2+x}=x \Rightarrow 2+x=x^2 \Rightarrow x^2-x-2=0$\\
+\textit{\small (Valable uniquement pour le point fixe $x=2$. Pour $x=-1$ il faut considérer $-g_2(x)$.)}
+
+\smallskip
+$g_3(x)=x \Rightarrow 1+\frac{2}{x}=x \Rightarrow x+2=x^2 \Rightarrow x^2-x-2=0$
+
+\smallskip
+$g_4(x)=x \Rightarrow x+\log(x^2-x-1)=x \Rightarrow \log(x^2-x-1)=0 \Rightarrow x^2-x-1=1  \Rightarrow x^2-x-2=0$
+
+\item\begin{itemize}[itemsep=2mm,left=0mm,labelsep*=2mm]
+\item $g_1(x)$ est dérivable sur tout $]a;b[$ et $g_1'(x)=2x$.\\ Nous avons $\vert g_1'(-1)\vert=\vert-2\vert \geqslant 1$ et $\vert g_1'(2)\vert=\vert 4\vert \geqslant1$.\\
+Il n'existe donc aucun voisinage $V$ autour des points fixes de $g_1$ dans lesquels $\vert g^\prime(x)<1 \eh{1}\forall x\in V$ et les hypothèses du théorème du point fixe ne sont pas vérifiées. %garantisse une convergence de la suite $x_{n+1}=g_1(x_n)$.
+
+\item
+$g_2(x)$ est dérivable sur tout $]a;b[$ de son domaine et $\textstyle g_2'(x)=\frac{1}{2\sqrt{2+x}}$.\\ 
+Nous avons $\textstyle \vert g_2'(2)\vert=\vert \frac{1}{4}\vert <1$ et $\textstyle \vert g_2'(-1)\vert=\vert \frac{1}{2}\vert <1$. De plus $g_2^\prime$ est continue.\\
+Il existe donc un intervalle autour des points fixes de $g_2$ dans lequel on peut appliquer la méthode du point fixe. 
+
+\item
+$g_3(x)$ est dérivable sur tout $]a;b[$ de son domaine et $g_3'(x)=-\frac{2}{x^2}$.\\ 
+Nous avons $\vert g_3'(-1)\vert=\vert-2\vert \geqslant 1$ et $\textstyle \vert g_3'(2)\vert=\vert -\frac{1}{2}\vert <1$. De plus $g_3^\prime$ est continue.\\
+La méthode du point fixe garantit donc la convergence de la suite $x_{n+1}=g_3(x_n)$ dans un certain intervalle autour de $x=2$ mais pas autour de $x=-1$. 
+
+\item
+$g_4(x)$ est dérivable sur tout $]a;b[$ de son domaine et $\textstyle g_4'(x)=\frac{2x-1}{\ln(10)\cdot(x^2-x-1)}+1$.\\ 
+Nous avons $\vert g_4'(-1)\vert< 1$ et $\textstyle \vert g_4'(2)\vert \geqslant 1$. De plus $g_4^\prime$ est continue.\\
+La méthode du point fixe garantit donc la convergence de la suite $x_{n+1}=g_4(x_n)$ dans un certain intervalle autour de $x=-1$ mais pas autour de $x=2$.\\
+%\textit{\small Remarquons que l'intervalle de convergence de la suite autour du point fixe $x=-1$ est restreint à droite et infini à gauche; en effet, la suite converge pour $x_0=-0.7$ mais n'est plus définie si $x_0=-0.6$. De plus, la suite converge pour tout $x_0\leqslant -1$.}
+
+\end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+\item
+\insertcode{Chapitre_3_analyse_numerique/Programmes/point_fixe.py}{0.58}{}
+
+
+
+
+
+
+
+\item
+\insertcode{Chapitre_3_analyse_numerique/Programmes/point_fixe_precision.py}{0.58}{}
+
+
+
+
+
+
+
+\item
+\begin{enumerate}[label=\alph*),itemsep=4mm,start=2]
+\item \textbf{Méthode de Dichotomie :} Il faut \textbf{23 étapes}.
+\item \textbf{Méthode de Newton :} Il faut \textbf{3 étapes}.
+\item \begin{enumerate}[label=\roman*),itemsep=3mm]
+\item On aurait $\vert g'(x)\vert=\vert2-0,2\cos(x)\vert >1 \eh{1}\forall x\in\R$.
+
+\smallskip
+Les hypothèses du théorème de convergence de la méthode du point fixe ne sont pas vérifiées.
+\item $\frac{10x-2\sin(x)-5}{10}=0\ssi[2] x-0,2\sin(x)-0,5=0\ssi[2] x=\underbrace{0,2\sin(x)+0,5}_{=g(x)}$.
+
+\smallskip
+\begin{itemize}[itemsep=2mm]
+\item $g(x)$ est continue est dérivable sur $\R$ car c'est une compositions de polynôme et de sinus.
+\item $\vert g'(x)\vert=\vert 0,2\cos(x)\vert <1$ \eh{1} car\eh{2} $-1<\cos(x)<1$.
+\item On a $g'(x)>0$ \eh{1} si $\textstyle x\in[\frac{1}{2};1]$. D'où $g$ est strictement croissante sur $\textstyle[\frac{1}{2};1]$.
+
+\smallskip De plus $\textstyle g(0,5)\simeq 0,596>\frac{1}{2} \et{2} g(1)\simeq 0,668<1$. Donc forcément $\textstyle g([\frac{1}{2};1])\subset [\frac{1}{2};1]$
+\end{itemize}
+
+\smallskip
+Toutes les hypothèses du théorème de convergence du point fixe sont vérifiées.
+\item \textbf{Méthode du Point Fixe :} Il faut \textbf{10 étapes}
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+\item\begin{enumerate}[label=\roman*),itemsep=4mm,left=-2mm, labelsep*=2mm]
+\item
+temps $(x)=f(x)=\frac{\sqrt{0,57^2+x^2}}{3}+\frac{2,8-x}{5}$ où $x$ est la distance séparant le point $A$ du point $P$.
+
+\setcounter{enumii}{2}
+\item
+Le graphique de $f$ permet d'observer qu'il n'y a qu'un extremum et il est situé entre $0$ et $1$.
+
+\item
+On a $f'(x)=\frac{x}{3\sqrt{0,57^2+x^2}}-\frac{1}{5}$ \eh{1}et il faut résoudre $f'(x)=0$.
+
+%\smallskip
+On bon choix pour la fonction $g(x)$ dont on doit trouver le point fixe est $g(x)=\frac{3}{5}\sqrt{0,57^2+x^2}$.
+
+%\smallskip
+En effet, $f'(x)=0 \ssi[2] g(x)=x$ \et{2} $g'(x)=\frac{3x}{5\sqrt{0,57^2+x^2}}$.
+
+\smallskip
+On montre facilement que $g$ est dérivable sur $[0;1]$ et que $\vert g'(x)\vert <1 \eh{2}\forall x\in [0;1]$.
+
+\smallskip
+On montre également que $g'(x)>0 \eh{2}\forall x\in [0;1]$ et donc $g$ est strictement croissante sur $[0;1]$.
+
+\smallskip
+Comme $g(0)=0,342>0$ \et{1} $g(1)\simeq 0,691<1$ on conclut que $g([0;1])\subset [0;1]$.
+
+\smallskip
+Toutes les hypothèses sont vérifiées et on peut appliquer la méthode du point fixe.
+
+\item
+On utilise \comp{point\_fixe\_precision(1,0.0001)} et on trouve $f'(x)=0 \ssi[2] x\simeq 0,4275\; km$.
+
+\item
+La nageur doit sortir de l'eau à $2,8-0,4275\simeq \bm{2,38\;km}$ de sa cabane.
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+

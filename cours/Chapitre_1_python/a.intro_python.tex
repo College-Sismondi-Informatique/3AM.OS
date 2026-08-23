@@ -1,0 +1,1696 @@
+\section{Introduction}
+\label{sec:introduction}
+\thispagestyle{fancy}
+
+En mathématiques, nous souhaitons autant que possible obtenir un résultat précis à une question donnée. De nombreux problèmes trouvent leurs solutions dans des formules issues de théorèmes pour lesquels nous avons donné une démonstration. Ainsi, pour répondre à de tels problèmes, le raisonnement et une calculatrice sont suffisants.
+
+\medskip
+Cependant, il existe toute une variété de questions pour lesquels de tels formules n'existent pas et dont la recherche de solutions peut s'avérer longue et fastidieuse. 
+
+\begin{boxexstheorieligne}
+\exo
+Déterminer un nombre dont le carré diminué de 3 vaut le nombre initial.
+
+
+
+\eexo
+
+
+
+\exo
+Dans un triangle, deux côtés adjacents mesurent respectivement $10$\;cm et $13$\;cm. L'angle les séparant mesure $40\degre$. Calculer la longueur du dernier côté du triangle.
+
+
+
+\eexo
+
+
+
+\exo
+Quelle est la probabilité d'obtenir un \textit{double six} en lançant deux dés simultanément?
+
+
+
+\eexo
+
+
+
+\exo
+Combien il y a t-il de nombres à $4$ chiffres dont la somme des chiffres vaut $19$?
+\end{boxexstheorieligne}
+
+
+\bigskip
+Lorsque la question posée nécessite la mise en oeuvre de nombreuses instructions et tests (éventuellement répétitifs), nous faisons appel à la \textbf{programmation} informatique. Un programme informatique est un ensemble de règles destinées à être exécutées par un ordinateur. On parle alors d'\textbf{algorithme informatique}.
+
+
+
+\begin{definition}
+Un \textbs{algorithme} est un ensemble fini de règles permettant de résoudre un problème à l'aide d'une suite finie d'opérations, qui peuvent éventuellement se répéter.
+
+\smallskip
+La \textbf{complexité} d'un algorithme est le nombre d'opérations élémentaires nécessaires pour réaliser l'algorithme.
+\end{definition}
+
+\begin{exemples}{0mm}
+\item La division euclidienne (de nombre ou de polynômes) est un exemple d'algorithme (itératif).
+\item Le crible d'Erastothène est un algorithme permettant d'établir la liste des nombres premiers jusqu'à un certain nombre $n$.
+\end{exemples}
+
+\begin{definition}
+\textbs{Implémenter} un algorithme c'est  écrire cet algorithme dans un langage de programmation.
+\end{definition}
+
+
+Pour faire exécuter un algorithme à un ordinateur, il faut donc d'abord le
+traduire dans un langage de programmation. Nous allons utiliser le langage \guillemets{\textbf{Python}} (dans sa version 3) qui est un langage dit \guillemets{de haut niveau}. Cela signifie que sa syntaxe est simple et utilise des mots usuels. 
+
+\medskip
+Malgré le fait que Python soit un langage plutôt intuitif à implémenter, il est souvent plus confortable d'écrire un algorithme \guillemets{général} avant de le traduire dans un langage informatique spécifique (Python, C, java, etc.). C'est pour cette raison que nous nous accorderons également sur une \textbf{écriture spécifique aux algorithmes}, i.e. indépendante de tout langage informatique, afin de donner la solution à un problème à l'aide d'un algorithme avant de l'implémenter en Python.  
+
+\medskip
+Les équivalences entre les commandes écrites en langage algorithmique avec celles du langage Python sont présentées dans l'aide mémoire.
+
+\section{Les données et les opérations}
+\label{sec:donnees}
+
+En programmation il est possible d'effectuer des opération sur différents types de données :
+
+\begin{itemize}
+\item Les \textbf{entiers (int)} sont des nombres relatifs (entiers donc).
+
+\exems{2} \comp{28} ou \comp{-9}.
+\item Les \textbf{flottants (float)} sont des nombres décimaux. Il est impératif d'y faire apparaître la partie décimale à l'aide d'un point (et pas d'une virgule).
+
+\exems{2} \comp{3.14} ou \comp{9.0}.
+\item Les \textbf{chaînes de caractère (string)} sont une suite de caractères que l'on encadre par des guillemets.
+
+\exems{2} \compgui{Bonjour} ; \compgui{12} ou encore \compgui{Salut Bertrand}.
+\item Les \textbf{listes} sont des regroupement de données que l'on encadre par des crochets et qu'on sépare par une virgule.
+
+\exem{2} : \begin{minipage}[t]{0.8\textwidth}
+\comp{[2.5\virg 6\virg ``Fred''\virg -4]} est une liste de 4 éléments; un flottant, un entier, une chaîne de caractère et enfin un autre entier.
+\end{minipage}
+\end{itemize}
+
+Pour afficher une donnée on utilise la commande \textbf{\comp{print()}}.
+
+\smallskip
+\exem{2} La commande \textbf{\comp{print(2*3)}} affichera \textbf{\comp{6}}.
+
+
+\medskip
+\begin{encadre}{16cm}
+Se référer à l'\bsc{Aide Mémoire} pour les opérations qu'il est possible d'effectuer avec des données.
+\end{encadre}
+
+\bigskip
+\begin{remarque}
+Python est capable d'interpréter des nombres comme des chaînes de caractères et vice-versa. La commande \comp{str()} permet de transformer un nombre en chaîne de caractère et la commande \comp{int()} ou \comp{float()} permet de transformer une chaîne de caractère en un entier ou un flottant.
+
+\smallskip
+Ainsi et par exemple, \comp{str(12)} sera interprété comme une chaîne de caractères et \comp{int("12")} sera un entier. De plus, la commande \comp{eval()} permet d'exécuter une instruction passée sous forme de chaîne de caractère; \comp{eval(\gui 7+5\gui)} retournera \comp{12} (entier).
+
+\smallskip
+Il n'y a pas cependant pas de sens à l'expression \comp{int("a")}, Python ne sachant pas quelle est la valeur numérique de la lettre \compgui{a}
+\end{remarque}
+
+
+
+\begin{boxexstheorieligne}
+\exo
+A la main et sans utiliser Python, donner le résultat les calculs suivants :\\
+\textit{\small (Se référer à l'aide mémoire si nécessaire)}
+
+\begin{tasks}[after-item-skip=4mm,item-indent=5mm,column-sep=2mm](4)
+\task \comp{3+2}
+\task \comp{7-5}
+\task \comp{1/2}
+\task \comp{3\mul 2}
+\task \comp{7\puis 2}
+\task \comp{20//3}
+\task \comp{20\pct 3}
+\task \comp{5\pct1+1}
+\task \comp{5//1+1}
+\task \comp{40//3\pct 2} 
+\task \comp{545//10}
+\task \comp{545\pct 10}
+\task \comp{-6\mul 10\pct 4}
+\task \comp{1-5\mul 2}
+\task \comp{-2\puis 10}
+\task \comp{1345\pct 10}
+\task \comp{1345//10\pct 10}
+\task \comp{1345//100\pct 10}
+\task \comp{1345//1000\pct 10}
+\task \comp{1345//\nombre{10000}\pct 10}
+\end{tasks}
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+On considère $n$ un entier positif. Relier le calcul Python avec le résultat correspondant :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{l l l}
+\comp{n+1}		&	$\bullet$\hspace{4cm}	&	$\bullet$ Le chiffre des unités de \comp{n}			\\
+\comp{n//10\pct 10}	&	$\bullet$\hspace{4cm}	&	$\bullet$ Le premier nombre pair qui suit \comp{n}	\\
+\comp{n//10}		&	$\bullet$\hspace{4cm}	&	$\bullet$ Le chiffre des dizaines de \comp{n}		\\
+\comp{n//2\mul 2+2}		&	$\bullet$\hspace{4cm}	&	$\bullet$ Le nombre de dizaines de \comp{n}		\\
+\comp{n\puis 2}		&	$\bullet$\hspace{4cm}	&	$\bullet$ Le carré de \comp{n}						\\
+\comp{n\pct 10}		&	$\bullet$\hspace{4cm}	&	$\bullet$ Le double de \comp{n}						\\
+\comp{n\mul 2}			&	$\bullet$\hspace{4cm}	&	$\bullet$ L'entier qui suit \comp{n}					\\
+\end{tabular}
+\end{center}
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+Déterminer le résultat des opérations suivantes en précisant son type (entier, flottant, chaîne de caractère ou liste) sans implémenter en Python :\\
+\textit{\small (Se référer à l'aide mémoire si nécessaire)}
+
+\begin{enumerate}[label=\alph*),left=0mm, itemsep=3mm]
+\item \leavevmode\vspace{-\dimexpr\baselineskip+\topsep}% Solution pour alignement trouvée sur https://tex.stackexchange.com/questions/456914/item-number-not-aligned-with-tasks
+\begin{tasks}[label=\roman*),after-item-skip=4mm,label-width=9mm,label-align=right,column-sep=2mm](3)
+\task \comp{11+2\mul 3}
+\task \comp{\gui 11\gui+2\mul \gui 3\gui}
+\task \comp{str(11)+\gui 2\mul 3\gui}
+\task \comp{\gui 11+2\mul 3\gui}
+\task \comp{eval(\gui11+2\mul 3\gui)}
+\task \comp{str(11)+str(2\mul 3)}
+\task \comp{[\gui 11\gui , \gui 2\gui , 2\mul 3]}
+\task \comp{\gui 11\gui +2\mul 3}
+\task \comp{3\mul str(str(11)+\gui 2\gui)}
+\task \comp{eval(\gui a+3\gui)} 
+\task \comp{str(11+2\mul 3)}
+\task \comp{11+\gui 2\gui \mul [3]}
+\task \comp{len(\gui bonjour\gui)}
+\task \comp{\gui bonjour\gui[0]}
+\task \comp{\gui bonjour\gui[6]}
+\task \comp{\gui bonjour\gui [2\!\!:4]}
+\end{tasks}
+\item Vérifier vos réponses à l'aide de Python.
+
+\end{enumerate}
+\end{boxexstheorieligne}
+\clearpage
+
+
+
+\section{Stockage de Données et Variables}
+\label{sec:stockdonnee}
+
+Afin de pouvoir travailler avec des données, il sera souvent indispensable de pouvoir les stocker. Pour cela nous utilisons une \textbf{variable}.
+
+\medskip
+\begin{definition}
+Une \textbf{variable} est un \textbf{identifiant} (mot, lettre) auquel on associe une \textbf{valeur} (donnée).
+
+\medskip
+On peut se représenter une variable comme une boîte ayant un nom (l'identifiant) dans laquelle on peut placer une donnée.
+
+\end{definition}
+
+Dès lors qu'une valeur est stockée dans une variable, il est possible de faire des opérations avec cette dernière au même titre qu'on effectue des opérations sur des données.
+
+\bigskip
+L'un des intérêts d'un programme informatique (en plus d'automatiser de nombreuses tâches) est de faire interagir l'utilisateur avec l'ordinateur. En particulier, on souhaite que l'utilisateur du programme puisse attribue des valeurs à certaines variables par le biais de la console. Cette action se fait à l'aide de la commande \comp{input} qui permet également d'afficher un message à l'intention de l'utilisateur. Pour finir, il ne faut pas oublier d'attribuer l'a valeur entrée par l'utilisateur à une variable.
+
+\bigskip
+\begin{exemple}
+La commande \comp{x=input(\gui Entrer une valeur : \gui)} permet d'afficher le message \comp{Entrer une valeur} et attend que l'utilisateur entre une valeur dans la console. Cette valeur sera attribuée à la variable \comp{x} par le programme.
+\end{exemple}
+
+
+
+
+%\vspace{-5mm}
+\medskip
+\begin{boxexstheorieligne}
+\exo
+a) Sans implémenter, dire ce que vont afficher les programmes suivants :
+
+%\medskip
+%\begin{center}
+\insertcodehauteur[4.4cm]{Chapitre_1_python/Programmes_tex/programme_ex8.1_tex.py}{0.25}\hspace{-3mm}
+\insertcodehauteur[4.4cm]{Chapitre_1_python/Programmes_tex/programme_ex8.2_tex.py}{0.25}\hspace{-3mm}
+\insertcodehauteur[4.4cm]{Chapitre_1_python/Programmes_tex/programme_ex8.3_tex.py}{0.25}\hspace{-3mm}
+\insertcodehauteur[4.4cm]{Chapitre_1_python/Programmes_tex/programme_ex8.4_tex.py}{0.25}
+%\end{center}
+
+\medskip
+b) Écrire ces programmes en Python et vérifier vos réponses de l'item a).
+
+
+
+
+\eexo
+
+
+
+
+\exo
+Dire ce qu'affichent les programmes suivants si on entre \comp{10}. Préciser le type de donnée obtenue.
+
+\vspace*{-2mm}
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_ex9.1_tex.py}{0.45}{}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_ex9.2_tex.py}{0.45}{}
+\end{center}
+\vspace{-5mm}
+\end{boxexstheorieligne}
+
+
+
+\begin{remarque}
+La commande \comp{x=input()} attribue à la variable \comp{x} la valeur saisie par l'utilisateur \textbf{sous forme de chaîne de caractère}. Si on veut que la valeur soit reconnue comme un entier, il faut le préciser dans le programme.
+\end{remarque}
+
+\medskip
+\begin{boxexstheorieligne}
+\exo
+Dire ce qu'affiche le programme suivant si on entre \comp{3} et préciser le type de donnée obtenue.
+
+\vspace{-3mm}
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_ex10_tex.py}{0.45}{}
+\end{center}
+
+
+
+
+\vspace{2mm}
+
+
+
+
+\exo\vspace{-7mm}
+\begin{enumerate}[label=\alph*),itemsep=0mm]
+\item 
+Dire ce qu'affiche le programme suivant si on entre \comp{5} et préciser le type de donnée obtenue.\\
+\textit{\small(La commande} {\small\comp{chr(0x00B2)}} \textit{\small produit le symbole : $^2$)}
+
+\insertcode{Chapitre_1_python/Programmes_tex/programme_ex11_tex.py}{1}{}
+
+
+
+
+\item 
+Modifier le programme précédant pour obtenir le développement de $(a+X)(a-X)$ où $a$ est un nombre entier saisi par l'utilisateur.
+%{\footnotesize\textbs{Indication :} \textsl{}}
+
+
+
+
+\item 
+Écrire le programme du point b) en Python.
+\end{enumerate}
+
+
+
+
+\eexo
+
+
+
+
+\exo
+Une \textbs{année lumière} est une unité de distance astronomique qui correspond à la distance que parcourt la lumière en une année (en moyenne 365,25 jours). La vitesse de la lumière est de \nombre{299792} km/s. 
+
+\smallskip
+Écrire un programme en Python qui convertit un nombre d'années lumière entré par l'utilisateur en kilomètres. 
+
+
+
+
+\eexo
+
+
+
+
+\exo
+\vspace*{-0.7cm}
+\begin{enumerate}[label=\alph*)]
+\item Écrire un programme en Python qui demande à l'utilisateur d'entrer un nombre contenant exactement 2 chiffres et qui affiche le nombre entré ainsi que le nombre à l'envers.
+
+\vspace{0mm}
+\textbf{Consigne : }\begin{minipage}[t]{0.82\textwidth}
+On prendra soin de saisir le nombre comme un entier, et non comme une chaîne de caractères.
+\end{minipage}
+\item Même question qu'au point précédent mais avec un nombre de 3 chiffres.
+\end{enumerate}
+
+\end{boxexstheorieligne}
+\clearpage
+
+
+
+
+\section{Instructions conditionnelles}
+Dans un programme (ou un algorithme), il est possible d'exécuter une instruction en fonction de certaines conditions. Cela s'appelle des \guillemets{instructions conditionnelles}. Le programme va alors préalablement vérifier si toutes les conditions précisées sont remplies avant d'effectuer une instruction.
+
+\medskip
+Si toutes les conditions sont réunies, alors le programme exécute le code prévu dans l'instruction conditionnelle. Dans le cas contraire, le programme ignore ces instructions et exécute la suite du programme. Il est cependant possible de préciser d'autres instructions en cas d'échec de la vérification des conditions initiales.
+
+\medskip
+En python, une instruction conditionnelle se présente de la manière suivante :
+
+\begin{center}
+\begin{encadre}{6cm}
+\comp{if} {\it condition 1} \comp{:} \\ \medskip
+\hspace*{7mm} {\it <instruction 1>}\\ 
+\comp{elif} {\it condition 2} \comp{:} \\ 
+\hspace*{7mm} {\it <instruction 2>}\\
+\comp{else :} \\
+\hspace*{7mm} {\it <instruction 3>}
+\end{encadre}
+\end{center}
+
+\noindent\begin{itemize}[leftmargin=*]
+\item Le programme vérifie si la \textit{condition 1} est réalisée. Si c'est le cas, le code précisé dans \textit{\mbox{<instruction 1>}} est exécuté et \textit{\mbox{<instruction 2>}} et \textit{\mbox{<instruction 3>}} sont ignorées.
+\item Si \textit{condition 1} n'est pas réalisée, alors le programme vérifie la \textit{condition 2} et, en cas de succès, exécute \textit{<instruction 2>}.
+\item Si ni \textit{condition 1} ni \textit{condition 2} ne sont vérifiées, alors le programme exécute \textbf{quoi qu'il arrive} \textit{<instruction 3>}.
+\end{itemize}
+
+\begin{remarques}
+\item Il est possible de vérifier autant de conditions qu'on veut. Pour cela il suffit de répéter l'instruction \comp{elif} autant de fois que nécessaire.
+\item Les instructions \comp{elif} et \comp{else} sont facultatives. Si elles ne sont pas présentes, python vérifiera simplement la condition \comp{if} avant de poursuivre la suite du code.
+\item Les conditions peuvent être construites avec les commandes \textbf{\comp{and}} (et) et/ou \textbf{\comp{or}} (ou).
+\end{remarques}
+
+
+\begin{exemple}
+L'algorithme suivant indique si un nombre est inférieur, égal ou supérieur à $0$ :
+
+\begin{center}
+\begin{affichagealgorithme}{0.72}
+\textbf{Variable} : x(flottant)\\
+\compbf{Début}\\
+\idalgo{
+	\textbf{Afficher} "Saisir un nombre : "\\
+	\textbf{Saisir} x\\
+	\textbf{Si} x < 0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} "Le nombre est strictement négatif."
+	}\\
+	\textbf{SinonSi} x = 0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} : "Le nombre vaut zéro."
+	}\\
+	\textbf{Sinon}\\
+	\idalgo{
+		\textbf{Afficher} "Le nombre est strictement positif."
+	}\\
+	\textbf{FinSi}
+	}\\
+\textbf{Fin}
+\end{affichagealgorithme}
+\end{center}
+\end{exemple}
+
+
+
+
+\begin{boxexstheorieligne}\renewcommand{\eexo}{\vspace{8mm}}
+\exo
+Considérons l'algorithme suivant :
+
+\medskip
+\begin{center}
+\begin{affichagealgorithme}{0.5}
+\textbf{Variable} : N(entier)\\
+\compbf{Début}\\
+\idalgo{
+	N $\leftarrow$ randint(0,20)\\
+	\textbf{Si} N\pct 5 =0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} "Gagné!"
+	}\\
+	\textbf{Sinon}\\
+	\idalgo{
+		\textbf{Afficher} "Perdu..."
+	}\\
+	\textbf{FinSi}
+	}\\
+\textbf{Fin}
+\end{affichagealgorithme}
+\end{center}
+
+\vspace{-6mm}
+\begin{enumerate}[label=\alph*),itemsep=0mm]
+\item Décrire le jeu en précisant dans quels cas on gagne et dans quels cas on perd.
+\item Quelle est la probabilité de gagner ?
+\item Implémenter l'algorithme en Python et exécuter le programme.
+\end{enumerate}
+
+
+
+
+\eexo
+
+
+
+
+\exo
+On souhaite créer un programme qui indique la parité d'un nombre saisi par l'utilisateur.\\
+On aimerait que le message affiché soit \guillemets{PAIRE} ou \guillemets{IMPAIRE}.
+\begin{enumerate}[label=\alph*),itemsep=0mm]
+\item Écrire un algorithme décrivant le programme.
+\item Implémenter l'algorithme en Python et exécuter le programme.
+\end{enumerate}
+
+
+
+
+\eexo
+
+
+
+
+\exo
+La fonction \guillemets{valeur absolue} est définie de la manière suivante :
+$$f(x)=\mid x\mid=\left\lbrace\begin{array}{c c l}
+x & \textrm{si}  & x\geqslant 0\\
+-x & \textrm{si}  & x < 0
+\end{array}\right.$$
+
+Écrire un \textbf{programme} en Python qui calcule l'image d'un nombre réel (saisi par l'utilisateur) par cette fonction.
+
+
+
+
+\eexo
+
+
+
+
+\exo
+Écrire un \textbf{algorithme} qui résout une équation polynômiale de la forme $$ax+b=0$$ où $a, b \in \R$ sont saisis par l'utilisateur et \textbf{implémenter} votre algorithme en Python.
+
+
+
+
+\eexo
+
+
+
+
+\exo
+Écrire un \textbf{algorithme} en Python qui résout une équation polynômiale de la forme $$ax^2+bx+c=0$$ où $a, b, c \in \R$ sont saisis par l'utilisateur et \textbf{implémenter} votre algorithme en Python.
+\end{boxexstheorieligne}
+\vspace{2mm}
+\clearpage
+
+
+
+
+
+\section{Instructions répétitives.}% boucles bornées}
+\subsection{Boucles bornées}
+\newcommand{\boup}{\guillemets{boucle pour} }
+Nous allons voir dans cette section comment il est possible de répéter un certain nombre de fois une série d'instructions. Beaucoup de processus algorithmiques sont itératifs, c'est-à-dire que les mêmes instructions (ou opérations) sont répétées et, à chaque répétition, les résultats de l'exécution précédente sont utilisés comme opérandes.
+
+\medskip
+Le boucles sont des éléments essentiels en programmation, c'est d'ailleurs tout l'intérêt faire exécuter un code à une machine; répéter \textbf{automatiquement} et \textbf{autant de fois que nécessaire} une ou des instructions.
+
+
+\medskip
+%\subsection{Boucles bornées}
+Une des manières d'obtenir des instructions répétées est la \textbf{``boucle pour''}. En Python, une \guillemets{boucle pour} s'écrit de la manière suivante :  
+
+
+\begin{center}
+\begin{encadre}{6cm}
+\comp{for i in range (a,b+1) :} \\ \medskip
+\hspace*{7mm} {\it <instruction>}
+\end{encadre}
+\end{center}
+%%%%%%%% EN ALGORITHME :
+%\begin{minipage}{0.3\textwidth}\vspace*{2mm}
+%	{\bf Pour} {\it $i$ de $a$ à $b$} {\bf Faire}\\
+%	\begin{tabular}{|c}
+%	\begin{minipage}{\textwidth}
+%		{\it <instruction>}
+%	\end{minipage}\\
+%	\end{tabular}\vspace{1mm}
+%	{\bf FinPour}\\
+%\vspace*{2mm}\end{minipage}
+
+\bigskip
+Lorsqu'on exécute une \boup, la variable $i$ prend successivement toutes les valeurs entières entre $a$ et $b$ ($a$ et $b$ compris) et, pour chacune des valeurs $i$ ainsi obtenues, la machine exécute le code écrit dans {\it <instruction>}.
+
+\medskip
+Dans la mesure où l'on sait exactement et l'avance le nombre de fois que {\it <instruction>} sera répétée, on appelle une \boup une \textbf{boucle bornée}. La variable $i$ est alors appelée le \textbf{compteur} de la boucle.
+
+
+\medskip
+\begin{exemple}
+Le programme suivant affiche la table de multiplication de 5.
+
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_th1_tex.py}{0.45}{}
+\end{center}
+\end{exemple}
+
+\medskip
+\begin{remarques}\setlength{\itemsep}{2mm}
+\item Si on écrit uniquement \textbf{\comp{for i in range (n)}}, la boucle se ferra automatiquement de \comp{0} à \comp{n-1}.
+\item On peut également parcourir toutes les lettres d'une chaîne de caractère avec la commande \textbf{\comp{for i in <chaîne de caractère>}}. La variable \textbf{\comp{i}} prendra alors successivement toutes les valeurs contenues dans \textbf{\comp{<chaîne de caractère>}}.  
+
+\medskip
+\begin{exemple}
+Le code ci-dessous permet l'affichage du code ASCII des lettres du mot \textit{bonjour}.
+
+%\begin{center}
+%\begin{minipage}{0.64\textwidth}
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_th3_tex.py}{0.65}{}
+\end{center}
+%\end{minipage}
+La commande \textbf{\comp{chr(<entier>)}} renvoie le caractère ASCII correspondant à \textbf{\comp{<entier>}}\\ (decimal) dans la table ASCII et  \textbf{\comp{ord(<caractère>)}} fait l'opération inverse.
+%Affichage :
+%%\begin{minipage}{0.25\textwidth}
+%\begin{center}
+%\begin{affichage}{0.4}
+%b code ASCI : 98\\
+%o code ASCI : 111\\
+%n code ASCI : 110\\
+%j code ASCI : 106\\
+%o code ASCI : 111\\
+%u code ASCI : 117\\
+%r code ASCI : 114
+%\end{affichage}
+%\end{center}
+%%\end{minipage}
+%\end{center}
+\end{exemple}
+
+\item Pour comprendre ce que fait une \boup dans un programme donné, il est souvent utile d'établir un tableau; à chaque ligne \comp{i} du tableau, on note la valeur des variables après la i\eme itération de la boucle.
+
+\end{remarques}
+%\begin{encadre}{17.5cm}
+%La commande \comp{chr(<entier>)} renvoie le caractère ASCII correspondant à \comp{<entier>} (decimal) dans la table ASCII et  \comp{ord(<caractère>)} fait l'opération inverse.
+%\end{encadre}
+\clearpage
+
+
+\begin{boxexstheorieligne}\renewcommand{\eexo}{\vspace{8mm}}
+\exo
+Considérons l'{\bf algorithme} incomplet suivant :
+
+\vspace{4mm}
+\begin{center}
+\begin{affichagealgorithme}{0.5}
+\textbf{Variable} : k(\ldots)\\
+\compbf{Début}\\
+\idalgo{
+	Pour \ldots\; de \ldots\; à \ldots\; Faire\\
+	\idalgo{
+		\textbf{Afficher} \ldots
+	}\\
+	\textbf{FinPour}
+	}\\
+\textbf{\ldots\phantom{P}}
+\end{affichagealgorithme}
+\end{center}
+
+
+%\begin{center}
+%\comp{\fbox{\begin{minipage}[t]{0.72\textwidth}
+%\cen{\textcolor{darkgray}{::::::::::::: \textsc{Algorithme A11} :::::::::::::}} 
+%
+%\vspace{4mm}
+%\textbf{Variable :} k($\dots$)\\
+%\textbf{Début}
+%
+%\vspace{2mm}
+%\begin{tabular}{|c}
+%\begin{minipage}{\textwidth}
+%	\textbf{Pour} $\dots$ de $\dots$ à $\dots$ \textbf{Faire}\\
+%	\begin{tabular}{|c}
+%	\begin{minipage}{\textwidth}
+%		\textbf{Afficher} $\dots$
+%	\end{minipage}
+%	\end{tabular}\vspace{1mm}
+%	\textbf{FinPour}
+%\end{minipage}
+%\end{tabular}
+%
+%\vspace{3mm}
+%$\dots$%\textbf{Fin}
+%\end{minipage}}}
+%\end{center}
+
+%\vspace{3mm}
+\begin{multicols}{2}\columnsep=10mm
+\begin{enumerate}[label=\alph*),left=0mm]
+\item Recopier et compléter l'algorithme afin\\ qu'après exécution on obtienne l'affichage :
+
+\vspace*{0mm}
+\begin{center}\begin{affichage}{0.47}
+1\\
+22\\
+333\\
+4444\\
+55555\\
+666666\\
+7777777\\
+88888888\\
+999999999
+\end{affichage}\end{center}
+\item Recopier et compléter l'algorithme afin\\ qu'après exécution on obtienne l'affichage :
+
+\vspace*{0mm}
+\begin{center}\begin{affichage}{0.47}
+9\\
+88\\
+777\\
+6666\\
+55555\\
+444444\\
+3333333\\
+22222222\\
+111111111
+\end{affichage}\end{center}
+\end{enumerate}
+\end{multicols}
+
+\vspace{0mm}
+\hspace{4mm}c) {\bf Implémenter} ces deux algorithmes en Python
+%\end{boxexstheorieligne}\clearpage
+
+
+
+\eexo
+
+
+%\begin{boxexstheorieligne}
+\exo
+Considérons l'algorithme suivant :
+
+\vspace{0mm}
+\begin{center}
+\begin{affichagealgorithme}{0.5}
+\textbf{Variable} : P,N(entier)\\
+\compbf{Début}\\
+\idalgo{
+	P $\leftarrow$ 1\\
+	\textbf{Pour} n \textbf{de} 1 \textbf{à} 20 \textbf{Faire}\\
+	\idalgo{
+		P $\leftarrow$ P$\cdot$n$^2$
+	}\\
+	\textbf{FinPour}\\
+	\textbf{Afficher} P
+	}\\
+\textbf{Fin}
+\end{affichagealgorithme}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{center}
+%\comp{\fbox{\begin{minipage}[t]{0.72\textwidth}
+%\cen{\textcolor{darkgray}{::::::::::::: \textsc{Algorithme A12} :::::::::::::}} 
+%
+%\vspace{4mm}
+%{\bf Variable :} P\;,\;n(entiers)\\
+%{\bf Début}
+%
+%\vspace{2mm}
+%\begin{tabular}{|c}
+%\begin{minipage}{\textwidth}
+%	P $\leftarrow$ 1\\	
+%	\textbf{Pour} n de 1 à 20 \textbf{Faire}\\
+%	\begin{tabular}{|c}
+%	\begin{minipage}{\textwidth}
+%		 P $\leftarrow$ P$\times$n$^2$
+%	\end{minipage}
+%	\end{tabular}\vspace{1mm}
+%	\textbf{FinPour}\\
+%	\textbf{Afficher} P
+%\end{minipage}
+%\end{tabular}
+%
+%\vspace{2mm}
+%\textbf{Fin}
+%\end{minipage}}}
+%\end{center}
+
+\vspace*{-3mm}
+\makeatletter
+\begin{enumerate}[label=\alph*),itemsep=2mm]
+\item \textbf{Sans l'implémenter}, décrire ce que fait l'algorithme en détaillant les différentes instructions.
+
+\indicationsansparentheses{0.9}{
+Il est utile de faire un tableau afin de comprendre la boucle : % et expliquer le résultat final.\par\nobreak\@nobreaktrue
+\begin{tabular}[t]{c|c}
+\comp{n}	&	\comp{P}\\
+\hline
+\comp{n=1}	&	\comp{P=?}\\
+\hline
+\comp{n=2}	&	\comp{P=?}\\
+\hline
+\comp{...}	&	\comp{...}\\
+\end{tabular}
+}
+\item {\bf Implémenter} l'algorithme en Python.
+\item En utilisant une \guillemets{boucle pour} et en vous inspirant de l'algorithme précédent, implémenter un \textbf{programme} en Python qui demande à l'utilisateur de saisir un nombre entier $n$, qui affiche dans une liste tous les cubes parfaits jusqu'à $n^3$ et qui en calcule la somme. \par\nobreak\@nobreaktrue
+\end{enumerate}
+\makeatother
+
+
+
+%\eexo
+\pagebreak[3]
+
+
+
+%\exo
+%Utiliser une \guillemets{boucle pour} pour répondre aux questions suivantes :
+%
+%
+%\vspace{3mm}
+%\begin{enumerate}[label=\alph*)]
+%\item Écrire un {\bf algorithme} permettant d'obtenir le produit $5\cdot 6\cdot 7 \cdot ... \cdot 15$.
+%\item {\bf Implémenter} en Python l'algorithme du point précédent et donner le résultat du produit.
+%\item Écrire un programme en Python qui donnera la valeur approchée au centième du calcul suivant :
+%$$1,001\cdot 1,002\cdot 1,003\cdot ... \cdot 1,098\cdot 1,099$$
+%\end{enumerate}
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+Utiliser une \guillemets{boucle pour} pour répondre aux questions suivantes :
+
+
+\vspace{3mm}
+\begin{enumerate}[label=\alph*)]
+\item Écrire un {\bf algorithme} qui permet d'afficher la liste de toutes les tables de multiplication jusqu'à la table de 12. Les tables peuvent s'afficher les unes en-dessous des autres.
+
+
+\begin{center}\begin{affichage}{0.8}
+\begin{minipage}[t]{0.25\textwidth}
+Table de 1\\
+
+
+1*1=1\\
+1*2=2\\
+1*3=3\\
+1*4=4\\
+1*5=5\\
+1*6=6\\
+1*7=7\\
+1*8=8\\
+1*9=9\\
+1*10=10\end{minipage}\begin{minipage}[t]{0.25\textwidth}
+Table de 2\\
+
+
+2*1=2\\
+2*2=4\\
+2*3=6\\
+2*4=8\\
+2*5=10\\
+2*6=12\\
+2*7=14\\
+2*8=16\\
+2*9=18\\
+2*10=20\end{minipage}\begin{minipage}[t]{0.25\textwidth}
+Table de 3\\
+
+
+3*1=3\\
+3*2=6\\
+3*3=9\\
+3*4=12\\
+3*5=15\\
+3*6=18\\
+3*7=21\\
+3*8=24\\
+3*9=27\\
+3*10=30\end{minipage}\begin{minipage}[t]{0.25\textwidth}
+Table de ...\\
+
+...
+\end{minipage}
+\end{affichage}\end{center}
+
+\textit{\footnotesize(\textbf{Indication :} On peut utiliser une boucle dans une boucle...)}
+\item {\bf Implémenter} l'algorithme du point précédent en Python.
+\end{enumerate}
+%\end{boxexstheorieligne}
+
+
+\eexo
+
+
+%\begin{boxexstheorieligne}
+\exo
+Soit la fonction polynômiale $f(x)=a_nx^n+a_{n-1}x^{n-1}+ ... + a_2x^2+a_1x+a_0$.
+\begin{enumerate}[label=\alph*),itemsep=4mm]
+\item On considère $b\in \R$.
+\begin{enumerate}[label=\roman*),itemsep=1mm]
+\item Combien de multiplications sont nécessaires pour évaluer $f(b)$ en calculant l'image directement à partir de l'expression algébrique de $f$?
+\item Et d'additions ?
+\end{enumerate}
+\item En écrivant $$f(x)=\Big[\left(\big[\left(a_nx+a_{n-1}\right)x+a_{n-2}\big]x+ ...  +a_2\right)x+a_1\Big]x+a_0$$ il est possible d'utiliser le schéma de Horner pour évaluer $f(b)$.
+\begin{enumerate}[label=\roman*),itemsep=1mm]
+\item Combien de multiplications sont alors nécessaires pour évaluer $f(b)$ ?
+\item Et d'additions ?
+\end{enumerate}
+\item Quel méthode est la plus efficace (c'est à dire la moins complexe) algorithmiquement?
+\item En vous basant sur le schéma de Horner, écrire un {\bf algorithme} qui évalue un polynôme saisi par l'utilisateur en un point également saisi par l'utilisateur.
+
+\textit{\footnotesize\textbf{Indication :}} \begin{minipage}[t]{0.9\textwidth}\footnotesize\itshape
+$\bullet$ Il est utile de connaitre le degré du polynôme avant de commencer (on peut le demander à l'utilisateur).
+
+\vspace{2mm}
+$\bullet$ Pour chaque coefficient, on prendra soin de demander à l'utilisateur \guillemets{d'entrer le coefficient de degré $k$}.
+
+\vspace{2mm}
+$\bullet$ On stockera les coefficients dans une liste par ordre décroissant des puissances (initier une liste vide).
+
+\vspace{2mm}
+$\bullet$ Utiliser une boucle pour entrer les coefficients et une autre pour le calcul de l'image.
+\end{minipage}
+\item {\bf Implémenter} votre algorithme du point précédent en Python.
+\end{enumerate}
+\end{boxexstheorieligne}
+
+
+
+\clearpage
+\section{Instructions répétitives : boucles non-bornées}
+%Les boucles \guillemets{pour}, ou bornées, sont très utiles lorsqu'on souhaite travailler avec des entiers successifs. Dans ce cas le compteur de la boucle peut être utilisé dans l'instruction se trouvant dans la boucle et peut prendra successivement toutes les valeurs entières jusqu'à une certaine borne $n$.
+%
+%\medskip
+Les boucles \guillemets{pour}, ou bornées, sont très utiles lorsqu'on travaille avec des entiers successifs jusqu'à une certain valeur n. Cependant, on souhaite parfois qu'une instruction se répète tant qu'une certaine condition n'est pas remplie; par exemple, tant que deux nombres sont différents ou encore qu'un mot de passe n'est pas correct. C'est exactement le rôle d'une \textbf{``boucle tant que ''}. La structure d'une boucle \textit{tant que} est :
+ 
+\vspace{-2mm}
+\begin{center}
+\begin{encadre}{6cm}
+\comp{while} {\it condition} : \\ \medskip
+\hspace*{7mm} {\it <instruction>}
+\end{encadre}
+\end{center}
+
+\smallskip
+et l'instruction codée dans cette boucle se répétera tant que la condition précisée est remplie. Les boucles \guillemets{tant que} ont la même vocation que les boucles \guillemets{pour}, à savoir répéter un certain nombre de fois une série d'opérations de manière automatique. Cependant, contrairement aux boucles bornées, on ne connaît pas à l'avance le nombre de répétitions que l'instruction dans boucle. C'est pour cette raison qu'on appelle les boucles \guillemets{tant que} des \textbf{``boucles non-bornées''}.
+
+
+\bigskip
+\begin{exemple}
+%\begin{minipage}[t]{0.5\textwidth}
+Le programme suivant affiche le plus petit entier naturel $n$ tel que $2^n\geqslant 10^{10}$.
+%\end{minipage}\begin{minipage}[t][][b]{0.5\textwidth}
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_th2_tex.py}{0.45}{}
+\end{center}
+%\end{minipage}
+\end{exemple}
+
+\medskip
+\begin{remarque}
+%\item L'instruction dans la boucle n'est réalisée qu'après vérification de la condition. Réciproquement l'instruction sera toujours réalisée si la condition est remplie.
+%\item
+Il faut être prudent lorsqu'on travaille avec des boucles non bornées. En effet, si la condition à tester est toujours vérifiée, on génère une boucle infinie. Il faut donc \textbf{obligatoirement} que l'instruction dans une boucle \guillemets{tant que} modifie la ou les variable(s) testée(s) dans la condition.
+\end{remarque}
+
+\vspace{2mm}
+\begin{boxexstheorieligne}
+\exo
+Considérons l'{\bf algorithme} suivant :
+
+\medskip
+\begin{center}
+\begin{affichagealgorithme}{0.85}\small
+\textbf{Variable :} secret, essai, nb (entiers)\\
+\textbf{Début}\\
+\idalgo{
+	secret $\leftarrow$ randint(1 , 20)\\
+	essai $\leftarrow$ 1\\
+	\textbf{Afficher} "Je pense à un nombre entre 1 et 20. Devine ce nombre : "\\
+	\textbf{Saisir} nb\\
+	\textbf{TantQue} nb $\neq$ secret \textbf{Faire}\\
+	\idalgo{
+		\textbf{Si} nb < secret \textbf{Alors}\\ 
+		\idalgo{
+			\textbf{Afficher} "Ton nombre est trop petit!"
+		}\\
+		\textbf{SinonSi} nb > secret \textbf{Alors}\\ 
+		\idalgo{
+			\textbf{Afficher} "Ton nombre est trop grand!"
+		}\\
+		\textbf{FinSi}\\
+		essai $\leftarrow$ essai+1
+	}\\
+	\textbf{FinTantQue}\\
+	\textbf{Afficher} "Bravo! Tu as trouvé le nombre en", essai, "essai(s)!"
+}\\
+\textbf{Fin}
+\end{affichagealgorithme}
+\end{center}
+
+\vspace{-1mm}
+Cet algorithme est censé réaliser une certaine tâche. Cependant, en l'état, il présente un problème.
+\begin{enumerate}[label=\alph*),itemsep=0mm,left=0mm]
+\item Déduire ce qu'est censé faire l'algorithme.
+\item Trouver le problème de l'algorithme et le corriger
+\item \textbf{Implémenter} l'algorithme corrigé en Python.
+\end{enumerate} 
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+%\begin{enumerate}[label=\alph*),itemsep=0mm,left=0mm]
+%\item 
+Écrire un programme en Python qui réalise les tâche suivantes :
+\begin{itemize}[leftmargin=7mm,itemsep=0mm,labelsep=2mm]
+\item On demande à l'utilisateur d'entrer un nombre positif \textbf{\comp{x}} strictement inférieur à 1.
+
+\item On vérifie que \textbf{\comp{x}} soit inférieur à 1, sinon on demande à l'utilisateur de recommencer.
+
+\item On calcule la plus petite puissance \textbf{\comp{n}} pour laquelle on a x\textsuperscript{n} $\leqslant$ 10\textsuperscript{-10}
+\end{itemize}
+%\item Essayer votre programme avec x$=0,1$. Que se passe-t-il?
+%\end{enumerate}
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+On considère le programme suivant :
+
+\vspace{-5mm}
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_ex24_tex.py}{0.9}{}
+\end{center}
+
+\vspace{-5mm}
+\makeatletter
+\begin{enumerate}[label=\alph*),itemsep=1mm,left=0mm]
+\item Expliquer ce que fait ce programme. En particulier le rôle de la commande \comp{while not ok}.\par\nobreak\@nobreaktrue
+\item Implémenter le programme en Python.\par\nobreak\@nobreaktrue
+\item Modifier le programme pour que, une fois gagné, l'utilisateur puisse choisir de rejouer en\\ choisissant \guillemets{O} (oui) ou \guillemets{N} (Non). \par\nobreak\@nobreaktrue
+\end{enumerate}
+\makeatother
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+Vous souhaitez créer un site web contenant un espace personnel. Pour accéder à leur compte, vos utilisateurs doivent s'enregistrer et choisir un mot de passe.
+
+\smallskip
+\begin{enumerate}[label=\alph*),itemsep=1mm,left=0mm]
+\item Écrire un algorithme qui demande à l'utilisateur de choisir un mot de passe d'au moins 6 caractères et contenant au moins un des symboles $\ast\#\&\%\$ $.
+\item {\bf Implémenter} l'algorithme en Python.
+\end{enumerate}
+
+\vspace{3mm}
+\textit{\footnotesize\textbf{Indications :}}
+\begin{minipage}[t]{0.9\textwidth}\footnotesize\itshape \begin{itemize}[leftmargin=*,itemsep=0mm,labelsep=2mm]
+
+\item La commande {\it <caractère> in <chaîne de caractère>} renvoie {\bf True} si {\it <caractère>} se trouve dans {\it <chaîne de caractères>} et {\bf False} sinon.
+
+\item Il faut afficher deux messages d'erreurs; un s'il n'y a pas assez de caractères et un autre si le mot de passe ne contient pas un des symboles requis.
+
+\item Si toutes les conditions requises pour le mot de passe sont réunies, on affichera le message \guillemets{Mot de passe enregistré}.
+
+\item Utiliser un mélange de boucles {\bf TantQue}, {\bf Pour} et de conditions {\bf If}.
+\end{itemize}
+\end{minipage}
+
+
+
+
+%\eexo
+%\pagebreak[3]
+\clearpage
+
+
+\exo
+On souhaite créer un jeu de calcul mental dans lequel l'utilisateur devra trouver le plus rapidement possible le résultat d'une série de multiplications (de $2$ à $9$) posées au hasard par la machine.
+
+\smallskip
+Le jeu s'arrête dès que le joueur a trouvé 5 bonnes réponses puis affiche le temps de jeu.
+
+\smallskip
+Voici un exemple d'affichage :
+
+\begin{center}
+\begin{affichage}{0.5}
+Appuyer sur ENTER pour commencer...\\
+$7\times 9 = 63$\\
+Juste!\\
+$2\times 2 = 4$\\
+Juste!\\
+$8\times 5 = 40$\\
+Juste!\\
+$9\times 3 = 18$\\
+FAUX!\\
+$5\times 2 = 10$\\
+Juste!\\
+$8\times 3 = 24$\\
+Juste!\\
+Ton temps est de : 15,78 secondes
+\end{affichage}
+\end{center}
+
+\vspace{2mm} 
+Écrire un {\bf programme} en Python qui réalise ce jeu.
+
+\vspace{3mm}
+\textit{\footnotesize\textbf{Indications :}}
+\begin{minipage}[t]{0.9\textwidth}\footnotesize\itshape \begin{itemize}[leftmargin=*,itemsep=0mm,labelsep=1mm]
+
+\item L\hspace{0.5pt}'\hspace{1pt}instruction \guillemets{\bf from time import time} permet d'utiliser la commande \guillemets{\textbf{time()}} qui renvoie le nombre de secondes écoulées depuis le 1\textsuperscript{er} janvier 1970.
+
+\item La commande \guillemets{\bf round($x$,$n$)} renvoie la valeur de $x$ arrondie à $n$ nombres après la virgule.
+
+\end{itemize}
+\end{minipage}
+
+
+\end{boxexstheorieligne}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Fonctions}
+
+Lorsqu'on fait de la programmation, certaines tâches peuvent être amenées à être exécutées plusieurs fois et à différents endroits du programme. C'est à cette fin qu'existent les \textbf{fonctions} en Python.
+
+La structure d'une fonction en python est la suivante :
+
+\begin{center}
+\begin{encadre}{6cm}
+\comp{def {nom}}{(<arguments>)} \comp{:} \\ 
+\hspace*{7mm} {\it <instruction>}\\ 
+\hspace*{7.5mm} \comp{return}{(<données>)}
+\end{encadre}
+\end{center}
+
+\bigskip
+\begin{exemple}
+Imaginons qu'on souhaite, à des moments différents dans l'exécution du programme, compter le nombre de lettres ``e'' qui apparaissent dans un mot. On définit la fonction :
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_th4_tex.py}{0.5}{}
+\end{center}
+
+\vspace{-1mm}
+Dès lors il suffit d'écrire \comp{print(compteage\_e(<chaîne de caractère>))} pour que s'affiche le nombre de lettres ``e'' de \comp{<chaîne de caractères>}.
+\end{exemple}
+
+
+
+
+
+\begin{boxexstheorieligne}
+\exo
+Considérons l'{\bf algorithme} suivant :
+
+\vspace{3mm}
+\begin{center}
+\begin{affichagealgorithme}{0.5}
+\textbf{Fonction} f(x)\\
+\textbf{Variables locales} : x (flottant)\\
+\textbf{Début}\\
+\idalgo{
+	x $\leftarrow$ x+2\\
+	x $\leftarrow$ x(x-4)+5\\
+	\textbf{Retourner}(x) 
+}\\
+\textbf{FinFonction}
+\end{affichagealgorithme}
+\end{center}
+
+\makeatletter
+\begin{enumerate}[label=\alph*),itemsep=0mm]
+\item Calculer $f(-1)$ et $f(3)$.\par\nobreak\@nobreaktrue
+\item Quel concept mathématique cet algorithme traduit-il ?\par\nobreak\@nobreaktrue
+\item Donner l'expression algébrique de la fonction $f(x)$. \par\nobreak\@nobreaktrue
+%\item \textbf{Implémenter} le programme en Python.\par\nobreak\@nobreaktrue
+%\item Modifier le programme pour que, une fois gagné, l'utilisateur puisse choisir de rejouer. \par\nobreak\@nobreaktrue
+\end{enumerate}
+\makeatother
+
+%\begin{minipage}[t][][b]{0.5\textwidth}
+%Considérons l'{\bf algorithme} suivant :
+%
+%\vspace{1mm}
+%\begin{center}
+%\begin{affichagealgorithme}{0.9}
+%\textbf{Fonction} f(x)\\
+%\textbf{Variables locales} : x (flottant)\\
+%\textbf{Début}\\
+%\idalgo{
+%	x $\leftarrow$ x+2\\
+%	x $\leftarrow$ x(x-4)+5\\
+%	\textbf{Retourner}(x) 
+%}\\
+%\textbf{FinFonction}
+%\end{affichagealgorithme}
+%\end{center}
+%\end{minipage}
+%\begin{minipage}[t][][b]{0.5\textwidth}
+%\makeatletter
+%\begin{enumerate}[label=\alph*),itemsep=0mm]
+%\item Calculer $f(-1)$ et $f(3)$.\par\nobreak\@nobreaktrue
+%\item Quel concept mathématique cet algorithme traduit-il ?\par\nobreak\@nobreaktrue
+%\item Donner l'expression algébrique de la fonction $f(x)$. \par\nobreak\@nobreaktrue
+%%\item \textbf{Implémenter} le programme en Python.\par\nobreak\@nobreaktrue
+%%\item Modifier le programme pour que, une fois gagné, l'utilisateur puisse choisir de rejouer. \par\nobreak\@nobreaktrue
+%\end{enumerate}
+%\makeatother
+%\end{minipage}
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+\vspace{-4mm}\begin{enumerate}[label=\alph*),itemsep=1mm]
+\item Écrire un \textbf{algorithme} d'une fonction \guillemets{sommecarre} qui prend en paramètre un entier $n$ et qui retourne la somme des carrés des nombres entiers entre $1$ et $n$.\vspace{-2mm}
+\item \textbf{Implémenter} une fonction récursive \guillemets{sommerec} qui renvoie la somme $\displaystyle \sum^{n}_{j=1}j^2$ pour $n\in\N$.
+
+\vspace{-5mm}
+{\small(Une fonction \textbs{récursive} est une fonction qui fait appel à elle-même.)}
+\item Existe-t-il d'autres moyens de calculer la somme des $n$ premiers carrés?
+\end{enumerate}
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+Considérons les deux fonctions en Python suivantes :
+
+\vspace{3mm}
+\begin{minipage}[t][][b]{0.5\textwidth}
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_ex30.1_tex.py}{1}{}
+\end{center}
+\end{minipage}\eh{3}\begin{minipage}[t][][b]{0.45\textwidth}
+\begin{center}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_ex30.2_tex.py}{1}{}
+\end{center}
+\end{minipage}
+
+
+%\vspace{5mm}
+\makeatletter
+\begin{enumerate}[label=\alph*)]
+\item \textbf{Sans implémenter le code} et sachant que :
+\begin{itemize}
+\item \comp{ch} est de type \textit{chaîne de caractère},
+\item \comp{n} est de type \textit{entier},
+\end{itemize}
+expliquer précisément ce que font chacune des fonctions ci-dessus.\par\nobreak\@nobreaktrue
+\item Implémenter \textbf{Python} une fonction \guillemets{comparemot} qui compare deux mots et renvoie $1$ s'ils ont le même nombre de voyelles et 0 sinon.\\ \textit{\footnotesize(\textbf{Indications :} on peut faire appel à une fonction dans une autre fonction.)}
+%Servez-vous de {\normalfont \comp{fonction\_un}})}\par\nobreak\@nobreaktrue
+\end{enumerate}
+\makeatother
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+On souhaite établir la liste de tous les diviseurs d'un certain entier $n$.
+
+\smallskip
+Pour cela, on teste parmi les nombres inférieurs à $n$ si c'est un diviseur de $n$.
+
+\vspace{1mm}
+\makeatletter
+\begin{enumerate}[label=\alph*)]
+\item Faut-il considérer tous les nombres inférieurs à $n$ dans le test?
+\item Écrire en \textbf{Python} une fonction \guillemets{diviseurs} qui renvoie tous les diviseurs d'un nombre entier $n$ à l'intérieur d'une liste.\par\nobreak\@nobreaktrue
+
+\vspace{2mm}
+\textit{\footnotesize\textbf{Indications :}}
+\begin{minipage}[t]{0.9\textwidth}\footnotesize\itshape \begin{itemize}[leftmargin=*,itemsep=0mm,labelsep=1mm]
+\item On souhaite établir la liste de \underline{tous} les diviseurs
+
+\item La fonction doit être optimisée pour ne pas faire de calculs inutiles (cf. la question a)).
+
+\item La commande \comp{{\normalfont{\textbf{L}}\eh{0.3}.\eh{0.3}sort()}} permet d'ordonner les éléments de la liste \textbf{L}.
+\end{itemize}\end{minipage}
+\end{enumerate}
+\makeatother 
+
+
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+Considérons l'{\bf algorithme} suivant :
+
+\vspace{3mm}
+\begin{center}
+\begin{affichagealgorithme}{0.5}
+
+\textbf{Fonction} ep(n)\\
+\textbf{Variable locale : } k(entier)\\
+\textbf{Début}\\
+\idalgo{
+		\textbf{Si} n $\leqslant$ 1 \textbf{Alors}\\
+		\idalgo{
+				\textbf{Retourner}(0)
+		}\\
+		\textbf{FinSi}\\ 
+		\textbf{Pour} k de 2 à n$-$1 \textbf{Faire}\\ 
+		\idalgo{
+				\textbf{Si} n\pct k = 0 \textbf{Alors}\\ 
+				\idalgo{
+						\textbf{Retourner}(0)
+				}\\
+				\textbf{FinSi}
+		}\\
+		\textbf{FinPour}\\
+		\textbf{Retourner}(1) 
+}
+\textbf{FinFonction}
+
+\vspace{1cm}
+\textbf{Variables : } N, no (entiers)\\
+\textbf{Début}\\
+\idalgo{
+		N $\leftarrow$ 2\\
+		no $\leftarrow$ 1\\
+		\textbf{TantQue} no $<$ 2021 \textbf{Faire}\\
+		\idalgo{
+			N $\leftarrow$ N$+$1\\
+			no $\leftarrow$ no$+$ep(N)
+		}\\
+	\textbf{FinTantQue}\\ 
+	\textbf{Afficher} N
+}\\
+\textbf{Fin}
+\end{affichagealgorithme}
+\end{center}
+
+
+
+%\vspace{2mm}
+\makeatletter
+\begin{enumerate}[label=\alph*)]
+\item Expliquer ce que fait cet algorithme.\par\nobreak\@nobreaktrue
+\item Implémenter le programme en Python et donner la valeur de N.\par\nobreak\@nobreaktrue
+\end{enumerate}
+\makeatother
+\end{boxexstheorieligne}
+
+
+
+\clearpage
+\section{Commandes graphiques}
+La plupart des logiciels qui tracent le graphique d'une fonction donnée utilisent le même principe: 
+\begin{itemize}[itemsep=0mm]
+\item Le logiciel commence par établir une (très grande) liste de préimages.
+\item Une deuxième liste est alors construite, contenant les images de chaque élément de la première liste (les deux liste contiennent donc le même nombre d'éléments).
+\item Le logiciel place ensuite chaque couple $(x,f(x))$ dans une repère.
+\item Pour finir, tous les points sont reliés (dans l'ordre) afin de dessiner un graphique.
+\end{itemize}
+
+La bibliothèque \comp{matplotlib.pyplot} continent de nombreuses commandes permettant de tracer des graphes en langage Python et fonctionnant sur le même principe que celui décrit ci-dessus.
+
+
+
+\bigskip
+\begin{boxexstheorieligne}
+\exo
+Ouvrir dans Spyder le fichier \guillemets{essai\_graphiques.py} accessible depuis le Drive du cours et étudier les commandes. En vous aidant de la fiche des commandes graphiques, faire varier les paramètres pour comprendre leur influence sur le graphique.
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+Soient les fonctions :
+
+\begin{itemize}
+\item $f(x)=\vert x\vert$
+\item $g(x)=\cos(x)$
+\item $h(x)=\sqrt{x}$
+\item $j(x)=f(x+2)$
+\item $k(x)=3\cdot g(2x)$
+\end{itemize}
+
+Écrire un programme en Python qui affiche sur l'intervalle $[-5;5]$ et dans un même repère le graphique de chacune des fonction définies ci-dessus.
+
+
+\bigskip
+Indications: \begin{minipage}[t][][b]{0.9\textwidth}
+
+\vspace{-4mm}
+\begin{enumerate}[label=\alph*),itemsep=0mm]
+\item Utiliser une couleur différente par fonction.
+\item Utiliser des boucles et des tests.
+\end{enumerate}
+\end{minipage}
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+\exo
+Soit la fonction quadratique$$f(x)=ax^2+bx+c$$
+Implémenter un programme en Python qui :
+\begin{enumerate}[label=\roman*),itemsep=2mm]
+\item demande à l'utilisateur les valeurs de $a$, $b$ et $c$.
+\item affiche un tableau de valeurs de $f$ pour $x\in[-10;10]$ avec un pas de $0,5$.
+\item affiche les zéros de $f$ (on utilisera une fonction \comp{VIETE(a,b,c)} pour calculer les zéros de la fonction).
+\item affiche le graphique de $f$ sur l'intervalle $[-10;10]$
+\end{enumerate}
+
+\end{boxexstheorieligne}
+
+\clearpage
+\begin{boxexstheorieligne}
+\exo
+La fonction sinus peut être approchée par un polynôme grâce à la formule
+$$\sin(x)\simeq S(x; n)=\sum_{j=0}^n(-1)^j\frac{x^{2j+1}}{(2j+1)!} \eh{4}\textrm{avec}\eh{2}x\in\R\et{1.5}n\in\N$$
+
+L'erreur commise en approximant la valeur de $\sin(x)$ par $S(x,n)$ décroit à mesure que $n$ grandit et il est possible de montrer que :
+$$\lin{+\infty}S(x,n)=\sin(x)$$
+
+On souhaite visualiser sur un graphique la qualité de l'approximation de la fonction $S(x,n)$ pour différentes valeurs de $n$.
+
+\begin{enumerate}[label=\alph*),itemsep=1mm,left=0mm]
+\item Ecrire une fonction récursive \comp{factorielle(n)} qui calcule $n!$.\\
+\textit{\small(Rappel : $n!=n\fois (n-1)\fois (n-2)\fois \ldots \fois 3 \fois 2\fois 1$ \et{2} $0!=1$ par définition)}
+\item Ecrire une fonction \comp{S(x,n)} qui renvoie la valeur de la fonction $S$ pour une certaine valeur de $x$ et un certain nombre $n$.
+\item Tracer dans un même repère la fonction $\sin(x)$ sur $[0;4\pi]$ ainsi que ses approximations $S(x,1)$, $S(x,2)$, $S(x,3)$, $S(x,6)$, $S(x,12)$. Essayer avec différents \guillemets{pas} de points. 
+\end{enumerate}
+\end{boxexstheorieligne}
+
+
+\bigskip
+\begin{center}
+\textsc{\Large Paramètres graphiques}
+\end{center}
+
+\vspace{-5mm}
+\hspace{1cm}\begin{minipage}[t][][b]{0.4\textwidth}
+\begin{center}
+\begin{tabular}[t]{|c|c|}
+ \multicolumn{2}{c}{\textsc{Couleurs}} \\
+\hline
+\rowcolor{lightgray}\hl{8mm} code Python & couleur \\
+\hline
+b & bleu \\
+\hline
+g & vert \\
+\hline
+r & rouge \\
+\hline
+c & cyan \\
+\hline
+m & magenta \\
+\hline
+y & jaune \\
+\hline
+k & noir \\
+\hline
+w & blanc \\
+\hline
+\end{tabular}
+
+\bigskip
+\begin{tabular}[t]{|c|c|}
+\multicolumn{2}{c}{\textsc{Style de trait}} \\
+\hline
+\rowcolor{lightgray}\hl{8mm} code Python & style de trait \\
+\hline
+- & trait continu \\
+\hline
+-- & tirets \\
+\hline
+: & pointillés \\
+\hline
+-. & tirets points \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}\begin{minipage}[t][][b]{0.4\textwidth}
+\begin{center}
+\begin{tabular}[t]{|c|c|}
+ \multicolumn{2}{c}{\textsc{Symboles}} \\
+ \hline
+\rowcolor{lightgray}\hl{8mm} code Python & Symbole \\
+\hline
+. & point \\
+\hline
+, & pixel \\
+\hline
+o & rond \\
+\hline
+v & triangle pointe en bas \\
+\hline
+< & triangle pointe à gauche \\
+\hline
+> & triangle pointe à droite \\
+\hline
+s & carré \\
+\hline
+p & pentagone \\
+\hline
+* & étoile \\
+\hline
+h & hexagone \\
+\hline
++ & plus \\
+\hline
+P & plus plein \\
+\hline
+x & croix \\
+\hline
+X & croix pleine \\
+\hline
+d & carreau \\
+\hline
+| & barre verticale \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+
+
+
+
+
+
+%\section{Exercices}
+%
+%\begin{boxexstheorieligne}
+%\exo
+%Considérons la fonction continue $f(x)=x^3+x-1$.
+%
+%\vspace{3mm}
+%\makeatletter
+%\begin{enumerate}[label=\alph*)]
+%\item \begin{enumerate}[label=\roman*)]\setlength{\itemsep}{4mm}
+%\item Que peut-on dire du signe de sa fonction dérivée ?\par\nobreak\@nobreaktrue
+%\item En déduire que cette fonction n'a qu'un seul zéro $x_0$. \par\nobreak\@nobreaktrue
+%\item Calculer $f(0)$ et $f(1)$. En vous servant du \guillemets{théorème de la valeur intermédiaire}, que peut-on déduire de la valeur de $x_0$ ? \par\nobreak\@nobreaktrue
+%\item Imaginer une méthode récursive permettant de situer plus précisement la valeur de $x_0$\\
+% \textit{(\textbf{Indications :} Considérer le point milieu \guillemets{$m$} de l'intervalle $[0\; ; 1]$ et calculer $f(0)\cdot f(m)$. En déduire la position de $x_0$ et recommencer.)}\par\nobreak\@nobreaktrue
+%%\item {\bf Implémenter} le programme en Python.\par\nobreak\@nobreaktrue
+%%\item Modifier le programme pour que, une fois gagné, l'utilisateur puisse choisir de rejouer. \par\nobreak\@nobreaktrue
+%\end{enumerate}\newpage
+%
+%\item Compléter l'algorithme suivant pour qu'il donne la valeur approchée de $x_0$ à $10^{-10}$ près.\\
+%
+%
+%
+%\begin{center}
+%\fbox{\begin{minipage}[t]{0.72\textwidth}
+%\textbs{Algorithme A19  :} \\
+%
+%{\bf Variables : } a, b, m (flottants)\\
+%{\bf Début}
+%
+%\vspace{2mm}
+%\begin{tabular}{|l}
+%\begin{minipage}{\textwidth}
+%	a $\longleftarrow$ $0$\\
+%	b $\longleftarrow$ \rep{0.6}\\
+%	\textbf{TantQue} \rep{1} $>$ 10\textasciicircum ($-$10) \textbf{Faire}\\
+%	\begin{tabular}{|l}
+%		m $\longleftarrow$ \rep{1.2}\\
+%		{\bf Si} \rep{2.2}$\leqslant 0$ {\bf Alors}\\
+%		\begin{tabular}{|l}
+%			b $\longleftarrow$ m
+%		\end{tabular}\\
+%		{\bf Sinon}\\
+%		\begin{tabular}{|l}
+%			\rep{2}\smallskip
+%		\end{tabular}\\ \smallskip
+%		{\bf FinSi}
+%	\end{tabular}\\
+%	\textbf{FinTantQue}\\ \smallskip
+%	\textbf{Afficher} m
+%\end{minipage}
+%\end{tabular}
+
+
+
+%\begin{center}
+%\fbox{\begin{minipage}[t]{0.72\textwidth}
+%\textbs{Algorithme A19  :} \\
+%
+%{\bf Variables : } a, b, m (flottants)\\
+%{\bf Début}
+%
+%\vspace{2mm}
+%\begin{tabular}{|l}
+%\begin{minipage}{\textwidth}
+%	a $\longleftarrow$ $0$\\
+%	b $\longleftarrow$ $1$\\
+%	\textbf{TantQue} b$-$a $>$ 10\textasciicircum (-10) \textbf{Faire}\\
+%	\begin{tabular}{|l}
+%		m $\longleftarrow$ (a$+$b)/2\\
+%		{\bf Si} $f($a$)\fois f($m$)\leqslant 0$ {\bf Alors}\\
+%		\begin{tabular}{|l}
+%			b $\longleftarrow$ m
+%		\end{tabular}\\
+%		{\bf Sinon}\\
+%		\begin{tabular}{|l}
+%			a $\longleftarrow$ m\smallskip
+%		\end{tabular}\\ \smallskip
+%		{\bf FinSi}
+%	\end{tabular}\\
+%	\textbf{FinTantQue}\\ \smallskip
+%	\textbf{Afficher} m
+%\end{minipage}
+%\end{tabular}
+ 
+%\vspace{1mm}
+%{\bf Fin}
+%\end{minipage}}
+%\end{center}
+%
+%\item Implémenter cet algorithme en Python et donner la valeur approchée de $x_0$ à $10^{-10}$ près.
+%
+%
+%\end{enumerate}
+%
+%
+%\end{boxexstheorieligne}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,185 @@
+
+
+
+
+\hyphenpenalty=1000
+\parindent=0cm
+
+
+
+
+
+
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%---- La commande ci-dessous permet de modifier la largeur de l'en-tête et du pied de page afin de couvrir le titre de sections. Il est tiré d'un exemple de la documentation du package "fancyhdr" (page 13).
+%-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\fancyhfoffset[l]{1.2cm} % le "l" en paramètre permet d'indiquer qu'on ne veut modifier que la marge à gauche.
+\renewcommand{\headrule}{{%
+\hrule \headwidth \headrulewidth \vskip-\headrulewidth}}
+\renewcommand\footrulewidth{\headrulewidth}
+%\renewcommand{\footrule}{{%
+%\vskip-\footruleskip\vskip-\footrulewidth
+%\hrule \headwidth \footrulewidth\vskip\footruleskip}}
+
+%-----------------------------------------------------------------
+%---- Modification présentation de la page: marges de la page ----
+%-----------------------------------------------------------------
+%\addtolength{\hoffset}{-1in}              % 1
+%\addtolength{\voffset}{-1in}              % 2
+\addtolength{\oddsidemargin}{+0cm} % 3
+\addtolength{\evensidemargin}{-3cm} % 3
+\addtolength{\topmargin}{-2.5cm}       % 4
+\addtolength{\headheight}{6.1pt}       % 5
+\addtolength{\headsep}{-0.4cm}           % 6
+\setlength{\textheight}{26.2cm}    % 7
+\setlength{\textwidth}{16.5cm}      % 8
+\addtolength{\marginparsep}{0pt}      % 9
+\setlength{\marginparwidth}{0pt}   % 10
+\addtolength{\footskip}{-2mm}           %11
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   POLICES   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-----------------------------------------------------------------------------------------------------------------------------------------
+%---- ETABLISSEMENT DE LA POLICE "Computer Modern" PAR DEFAUT. En effet, en utilisant XeLaTeX la police par défaut est "Latin Modern" ----
+%-----------------------------------------------------------------------------------------------------------------------------------------
+%\renewcommand\rmdefault{cmr}
+%\renewcommand\sfdefault{cmss}
+%\renewcommand\ttdefault{cmtt}
+%
+%%-------------------------------------------------------------------------
+%%---- Polices chapitre, sections, ... ----
+%%-------------------------------------------------------------------------
+%\setcounter{chapter}{0}
+%\shadowoffset{1pt}
+\chapterfont{\raggedleft\vspace{-1.5cm}\fontsize{36}{0}\fontshape{sl}\selectfont\shadowtext}
+\chaptertitlefont{\raggedleft\fontsize{25}{20}\fontshape{sl}\selectfont\shadowtext}
+%\shadowoffset{0.7pt}
+\sectionfont{\vspace{0.6cm}\hspace{0mm}\fontsize{20}{10}\fontshape{sl}\selectfont }
+%%\sectionfont{\shadowtext\ulemheading{\uuline}\selectfont}
+%\subsectionfont{\vspace{0.3cm}\hspace{-10mm}\fontsize{14}{10}\fontshape{sl}\selectfont\vspace{0mm} }
+%\titleformat{\section}[hang]{}{}{}{}[]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% A UTILISER AVEC LE PACKAGE TITLESEC  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\titleformat{\section}[hang]{}{}{}{}[]
+%%%-------------------------------------------------------------------------
+%\titleformat{\section}[hang] 
+%    {\fontsize{17}{10}\fontshape{bf}\selectfont\fontshape{sl}\selectfont}
+%    {\textcolor{black}{\thesection}}
+%    {5pt}
+%    {\LARGE}
+    
+%%-------------------------------------------------------------------------    
+\titleformat{\section}
+	[hang]% style : hang, display, runin, leftmargin, ...
+	{\fontsize{19}{22}\bfseries\slshape}% fonte numéro + titre
+	{\thesection}% numéro
+	{6pt}% espace entre le numéro et le titre
+	{}% fonte titre
+\titlespacing*{\section}
+	{-1.1cm}% retrait à gauche
+	{8mm plus 10mm}% espace avant
+	{3.5mm plus .3mm}% espace après
+
+\titleformat{\subsection}
+	[hang]% style : hang, display, runin, leftmargin, ...
+	{\fontsize{15}{17}\bfseries}% fonte numéro + titre
+	{\thesubsection}% numéro
+	{6pt}% espace entre le numéro et le titre
+	{}% fonte titre
+\titlespacing*{\subsection}
+	{-0.5cm}% retrait à gauche
+	{5.3mm plus 2mm }% espace avant
+	{3.5mm plus .3mm}% espace après
+
+\titleformat{\subsubsection}
+	[hang]% style : hang, display, runin, leftmargin, ...
+	{\fontsize{13}{18}\bfseries}% fonte numéro + titre
+	{\thesubsection}% numéro
+	{6pt}% espace entre le numéro et le titre
+	{}% fonte titre
+\titlespacing*{\subsubsection}
+	{-0.5cm}% retrait à gauche
+	{5.3mm plus 1.5mm}% espace avant
+	{2mm plus .3mm}% espace après
+
+%\titleformat{\section}
+%  {\normalfont\LARGE\bfseries}
+%  {}
+%  {0em}
+%  {\thesection\hspace{3mm}\underline}
+
+
+%\titleformat
+%{\section} % command
+%[hang] % shape
+%{\bfseries\Large\itshape} % format
+%{\thesection} % label
+%{0mm} % sep
+%{
+%} % before-code
+%[
+%\vspace{-0.5ex}%
+%] % after-code
+
+
+%------------------------------------------
+%---- Déclaration de nouvelles polices ----
+%------------------------------------------
+%\DeclareTextFontCommand{\poleclairage}{\fontfamily{comicneue}\selectfont}
+\DeclareFixedFont{\poleclairage}{OT1}{pcr}{m}{n}{12}
+% \DeclareFixedFont {?cmd?} {?encoding?} {?family?} {?series?} {?shape?} {?size?}
+%\fontencoding {encoding}
+%\fontfamily {family}
+%\fontseries {series}
+%\fontshape {shape}
+%\fontsize {size} {baselineskip}
+%\linespread {factor}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\frenchbsetup{StandardLists=true} % Chez les anglo-saxons (créateur de LATEX) les listes ont des puces ronde () et en français des tirets (–). L’option frenchb du package babel se charge habituellement de la transformation. Le rôle du package enumitem est également de modifier les puces des listes. Deux packages qui font la même chose ne cohabitent par forcement bien. La solution (si on charge enumitem) est de demander à frenchb de ne pas s’occuper des listes, par la commande \frenchbsetup{StandardLists=true}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

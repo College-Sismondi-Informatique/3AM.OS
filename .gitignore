@@ -1,0 +1,15 @@
+*.aux
+*.log
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.pdf
+*.synctex(busy)
+.ipynb_checkpoints/

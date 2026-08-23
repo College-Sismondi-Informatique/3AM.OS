@@ -1,0 +1,62 @@
+\usepackage[french]{babel} % Babel est un package qui permet d'obtenir des documents en plusieurs langues, en respectant les typographies nationales, en affichant automatiquement les titres (comme « table des matières », « index », etc) dans la langue choisie, etc.  On peut aussi utiliser babel pour écrire un document en plusieurs langues. Pour cela, il faut lui donner en option la liste de toutes les langues qui seront utilisées en plaçant en dernier la langue principale du document. Pour alterner entre les langues, on utilise la commande : \selectlanguage{nom-de-la-langue}
+%\usepackage{standalone}
+\usepackage{graphicx}
+\usepackage{numprint} % de regrouper les milliers avec la commande \nombre{}
+%\usepackage[utf8]{inputenc} % L'inclusion de ce package permet d'utiliser des sources LaTeX contenant des caractères accentués. L'option [latin1]  précise que l'encodage des fichiers est iso-latin1 ou iso iso-8859-1. En effet, sans cette extension, il est nécessaire d'utiliser une syntaxe particulière pour l'affichage des accents. --> Pas nécéssaire en UTF-8
+\usepackage{comicneue} % Pour avoir des polices comicneuesur tout le document. Beaucoup plus jolie et agréable à lire
+\usepackage[T1]{fontenc} % Permet de spécifier à LaTeX l'utilisation du codage de caractères T1, nouvelle norme LaTeX non utilisée par défaut pour des raisons de compatibilité avec les anciens documents LaTeX.
+%\usepackage[francais]{layout} % Est une sorte de bibiothèque de fonction contenant la fonction utile "\layout" qui dessine la structure physique du documents et indique leurs dimensions.
+\usepackage{amssymb} % Permet d'utiliser différents symbôles mathématiques.
+\usepackage[fleqn]{amsmath} % Permet d'utiliser différents environnements propices aux maths. L'option "fleqn" permet de ne pas centrer l'environnement "align" en conjnction avec la commande \setlength{\mathindent{0pt}}
+\usepackage{ulem} % Ce package permet de faire différents types de sous ou sur-lignements. (Comme le double souslignements par exemple).
+\usepackage{fancyhdr}  %package pour en-tetes et pied de pages
+\usepackage{sectsty} % Permet de faire des modifications de police dans diverses sections des "headings" (cf. modif presentation de la page)
+%\usepackage{titlesec}
+\usepackage[svgnames,table]{xcolor}   % Permet de définir des nouvelles couleurs (peut-être aussi d'utiliser les couleurs en général)
+\usepackage{color}   % Permet de définir des nouvelles couleurs (peut-être aussi d'utiliser les couleurs en général)
+\usepackage{lastpage} % Permet à Latex d'identifier la dernière page du document avec la commande "\"
+\usepackage[inline]{enumitem} % Permet de préciser des options lors de la déclaration de l’environnement d’une liste à puces
+% \usepackage{enumerate} % Permet de faire des liste numérotées avec des i) ; ii) etc... 
+\usepackage{shadowtext} % Permet de faire du text avec des ombres
+%\usepackage{showframe} % Permet de montrer les marges du document
+\usepackage{blindtext} % permet de générer un text avec la commande "\blindtext" afin de tester des macros et autres environnements
+\usepackage{tikz} % Permet de faire des dessins avec les commandes Tikz
+%\usepackage{auto-pst-pdf}
+
+%\usepackage{pstricks,pst-plot,pstricks-add}
+
+\usepackage{pst-func}
+%\usepackage{fourier} % Change la police (assez joli) et permet de faire le sympbole attention: \danger
+\usepackage{bold-extra}
+%\usepackage{fontspec} % Package pour le polices de caractères
+\usetikzlibrary{shapes} %Shape library, used to define shapes other than rectangle, circle and co-ordinate. The following additional types are available: geometric shapes, either named shapes (star, diamond, etc.) or polygons of specified side numbers; symbol shapes, e.g. "forbidden sign" as used in No Smoking signs; "multipart" shapes, with "multiple (text) parts"; and finally, "misc" shapes which "do not fit in the previous categories", such as strikethrough crosses.
+\usetikzlibrary{shadows.blur}
+\usepackage{bm} % permet de faire des symbole mathématique en gras avec \boldsymbol{}
+\usepackage[thicklines]{cancel}
+%\usepackage{phantom}
+\usepackage{calc}
+\usepackage{multicol}
+\usepackage{stackengine}
+\usepackage{nicefrac} % permet de faire de fraction "oblique"
+\usepackage{tkz-tab} % pour les tableaux de variations
+\usepackage{wrapfig} % permet de faire "couler" du texte autour d'une figure
+\usepackage{setspace} % pour les commandes sur les interlignes
+\usepackage[charter]{mathdesign} % Pour avoir des polices en mathdesign
+\usepackage{hyperref} % Pour pouvoir inclure des informations au fichier pdf -> /!\ elle définit la command "\C", d'où une REdéfinition les "commandes" de "\C".
+\usepackage{paracol}
+%\usepackage[bottom]{footmisc} % option pour mettre les notes colées au pied de la page et nom au text du corps.
+\usepackage{amsthm}
+\usepackage{tcolorbox}
+%\usepackage{siunitx} % Pour les unités
+%\usepackage{yhmath} % Pour faire des "arcs" sur les lettres pour les arcs de cercles : "\wideparen{AB}"
+\usepackage{tasks} % Pour faire des listes en multicolonnes "horizontalement"
+\usepackage{titlesec}
+\usepackage{mathtools} % Notamment pour utiliser pmatrix* dont * l'étoile permet de d'aligner les nombres indépendemment des signes
+\usepackage{thmtools}
+\usepackage{polynom} % Pour effectuer les divisions euclidiennes
+\usepackage{lipsum}
+\usepackage{textcomp} %Pour faire des fractions avec les commandes \textonehalf, \textonequarter, \textthreequarters
+\usepackage{array}
+\usepackage{afterpage} % pour insérer des pages blanches (a étudier...)
+\usepackage{icomma}
+

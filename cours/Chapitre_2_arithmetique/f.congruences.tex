@@ -1,0 +1,398 @@
+\section{Congruences}
+
+
+
+
+\begin{definition}
+Soit $n \ge 2$ un entier. On dit que $a$ est congru à $b$ modulo $n$,
+si $n$ divise $b-a$. Dans ce cas on note :
+$$a \equiv b \pmod n.$$
+
+En d'autres termes : \eh{1}$a \equiv b \pmod n \quad \ssi \quad \exists k \in \Z \eh{2}\textrm{tel que}\eh{2} a = b +kn$.
+\end{definition}
+
+
+Remarquons que $n$ divise $a$ si et seulement si $a\equiv 0 \pmod n$.
+
+\begin{proposition}
+~
+
+\vspace{-8mm}
+\begin{enumerate}
+  \item La relation \og congru modulo $n$ \fg{} est une relation d'équivalence :
+  
+  \vspace{-1mm}
+  \begin{itemize}
+    \item (Réflexivité) $a \equiv a \pmod n$,
+    \item (Symétrie) si $a \equiv b \pmod n$ alors $b \equiv a \pmod n$,
+    \item (Transitivité) si $a \equiv b \pmod n$ et $b \equiv c \pmod n$ alors $a \equiv c \pmod n$.
+  \end{itemize}
+  \item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors
+$a+c \equiv b+d \pmod n$.
+  \item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors
+$a\fois c \equiv b \fois d \pmod n$.
+  \item Si $a \equiv b \pmod n$ alors pour tout $k \geqslant 0$\; on a\; $a^k \equiv b^k \pmod n$.
+\end{enumerate}
+\end{proposition}
+
+
+
+\begin{exemples}{1mm}
+  \item $15 \equiv 1 \pmod 7$, $72 \equiv 2 \pmod {7}$, $3 \equiv -11 \pmod{7}$,
+  \item $5x+8 \equiv 3 \pmod 5$ \quad pour tout $x \in \Z$,
+  \item $11^{20xx} \equiv 1^{20xx} \equiv 1 \pmod {10}$, où $20xx$ est l'année en cours.
+\end{exemples}
+
+
+
+\vspace{4mm}
+\noindent{\it Démonstration:}
+\begin{enumerate}
+  \item Utiliser la définition.
+  \item Idem.
+  \item Soit $a$ et $b$ tels que $a \equiv b \pmod n$, donc il existe $k \in \Z$ tel que $a=b + kn$.
+  
+%  \smallskip
+   Soit $c$ et $d$ tels que $c \equiv d \pmod n$, donc il existe $\ell \in \Z$ tel que $c \equiv d + \ell n$.
+   
+   \smallskip
+Alors $a\fois c = (b+kn)\fois(d+\ell n) = bd + (b \ell + d k + k\ell n)\fois n$ qui est bien de la forme
+$bd + m n$ avec $m\in \Z$. On conclut donc que  $a\fois c \equiv b\fois d \pmod n$.
+  \item C'est une conséquence du point précédent : avec $a=c$ et $b=d$ on obtient
+$a^2 \equiv b^2 \pmod n$. On continue par récurrence.
+\end{enumerate}
+
+
+
+\begin{remarque}
+Pour trouver un \og bon \fg{} représentant de $a \pmod n$ on peut aussi faire la division euclidienne
+de $a$ par $n$ : $a = bn + r$ alors $a \equiv r \pmod n$ et $0 \le r < n$.
+\end{remarque}
+
+
+\vspace{5mm}
+\begin{exstheorie}
+\exo
+Trouver le plus petit nombre supérieur ou égal à 0 qui est congru à $a$ modulo $m$.
+
+
+\begin{enumerate}[label=\roman*),left=0mm]
+\item $a=3412$ et $m=4$
+\item $a=177$ et $m=9$
+\item $a=31$ et $m=31$
+\item $a=31$ et $m=25$
+\item $a=365$ et $m=5$
+\item $a=-3122$ et $m=3$
+\item $a=31458687312$ et $m=10$
+\item $a=-259874629$ et $m=10$
+\end{enumerate}
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+Trouver tous les nombres compris entre $1950$ et $2000$ qui sont congrus à $a$ modulo $m$.
+
+\begin{enumerate}[label=\roman*),left=0mm]
+\item $a=1$ et $m=13$
+\item $a=1776$ et $m=40$
+\item $a=1929$ et $m=15$
+\end{enumerate}
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+Démontrer par récurrence que $6\cdot 4^n \equiv 6 \pmod{9}$ pour tout $n\geqslant 0$.
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+Trouver le reste de la division par $13$ du nombre $100^{1000}$.
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+Démontrer que le nombre $7^n+1$ est divisible par $8$ si $n$ est impair ; dans le cas où $n$ est pair, donner le reste de la division.
+\end{exstheorie}
+\clearpage
+
+
+
+%\begin{exemple}{0.9} \textbs{Exponentiation rapide (\guillemets{square-and-multiply})}
+%
+%\medskip
+%Les calculs bien menés avec les congruences sont souvent très rapides. L'exponentiation rapide est un algorithme Par exemple
+%on souhaite calculer $2^{21} \pmod {37}$ (plus exactement on souhaite trouver $0 \le r < 37$ tel que
+%$2^{21} \equiv r \pmod {37}$).
+%Plusieurs méthodes :
+%\begin{enumerate}
+%\item On calcule $2^{21}$, puis on fait la division euclidienne de $2^{21}$ par $37$, le reste est notre résultat.
+%C'est laborieux !
+%\item On calcule successivement les $2^k$ modulo $37$ :
+%$2^1 \equiv 2 \pmod {37}$, $2^2 \equiv 4 \pmod {37}$, $2^3 \equiv 8 \pmod {37}$, $2^4 \equiv 16 \pmod {37}$,
+%$2^5 \equiv 32 \pmod {37}$. Ensuite on n'oublie pas d'utiliser les congruences :
+%$2^6 \equiv 64 \equiv 27 \pmod {37}$.
+%$2^7 \equiv 2 \cdot 2^6 \equiv 2 \cdot 27 \equiv 54 \equiv 17 \pmod {37}$
+%et ainsi de suite en utilisant le calcul précédent à chaque étape.
+%C'est assez efficace et on peut raffiner : par exemple on trouve $2^{8} \equiv 34 \pmod {37}$
+%mais donc aussi $2^{8} \equiv -3 \pmod {37}$ et donc
+%$2^9 \equiv 2 \cdot 2^8 \equiv 2 \cdot(-3) \equiv -6 \equiv 31 \pmod{37}$,...
+%
+%\item Il existe une méthode encore plus efficace, on écrit l'exposant $21$ en base $2$ :
+%$21 = 2^{4} + 2^{2} + 2^{0} = 16 + 4 + 1$. Alors
+%$2^{21} =  2^{16} \cdot 2^{4} \cdot 2^{1}$.
+%Et il est facile de calculer successivement chacun de ces termes car les exposants sont des puissances de $2$.
+%Ainsi $2^8 \equiv  (2^4)^2 \equiv 16^2 \equiv 256 \equiv 34 \equiv -3 \pmod {37}$ et
+%$2^{16} \equiv  \left(2^{8}\right)^2 \equiv (-3)^2 \equiv 9 \pmod{37}$.
+%Nous obtenons $2^{21} \equiv  2^{16} \cdot 2^{4} \cdot 2^{1} \equiv 9 \times 16 \times 2 \equiv 288 \equiv 29 \pmod {37}$.
+%\end{enumerate}
+%\end{exemple}
+
+
+\begin{definition}
+Une classe d'équivalence \guillemets{$a$ modulo $n$} ($n\geqslant 2$), notée $[a]_n$, est l'ensemble de tous les nombres entiers dont la division euclidienne par $n$ donne le même reste que la division de $a$ par $n$.
+
+\smallskip
+On note la classe d'équivalence de $a$ \textit{modulo} $n$ : $[a]_n$
+\end{definition}
+
+
+\medskip
+\begin{exemple}
+$[0]_3=[3]_3=[6]_3=\ldots$
+
+\medskip
+$[1]_3=[4]_3=[7]_3=\ldots$
+
+\medskip
+$[2]_3=[5]_3=[8]_3=\ldots$
+\end{exemple}
+
+
+%\begin{definition}
+%Un groupe est la donnée d'une ensemble $G$ muni d'une opération $\ast$, qu'on note $(G,\ast)$ et qui possède les propriétés suivantes:
+%\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
+%\item \textbf{L'opération est interne :} Si $g,h \in G$ alors $g\ast h\in G$
+%\item \textbf{Existence d'un élément neutre :} $\exists\eh{1} e\in G$ tel que $g\ast e=e\ast g=g \eh{2}\forall\eh{1} g\in G$.
+%\item \textbf{Existence de l'inverse :} $\forall\eh{1} g\in G \virg[1] \exists\eh{1} \overline{g}\in G$ tel que $g\ast \overline{g}=\overline{g}\ast g=e$.
+%\item \textbf{Associativité :} $\forall\eh{1} g, h, j$ on a $(g\ast h)\ast j=g\ast (h\ast j)$.
+%\end{enumerate}
+%
+%\end{definition}
+
+\bigskip
+\begin{proposition}[\normalsize Équations de congruences]
+Soit $a \in \Z^*$, $b \in \Z$ fixés et $n \ge 2$.
+Considérons l'équation
+{$ax \equiv b \pmod n$} d'inconnue $x \in \Z$.
+\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
+  \item Il existe des solutions si et seulement si $\pgdc(a,n) | b$.
+  \item Les solutions sont de la forme $x = x_0 + \ell \frac{n}{\pgdc(a,n)}$, où $\ell \in \Z$
+et $x_0$ est une solution particulière.
+
+Il existe donc $\pgdc(a,n)$ classes d'équivalences solutions.
+\end{enumerate}
+\end{proposition}
+
+\vspace{1mm}
+\textit{Démonstration :}
+
+
+\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
+%\item $x \in \Z \text{ est solution de l'équation }   ax \equiv b \pmod{n}$
+%$\begin{aligned}[t]
+% \iff\   & \exists k \in \Z \quad ax = b +kn \\
+% \iff\   & \exists k \in \Z \quad ax - kn = b \\
+% \iff\   &  \pgdc(a,n) | b \quad \text{(proposition \ref*{prop:equations_diophantiennes})}\\
+%\end{aligned}$
+\item Il suffit de remarquer que nous avons les équivalences suivantes :
+
+\smallskip
+$x \in \Z \text{ est solution de l'équation }   ax \equiv b \pmod{n}$
+$\setlength{\jot}{2mm}\begin{aligned}[t]
+ \iff\   & \exists k \in \Z \eh{1}\text{ tel que }\eh{1}  ax = b +kn \\
+ \iff\   & \exists k \in \Z \eh{1}\text{ tel que }\eh{1} ax - kn = b \\
+ \iff\   &  \pgdc(a,n) | b \quad \text{(proposition \ref*{prop:equations_diophantiennes})}\\
+\end{aligned}$
+\smallskip
+%
+%Nous avons juste transformé notre équation $ax\equiv b \pmod n$
+%en une équation $ax-kn=b$ étudiée auparavant (voir section ),
+%seules les notations changent :
+%$\textcolor{magenta}{a}\textcolor{red}{u}+\textcolor{blue}{b}\textcolor{orange}{v}=\textcolor{green}{c}$ devient
+%$\textcolor{magenta}{a}\textcolor{red}{x}-\textcolor{orange}{k}\textcolor{blue}{n}=\textcolor{green}{b}$.
+
+\item Supposons qu'il existe des solutions. On note  $d = \pgdc(a,n)$ et on peut écrire $a=da'$, $n = dn'$
+et $b = db'$ (car, par le premier point, $d|b$). Remarquons également que $\pgdc(a';n')=1$.
+
+\smallskip
+L'équation de congruence {$ax \equiv b \pmod n$} d'inconnue $x$ se ramène à l'équation diophantienne $ax-kn=b$ d'inconnues $x,k \in \Z$ qui est équivalente à
+l'équation $$a'x-kn'=b'$$ 
+Comme $\pgdc(a';n')=1 | b$, alors l'équation possède des solutions et sa résolution (voir les équations diophantiennes) donne que
+$$x = x_0 + \ell n'$$
+où $x_0$ est une solution particulière et $\ell$ parcourt $\Z$ (les $k$ ne nous intéressent pas ici).
+
+\smallskip
+Ainsi les solutions $x\in \Z$ sont de la forme 
+$$x = x_0 + \ell \frac{n}{\pgdc(a,n)} \virg[1]\ell \in \Z$$
+et modulo $n$ cela donne bien $\pgdc(a,n)$ classes d'équivalences distinctes.\hfill$\blacksquare$
+\end{enumerate}
+
+
+
+
+\begin{exemplesecable}
+Résolvons l'équation $9x \equiv 6 \pmod{24}$.
+
+\medskip
+Comme $\pgdc(9,24)=3$ divise $6$, la proposition ci-dessus nous affirme qu'il existe des solutions. Il faudra toujours refaire  les calculs et non reprendre directement la formule.
+
+\medskip
+Trouver $x$ tel que $9x \equiv 6 \pmod{24}$ est équivalent à trouver $x$ et $k$ tels que
+$9x = 6 + 24k$. Cette dernière équation peut s'écrire sous la forme $9x-24k=6$. (qui possède bien des solutions car $\pgdc(9,24)=3$ divise $6$)
+
+\medskip
+En divisant par le pgdc on obtient l'équation diophantienne équivalente :
+ $$3x-8k=2.$$
+
+Pour le calcul du pgdc et d'une solution particulière nous utilisons normalement l'algorithme d'Euclide et sa remontée.
+Ici il est facile de trouver une solution particulière :
+$$(x_0=6\pvirg{0.5}k_0=2)$$
+
+\medskip
+On termine comme pour les équations diophantiennes. Si $(x\pvirg{0.5}k)$ est une solution
+de l'équation alors par soustraction on obtient $3(x-x_0)-8(k-k_0)=0$. En suivant le raisonnement de résolution d'une équation diophantienne (laissée en exercice ici), on trouve :
+
+\vspace{-3mm}
+$$x = x_0 + 8\ell \eh{1}\text{ avec }\eh{1} \ell \in \Z$$ 
+
+(le terme $k$ ne nous intéresse pas).
+Nous avons donc trouvé les $x$ qui sont solutions de $9x-24k=6$, ce qui équivaut à $9x \equiv 6 \pmod{24}$. 
+
+\medskip
+Les solutions sont donc de la forme $x=6+ 8\ell$, ce qui en classes d'équivalences modulo $24$ donne :
+
+$$S=\left\lbrace [6]_{24} \pvirg{1} [14]_{24} \pvirg{1} [22]_{24} \right\rbrace$$
+\end{exemplesecable}
+
+
+
+
+
+\begin{exstheorie}
+\exo
+Trouver les restes de la division euclidienne par 11 des nombres suivants :
+\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=5mm,label-offset=2mm,label-align=right](3)
+\task $12^{15}$
+\task $10^7$
+\task $78^{15}$
+\task $13^{12}$
+\task $(-2)^{19}$
+\end{tasks}
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+~
+
+\vspace{-6mm}
+\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=3mm,label-offset=2mm,label-align=right](1)
+\task Vérifier que $2^4 \equiv -1 \pmod{17}$ \eh{2}et que \eh{2}\\ $6^2 \equiv 2 \pmod{17}$.
+\task Déterminer la classe d'équivalence de $\left[1532\right]_{17}$ \et{2} $\left[346\right]_{17}$.
+\task En déduire le reste de la division par 17 des nombres $1532^{20}$ \et{2} $346^{12}$.
+\end{tasks}
+
+
+
+
+
+\eexo
+\pagebreak[3]
+
+
+
+
+
+\exo
+Résoudre les équations de congruences suivantes :
+\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=3mm,label-offset=2mm,label-align=right](1)
+\task $3x \equiv 4 \pmod{7}$
+\task $4x \equiv 14 \pmod{30}$
+\end{tasks}
+
+
+
+\columnbreak
+%\eexo
+
+
+
+
+\exo
+~
+
+\vspace{-7mm}
+\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=5mm,label-offset=2mm,label-align=right](1)
+\task Montrer que le reste de la division euclidienne par $8$ du carré de tout
+nombre impair est $1$.
+\task Montrer de même que tout nombre pair vérifie :
+$$x^{2}\equiv 0\pmod{8} \ou{4} x^{2}\equiv 4\pmod{8}$$\vspace{-4mm}
+\task Soient $a$, $b$, $c$ trois entiers impairs.\\
+Déterminer le reste modulo $8$ de :
+\begin{enumerate}[itemsep=1mm]
+\item[] $\bm{a^{2}+b^{2}+c^{2}}$
+\item[] $\bm{2(ab+bc+ac)}$
+\end{enumerate}
+{\footnotesize \textsl{\textbs{Indications :} Utiliser l'item a) pour le premier et écrire $a$, $b$ et $c$ comme des nombres impairs pour le deuxième.}} 
+\task En déduire que :
+$$a^{2}+b^{2}+c^{2} \et{4} 2(ab+bc+ac)$$
+ne sont pas des carrés.
+
+\medskip
+Conclure que $ab+bc+ac$ non plus.
+\end{tasks}
+\end{exstheorie}
+

@@ -1,0 +1,254 @@
+\section{Théorème de Bézout et PPMC}
+
+\begin{theoreme}[\textit{Théorème de Bézout}]%\label{coefbezout}
+Soient $a;b \in \Z$. Alors il existe des entiers $\alpha$ et $\beta$ tels que
+$$\pgdc(a;b)=\alpha\fois a + \beta\fois b$$
+\end{theoreme}
+
+\medskip
+La preuve de ce théorème découle directement de l'algorithme d'Euclide.
+
+\medskip
+Les entiers $\alpha$ et $\beta$ s'appellent les \textbf{coefficients de Bézout} et s'obtiennent en \guillemets{remontant} l'algorithme d'Euclide.
+Il faut noter que les entiers $\alpha$ et $\beta$ ne sont pas uniques.
+
+\bigskip
+\begin{exemple}
+ Calculons les coefficients de Bézout pour $a=600$ et $b=124$.
+ 
+\bigskip
+{\small
+$$
+\begin{tikzpicture}
+  \matrix (eucl) [matrix of math nodes, inner sep=0pt,column sep=4pt, row sep=4pt]{
+      600 & = & 124 & \fois & 4 & + &    104     & \qquad & 4 & = &|[right]|
+      \left[
+        \begin{array}{l}
+          600 \fois \textcolor{blue}{6} + 124 \fois (\textcolor{blue}{-29}) \\
+          124 \fois (-5) + (600-124\fois 4) \fois 6                         \\
+        \end{array}
+      \right.
+      \\
+      124 & = & 104 & \fois & 1 & + &     20     &  & 4 & = &|[right]|
+      \left[
+        \begin{array}{l}
+          124 \fois (-5) + 104 \fois 6\\
+          104 - (124-104\fois 1) \fois 5 \\
+        \end{array}
+      \right.
+      \\
+      104 & = & 20  & \fois & 5 & + & |[red]|{4} &  & 4 & = & |[anchor=base west]|
+      \left[
+      \begin{array}{l}
+        104 - 20 \fois 5
+      \end{array}
+      \right.
+      \\
+      20  & = &  4  & \fois & 5 & + &     0      & \qquad &   &   & \\
+  };
+  \draw[->, red, very thick] (eucl-1-8.west)..controls ([yshift=-1em]eucl-4-8.south west) and ([yshift=-1em]eucl-4-8.south east)..(eucl-1-8.east);
+\end{tikzpicture}
+$$} 
+
+Les coefficient de Bézout sont donc $6$ et $-29$ et on a:
+$$\pgdc(600;124)=4=\bm{6}\fois 600 + (\bm{-29})\fois 124$$
+\end{exemple}
+
+
+\smallskip
+\begin{corolaire}\label{cor:diviseur_pgcd}
+Si $d|a$ et $d|b$ alors $d | \pgdc(a,b)$.
+\end{corolaire}
+
+\smallskip
+\begin{exemple} $4|16$ et $4|24$ donc $4$ divise $\pgdc(16,24)=8$.
+\end{exemple}
+
+\smallskip
+\begin{demonstration}
+Par le théorème de Bézout, il existe $\alpha,\,\beta\in\N$ tels que $\alpha\fois a + \beta\fois b=\pgdc(a,b)$.
+
+\medskip
+Comme $d|a$ et $d|b$ alors $d | (\alpha\fois a+\beta\fois b)=\pgdc(a,b)$ (combinaison linéaire).
+\vspace{-3mm}\hfill $\blacksquare$
+\end{demonstration}
+
+\bigskip
+\begin{corolaire}
+Soient $a, b$ deux entiers. $a$ et $b$ sont premiers entre eux
+\textbf{si et seulement si} il existe $u,v \in \Z$ tels que
+$$ua+vb=1$$
+\end{corolaire}
+
+\begin{demonstration}
+Le sens direct $(\Rightarrow)$ est une conséquence du corolaire \ref*{cor:diviseur_pgcd}.
+
+\medskip
+Pour le sens indirect $(\Leftarrow)$, supposons qu'il existe $u,v\in\Z$ tels que $ua+vb=1$.
+
+\smallskip
+Comme $\pgdc(a,b)|a$ alors $\pgdc(a,b)|au$. De même $\pgdc(a,b)|bv$.
+
+\smallskip
+Donc $\pgdc(a,b)|(au+bv)=1$. Donc $\pgdc(a,b)=1$.
+
+\vspace{-3mm}\hfill $\blacksquare$
+\end{demonstration}
+
+\medskip
+\begin{remarque}
+Si on trouve deux entiers $u',v'$ tels que $u'a+v'b=d$, cela n'implique
+\textbf{pas} que $d=\pgdc(a,b)$. On sait seulement alors que $\pgdc(a,b)|d$.
+
+\smallskip
+Par exemple si $a=12$, $b=8$ alors $12 \cdot 1 + 8 \cdot 3 = 36$ et $\pgdc(a,b)=4$.
+\end{remarque}
+
+\bigskip
+\begin{corolaire}[\normalsize Lemme de Gauss]
+\index{lemme!de Gauss}
+Soient $a,b,c \in \Z$.
+
+$$\textrm{Si} \ \ a | bc \ \  \textrm{\bf et} \ \  \pgdc(a,b)=1 \ \  \textrm{alors} \ \  a|c$$
+\end{corolaire}
+
+\medskip
+\begin{exemple} si $4 | (7c)$, comme $4$ et $7$ sont premiers entre eux, alors $4|c$.
+\end{exemple}
+
+\begin{demonstration}
+Comme $\pgdc(a,b)=1$, alors il existe $u,v\in \Z$ tels que
+$ua+vb=1$.
+
+\smallskip
+On multiplie cette égalité par $c$ pour obtenir
+$acu + bcv = c$.
+
+\smallskip
+Mais $a|acu$ et par hypothèse $a|bcv$ donc
+$a$ divise $acu+bcv=c$.
+
+\vspace{-3mm}\hfill $\blacksquare$
+\end{demonstration}
+
+
+\bigskip
+\begin{definition}
+Le \textbf{plus petit multiple commun} de deux nombres $a$ et $b$, noté $\ppmc(a,b)$,
+est le plus petit entier positif divisible à la fois par $a$ et par $b$.
+\end{definition}
+
+\begin{exemple}$\ppmc(12,9)=36$.
+\end{exemple}
+
+Le $\pgdc$ et le ppmc sont liés par la formule suivante :
+
+\medskip
+\begin{proposition}
+Si $a,b$ sont des entiers (non tous les deux nuls) alors,
+
+\begin{center}
+\fbox{$\pgdc(a,b) \cdot  \ppmc(a,b) = |ab|$}
+\end{center}
+\end{proposition}
+
+\begin{demonstration}
+Sans perte de généralité, on peut supposer $a>0$ et $b>0$.
+
+\smallskip
+Posons $d= \pgdc(a,b)$ et définissons $m= \frac{|ab|}{\pgdc(a,b)}$.
+
+\bigskip
+On écrit $a=da'$ et $b=db'$ avec $\pgdc(a',b')=1$. Donc 
+$$ab=d^2 a'b'\eh{4}\textrm{et par suite}\eh{4}m=da'b'$$
+Ainsi $m=ab'=a'b$ est un multiple de $a$ et de $b$.
+
+\medskip
+Il reste à montrer que c'est le plus petit multiple. Si $n$ est un autre multiple
+de $a$ et de $b$ alors 
+
+$$n= ka= \ell b$$
+
+donc $$kda'=\ell d b' \eh{4}\textrm{et par conséquent}\eh{4} ka'=\ell b'$$
+
+La dernière égalité implique que $a' | \ell b'$. Mais comme $\pgdc(a',b')=1$ , le lemmes de Gauss assure que $a'|\ell$ et donc $a'b | \ell b$.
+
+\medskip
+Comme $m=a'b$ et $\ell b = n$, nous avons que $m|n$.
+
+\medskip
+Nous avons montré que tout multiple commun de $a$ et $b$ est divisible par $m$, donc $m=\ppmc(a,b)$ et finalement 
+$$\pgdc(a,b) \cdot  \ppmc(a,b) = |ab|$$
+
+\vspace{-3mm}\hfill $\blacksquare$
+ 
+\end{demonstration}
+
+Voici un autre résultat concernant le ppcm qui se démontre en utilisant la décomposition en facteurs premiers (que nous étudierons à la section suivante):
+\begin{proposition}
+Si $a|c$ et $b|c$ alors $\ppmc(a,b)|c$.
+\end{proposition}
+
+\begin{remarque}
+Il serait faux de penser que $ab|c$.
+
+\smallskip
+Par exemple $6|36$, $9|36$ mais $6\cdot 9$ ne divise pas $36$.
+Par contre $\ppmc(6,9)=18$ divise bien $36$.
+\end{remarque}
+
+%---------------------------------------------------------------
+%\subsection{Mini-exercices}
+
+\medskip
+\begin{exstheorie}
+\exo
+Calculer les coefficients de Bézout correspondants à :
+\begin{enumerate}[label=\alph*), left=0mm,itemsep=2mm]
+\item $\pgdc(7260,637)$.
+\item $\pgdc(9945;3003)$. 
+\end{enumerate}
+
+
+
+
+\eexo
+
+
+
+
+
+\exo
+A l'aide d'un corollaire du théorème de Bézout, montrer que :
+$$\pgdc(a,a+1)=1$$
+
+
+
+
+\eexo
+
+
+
+
+
+\exo
+Trouver une solution aux équations suivantes : 
+\begin{tasks}[after-item-skip=2mm,item-indent=5mm,column-sep=1mm,label-offset=1mm](1)
+\task $873x+578y=1$
+\task $315x+572y=5$
+\task $6x+20y=3$
+\end{tasks}
+
+
+
+\eexo
+
+
+
+
+
+\exo
+Trouver tous les couples $(a,b)\in\Z^2$ vérifiant $\pgdc(a,b)=12$ et $\ppmc(a,b)=432$.
+\end{exstheorie}
+
+

@@ -1,0 +1,153 @@
+\setcounter{section}{-1}
+
+\section{Prémisses et éléments de théorèmes}
+
+
+\begin{definition}
+Un \textbf{axiome} est un énoncé (le plus souvent évident) admis comme vrai par tous et ne nécessitant pas justification supplémentaire 
+\end{definition}
+
+
+\smallskip
+\begin{exemples}{0mm}
+\item Un segment de droite peut être tracé en joignant deux points distincts.
+\item Par un point $P$ extérieure à une droite $d$ passe une et une seule droite parallèle à $d$.
+\end{exemples}
+
+
+\medskip
+\begin{remarques}
+\item Un énoncé est vrai s'il est toujours vrai.
+\item Pour qu'un énoncé soit faux, il suffit qu'il le soit une seule fois. La recherche d'un contre-exemple est une bonne manière de démontrer qu'un énoncé est faux.
+\end{remarques}
+
+
+\smallskip
+\begin{definition}
+Une \textbs{conjecture} est un énoncé qui n'a pas (encore!) été démontré mais dont on a l'intuition qu'il est vrai.
+\end{definition}
+
+\smallskip
+\begin{exemple}{0.9}\guillemets{Tout nombre entier pair strictement supérieur ou égal à 4 peut s'écrire comme la somme de deux nombres premiers.}\vspace{-3mm}
+
+\small
+\hfill \textit{Conjecture de Goldbach}
+\end{exemple}
+
+\bigskip
+\begin{definition}
+Un \textbf{théorème} est un énoncé qui a été démontré comme étant vrai. Il est constitué de 3 parties :
+
+\begin{enumerate}[label=\arabic*),itemsep=2mm]
+\item Hypothèse : \hspace{8mm}\begin{minipage}[t]{0.7\textwidth}
+Pré-requis à l'application du théorème.
+
+\smallskip
+\small
+Ce sont les conditions nécessaires qui doivent être vérifiées pour utiliser la conclusion du théorème. Les conditions sont des données connues et utilisables dans la démonstration du théorème
+\end{minipage}
+\item Conclusion :\hspace{7mm} \begin{minipage}[t]{0.7\textwidth}
+Propriété applicable si les hypothèses sont vérifiées.
+\end{minipage}
+\item Démonstration :\hspace{1mm} \begin{minipage}[t]{0.7\textwidth}
+Argumentation qui s'appuie sur des faits admis comme vrai par tous, qui ne peut pas être contredite et permettant d'établir la véracité d'une proposition mathématique.
+\end{minipage}
+\end{enumerate}
+
+\bigskip
+Un théorème dont la portée est moins importante est souvent appelé une \textbs{proposition}.
+\end{definition}
+
+
+\clearpage
+La formulation mathématique habituelle d'un théorème  est de la forme :
+\begin{center}
+\textsl{\guillemets{\textbs{Si} hypothèse (H) \textbs{Alors} conclusion (C)}}
+
+\medskip
+ou encore
+
+\medskip
+\textsl{\guillemets{hypothèse (H) $\boldsymbol{\Rightarrow}$ conclusion (C)}}
+\end{center}
+
+Il faut remarquer que la négation d'un théorème, i.e.\footnote{du latin \guillemets{id est} signifiant \guillemets{c'est-à-dire}} prendre la négation de l'hypothèse et la négation de la conclusion, n'est pas nécessairement vraie. En d'autres termes :
+
+$$ (H \Rightarrow C) \notimply (NH \Rightarrow NC)$$
+
+
+\bigskip
+A titre d'exemple voici un théorème bien connu et sa négation :
+
+\medskip
+\textbf{Théorème :} \guillemets{Si une fonction $f$ est dérivable en $a$ alors $f$ est continue en $a$.}
+
+\medskip
+\textbf{Négation :} \guillemets{Si une fonction $f$ n'est pas dérivable en $a$ alors $f$ n'est pas continue en $a$}
+
+\bigskip
+Si le théorème ci-dessus est bien entendu vrai, sa négation, elle, ne l'est pas!
+
+
+
+\bigskip
+\begin{enumerate}[label=\roman*),itemsep=0mm]
+\item Donner un autre exemple de théorème où la négation de ce dernier est fausse.
+\item Donner un exemple de théorème où la négation de ce dernier est vraie.
+\end{enumerate}
+
+
+
+
+
+
+
+
+\begin{definitions}
+\begin{itemize}
+\item Un \textbs{corollaire} est un théorème qui découle immédiatement et logiquement d'un autre théorème. Il ne nécessite généralement que très peu d'arguments pour le démontrer.
+\item La \textbs{réciproque} d'un théorème est un énoncé qui s'obtient en inversant le rôle de l'hypothèse et de la conclusion.
+\item La \textbs{contraposée} d'un théorème s'obtient en prenant la négation de la réciproque (hypothèse et conclusion).
+\end{itemize}
+\end{definitions}
+
+
+
+\bigskip
+\begin{remarques}
+\item La réciproque d'un théorème n'est pas toujours vraie.
+$$ (H \Rightarrow C) \notimply (C \Rightarrow H)$$
+\item La contraposée d'un théorème est toujours vraie.
+$$ (H \Rightarrow C) \imply (NC \Rightarrow NH)$$
+\end{remarques}
+
+
+
+
+
+
+
+%\begin{minipage}{0.38\textwidth}
+%\psset{yunit=0.7cm,xunit=0.7cm,gridcolor=cgrille}
+%\begin{pspicture*}(0,0)(10,4)
+%\psgrid[subgriddiv=1,griddots=7,gridlabels=0pt](0,0)(10,4)
+%\psaxes[Dy=1, Dx=1, labelFontSize=\scriptstyle]{->}(0,0)(10,4)
+%\uput{0}[0]{0}(1,2){$(H\Rightarrow C)$}
+%\uput{0}[0]{45}(4,2){\LARGE{$\cancel{\Rightarrow}$}}
+%\uput{0}[0]{0}(5.5,3){$(C \Rightarrow H)$}
+%\uput{0}[0]{-45}(4,2){\LARGE{$\Rightarrow$}}
+%\uput{0}[0]{0}(5.5,1){$NC \Rightarrow NH$}
+%\end{pspicture*}
+%\end{minipage}
+
+
+
+
+
+
+
+
+
+
+
+

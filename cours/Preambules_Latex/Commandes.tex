@@ -1,0 +1,391 @@
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   NOUVELLES COMMANDES : RACCOURCIS   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------------------
+%---- Ensemles : entiers, reels, complexes... ----
+%-------------------------------------------------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Rb}{{\rm I\!R}} % permet d'avoir R en gras
+%\renewcommand{\C}{\mathbb{C}} %/!\ la command "\C" semble déjà définie dansn le package hyperref
+%\newcommand{\C}{\mathbb{C}} %/!\ la command "\C" semble déjà définie dansn le package hyperref % -> pour compiler avec dvi to pdf !!
+
+
+
+%------------------------------
+%---- Raccourcis : espaces ----
+%------------------------------
+\newcommand{\eh}[1]{\hspace*{#1mm}}
+\newcommand{\ehh}{\hspace*{2mm}}
+\newcommand{\ehhh}{\hspace*{3mm}}
+\newcommand{\ev}{\vspace*{1mm}}
+\newcommand{\evv}{\vspace*{2mm}}
+\newcommand{\evvv}{\vspace*{3mm}}
+\newcommand{\para}{\hspace*{8mm}}
+\newcommand{\eexo}{\vspace{8mm}}
+\newcommand{\eexocourt}{\vspace{7mm}}
+\newcommand{\eu}[1][2]{\hspace*{#1pt}}
+
+
+
+%---------------------------------------------
+%---- Raccourcis : symboles mathématiques ----
+%---------------------------------------------
+\newcommand{\ssi}[1][0]{\hspace{#1mm}\Leftrightarrow\hspace{#1mm}}
+\newcommand{\implique}[1][0]{\hspace{#1mm}\Rightarrow\hspace{#1mm}}
+\newcommand{\ega}[1][0]{\hspace{#1mm}=\hspace{#1mm}}
+\newcommand{\norme}[1]{\parallel #1 \parallel}
+\renewcommand{\degre}{\ensuremath{^\circ} }
+\newcommand{\imply}{\textrm{\hspace{2mm}\LARGE{\raisebox{-0.5mm}{$\Rightarrow$}}\hspace{2mm}}}
+\newcommand{\notimply}{\textrm{\hspace{2mm}\LARGE{\raisebox{-0.5mm}{$\psCancel[linecolor=red,linewidth=2pt,cancelType=x]{\Rightarrow}$}}\hspace{2mm}}}
+\newcommand{\rec}{^r\!}
+\newcommand{\pgdc}{\textrm{pgdc}}
+\newcommand{\ppmc}{\textrm{ppmc}}
+\newcommand{\lnit}{\textrm{\it ln}}
+\newcommand{\fois}{\hspace*{-0.5mm}\cdot\hspace*{-0.5mm}}
+
+
+
+%-------------------------------------
+%---- Raccourcis : mise en formes ----
+%-------------------------------------
+\newcommand{\guillemets}[1]{\textsl{``\hspace{0.5pt}#1''\hspace{1pt}}}
+\newcommand{\textbs}[1]{\textbf{\textsl{#1}}}
+\newcommand{\textbsc}[1]{\textbf{\textsc{#1}}}
+\newcommand{\pvirg}[1]{\hspace*{#1 mm};\hspace{#1mm}}
+\newcommand{\virg}[1][1]{\hspace*{#1 mm},\hspace{#1mm}}
+\newcommand{\et}[1]{\hspace{#1mm}\textrm{et}\hspace{#1mm}}
+\newcommand{\ou}[1]{\hspace{#1mm}\textrm{ou}\hspace{#1mm}}
+\newcommand{\compy}[1]{\textsl{\guillemets{#1}}}
+\newcommand{\egah}[1]{\overset{\textcolor{red!40!gray}{\scriptscriptstyle #1}}{\hspace{2mm}=\hspace{2mm}}}
+\newcommand{\egab}[1]{\underset{\textcolor{red!40!gray}{\scriptscriptstyle #1}}{\hspace{2mm}=\hspace{2mm}}}
+\newcommand{\egahb}[2]{%
+  \mathrel{\stackunder[2pt]{\stackon[4pt]{\hspace{2mm}$=$\hspace{2mm}}{\textcolor{red!40!gray}{$\scriptscriptstyle#1$}}}{%
+  \textcolor{red!40!gray}{$\scriptscriptstyle#2$}}}}
+\newcommand{\egaprop}[1]{\underset{\textcolor{red!40!gray}{\scriptscriptstyle p.\ref*{prop_lim_#1}}}{\hspace{2mm}=\hspace{2mm}}}
+\newcommand{\imphb}[2]{%
+  \mathrel{\stackunder[2pt]{\stackon[4pt]{\hspace{2mm}$\Leftrightarrow$\hspace{2mm}}{\textcolor{red!40!gray}{$\scriptstyle#1$}}}{%
+  \textcolor{red!40!gray}{$\scriptstyle#2$}}}}
+\newcommand{\sol}[1]{\textcolor{solution}{{#1}}}
+\newcommand{\solbf}[1]{\textcolor{solution}{\textbf{#1}}}
+\newcommand{\solmath}[1]{\textcolor{solution}{\bm{#1}}}
+\newcommand{\eme}{\textsuperscript{ème} } 
+\newcommand{\er}{\textsuperscript{er} }
+\newcommand{\ere}{\textsuperscript{ère} }  
+%\newcommand{\pgdc}{\textrm{pgdc}}
+\newcommand{\transp}[1]{{}^t \! #1} % pour noter la transposée d'une matrice
+\newcommand{\CQFD}{\hfill\raisebox{-2mm}{$\blacksquare$}}
+\newcommand{\dmo}[1]{\raisebox{#1mm}[0cm][0cm]{$\bm{-}$}} % (=DIvisionMOins)Pour les "moins" dans les tableaux des divisions euclidiennes : #1=ajustement de la hauteur (mm) | #2=ajustement du retrait (mm)
+\NewDocumentCommand{\point}{O{-4} O{-4} O{-4} m}{\vspace{#3mm}\raisebox{#1mm}{\hspace{#2mm}\scriptsize\textcolor{pointscolor}{\textbf{/#4}}}} % 1: décalage vertical ; 2: décalage horizontal ; 3: espace interligne ; 4: nombre de points **** /!\ Il faut charger la package \usepackage{xparse} 
+%"\NewDocumentCommand" permet de définir des commandes avec plusieurs arguments et leur valeur par défaut
+%\NewDocumentCommand{\foocmd}{ O{default1} O{default2} m }{#1~#2~#3}
+%                            %     ⤷ #1        ⤷ #2    ⤷ #3
+
+
+
+
+%------------------
+%---- Couleurs ----
+%------------------
+%\definecolor{cimpo}{gray}{0.7} % Couleur de fond pour des cadres
+%\definecolor{crem}{gray}{0.4}  % Couleur pour du texte en remarque oral
+\definecolor{cprop}{gray}{0.5}
+%\definecolor{colhead}{RGB}{0, 112, 192} % Couleur Bleu clair
+%\definecolor{colimportant}{RGB}{247 , 189 , 164}%{210, 76, 76}
+%\newcommand{\colhead}{\color{Blue}}
+%\definecolor{colhead}{RGB}{202, 25, 25}
+\renewcommand*{\CancelColor}{\color{red}}
+%\definecolor{cimpo}{gray}{0.7} % Couleur de fond pour des cadres
+%\definecolor{crem}{gray}{0.4}  % Couleur pour du texte en remarque oral
+\definecolor{cgrille}{gray}{0.3}
+\definecolor{bleugris}{RGB}{76,100,125}
+\definecolor{solution}{RGB}{213,35,35}
+\definecolor{foncred}{RGB}{213,35,35}
+\definecolor{foncblue}{RGB}{65,113,162}
+\definecolor{foncgreen}{RGB}{100,162,65}
+\definecolor{foncpurple}{RGB}{121,78,200}
+\definecolor{foncyellow}{RGB}{187,182,56}
+\definecolor{pointscolor}{RGB}{213,35,35}%{176,65,212}
+
+
+
+%-------------------------------
+%---- Raccourcis : tableaux ----
+%-------------------------------
+\newcolumntype{R}[1]{>{\raggedright}m{#1}}  % alignement à GAUCHE et spécification de la longueur de la colonne : R{4cm}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash $}m{#1}<{$}}
+\newcolumntype{S}{>{\small\it}l}
+\newlength{\hauteurligne}
+\newcommand{\hl}[1]{\setlength{\hauteurligne}{#1}\rule[(\hauteurligne*\real{-0.5})+0.1cm]{0cm}{\hauteurligne}}
+
+
+
+%-------------------------------------------------------------------------------
+%---- Raccourcis : Exemple(s) - retrait à droite et text italique sousligné ----
+%-------------------------------------------------------------------------------
+%---->>> Voir également les environnements
+\newcommand{\exems}[1]{\hspace{5mm}\textsl{{Exemples:}} \hspace{#1mm}}
+\newcommand{\exem}[1]{\hspace{5mm}\textsl{{Exemple:}} \hspace{#1mm}}
+
+
+
+%------------------------------
+%---- Raccourcis : Polices ----
+%------------------------------
+\newcommand{\comp}[1]{{\fontfamily{lmtt}\selectfont #1}}
+\newcommand{\compbf}[1]{{\fontfamily{lmtt}\selectfont\bfseries #1}}
+\newcommand{\compgui}[1]{{\fontfamily{lmtt}\selectfont\bfseries ``#1''}}
+
+
+
+%---------------------------------------------------------
+%---- Raccourcis : symboles mathématiques pour PYTHON ----
+%---------------------------------------------------------
+\newcommand{\pct}{\hspace{2pt}\%\hspace{2pt}}
+\newcommand{\gui}{\textrm{"}}
+\newcommand{\guic}{\comp{"}}
+\newcommand{\mul}{\textrm{\hspace{1pt}*\hspace{1pt}}} % anciennement fois !
+\newcommand{\puis}{\textrm{\hspace{1pt}**\hspace{1pt}}}
+\newcommand{\id}{\hspace*{8mm}}		% Pour faire des identations lors de l'écriture de programmes
+\newcommand{\idd}{\hspace*{16mm}}	% Pour faire des identations lors de l'écriture de programmes
+\newcommand{\iddd}{\hspace*{24mm}}	% Pour faire des identations lors de l'écriture de programmes
+
+
+%-----------------------------------------
+%---- Raccourcis : Ecriture fonctions ----
+%-----------------------------------------
+\newcommand{\fonc}[5]{\renewcommand{\arraystretch}{1}$\begin{array}[t]{r r c l}
+#1 : & \mathbb{#2} & \rightarrow & \mathbb{#3}\\
+    & #4 & \mapsto & #5
+\end{array}$}
+\newcommand{\foncmi}[3]{\renewcommand{\arraystretch}{1}$\begin{array}[t]{r r c l}
+#1 : & #2 & \mapsto & #3
+\end{array}$}
+%\newcommand{\fonction}[5]{\renewcommand{\arraystretch}{1}$\begin{array}[t]{r r c l}
+%#1 : & #2 & \rightarrow & #3\\
+%    & #4 & \mapsto & #5
+%\end{array}$}
+\newcommand{\fonction}[6]{\renewcommand{\arraystretch}{#6}$\begin{array}[t]{r r c l}
+#1 : & #2 & \rightarrow & #3\\
+    & #4 & \mapsto & #5
+\end{array}$}
+\newcommand{\function}[6]{\renewcommand{\arraystretch}{#6}\begin{array}[t]{r @{\hspace{1mm}}r c l}
+#1 : & #2 & \rightarrow & #3\\
+    & #4 & \mapsto & #5
+\end{array}}
+
+
+
+%-----------------------------
+%---- Raccourcis : Limite ----
+%-----------------------------
+\newcommand{\lx}[2][x]{\lim\limits_{#1\rightarrow{#2}}}
+\newcommand{\ly}[1]{\lim\limits_{y\rightarrow{#1}}}
+\newcommand{\lh}[1]{\lim\limits_{h\rightarrow{#1}}}
+\newcommand{\lt}[1]{\lim\limits_{t\rightarrow{#1}}}
+\newcommand{\lin}[1]{\lim\limits_{n\rightarrow{#1}}}
+\newcommand{\lk}[1]{\lim\limits_{k\rightarrow{#1}}}
+\newcommand{\limx}[2]{\lim\limits_{x\rightarrow{#1}}\left(\displaystyle #2\right) }
+\newcommand{\limy}[2]{\lim\limits_{y\rightarrow{#1}}\left(\displaystyle #2\right) }
+\newcommand{\limh}[2]{\lim\limits_{h\rightarrow{#1}}\left(\displaystyle #2\right) }
+\newcommand{\limt}[2]{\lim\limits_{t\rightarrow{#1}}\left(\displaystyle #2\right) }
+\newcommand{\limn}[2]{\lim\limits_{n\rightarrow{#1}}\left(\displaystyle #2\right) }
+
+
+
+%-----------------------------
+%---- Raccourcis : Dérivées , Intégrales ----
+%-----------------------------
+\newcommand{\der}[1]{\displaystyle \left(#1\right)'}
+\newcommand{\dx}[1][x]{\textrm{\textit{\hspace{2pt}d#1}}}
+
+
+
+%--------------------------------
+%---- Raccourcis : Géométrie ----
+%--------------------------------
+\renewcommand{\norme}[1]{\Vert#1\Vert}
+\newcommand{\psca}{{\scriptstyle\hspace{0.6mm}\bullet\hspace{0.6mm}}} %produit scalaire
+\newcommand{\pscar}{{\scriptstyle\hspace{0.3mm}\bullet\hspace{0.3mm}}} %produit scalaire espace réduit
+\newcommand{\unite}[1]{\hspace{3pt}\textrm{#1}}
+\newcommand\vv[1]{$\overrightarrow{#1}$}
+\newcommand\vvert[2]{\begin{pmatrix*}[r]
+#1 \\
+#2
+\end{pmatrix*}}
+\newcommand\vvertnom[3]{\vec{#1}=\begin{pmatrix*}[r]
+#2 \\
+#3
+\end{pmatrix*}}
+\newcommand\vvvert[3]{\begin{pmatrix*}[r]
+#1 \\
+#2 \\
+#3
+\end{pmatrix*}}
+\newcommand\vvvertnom[4]{\vec{#1}=\begin{pmatrix*}[r]
+#2 \\
+#3 \\
+#4
+\end{pmatrix*}}
+\newcommand\vm[1]{\overrightarrow{#1}}
+\newcommand{\pt}[2]{(#1\; ; #2)}
+\newcommand{\ptt}[3]{(#1\; ; #2\; ; #3)}
+\newcommand{\pttt}[4]{(#1\; ; #2\; ; #3\; ; #4)}
+\newcommand{\ptnom}[3]{#1\hspace{0.5pt}(#2\; ; #3)}
+\newcommand{\pttnom}[4]{#1\hspace{1pt}(#2\; ; #3\; ; #4)}
+
+
+
+%-----------------------------------------
+%---- Raccourcis : Tableau des Signes ----
+%-----------------------------------------
+\newcommand{\croi}{\boldsymbol{\nearrow}}
+\newcommand{\decroi}{\boldsymbol{\searrow}}
+\newcommand{\maxi}{\textrm{\footnotesize\bf max}}
+\newcommand{\mini}{\textrm{\footnotesize\bf min}}
+\newcommand{\palier}{\textrm{\footnotesize\bf palier}}
+\newcommand{\inflex}{\textrm{\footnotesize\bf inflex.}}
+\newcommand{\av}{\textrm{\footnotesize\bf A.V.}}
+\newcommand{\nd}{\textrm{\footnotesize\bf n.d.}}
+\newcommand{\conv}{\boldsymbol{\smile}}
+\newcommand{\conc}{\boldsymbol{\frown}}
+
+
+
+%-------------------------------------------
+%---- Raccourcis : Systèmes d'équations ----
+%-------------------------------------------
+\newenvironment{systeme2}
+	{
+	\newcommand{\esp}{\hspace{2pt}}
+	\newcommand{\p}{&+&}
+	\renewcommand{\m}{&-&}
+	\newcommand{\e}{&=&}
+         $%
+         \renewcommand{\arraystretch}{1.2}
+            \left\lbrace\begin{array}{@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}l}%
+    }
+	{
+            \end{array}\right.%
+         $%
+	}
+\newenvironment{systeme3}
+	{
+	\newcommand{\esp}{\hspace{2pt}}
+	\newcommand{\p}{\esp &+&}
+	\renewcommand{\m}{&-&}
+	\newcommand{\e}{&=&}
+         $
+         \renewcommand{\arraystretch}{1.2}
+            \left\lbrace\begin{array}{@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}c@{\esp}@{\esp}l}%
+    }
+	{
+            \end{array}\right.%
+         $%
+	}
+	
+
+
+%-------------------------------
+%---- Raccourcis : Matrices ----
+%-------------------------------
+\newenvironment{reducmatrice}[1]
+	{
+		\left(\begin{array}{@{}#1@{}}
+	}
+	{
+		\end{array}\right)
+	}
+\newcommand{\ro}[1]{%
+  \xrightarrow{\mathmakebox[\rowidth]{#1}}%
+}
+\newlength{\rowidth}% row operation width
+\AtBeginDocument{\setlength{\rowidth}{3em}}
+
+\newenvironment{elimination}
+	{
+		\everymath{\scriptstyle}
+		\begin{array}{@{\scriptscriptstyle}c}
+	}
+	{
+		\end{array}
+	}
+
+
+%-------------------------------------------------------------------------------
+%---   FONCTION POUR FAIRE UNE CASCADE DE DIVISIONS POUR CHANGEMENT DE BASE  ---
+%-------------------------------------------------------------------------------
+\newcount\total
+\newcount\lasttotal
+\newcount\targetbase
+
+\def\basetenconversiontable#1#2{%
+    \begin{tikzpicture}[every node/.style={minimum width=1cm, minimum height=0.5cm}, x=1cm,y=0.5cm]
+    %
+    \total=#1%
+    \targetbase=#2
+    \def\newnumber{}
+    %
+    \pgfmathloop
+    \ifnum\total<1
+    \else
+        %
+        \ifnum\pgfmathcounter>1
+            \node at (\pgfmathcounter, -\pgfmathcounter+1) (tmp) {\the\targetbase};
+            \draw (tmp.north west) |- (tmp.south east);
+            %
+            \node at (\pgfmathcounter-1, -\pgfmathcounter) (tmp) {\pgfmathparse{int(\total*\targetbase)}\pgfmathresult};
+            \draw (tmp.south west) -- (tmp.south east);
+            %
+            \pgfmathparse{int(\lasttotal-\total*\targetbase)}%
+            \let\digit=\pgfmathresult
+            \node at (\pgfmathcounter-1, -\pgfmathcounter-1) [text=red] {\digit};
+            \edef\newnumber{\digit\newnumber}
+        \fi
+        %
+        \ifnum\total<\targetbase
+                \edef\newnumber{\the\total\newnumber}
+            \node at (\pgfmathcounter, -\pgfmathcounter) [text=red]  {\the\total};
+        \else
+            \node at (\pgfmathcounter, -\pgfmathcounter) {\the\total};
+        \fi
+        \lasttotal=\total
+        \divide\total by\targetbase
+    \repeatpgfmathloop    
+    \draw [->] (\pgfmathcounter-1,-\pgfmathcounter-1) -- ++(-0.5,0); 
+    \node [anchor=west] at (1, -\pgfmathcounter-2) {$\overline{#1}_{10}=\overline{\newnumber}_{\the\targetbase}$};
+    \end{tikzpicture}   
+}
+
+
+	
+
+%--------------------------
+%---- Labels Exercices ----
+%--------------------------
+%\newcommand{\exo}{\textbf{\textsl{Exercice \thechapter.\arabic{compteurexo}}} \vspace*{1mm}\\ \addtocounter{compteurexo}{1}}
+\newcommand{\exo}{\refstepcounter{compteurexo}\textbf{\textsl{Exercice \thechapter.\arabic{compteurexo}}} \vspace*{1mm}\\}
+\newcommand{\exonomme}[1]{\refstepcounter{compteurexo}\textbf{\textsl{Exercice \thechapter.\arabic{compteurexo} {\textsl{\footnotesize (#1)}}}}\vspace*{1mm}\\}
+\newcommand{\exod}{\refstepcounter{compteurexo}\textbf{\textsl{Exercice \thechapter.\arabic{compteurexo}*}} \vspace*{1mm}\\}
+\newcommand{\exodnomme}[1]{\refstepcounter{compteurexo}\textbf{\textsl{Exercice \thechapter.\arabic{compteurexo}* {\textsl{\footnotesize (#1)}}}} \vspace*{1mm}\\}
+\newcounter{compteurexo}
+%\setcounter{compteurexo}{1}
+	
+	
+
+%-------------------------------------------
+%---- Mises en formes pour les réponses ----
+%-------------------------------------------
+%%%%%%%%%%%%%%  CASE GRISE POUR REPONSES (avec espace après)
+\newcommand{\caseesp}{\colorbox{gris15}{\makebox[4mm]{\mbox{\parbox[b][4mm]{\textwidth}{}}}}\;\;}
+%%%%%%%%%%%%%%  CASE GRISE POUR REPONSES (sans espace après)
+\newcommand{\case}{\colorbox{gris15}{\makebox[4mm]{\mbox{\parbox[b][4mm]{\textwidth}{}}}}}
+%%%%%%%%%%%%%%  TRAITILLES POUR REPONSES AVEC PARAMETRE DE LONGUEUR
+\newcommand{\rep}[1]{\raisebox{-2mm}{\makebox[#1cm]{\dotfill}}}

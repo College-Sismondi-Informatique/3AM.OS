@@ -1,0 +1,129 @@
+% La différence entre \arabic{compteur} et \thecompteur se remarque si compteur est « lié » à un autre compteur. Un compteur est lié à un autre si ce premier est réinitialisé lorsque le second est incrémenté. Par exemple dans la classe book, les figures sont numérotées en commençant par le numéro du chapitre. Ainsi, la deuxième figure du chapitre 3 est numérotée « 3.2 », et la valeur de \arabic{figure} est alors « 2 », tandis que celle de \thefigure est « 3.2 ».
+
+%La différence étant que refstepcounter donne à la commande \ref{label} la même que \thecompteur (au lieu de \arabic{compteur}, vous suivez ?).
+
+% informations provenant de : http://blog.dorian-depriester.fr/latex/les-compteurs-sous-latex#Personnaliser_lrsquoaffichage_du_compteur
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%  CODE POUR ENTRER DIRECTEMENT DES FICHIERS PYTHON  %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbuselibrary{skins,breakable}
+\usepackage{iftex}
+% définition de \myinputlisting
+\ifPDFTeX
+  \usepackage{listingsutf8}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting[inputencoding=utf8/latin1]{#1}
+  }
+\else
+  \usepackage{listings}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting{#1}
+  }
+\fi
+%% les languages de programation utilisés
+%\newcommand{\Python}{\texttt{Python}}
+%\newcommand{\Sage}{\texttt{Sage}}
+%% personalisations pour Python et Sage
+%% la package 'textcomp' est necessaire pour 'upquote=true' (il est automatiquement chargé par fancybox, mais fancybox arrive plus tard)
+\usepackage{textcomp}
+\lstset{
+  language=Python,
+  upquote=true,
+  columns=flexible,
+  keepspaces=true,
+  basicstyle=\ttfamily,
+  commentstyle=\color{gray},
+  showspaces=false,
+  showstringspaces=false
+}
+\lstdefinelanguage{Python}{morestring=[b]"}
+
+\tcbset{
+    algostyle/.style={enhanced, colback=white, colframe=gray!70, 
+           fonttitle=\bfseries, boxrule=1pt,
+           colbacktitle=Red!100, coltitle=white,
+           drop fuzzy shadow,  
+           top=2mm,
+           boxed title style={sharp corners},
+           attach boxed title to top left={}%
+           }, 
+}
+
+
+\newtheoremstyle{algorithmes}% name
+{3pt}% Space above
+{3pt}% Space below
+{\ttfamily}% Body font
+{}% Indent amount
+{\bfseries}% Theorem head font
+{.\newline}% Punctuation after theorem head
+{0pt}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+
+\theoremstyle{algorithmes}
+\newtheorem{algo}{Code}
+\tcolorboxenvironment{algo}{algostyle}
+
+% Algorithmes
+% bloque de code (\insertcode)
+\newcommand{\insertcode}[3]{
+\begin{minipage}[t][][b]{#3\textwidth}
+\begin{algo}[{\sl{\color{gray}#2}}]
+\myinputlisting{#1}  
+\end{algo}
+\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   COMMANDES PARAMETREES   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\fig}[1]{\begin{center} {\textbf{\textit{ Figure \thechapter.\thenfigure : }}}{\footnotesize{\it #1}\stepcounter{nfigure}}\end{center}} %la commande "the(compteur)" permet d'afficher ou en est le comteur.
+%\newenvironment{remarque}[1]{{\bf Remarque \thechapter.\thecompteurthm\;: }\\ \hspace*{1.1cm}\begin{minipage}{0.9\textwidth}{\vspace*{2mm} #1}\end{minipage}\stepcounter{compteurthm}}
+
+%---- Choses semi-importantes (formules ou autres) en encadré ----
+\newenvironment{encadre}[2]{\begin{center}\fbox{\begin{minipage}{#1\textwidth}{\begin{center}#2\end{center}}\end{minipage}}\end{center}}
+
+\newcounter{nfigure}%[chapter] % Ici on définit un nouveau compteur associé au compteur "chapter", i.e. quand "chapter" augmente de niveau, "nfigure" est remis à zéro.
+\newcommand{\fig}[1]{\begin{center} {\textbf{\textit{ Figure \thechapter.\thenfigure : }}}{\footnotesize{\it #1}\stepcounter{nfigure}}\end{center}} %la commande "the(compteur)" permet d'afficher ou en est le comteur.
+\setcounter{nfigure}{1}
+
+
+
+
+
+
+
+
+
+\newenvironment{changemargin}[2]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+}\item }{\end{list}}
+
+
+
+
+
+
+
+
+
+
+
+%}

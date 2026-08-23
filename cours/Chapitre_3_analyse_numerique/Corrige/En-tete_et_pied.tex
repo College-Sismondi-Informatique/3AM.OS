@@ -1,0 +1,24 @@
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   PRESENTATION PAGES : ENTETES ET PIEDS DE PAGES    %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------
+%---- Entêtes en pieds de page ----
+%----------------------------------
+\pagestyle{fancy}       %Style pour en-tetes et pieds de pages
+\setlength{\parindent}{0pt}          %permet d'éviter de créer une "tabulation" au début d'un paragraphe.
+%\renewcommand{\headheight}{3cm}
+%\renewcommand{\headsep}{10cm}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt} %Ligne en bas de page
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Sans cette commande, lorsqu'on fait appel à "\leftmark" la texte "Chapitre X" précède le nom du chapitre
+\fancyhead[CO,CE]{\sc Chapitre \thechapter\hspace{0.5mm}  - Réponses}
+\fancyhead[RO,LE]{\colorbox{green!40!black}{\small\strut\textcolor{white}{\textbf{Analyse Numérique}}}}  % LaTeX/TEX define \strut to be an invisible box of width zero that extends just enough above and below the baseline. Cela permet d'augementer légèrement la taille en bas de la box de manière à ce qu'elle soit collée à la ligne.
+\fancyhead[LO,RE]{\small\ \textsl{3\textsuperscript{ème} année - AM}}
+\fancyfoot[RO,LE]{\vspace*{-6mm}\colorbox{green!40!black}{\makebox[1cm]{\large\strut\textcolor{white}{\thepage}}}}
+\fancyfoot[LO,RE]{\small G. Vorpe $|$ Collège Sismondi 2019-2020}
+\fancyfoot[CO,CE]{}

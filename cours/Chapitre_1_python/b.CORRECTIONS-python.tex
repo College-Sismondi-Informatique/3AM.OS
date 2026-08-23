@@ -1,0 +1,665 @@
+\newcommand{\boup}{\guillemets{boucle pour} }
+\everymath{\textstyle}
+\begin{enumerate}[label=\thechapter.\arabic*., font=\bfseries, itemsep=10mm,labelsep*=3mm,left=0mm]
+%1
+\item Il faut résoudre l'équation $x^2-x-3=0$. $\displaystyle x_{1,2}=\frac{1\pm\sqrt{13}}{2}$
+
+
+
+%2
+\item Le dernier côté mesure $\sim 8,36\;\textrm{cm}$
+
+
+
+
+
+%3
+\item La probabilité est de $\nicefrac{1}{36}$
+
+
+
+%4
+\item Il y a $615$ nombres à $4$ chiffres dont la somme vaut $19$.
+
+
+
+%5
+\item \leavevmode\vspace{-\dimexpr\baselineskip+\topsep}% Solution pour alignement trouvée sur https://tex.stackexchange.com/questions/456914/item-number-not-aligned-with-tasks
+\begin{tasks}[after-item-skip=2mm,item-indent=5mm,column-sep=2mm](4)
+\task \comp{5}
+\task \comp{2}
+\task \comp{0.5}
+\task \comp{6}
+\task \comp{49}
+\task \comp{6}
+\task \comp{2}
+\task \comp{1}
+\task \comp{6}
+\task \comp{1}
+\task \comp{54}
+\task \comp{5}
+\task \comp{0}
+\task \comp{-9}
+\task \comp{-1024}
+\task \comp{5}
+\task \comp{4}
+\task \comp{3}
+\task \comp{1}
+\task \comp{0}
+\end{tasks}
+
+
+
+
+%6
+\item \begin{minipage}[t][][b]{0.9\textwidth}\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|C{3cm}|l|}
+\hline
+\comp{n+1}			&	L'entier qui suit \comp{n}			\\
+\hline
+\comp{n//10\pct 10}	&	Le chiffre des dizaines de \comp{n}	\\
+\hline
+\comp{n//10}			&	Le nombre de dizaines de \comp{n}		\\
+\hline
+\comp{n//2\mul 2+2}		&	Le premier nombre pair qui suit \comp{n}			\\
+\hline
+\comp{n\puis 2}		&	Le carré de \comp{n}						\\
+\hline
+\comp{n\pct 10}		&	Le chiffre des unités de \comp{n}					\\
+\hline
+\comp{n\mul 2}			&	Le double de \comp{n}					\\
+\hline
+\end{tabular}
+\end{minipage}
+
+
+
+
+%7
+\item \leavevmode\vspace{-\dimexpr\baselineskip+\topsep}% Solution pour alignement trouvée sur https://tex.stackexchange.com/questions/456914/item-number-not-aligned-with-tasks
+\begin{tasks}[label=\roman*),after-item-skip=2mm,label-offset=2mm,label-width=6mm,label-align=right,column-sep=2mm,debug=false](3)
+\task \comp{17 (int)}
+\task \comp{1133 (str)}
+\task \comp{112*3 (str)}
+\task \comp{11+2*3 (str)}
+\task \comp{17 (int)}
+\task \comp{116 (str)}
+\task \comp{["11","2",6] (list)}
+\task \comp{impossible}
+\task \comp{112112112 (str)}
+\task \comp{8 (int)}
+\task \comp{17 (str)}
+\task \comp{impossible}
+\task \comp{7 (int)}
+\task \comp{b (str)}
+\task \comp{r (str)}
+\task \comp{nj (str)}
+\end{tasks}
+
+
+
+%8
+\item
+	Code 1 : \comp{a=9} \eh{3} \comp{b=2}
+	
+	\smallskip
+	Code 2 : \comp{x=2} \eh{3} \comp{y=2} \eh{3} \comp{z=6}
+	
+	\smallskip
+	Code 3 : \comp{e=16.0}
+	
+	\smallskip
+	Code 4 : \comp{res=1.25}
+
+
+
+%9
+\item
+	Code 1 : \comp{2020} (entier)
+	
+	\smallskip
+	Code 2 : \comp{40} (entier)
+	
+
+
+\clearpage
+%10
+\item
+Le programme affiche une liste de deux éléments qui sont des chaînes de caractère : \comp{[`2**3=8',`2**4=16']}
+
+
+
+%11
+\item
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=1mm]
+\item Le programme affiche le développement de $(3+X)^2$ sous forme de chaine de caractère : \comp{(3+X)$^2$=9+6x+x$^2$}.
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co11_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%12
+\item
+\begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co12_tex.py}{0.9}{}
+\end{minipage}
+
+
+
+%13
+\item
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=1mm]
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co13.1_tex.py}{0.9}{}
+\end{minipage}
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co13.2_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%14
+\item
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=1mm]
+\item Le jeu consiste à tirer au hasard un nombre entier entre 0 et 20. Si le nombre est un multiple de 5, alors on gagne, sinon on perd.
+\item Il y a 5 cas favorables (0; 5; 10 ; 15 ; 20) et 21 possibilités. La probabilité est donc de $\frac{5}{21}$.
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co14_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+\clearpage
+
+
+
+%15
+\item
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=1mm]
+\item \begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.4}
+\textbf{Variable} : N(entier)\\
+\compbf{Début}\\
+\idalgo{
+	\compbf{Afficher} "Saisir un nombre : "\\
+	\compbf{Saisir} N\\
+	\textbf{Si} N\pct 2 =0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} "PAIRE"
+	}\\
+	\textbf{Sinon}\\
+	\idalgo{
+		\textbf{Afficher} "IMPAIRE"
+	}\\
+	\textbf{FinSi}
+	}\\
+\textbf{Fin}
+\end{affichagealgorithme}\end{minipage}
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co15_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%16
+\item
+%\begin{enumerate}[label=\alph*),left=0mm,itemsep=1mm]
+%\item \begin{minipage}[t][][b]{1\textwidth}
+%\begin{affichagealgorithme}{0.6}
+%\textbf{Variable} : x(float)\\
+%\compbf{Début}\\
+%\idalgo{
+%	\compbf{Afficher} "Saisir un nombre : "\\
+%	\compbf{Saisir} x\\
+%	\textbf{Si} x $\geqslant$ 0 \textbf{Alors}\\
+%	\idalgo{
+%		\textbf{Afficher} "La valeur absolue de",x, "est :",x
+%	}\\
+%	\textbf{Sinon}\\
+%	\idalgo{
+%		\textbf{Afficher} "La valeur absolue de",x, "est :",-x
+%	}\\
+%	\textbf{FinSi}
+%	}\\
+%\textbf{Fin}
+%\end{affichagealgorithme}\end{minipage}
+%\item
+\begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co16_tex.py}{0.9}{}
+\end{minipage}
+%\end{enumerate}
+
+
+
+%17
+\item
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=1mm]
+\item \begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.8}
+\textbf{Variable} : a,b(float)\\
+\compbf{Début}\\
+\idalgo{
+	\compbf{Afficher} "Saisir les coefficient a et b (séparés par une virgule): "\\
+	\compbf{Saisir} a,b\\
+	\textbf{Si} a $\neq$ 0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} "La solution de l'équation ax+b=0 est x =",-b/a
+	}\\
+	\textbf{SinonSi} a = 0 \textbf{et} b = 0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} "Tout nombre est solution de cette équation."
+	}\\
+	\textbf{Sinon}\\
+	\idalgo{
+		\textbf{Afficher} "Cette équation n'a pas de solution."
+	}\\
+	\textbf{FinSi}
+	}\\
+\textbf{Fin}
+\end{affichagealgorithme}\end{minipage}
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co17_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%18
+\item
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=1mm]
+\item \begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.85}
+\textbf{Variable} : a,b,c,delta(float)\\
+\compbf{Début}\\
+\idalgo{
+	\compbf{Afficher} "Saisir les coefficient a, b et c (séparés par une virgule): "\\
+	\compbf{Saisir} a,b,c\\
+	delta $\leftarrow$ b**2-4*a*c\\
+	\textbf{Si} delta > 0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} "Les solutions de l'équation ax**2+bx+c=0 sont x1 =",\\
+		   (-b+delta**0.5)/(2*a), "et x2 =",(-b-delta**0.5)/(2*a))
+	}\\
+	\textbf{SinonSi} delta = 0 \textbf{et} b = 0 \textbf{Alors}\\
+	\idalgo{
+		\textbf{Afficher} "L'unique solution de l'équation ax**2+bx+c=0 est x=",(-b)/(2*a))
+	}\\
+	\textbf{Sinon}\\
+	\idalgo{
+		\textbf{Afficher} "Cette équation n'a pas de solution."
+	}\\
+	\textbf{FinSi}
+}\\
+\textbf{Fin}
+\end{affichagealgorithme}\end{minipage}
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co18_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%19
+\item\leavevmode\vspace{-\dimexpr\baselineskip+\topsep+0.5mm}% Solution pour alignement trouvée sur https://tex.stackexchange.com/questions/456914/item-number-not-aligned-with-tasks
+\begin{tasks}[label=\alph*)](2)
+%\begin{multicols}{2}
+\task 
+\begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.35}
+\textbf{Variable :} k(\cor{entier})\\
+\textbf{Début}\\
+\idalgo{
+	\textbf{Pour} \cor{k} de \cor{1} à \cor{9} \textbf{Faire}\\
+	\idalgo{
+		\textbf{Afficher} \cor{k\mul str(k)}
+	}\\
+	\textbf{FinPour}
+}\\
+\cor{Fin}
+\end{affichagealgorithme}\end{minipage}
+
+\task
+\begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.35}
+\textbf{Variable :} k(\cor{entier})\\
+\textbf{Début}\\
+\idalgo{
+	\textbf{Pour} \cor{k} de \cor{1} à \cor{9} \textbf{Faire}\\
+	\idalgo{
+		\textbf{Afficher} \cor{k\mul str(10-k)}
+	}\\
+	\textbf{FinPour}
+}\\
+\cor{Fin}
+\end{affichagealgorithme}\end{minipage}
+%\end{multicols}
+
+\task*
+\begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co19.1_tex.py}{0.45}{}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co19.2_tex.py}{0.45}{}
+\end{minipage}
+\end{tasks}
+%\clearpage
+
+
+
+%20
+\item
+\begin{enumerate}[label=\alph*)]
+\item L'algorithme initialise la variable entière $P$ à 1 puis génère une boucle sur la variable $n$ qui multiplie $P$ successivement par $n^2$ pour $n$ allant de $1$ jusqu'à $20$. \\
+On obtient finalement dans la variable $P$ le produit des 20 premiers carrés parfaits ($P=1^2\cdot 2^2\cdot\ldots\cdot 20^2$).
+
+\item  \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co20.1_tex.py}{0.9}{}
+\end{minipage}\clearpage
+
+\item\begin{minipage}[t][][b]{1\textwidth}\vspace{-5mm}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co20.2_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%21
+\item
+\begin{enumerate}[label=\alph*)]
+\item 
+\begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.5}
+\textbf{Variables :} k\;,\;j(entiers)\\
+\textbf{Début}\\
+\idalgo{
+	\textbf{Pour} k de 1 à 12 \textbf{Faire}\\
+	\idalgo{
+		\textbf{Afficher} "\textbackslash n Table de", k, "\textbackslash n"\\
+		\textbf{Pour} j de 1 à 10 \textbf{Faire}\\
+		\idalgo{
+			\textbf{Afficher} str(j)$+$"\mul"$+$str(k)$+$"$=$"+str(j\mul k)
+		}\\
+		\textbf{FinPour}
+	}\\
+	\textbf{FinPour}
+}\\
+\textbf{Fin}
+\end{affichagealgorithme}\end{minipage}
+
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co21_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%22
+\item
+\begin{enumerate}[label=\alph*),itemsep=2mm]
+\item Il faut $\displaystyle \frac{n\cdot(n+1)}{2}$ multiplications et $n$ additions pour un total de $\displaystyle \frac{n^2+3n}{2}$ opérations.
+\item Il faut $n$ multiplications et $n$ additions pour un total de $2n$ opérations.
+%\clearpage
+\item 
+\begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.8}
+\textbf{Variables :} n\;,\;k (entiers)\pvirg{1}  b\;,\;f\;,\;coef (flottants) \pvirg{1} L (liste)\\
+\textbf{Début}\\
+\idalgo{
+	\textbf{Afficher} "Quel est le degré du polynôme : "\\
+	\textbf{Saisir} n\\
+	L $\leftarrow$ [ ]\\	
+	\textbf{Pour} k de 0 à n \textbf{Faire}\\
+	\idalgo{
+		\textbf{Afficher} "Saisir le coefficient de degré", str(n-k), ":"\\
+		\textbf{Saisir} coef\\
+		\textbf{Ajouter} coef à L
+	}\\
+	\textbf{FinPour}\\
+	\textbf{Afficher} "Saisir la valeur à évaluer : "\\
+	\textbf{Saisir} b\\
+	f $\leftarrow$ L[0]\\
+	\textbf{Pour} k de 1 à n \textbf{Faire}\\
+	\idalgo{
+		f $\leftarrow$ f\mul b+L[k]
+	}\\
+	\textbf{FinPour}\\
+	\textbf{Afficher} f
+}\\
+\textbf{Fin}
+\end{affichagealgorithme}\end{minipage}
+
+
+\item \begin{minipage}[t][][b]{1\textwidth}\vspace{-5mm}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co22_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%23
+\item
+\begin{enumerate}[label=\alph*),itemsep=2mm]
+\item L'algorithme décrit un jeu dans lequel l'ordinateur choisit un nombre entier au hasard entre 1 et 20 et l'utilisateur doit deviner ce nombre. A chaque essai de l'utilisateur, l'ordinateur indique si le nombre entré par l'utilisateur est trop grand ou trop petit. Lorsque l'utilisateur à trouvé le nombre, l'ordinateur le félicite et donne le nombre d'essais effectués.
+\item La boucle \comp{TantQue} est infinie car à aucun moment on ne modifie la valeur de la variable \comp{nb}. Il faut donc demander à l'utilisateur de saisir une nouvelle valeur pour \comp{nb} juste après avoir incrémenté la valeur de \comp{essai}, mais toujours à l'intérieur de la boucle \comp{TantQue}.
+%\clearpage
+\item 
+\begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co23_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%24
+\item \begin{minipage}[t][][b]{1\textwidth}\vspace{-3mm}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co24_tex.py}{0.9}{}
+\end{minipage}
+
+
+
+%25
+\item
+\begin{enumerate}[label=\alph*),itemsep=2mm]
+\item Il s'agit d'un jeu automatique de simulation de lancé d'un dé dans lequel on gagne si on obtient un 6 et on perd dans les autres cas. L'ordinateur choisit au hasard un nombre entier \comp{n} entre 1 et 6. % puis vérifie si ce nombre est égal à 6 à l'aide d'une instruction conditionnelle.
+Si \comp{n} est un 6 alors l'ordinateur indique qu'il s'agit d'un 6, félicite l'utilisateur et le programme s'arrête. Si le nombre \comp{n} n'est pas un 6 alors l'ordinateur affiche la valeur de \comp{n} puis recommence le processus jusqu'à l'obtention d'un 6.
+
+\smallskip
+La boucle \comp{while} est construite avec une condition \guillemets{booléenne}. La variable booléenne \comp{ok} prend une valeur \comp{False} (qui n'est pas une chaîne de caractère mais bien une condition!) et la commande \comp{not} est une négation de la condition qui la suit. Ainsi [\comp{not\;False}] est VRAI et [\comp{not\;True}] est FAUSSE.\\
+Tant que la variable \comp{ok} reste fausse, la condition \comp{not\;ok} est VRAIE et la boucle se poursuit.
+
+Nous aurions obtenu le même résultat en initiant \comp{ok=True}, en omettant \comp{not} dans la condition et en modifiant \comp{ok} en \comp{False} si on obtient un 6.
+
+%\clearpage
+\item[c)] 
+\begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co25_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%26
+\item
+\begin{enumerate}[label=\alph*)]
+\item 
+\begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.85}\small
+\textbf{Variable :} pwd, lettre (ch. caractères), ok (booléen)\\
+\textbf{Début}\\
+\idalgo{
+	\textbf{Afficher} "Entrez un mot de passe : "\\
+	\textbf{Saisir} pwd\\
+	ok $\leftarrow$ False\\	
+	\textbf{TantQue} pas ok \textbf{Faire}\\
+	\idalgo{
+		\textbf{TantQue} longueur pwd < 6 \textbf{Faire}\\ 
+		\idalgo{
+				\textbf{Afficher} "Votre mot de passe doit contenir au moins 6 caractères : "\\
+				\textbf{Saisir} pwd
+		}\\
+		\textbf{FinTantQue}\\
+		\textbf{Pour} lettre dans pwd \textbf{Faire}\\
+		\idalgo{
+				\textbf{Si} lettre dans "*\#\&\%\$" \textbf{Alors}\\
+				\idalgo{
+						ok $\leftarrow$ True
+				}\\
+				\textbf{FinSi}
+		}\\
+		\textbf{FinPour}\\
+		\textbf{Si} pas ok \textbf{Alors}\\ 
+		\idalgo{
+				\textbf{Afficher} "Votre mot de passe doit contenir au moins un des caractères *\#\&\%\$ : "\\
+				\textbf{Saisir} pwd
+		}\\
+		\textbf{FinSi}
+	}\\
+	\textbf{FinTantQue}\\
+	\textbf{Afficher} "Mot de passe : ", pwd, "correct."
+}\\
+\textbf{Fin}
+\end{affichagealgorithme}\end{minipage}
+
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co26_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%27
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co27_tex.py}{0.9}{}
+\end{minipage}
+
+
+
+%28
+\item
+\begin{enumerate}[label=\alph*),itemsep=2mm]
+\item $f(-1)=2$ \et{3} $f(3)=10$.
+
+
+\item Il s'agit d'une composition de fonctions : on a\; $f=g\circ h$ \hspace{2mm}avec\hspace{2mm} $g(x)=x(x-4)+5$ \et{2} $h(x)=x+2$.
+
+\item $f(x)=x^2+1$
+
+\end{enumerate}
+
+
+
+%29
+\item \begin{enumerate}[label=\alph*),itemsep=3mm]
+\item \begin{minipage}[t][][b]{1\textwidth}
+\begin{affichagealgorithme}{0.45}
+\textbf{Fonction} sommecarre(n)\\
+\textbf{Variables locales :} S\;,\;j\;(entiers)\\
+\textbf{Début}\\
+\idalgo{
+	S $\leftarrow$ 0\\	
+	\textbf{Pour} j de 1 à n \textbf{Faire}\\
+		\idalgo{
+		 		S $\leftarrow$ S$+$n$^2$
+		}\\
+	\textbf{FinPour}\\
+	\textbf{Retourner}(S)
+}\\
+\textbf{FinFonction}
+\end{affichagealgorithme}
+\end{minipage}
+
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co29_tex.py}{0.9}{}
+\end{minipage}
+
+\item Oui, on peut utiliser la formule $\sum^{n}_{j=1}j^2=\frac{n(n+1)(2n+1)}{6}$.
+\end{enumerate}
+
+
+
+%30
+\item
+\vspace{-5mm}
+\begin{enumerate}[label=\alph*),itemsep=3mm]
+\item 
+\begin{enumerate}[label=\roman*)]
+\item \comp{fonction\_un} prend comme argument la chaîne de caractères \comp{ch} et initie la variable locale \comp{nb} à 0.
+
+\smallskip
+Puis, à l'aide d'une \boup sur chaque caractère de \comp{ch}, la fonction vérifie si ce caractère se trouve dans la chaîne  \comp{"aeiouAEIOUéàèùû"}. Si c'est le cas, la valeur de \comp{nb} est augmentée de $1$.
+
+\smallskip
+Finalement, \comp{fonction\_un} renvoie la valeur de \comp{nb} \textbf{qui correspond au nombre de voyelles contenues dans la chaîne de caractères \comp{ch}}.\clearpage
+
+
+\item \comp{fonction\_deux} prend comme argument le nombre entier \comp{n}, attribue à la variable locale \comp{nb} la valeur de \comp{n} convertie en chaine de caractères et initie la variable locale \comp{ch} en une chaîne de caractères vide.
+
+\smallskip
+A l'aide d'une \boup d'indice \comp{k} parcourant la longueur de la chaîne \comp{nb}, la fonction vérifie si le \comp{k}\textsuperscript{ème} caractère est égal au caractère \comp{0}. Si c'est le cas, la fonction colle le k\textsuperscript{ème} caractère à la suite de la chaîne \comp{ch}.
+
+\smallskip
+Finalement, \comp{fonction\_deux} renvoie la valeur de \comp{ch} sous forme d'un entier \textbf{qui est l'entier initial privé de ses chiffres 0}.
+\end{enumerate} 
+
+
+\item\begin{minipage}[t][][b]{1\textwidth}
+\vspace{-4mm}\insertcode{Chapitre_1_python/Programmes_tex/programme_co30_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate} 
+
+
+
+%31
+\item
+\begin{enumerate}[label=\alph*),itemsep=3mm]
+\item Non, il suffit de vérifier si les nombres allant de $2$ jusqu'à $\sqrt{n}$ sont des diviseurs de $n$.
+
+\item \begin{minipage}[t][][b]{1\textwidth}
+\vspace{-4mm}\insertcode{Chapitre_1_python/Programmes_tex/programme_co31_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+%32
+\item
+\begin{enumerate}[label=\alph*),itemsep=3mm]
+\item La fonction \comp{ep(n)} prend comme argument le nombre entier \comp{n}. Puis elle vérifie si ce nombre est inférieur à 1, auquel cas la fonction retourne 0.
+
+Puis \comp{ep(n)} vérifie si \comp{n} est divisible par tous les entiers supérieurs ou égaux à 2 et inférieurs ou égaux à \comp{n-1}. Si c'est le cas, la fonction retourne 0, sinon elle retourne 1. En résume, la fonction \comp{ep(n)} renvoie 1 si \comp{n} est un nombre premier et 0 sinon.
+
+\smallskip
+La partie principale du programme initie la variable locale \comp{N} à 2 et la variable locale \comp{no} à 1. Puis, à l'aide d'une \guillemets{boucle TantQue}, tant que \comp{no} (qui est le nombre de nombres premiers inférieurs à l'actuel \comp{N}) est inférieur à 2021, la variable \comp{N} augmente de 1 et \comp{no} est augmenté de 1 seulement si (la nouvelle valeur de) \comp{N} est un nombre premier. Finalement, le programme \textbf{affiche la valeur de \comp{N} qui est le 2021\textsuperscript{ème} nombre premier}.
+
+\item \begin{minipage}[t][][b]{1\textwidth}
+\insertcode{Chapitre_1_python/Programmes_tex/programme_co32_tex.py}{0.9}{}
+\end{minipage}
+\end{enumerate}
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

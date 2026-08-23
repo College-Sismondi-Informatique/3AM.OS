@@ -1,0 +1,354 @@
+% La différence entre \arabic{compteur} et \thecompteur se remarque si compteur est « lié » à un autre compteur. Un compteur est lié à un autre si ce premier est réinitialisé lorsque le second est incrémenté. Par exemple dans la classe book, les figures sont numérotées en commençant par le numéro du chapitre. Ainsi, la deuxième figure du chapitre 3 est numérotée « 3.2 », et la valeur de \arabic{figure} est alors « 2 », tandis que celle de \thefigure est « 3.2 ».
+
+%La différence étant que refstepcounter donne à la commande \ref{label} la même que \thecompteur (au lieu de \arabic{compteur}, vous suivez ?).
+
+% informations provenant de : http://blog.dorian-depriester.fr/latex/les-compteurs-sous-latex#Personnaliser_lrsquoaffichage_du_compteur
+
+
+\tcbuselibrary{theorems, skins, breakable} % Pour utiliser certaines commandes du package "tcolorbox"
+
+\usetikzlibrary{shadows}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   ENVIRONNEMENTS   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------
+%---- Labels Exercices ----
+%--------------------------
+%\newcommand{\exo}{\textbf{\textsl{Exercice \arabic{compteurexo}}} \vspace*{1mm}\\ \addtocounter{compteurexo}{1}}
+%\newcommand{\exonomme}[1]{{\bf Exercice \arabic{compteurexo} {\textsl{\small (#1)}}}\vspace*{1mm}\\  \addtocounter{compteurexo}{1}}
+%\newcommand{\exod}{\textbf{\textsl{Exercice \arabic{compteurexo}*}} \vspace*{1mm}\\ \addtocounter{compteurexo}{1}}
+%\newcounter{compteurexo}
+\newenvironment{exercice}
+	{         
+		\begin{minipage}{1\linewidth}
+			{\textbf{\textsl{Exercice \arabic{compteurexo}}}}
+			
+                			\vspace{2mm}\hspace{5mm}
+                			\begin{minipage}{0.93\linewidth}\setlength{\baselineskip}{1.2\baselineskip}
+                			
+    }
+	{                		
+                			\par \end{minipage}
+                		\end{minipage}
+		\refstepcounter{compteurexo}
+	}
+	
+	
+\newenvironment{exercicedif}
+	{         
+		\begin{minipage}{1\linewidth}
+			{\textbf{\textsl{Exercice \arabic{compteurexo}*}}}
+			
+                			\vspace{2mm}\hspace{5mm}
+                			\begin{minipage}{0.93\linewidth}\setlength{\baselineskip}{1.2\baselineskip}
+                			
+    }
+	{                		
+                			\par \end{minipage}
+                		\end{minipage}
+		\refstepcounter{compteurexo}
+	}
+
+
+
+
+
+%--------------------------
+%---- Labels Solutions ----
+%--------------------------
+\newcommand{\solu}{\textbf{\textsl{Solution exercice \arabic{compteursolution}}} \vspace*{2mm}\\ \addtocounter{compteursolution}{1}}
+\newcounter{compteursolution}
+\newenvironment{solution}
+	{         
+		\begin{minipage}{1\linewidth}
+			{\textbf{\textsl{Solution exercice \arabic{compteursolution}}}}
+			
+                			\vspace{3mm}\hspace{5mm}
+                			\begin{minipage}{0.93\linewidth}\setlength{\baselineskip}{1.2\baselineskip}
+                			
+    }
+	{                		
+                			\par \end{minipage}
+                		\end{minipage}
+		\refstepcounter{compteursolution}
+	}
+	
+	
+	
+	
+%%-----------------------------------------------------
+%%---- Affichage PYTHON : en encadré sur fond gris ----
+%%-----------------------------------------------------
+%\newenvironment{affichage}[1]
+%	{
+%%         \begin{center}%
+%            \begin{tikzpicture}%
+%                \node[rectangle, draw=black, fill=lightgray, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+%                		\begin{minipage}[t][][b]{#1\linewidth}\comp\bgroup
+%
+%    }
+%	{                		
+%                		\egroup\end{minipage}\egroup;%
+%            \end{tikzpicture}%
+%%         \end{center}%
+%	}
+
+
+
+
+
+
+
+
+%---------------------
+%---- Indications ----
+%---------------------
+\newcommand{\indication}[2]{\footnotesize\textit{(\textbf{Indication :} \begin{minipage}[t]{#1\linewidth} #2)\end{minipage}}}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%  CODE POUR ENTRER DIRECTEMENT DES FICHIERS PYTHON  %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbuselibrary{skins,breakable}
+\usepackage{iftex}
+% définition de \myinputlisting
+\ifPDFTeX
+  \usepackage{listingsutf8}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting[inputencoding=utf8/latin1]{#1}
+  }
+\else
+  \usepackage{listings}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting{#1}
+  }
+\fi
+%% les languages de programation utilisés
+%\newcommand{\Python}{\texttt{Python}}
+%\newcommand{\Sage}{\texttt{Sage}}
+%% personalisations pour Python et Sage
+%% la package 'textcomp' est necessaire pour 'upquote=true' (il est automatiquement chargé par fancybox, mais fancybox arrive plus tard)
+\usepackage{textcomp}
+\lstset{
+  language=Python,
+  upquote=true,
+  columns=flexible,
+  keepspaces=true,
+  basicstyle=\ttfamily,
+  commentstyle=\color{gray},
+  showspaces=false,
+  showstringspaces=false
+}
+\lstdefinelanguage{Python}{morestring=[b]"}
+
+\tcbset{
+    algostyle/.style={enhanced, colback=white, colframe=gray!70, 
+           fonttitle=\bfseries, boxrule=1pt,
+           colbacktitle=Red!100,
+           %coltitle=white,
+           drop fuzzy shadow,  
+           top=2mm,
+           boxed title style={colframe=white!80!blue}
+          % boxed title style={sharp corners},
+           attach boxed title to top left={xshift=0.5cm,yshift=-3.5mm},%
+           }, 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newtheoremstyle{algorithmes}% name
+%{3pt}% Space above
+%{3pt}% Space below
+%{\ttfamily}% Body font
+%{}% Indent amount
+%{\bfseries}% Theorem head font
+%{.\newline}% Punctuation after theorem head
+%{5pt}% Space after theorem head
+%{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+%
+%
+%\theoremstyle{algorithmes}
+%\newtheorem{algo}{Code}
+%\tcolorboxenvironment{algo}{algostyle}
+%
+%% Algorithmes
+%% bloque de code (\insertcode)
+%\newcommand{\insertcode}[3] % #1:chemin d'accès %%% #2:nom du code %%% #3:largeur de la box
+%{
+%\begin{minipage}[t][][b]{#3\textwidth}
+%\begin{algo}[{\sl{\color{gray}#2}}]
+%\myinputlisting{#1}  
+%\end{algo}
+%\end{minipage}
+%}
+%
+%
+%\newcommand{\insertcodesansnom}[2]{
+%\begin{minipage}[t][][b]{#2\textwidth}
+%
+%
+%\begin{algo}
+%\myinputlisting{#1}  
+%\end{algo}
+%\end{minipage}
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newtcbtheorem[no counter]{CodePython}{Code}{
+lower separated=true,
+colback=gray!20,
+colframe=white,
+colbacktitle=gray!60,
+coltitle=black,
+enhanced,
+top=3mm,
+bottom=-2mm,
+%before=\hspace*{-5mm},
+%after=\hspace*{-5mm},
+boxed title style={colframe=white},
+attach boxed title to top left={xshift=0.3cm,yshift=-4mm},
+ }{def}
+ 
+\newcommand{\insertcode}[3]{
+\begin{minipage}[t][#3]{#2\textwidth}
+\begin{CodePython}{}{}
+\begin{minipage}[t][#3]{\textwidth}
+\myinputlisting{#1} 
+\end{minipage} 
+\end{CodePython}
+\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---- Affichage PYTHON : en encadré sur fond gris ----
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{compteurprogramme}
+\setcounter{compteurprogramme}{1}
+\newenvironment{affichage}[2][]
+	{
+%         \begin{center}%
+            \begin{tikzpicture}%
+                \node[rectangle, draw=black, fill=gray!20, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+                		\begin{minipage}[t][#1][b]{#2\linewidth}%\textbf{Programme P\arabic{compteurprogramme}}
+
+%\medskip
+\comp\bgroup
+
+    }
+	{                		
+                		\egroup\end{minipage}\egroup;%
+            \end{tikzpicture}\stepcounter{compteurprogramme}%
+%         \end{center}%
+	}
+
+
+\newcounter{compteuralgorithme}
+\setcounter{compteuralgorithme}{0}
+\newenvironment{affichagealgorithme}[2][]
+	{
+%         \begin{center}%
+            \begin{tikzpicture}%
+                \node[rectangle, draw=black, fill=white, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+						\refstepcounter{compteuralgorithme}                		
+                		\begin{minipage}[t][#1][b]{#2\linewidth}%\textbf{Algorithme \arabic{compteuralgorithme}}
+
+%\medskip
+\comp\bgroup
+
+    }
+	{                		
+                		\egroup\end{minipage}\egroup;%
+            \end{tikzpicture}%
+%         \end{center}%
+	}
+
+
+%\newenvironment{idalgo}
+%	{
+%		\setlength{\arrayrulewidth}{2pt}\begin{tabular}{|l}
+%	}
+%	{
+%	\end{tabular}
+%	}
+
+\newcommand{\idalgo}[1]{
+		\setlength{\arrayrulewidth}{2pt}	
+		\begin{minipage}{\textwidth}
+%		\renewcommand{\arraystretch}{2.5}
+		\vspace*{1.8mm}	
+		\begin{tabular}{|l}
+					\vspace*{2mm}\begin{minipage}{\textwidth}\setstretch{1.15}
+				#1
+			\end{minipage}
+			\end{tabular}
+			\end{minipage}
+		}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   COMMANDES PARAMETREES   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\fig}[1]{\begin{center} {\textbf{\textit{ Figure \thechapter.\thenfigure : }}}{\footnotesize{\it #1}\stepcounter{nfigure}}\end{center}} %la commande "the(compteur)" permet d'afficher ou en est le comteur.
+%\newenvironment{remarque}[1]{{\bf Remarque \thechapter.\thecompteurthm\;: }\\ \hspace*{1.1cm}\begin{minipage}{0.9\textwidth}{\vspace*{2mm} #1}\end{minipage}\stepcounter{compteurthm}}
+
+%%---- Choses semi-importantes (formules ou autres) en encadré ----
+%\newenvironment{encadre}[2]{\begin{center}\fbox{\begin{minipage}{#1\textwidth}{\begin{center}#2\end{center}}\end{minipage}}\end{center}}
+%
+%\newcounter{nfigure}%[chapter] % Ici on définit un nouveau compteur associé au compteur "chapter", i.e. quand "chapter" augmente de niveau, "nfigure" est remis à zéro.
+%\newcommand{\fig}[1]{\begin{center} {\textbf{\textit{ Figure \thechapter.\thenfigure : }}}{\footnotesize{\it #1}\stepcounter{nfigure}}\end{center}} %la commande "the(compteur)" permet d'afficher ou en est le comteur.
+%\setcounter{nfigure}{1}
+
+
+
+
+
+
+
+
+
+%\newenvironment{changemargin}[2]{\begin{list}{}{%
+%\setlength{\topsep}{0pt}%
+%\setlength{\leftmargin}{0pt}%
+%\setlength{\rightmargin}{0pt}%
+%\setlength{\listparindent}{\parindent}%
+%\setlength{\itemindent}{\parindent}%
+%\setlength{\parsep}{0pt plus 1pt}%
+%\addtolength{\leftmargin}{#1}%
+%\addtolength{\rightmargin}{#2}%
+%}\item }{\end{list}}
+
+
+
+
+
+
+
+
+
+
+
+%}

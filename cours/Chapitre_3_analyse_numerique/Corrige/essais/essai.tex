@@ -1,0 +1,234 @@
+\documentclass[11pt,a4paper,twoside]{report}
+\usepackage[french]{babel} 
+\usepackage[svgnames,table]{xcolor}   % Permet de définir des nouvelles couleurs (peut-être aussi d'utiliser les couleurs en général)
+\usepackage[charter]{mathdesign} % Pour avoir des polices en mathdesign
+\usepackage{tcolorbox}
+\usepackage{amsthm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   PACKAGES   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{../../../../../Preambules_Latex/Packages}
+%\usepackage{shortlst}
+%\usepackage{paralist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   ENVIRONNEMENTS   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{../../../../../Preambules_Latex/Environnements_reponses}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%   MISE EN PAGE ; COULEURS ; POLICES    %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{../../../../../Preambules_Latex/Mise_en_page_reponses}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%     COMMANDES      %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{../../../../../Preambules_Latex/Commandes}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%     COMMANDES      %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\input{En-tete_et_pied}
+
+
+
+%\hypersetup{
+%bookmarks=true,         % show bookmarks bar?
+%unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+%pdftoolbar=true,        % show Acrobat’s toolbar?
+%pdfmenubar=true,        % show Acrobat’s menu?
+%pdffitwindow=true,      % page fit to window when opened
+%pdftitle={Trigonométrie du triangle quelconque},    % title
+%pdfauthor={Guilherme Vorpe},     % author
+%pdfsubject={Cours de 2ème année au collège de Genève},   % subject of the document
+%pdfnewwindow=true,      % links in new window
+%pdfkeywords={trigonométrie, triangle, quelconque, résolution triangles}, % list of keywords
+%colorlinks=true,       % false: boxed links; true: colored links
+%linkcolor=red,          % color of internal links
+%citecolor=green,        % color of links to bibliography
+%filecolor=magenta,      % color of file links
+%urlcolor=cyan           % color of external links
+%}
+
+
+
+
+
+\title{Cours d'Analyse Numérique}
+\author{Guilherme Vorpe}
+\date{2019-2020}
+
+
+\everymath{\displaystyle}
+
+
+
+\setcounter{chapter}{4}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%  CODE POUR ENTRER DIRECTEMENT DES FICHIERS PYTHON  %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbuselibrary{skins,breakable}
+\usepackage{iftex}
+% définition de \myinputlisting
+\ifPDFTeX
+  \usepackage{listingsutf8}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting[inputencoding=utf8/latin1]{#1}
+  }
+\else
+  \usepackage{listings}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting{#1}
+  }
+\fi
+%% les languages de programation utilisés
+%\newcommand{\Python}{\texttt{Python}}
+%\newcommand{\Sage}{\texttt{Sage}}
+%% personalisations pour Python et Sage
+%% la package 'textcomp' est necessaire pour 'upquote=true' (il est automatiquement chargé par fancybox, mais fancybox arrive plus tard)
+\usepackage{textcomp}
+\lstset{
+  language=Python,
+  upquote=true,
+  columns=flexible,
+  keepspaces=true,
+  basicstyle=\ttfamily,
+  commentstyle=\color{gray},
+  showspaces=false,
+  showstringspaces=false
+}
+\lstdefinelanguage{Python}{morestring=[b]"}
+
+
+
+
+
+
+
+
+
+
+
+\tcbset{
+	semiboxedshadow/.style 2 args={
+			enhanced, colback=gray!20, colframe=gray!10,rounded corners, arc=3mm, left=4mm,top=4mm, bottom=3mm,%boxrule=0pt,
+			%borderline west={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			%borderline south={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			fuzzy shadow={-1.5mm}{-1.5mm}{0mm}{0.3mm}{fill=black,opacity=0.25},			
+			%drop fuzzy shadow,
+			after skip=5mm
+			},
+	leftlined/.style 2 args={
+			blanker, breakable,
+			borderline west={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			},
+    exstyle/.style={enhanced, colback=Indigo!5, colframe=Indigo, 
+           fonttitle=\bfseries, 
+           colbacktitle=Indigo, coltitle=white,  
+           top=2mm,
+           boxed title style={},
+           attach boxed title to top left={yshift=-\tcboxedtitleheight/2,xshift=4mm}%
+           },
+    teostyle/.style={enhanced, colback=white, colframe=White, 
+           fonttitle=\bfseries, sharp corners, boxrule=0pt,
+           colbacktitle=Red!100, coltitle=white,
+           drop fuzzy shadow,  
+           top=2mm,
+           boxed title style={sharp corners},
+           attach boxed title to top left={}%
+           },
+	indented/.style={
+			breakable,left=#1, colback=white, colframe=white,
+			%borderline west={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+           },
+    algostyle/.style={colback=white, colframe=gray!70, 
+           fonttitle=\bfseries, boxrule=1pt,
+           colbacktitle=Red!100, coltitle=white,
+           drop fuzzy shadow,  
+           top=2mm,
+           boxed title style={sharp corners},
+           attach boxed title to top left={}%
+           }, 
+}
+
+\newtheoremstyle{amoi}% name
+{3pt}% Space above
+{3pt}% Space below
+{\ttfamily}% Body font
+{}% Indent amount
+{\bfseries}% Theorem head font
+{.\newline}% Punctuation after theorem head
+{0pt}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+
+\theoremstyle{amoi}
+\newtheorem{algo}{Code}
+\tcolorboxenvironment{algo}{algostyle}
+
+% Algorithmes
+% bloque de code (\insertcode)
+\newcommand{\insertcode}[3]{
+\begin{minipage}[t][][b]{#3\textwidth}
+\begin{algo}[{\sl{\color{gray}#2}}]
+\myinputlisting{#1}  
+\end{algo}
+\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+%\usepackage{showframe}
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+
+
+\insertcode{dichotomie_precision.py}{dichotomie\_precision.py}{0.58}
+
+
+\begin{algo}[{\sl{\color{gray}dichotomie\_precision.py}}]
+\myinputlisting{dichotomie_precision.py}  
+\end{algo}
+
+\begin{algo}[{\sl{\color{gray}dichotomie\_precision.py}}]
+gfsgh 
+\end{algo}
+
+
+\myinputlisting{dichotomie_precision.py} 
+\end{document}
+
+
+
+
+
+
+
+
+
+

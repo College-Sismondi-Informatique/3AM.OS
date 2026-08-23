@@ -1,0 +1,168 @@
+
+\documentclass[11pt,a4paper,twoside,greek]{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   PACKAGES   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Preambules_Latex/Packages}
+%\usepackage{scrextend}
+%\usepackage[hang]{footmisc}
+\usepackage{colortbl}
+\usepackage{witharrows}
+%\usepackage[french,greek]{babel}
+\usepackage{relsize,exscale}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{positioning,calc}
+\usetikzlibrary{matrix,positioning}
+\usepackage{fancybox}
+\usepackage{textgreek}
+\usepackage{icomma}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   ENVIRONNEMENTS   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Preambules_Latex/Environnements}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%   MISE EN PAGE ; COULEURS ; POLICES    %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Preambules_Latex/Mise_en_page_theorie}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%     COMMANDES      %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Preambules_Latex/Commandes}
+\newcommand{\public}[1]{\textcolor{ForestGreen}{#1}}
+\newcommand{\prive}[1]{\textcolor{DarkRed}{#1}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%     EN-TETE ET PIED      %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\titrechapitre}{Notion de limite}
+\input{En-tete_et_pied}
+
+
+
+
+\hypersetup{
+bookmarks=true,         % show bookmarks bar?
+unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+pdftoolbar=true,        % show Acrobat’s toolbar?
+pdfmenubar=true,        % show Acrobat’s menu?
+pdffitwindow=true,      % page fit to window when opened
+pdftitle={Brochure AM - 3ème},    % title
+pdfauthor={Guilherme Vorpe et Mathieu Schiess},     % author
+pdfsubject={Cours de 3ème année au collège de Genève},   % subject of the document
+pdfnewwindow=true,      % links in new window
+pdfkeywords={géométrie, vectorielle, collège, Genève, produit scalaire, déterminant, projection, plan, espace}, % list of keywords
+colorlinks=true,       % false: boxed links; true: colored links
+linkcolor=red,          % color of internal links
+citecolor=green,        % color of links to bibliography
+filecolor=magenta,      % color of file links
+urlcolor=cyan           % color of external links
+}
+
+
+
+
+
+\title{Cours de 3ème année Application des Mathématiques}
+\author{Mathieu Schiess adapté du cours de Guilherme Vorpe}
+\date{2026-2027}
+
+
+\everymath{\displaystyle}
+%\setcounter{chapter}{3}
+\hyphenpenalty=1000
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+%\maketitle
+
+%\deffootnote{0em}{1.6em}{\thefootnotemark.\enskip}	% Pour aligner les notes en bas de page sur plusieurs lignes. -> nécessite le package \usepackage{scrextend}
+
+
+
+%\chapter{Programmation en Python}
+%\renewcommand{\titrechapitre}{Programmation en Python}
+%\thispagestyle{fancy}
+%\colorlet{couleurchapitre}{gray!75!black}%blue!60!black
+%\input{Chapitre_1_python/a.intro_python}
+%\newpage
+%~
+%\newpage
+
+
+
+\setcounter{chapter}{0}
+\chapter{Arithmétique}
+\renewcommand{\titrechapitre}{Arithmétique}
+\thispagestyle{fancy}
+\colorlet{couleurchapitre}{purple!60!black}
+\setcounter{compteurexo}{0}
+\setcounter{compteuremarque}{1}
+\setcounter{page}{19}
+%\input{Chapitre_2_arithmetique/a.premisses}
+\input{Chapitre_2_arithmetique/b.bases_arithmetique}
+\input{Chapitre_2_arithmetique/f.congruences}
+\input{Chapitre_2_arithmetique/c.theoreme_bezout}
+\input{Chapitre_2_arithmetique/d.nombres_premiers}
+\input{Chapitre_2_arithmetique/e.equations_diophantiennes}
+
+\newpage
+~
+\newpage
+\fancyhead[CO,CE]{\sc Réponses C-\thechapter\hspace{0.5mm}}
+%\thispagestyle{fancy}
+%\columnsep=40pt
+%\raggedcolumns
+%\begin{multicols*}{2}
+%\raggedcolumns
+%\columnseprule=1.pt
+%\renewcommand{\columnseprulecolor}{\color{gray}}
+\fontsize{10}{12}\selectfont
+\input{Chapitre_2_arithmetique/g.CORRECTIONS-arithmetique}
+%\end{multicols*}
+\fontsize{11}{12}\selectfont
+
+
+
+%\setcounter{chapter}{1}
+%\chapter{Analyse Numérique}
+%\renewcommand{\titrechapitre}{Analyse Numérique}
+%\thispagestyle{fancy}
+%\colorlet{couleurchapitre}{green!30!black}
+%\setcounter{compteurexo}{1}
+%\setcounter{compteuremarque}{1}
+%\setcounter{page}{45}
+%\input{Chapitre_3_analyse_numerique/a.introduction}
+%\input{Chapitre_3_analyse_numerique/b.methode_bissection}
+%\input{Chapitre_3_analyse_numerique/c.methode_newton}
+%\input{Chapitre_3_analyse_numerique/d.methode_point_fixe}
+%\newpage
+%~
+%\newpage
+%\fancyhead[CO,CE]{\sc Réponses C-\thechapter\hspace{0.5mm}}
+%\fontsize{10}{12}\selectfont
+%\input{Chapitre_3_analyse_numerique/f.CORRECTIONS-analyse_numerique}
+%\fontsize{11}{12}\selectfont
+
+
+\end{document}

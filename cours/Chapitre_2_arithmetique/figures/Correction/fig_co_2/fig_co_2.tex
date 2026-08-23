@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{pstricks,pst-plot,pstricks-add}
+\usepackage{pst-func}
+\usepackage{pst-eucl}
+\definecolor{cgrille}{gray}{0.3}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\newcommand{\degre}{\ensuremath{^\circ} }
+
+%\uput{distance}[direction]{rotation}(x,y){texte}
+%\pstMarkAngle[linecolor=red, arrows=->]{B}{A}{C}{$\gamma$} Permet de marquer les angles!
+%	Option a mettre entre [] :
+%		LabelSep : (1 unité par défaut) 
+%		MarkAngleRadius : Rayon pour marquer les angles
+
+\begin{document}
+\psset{yunit=1cm,xunit=1cm
+,plotpoints=1000,algebraic=true,
+subgriddiv=1, griddots=5, gridlabels=0pt,
+labels=all, labelFontSize=\tiny , ticks=all, ticksize=3pt , tickstyle=full,  Dy=1,Dx=1}
+\begin{pspicture*}(0,-1)(6,4)
+%\psgrid[subgriddiv=1,griddots=7,gridlabels=0pt](0,-1)(10,4)
+%\psaxes[Dy=1, Dx=1, labelFontSize=\scriptstyle]{->}(0,0)(10,4)
+\uput{0}[0]{0}(0,3.5){$9945=3\cdot \boxed{3003}+\boxed{936}$}
+\psline{->}(1.6,3.28)(0.5,2.8)
+\psline{->}(2.95,3.28)(2,2.8)
+\uput{0}[0]{0}(0,2.5){$3003=3\cdot \boxed{936}+\boxed{195}$}
+\psline{->}(1.6,2.28)(0.5,1.8)
+\psline{->}(2.8,2.28)(2,1.8)
+\uput{0}[0]{0}(0,1.5){$\phantom{1}936=4\cdot \boxed{195}+\boxed{156}$}
+\psline{->}(1.6,1.28)(0.5,0.8)
+\psline{->}(2.8,1.28)(2,0.8)
+\uput{0}[0]{0}(0,0.5){$\phantom{1}195=1\cdot \boxed{156}+\boxed{39}$}
+\psline{->}(1.6,0.28)(0.5,-0.2)
+\psline{->}(2.8,0.28)(2,-0.2)
+\uput{0}[0]{0}(0,-0.5){$\phantom{1}156=4\cdot \boxed{39}+\boxed{0}$}
+\psline{->}(3.38,0.5)(3.8,0.5)
+\uput{0}[0]{0}(3.85,0.5){\begin{minipage}{3cm}\footnotesize Dernier reste\\  non-nul\end{minipage}}
+\end{pspicture*}
+\end{document}

@@ -1,0 +1,182 @@
+\documentclass{standalone}
+\usepackage[svgnames]{xcolor} % appeler le package avant les autres !
+\usepackage{pstricks,pst-plot,pstricks-add,pst-3dplot}
+\usepackage{pst-func}
+\usepackage{pst-eucl,pst-calculate}
+\usepackage{amsmath}
+\usepackage{bm}
+\definecolor{cgrille}{gray}{0.3}
+\definecolor{foncred}{RGB}{213,35,35}
+\definecolor{foncblue}{RGB}{65,113,162}
+\definecolor{foncgreen}{RGB}{100,162,65}
+\definecolor{foncpurple}{RGB}{121,78,200}
+\definecolor{foncyellow}{RGB}{187,182,56}
+
+
+
+\begin{document}
+\psset{showpoints=false, % affichage des points
+	   dotstyle=*, % style de point
+	   dotsize=3pt, % taille de point
+	   linewidth=1.5pt, % épaisseur des traits
+	   subgriddiv=1, % grille divisée aux unités
+	   griddots=8, % nombre de points sur le cot´e du carreau
+	   subgriddots=10,
+	   gridlabels=0pt, % taille des étiquettes
+	   gridwidth=0.6pt, % épaisseur du trait de quadrillage
+	   xunit=1cm, % facteur d'unité en abscisse
+	   yunit=1cm, % facteur d'unité en ordonnée
+	   runit=1cm, % facteur d'unité en radial
+	   gridcolor=darkgray,
+	   subgridcolor=darkgray,
+	   algebraic=true} % couleur de la grille	            % psset est placé à l'intérieur de "figure" pour que les paramètres restent locaux.
+\begin{pspicture}(-2,-2.5)(5,3)
+%\psgrid(0,0)(0,-3)(5,3)
+\psaxes[linewidth=0.8pt,labels=none,ticksize=3pt,ticks=none,labels=none,labelFontSize=\scriptstyle]{->}(0,0)(0,-3)(5,3)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pstGeonode[PointName=none, PointSymbol=none](1,0){D}
+%\pstGeonode[PointName=none, PointSymbol=none](2,-1.5){E}
+%\pstGeonode[PointName=none, PointSymbol=none](4,-1.5){F}
+%\pstGeonode[PointName=none, PointSymbol=none](5.5,0){G}
+%\pstGeonode[PointName=none, PointSymbol=none](8,2.5){H}
+%\pstGeonode[PointName=none, PointSymbol=none](8,0){I}
+%\pspolygon[fillstyle=hlines,hatchcolor=gray,hatchsep=1pt,linestyle=solid,linewidth=0.5pt](A)(B)(C)(D)
+%\pspolygon[fillstyle=hlines,hatchcolor=gray,hatchsep=1pt,linestyle=solid,linewidth=0.5pt](D)(E)(F)(G)
+%\pspolygon[fillstyle=hlines,hatchcolor=gray,hatchsep=1pt,linestyle=solid,linewidth=0.5pt](G)(H)(I)
+%\psline[linecolor=red](-3,1)(-1,3)(2,-1.5)(4,-1.5)(8.5,3)
+%\uput{1.2mm}[90]{45}(6,0.8){\textcolor{red}{$y=f(x)$}}
+
+%\uput{distance}[direction]{rotation}(x,y){texte}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\f{-0.2*(x+0.5)*(x-2.5)*(x-6)}
+
+
+%%\psplot[linecolor=red]{-1.8}{3.8}{\f}
+%\psplot[linecolor=red,linestyle=dashed,dash= 3pt 2pt]{-4}{2}{\f}
+%%\psplot[linecolor=red,linestyle=dashed,dash= 3pt 2pt]{3.8}{4}{\f}
+%\uput{1mm}[153]{63.45}(2,2){\small \textcolor{red}{$\bm{y=f(x)}$}}
+
+
+
+\psplot[linestyle=solid,linewidth=1.5pt,linecolor=foncred,plotpoints=200,arrows=c-c]{0.2}{4.1}{\f}
+%\psplot[linestyle=dashed, dash= 3pt 3pt,linewidth=1.5pt,linecolor=foncred,plotpoints=200]{0.2}{0.5}{\f}
+%\psplot[linestyle=dashed, dash= 3pt 3pt,linewidth=1.5pt,linecolor=foncred,plotpoints=200]{3.5}{4.1}{\f}
+\uput{1mm}[90]{0}(4,2){\textcolor{foncred}{\footnotesize $\bm{f}$}}
+\newcommand{\fa}{-2.2}
+\newcommand{\fb}{2}
+\psline[linewidth=1pt,linecolor=foncblue,linestyle=dashed, dash=4pt 2pt](0.5,0)(0.5,\fa)(0,\fa)
+\psline[linewidth=1pt,linecolor=foncblue,linestyle=dashed, dash=4pt 2pt](3.5,0)(3.5,\fb)(0,\fb)
+\psline[linewidth=1.3pt,linecolor=black,linestyle=solid, dash=4pt 2pt](0.5,-0.1)(0.5,0.1)
+\psline[linewidth=1.3pt,linecolor=black,linestyle=solid, dash=4pt 2pt](-0.1,\fa)(0.1,\fa)
+\psline[linewidth=1.3pt,linecolor=black,linestyle=solid, dash=4pt 2pt](3.5,-0.1)(3.5,0.1)
+\psline[linewidth=1.3pt,linecolor=black,linestyle=solid, dash=4pt 2pt](-0.1,\fb)(0.1,\fb)
+\uput{2mm}[90]{0}(0.5,0){\textcolor{foncblue}{$a$}}
+\uput{2mm}[180]{0}(0,\fa){\textcolor{foncblue}{$f(a)<0$}}
+\uput{2mm}[-90]{0}(3.5,0){\textcolor{foncblue}{$b$}}
+\uput{2mm}[180]{0}(0,\fb){\textcolor{foncblue}{$f(b)>0$}}
+
+%\newcommand{\couleurmilieu}{gray!80!black}
+%\newcommand{\fm}{-1}
+%\psline[linewidth=1pt,linecolor=\couleurmilieu,linestyle=dashed, dash=4pt 2pt](2,0)(2,\fm)(0,\fm)
+%\psline[linewidth=1.3pt,linecolor=black,linestyle=solid, dash=4pt 2pt](2,-0.1)(2,0.1)
+%\psline[linewidth=1.3pt,linecolor=black,linestyle=solid, dash=4pt 2pt](-0.1,\fm)(0.1,\fm)
+%\uput{2mm}[90]{0}(2,0){\textcolor{\couleurmilieu}{$\frac{a+b}{2}$}}
+%\uput{2mm}[180]{0}(0,\fm){\textcolor{\couleurmilieu}{$f(\frac{a+b}{2})$}}
+
+
+
+
+
+
+
+
+
+
+%\pstGeonode[PosAngle=90, PointNameSep=4mm, dotscale=1.5](-4,4.5){S_1}
+%\pstGeonode[PosAngle=-45, PointNameSep=4mm, dotscale=1.5](0,-0.5){S_2}
+%\pstGeonode[PosAngle=45, PointNameSep=4mm, dotscale=1.5](-2,2){I}
+
+
+%\psset{yunit=0.65cm,xunit=0.65cm,gridcolor=cgrille}
+%\begin{pspicture*}(-6,-4.2)(6,8)
+%\psgrid[subgriddiv=1,griddots=9,gridlabels=0pt](-5,-4)(5,7)
+%\psaxes[Dy=1, Dx=1, labelFontSize=\scriptstyle]{->}(0,0)(-5,-4)(5,7)
+%\psplot[linestyle=dashed]{-4.8}{5}{0.666666666 x exp}
+%\psplot{-5}{5}{1.2 x exp}
+%\psplot[linestyle=dotted,linewidth=2.5pt]{-1.7}{1.91}{x 3 exp}
+%\rput[90]{-68}(-3.8,5.5){$y=f_1(x)$}
+%\rput[90]{17}(3,2.1){$y=f_2(x)$}
+%\rput[90]{84}(1.4,5.5){$y=f_3(x)$}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Colors = red   blue   teal   purple
+%\pscustom[fillstyle=hlines,hatchcolor=gray,hatchsep=1pt,linestyle=solid,linewidth=0.5pt]
+%{
+%\psplot[linecolor=red]{2}{4}{\g} % courbe de f sur [a;b]
+%\psplot[linecolor=red]{4}{2}{\f} % courbe de g sur [b;a] (pour rejoindre le "current point" de la prochaine commande, pscustom repasse encore une fois sur ce trait - de manière invisible)
+%%\psplot[linecolor=red]{4}{6}{\f} % courbe de f sur [c;d]
+%%\psplot[linecolor=red]{6}{4}{\g} % courbe de f sur [c;d]
+%}
+%\psplot[linecolor=red]{1}{6}{\f}
+%\psplot[linecolor=blue]{-1}{5}{\g} % linestyle=dashed, dash=6pt 3pt,
+%\psline[linecolor=darkgray,linestyle=dashed, dash=6pt 3pt](4,-1)(4,6)
+%\uput{1.2mm}[90]{-12}(5,1.2){\textcolor{red}{$\boldsymbol{y=f(x)}$}}
+%\uput{1.2mm}[135]{45}(1,2){\textcolor{blue}{$\boldsymbol{y=g(x)}$}}
+%\uput{1.4mm}[180]{90}(4,0.6){\textcolor{darkgray}{$\boldsymbol{x=4}$}}
+
+
+%\def\h{(x-2)^2+1}
+%\pscustom[fillstyle=hlines,hatchcolor=gray,hatchsep=1pt,linestyle=solid,linewidth=0.5pt]
+%{
+%\psplot[linecolor=red]{0.5}{2.68}{\f} % courbe de f sur [a;b]
+%\psplot[linecolor=red]{2.68}{0.5}{\h} % courbe de f sur [a;b]
+%}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\psline(0,6)(8,0)
+%\pspolygon[linearc=0.01,fillstyle=vlines,hatchangle=-65,hatchcolor=red](4.5,6)(2.88,3.84)(8,0)
+%\pstGeonode[PosAngle=-135](0,0){A}
+%\pstGeonode[PosAngle=-45](6,0){B}
+%\pstGeonode[PosAngle=90](5,4){C}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\pspolygon[fillstyle=solid,fillcolor=white](A)(B)(C)
+%\pstGeonode[PointName=none, PointSymbol=none](7,6){D}
+%\uput{1.2mm}[-120](1,0){$A$}
+%\uput{1.2mm}[-45](8,0){$B$}
+%\uput{1.2mm}[160](0,6){$C$}
+%\uput{0.2mm}[0](5.8,2){$a$}
+%\uput{0.2mm}[0](2,2.2){$b$}
+%\uput{0.2mm}[0](3,-0.4){$c$}
+%\psGetAngleABC[LabelSep=0.8,WedgeColor=lightgray,MarkAngleRadius=0.7](B)(A)(C){$\alpha$}
+%\psGetAngleABC[LabelSep=0.8,WedgeColor=lightgray,MarkAngleRadius=0.7](C)(B)(A){$\beta$}
+%\psGetAngleABC[LabelSep=0.8,WedgeColor=lightgray,MarkAngleRadius=0.7](A)(C)(B){$\gamma$}
+%%\psline(2.63,3.51)(2.55,4.09)
+%\psline(2.55,4.09)(3.13,4.17)
+%\psline(0,5.55)(0.45,6)
+%\psline(0,0.45)(0.45,0)
+\end{pspicture}
+\end{document}

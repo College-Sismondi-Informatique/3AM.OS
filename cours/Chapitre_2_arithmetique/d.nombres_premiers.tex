@@ -1,0 +1,270 @@
+\section{Nombres premiers}
+
+Les nombres premiers sont une notion de base en arithmétique. Ils forment en quelque sorte les \guillemets{briques} qui permettent de construire, par multiplication, l'ensemble de tous les nombres naturels. 
+
+
+
+
+\medskip
+
+
+
+\begin{definition}
+On dit qu'un nombre positif $n$ est \textbf{premier} s'il possède exactement deux diviseurs.
+
+\medskip
+En d'autres mots, ce sont tous les nombres entiers $\geqslant 2$ et divisibles uniquement par 1 et lui-même.
+\end{definition}
+
+\begin{exemple}
+2 ; 3 ; 5 ; 7 ; 11 sont des nombres premiers alors que 4 ; 6 ; 8 ; 9 ne le sont pas.
+\end{exemple}
+
+
+\smallskip
+Nous savons depuis l'antiquité (et le génial Euclide) qu'il existe une infinité de nombres premiers. Le \textit{théorème fondamental de l'arithmétique} assure de plus que tout nombre entier se factorise de manière unique (à l'ordre près) en un produit de nombres premiers.
+
+\smallskip
+Il est intéressant de remarquer qu'il n'existe à ce jour aucune manière \guillemets{efficace} de savoir si un nombre est premier\footnote{On parle bien entendu ici de nombres comportant de milliers, voir millions de chiffres.}. C'est cette faille dans nos les connaissances arithmétiques actuelles qui a permis l'élaboration de systèmes cryptographiques utilisés dans le monde entier pour coder une information numérique. 
+
+\smallskip
+Bien que de prime abord les nombres entiers semblent être des objets simples, bon nombre de problèmes les concernant n'ont pas encore été résolus.
+
+
+\begin{lemme}\label{lem:divpremier}
+Tout entier $n \geqslant 2$ admet un diviseur qui est un nombre premier.
+\end{lemme}
+
+\noindent{\it Démonstration:}
+
+Soit $\mathcal{D}$ l'ensemble des diviseurs de $n$ qui sont $\geqslant 2$ :
+$$\mathcal{D} = \big\{ k \geqslant 2 \mid \  k | n \big\}.$$
+L'ensemble $\mathcal{D}$ est non vide (car $n \in \mathcal{D}$) et $\mathcal{D}$ est fini (car il ne peut pas contenir plus de $n$ éléments).
+
+Donc $\mathcal{D}$ possède un plus petit élément qu'on note $p = \min \mathcal{D}$.
+
+\smallskip
+Supposons, par l'absurde, que $p$ ne soit pas un nombre premier. Alors $p$ admet un diviseur
+$q$ tel que $1 < q < p$. Mais si $q|p$ et $p|n$ alors $q|n$. Donc $q\in \mathcal{D}$ et $q<p$ ce qui contredit la minimalité de $p$.
+
+\smallskip
+Conclusion : $p$ est un nombre premier. Et comme $p \in \mathcal{D}$, $p$ divise $n$.
+
+\hfill $\blacksquare$
+
+\vspace{5mm}
+
+\begin{proposition}
+Il existe une infinité de nombres premiers.
+\end{proposition}
+
+\noindent{\it Démonstration:}
+
+Par l'absurde, supposons qu'il n'y ait qu'un nombre fini de nombres premiers que l'on note
+$p_1=2$, $p_2=3$, $p_3$,\ldots, $p_n$ et considérons l'entier $N=p_1\cdot p_2\cdot \ldots \cdot p_n+ 1$.
+
+\smallskip
+Soit $p$ un diviseur premier de $N$ (un tel $p$ existe par le lemme précédent). D'une part, comme  $p$ est l'un des entiers $p_i$, $p | p_1\cdot \ldots \cdot p_n$ et d'autre part $p|N$. Donc $p$ divise la différence $N-p_1\cdot \ldots \cdot p_n=1$.
+Cela implique que $p=1$, ce qui contredit que $p$ soit un nombre premier.
+
+Cette contradiction nous permet de conclure qu'il existe une infinité de nombres premiers.
+
+\hfill $\blacksquare$
+
+
+\newcommand{\entourer}[1]{\ovalbox{\color{blue}#1}}
+\newcommand{\barrer}[1]{{\cancel{\color{gray} #1}}}
+\centerline{\textsc{Le crible d'Eratosthène}}
+
+\bigskip
+Le \textbs{crible d'Eratosthène} est un algorithme qui permet de trouver les premiers nombres premiers.
+On commence par écrire une liste avec les premiers entiers : pour notre exemple de $2$ à $25$.
+$$2\ \ \ 3\ \ \ 4\ \ \ 5\ \ \ 6\ \ 7\ \ \ 8\ \ \ 9\ \ \ 10\ \ \ 11\ \ \ 12\ \ \ 13\ \ \ 14\ \ 15\ \
+\ 16\ \ \ 17\ \ \ 18\ \ \ 19\ \ \ 20\ \ \ 21\ \ \ 22\ \ \ 23\ \ \ 24\ \ \ 25$$
+Nous savons que $2$ est le premier nombre premier.
+On entoure $2$. Ensuite on barre
+ tous les multiples suivants de $2$ qui ne seront donc pas premiers
+(car divisible par $2$) :
+$$\entourer{2}\ \ 3\ \ \barrer{4}\ \ 5\ \ \barrer{6}\ \ 7\ \ \barrer{8}\ \ 9\ \ \barrer{10}\ \ 11\ \ \barrer{12}\ \
+13\ \ \barrer{14}\ \ 15\ \
+\barrer{16}\ \ 17\ \ \barrer{18}\ \ 19\ \ \barrer{20}\ \ 21\ \ \barrer{22}\ \ 23\ \ \barrer{24}\ \ 25$$
+
+Le premier nombre suivant et non-barré de la liste est $3$. Celui-ci est nécessairement premier car il n'est pas un multiple des nombres qui lui sont inférieurs et donc pas divisible par eux non plus) (sinon il serait rayé). On entoure $3$ et on raye tous les multiples suivants de $3$ :
+$$\entourer{2}\ \ \entourer{3}\ \ \barrer{4}\ \ 5\ \ \barrer{6}\ \ 7\ \ \barrer{8}\ \ \barrer{9}\ \ \barrer{10}\ \ 11\ \ \barrer{12}\ \
+13\ \ \barrer{14}\ \ \barrer{15}\ \
+\barrer{16}\ \ 17\ \ \barrer{18}\ \ 19\ \ \barrer{20}\ \ \barrer{21}\ \ \barrer{22}\ \ 23\ \ \barrer{24}\ \ 25$$
+%Le premier nombre restant est $5$ et est donc premier. On raye les multiples de $5$.
+%$$\entourer{2}\ \ \entourer{3}\ \ \barrer{4}\ \ \entourer{5}\ \ \barrer{6}\ \ 7\ \ \barrer{8}\ \ \barrer{9}\ \ \barrer{10}\ \ 11\ \ \barrer{12}\ \
+%13\ \ \barrer{14}\ \ \barrer{15}\ \
+%\barrer{16}\ \ 17\ \ \barrer{18}\ \ 19\ \ \barrer{20}\ \ \barrer{21}\ \ \barrer{22}\ \ 23\ \ \barrer{24}\ \ \barrer{25}$$
+%$7$ est donc premier, on raye les multiples de $7$ (ici pas de nouveaux nombres à barrer).
+%Ainsi de suite : $11, 13, 17, 19, 23$ sont premiers.
+On continue le processus ainsi de suite. Les nombres encadrés sont les premiers nombres premiers :
+$$\entourer{2}\ \ \entourer{3}\ \ \barrer{4}\ \ \entourer{5}\ \ \barrer{6}\ \ \entourer{7}\ \ \barrer{8}\ \
+\barrer{9}\ \ \barrer{10}\ \ \entourer{11}\ \ \barrer{12}\ \
+\entourer{13}\ \ \barrer{14}\ \ \barrer{15}\ \
+\barrer{16}\ \ \entourer{17}\ \ \barrer{18}\ \ \entourer{19}\ \ \barrer{20}\ \ \barrer{21}\ \ \barrer{22}\ \ \entourer{23}
+%\ \ \barrer{24}\ \ \barrer{25}
+$$
+
+
+
+\begin{theoreme}[\normalsize\textit{théorème fondamental de l'arithmétique}]\label{thm:TFA}
+Soit $n \ge 2$ un entier. Il existe des nombres premiers $p_1 < p_2 < \cdots < p_r$
+et des exposants entiers $\alpha_1, \alpha_2, \dots, \alpha_r \ge 1$ tels que :
+$$n = p_1^{\alpha_1} \times p_2^{\alpha_2} \times \cdots \times p_r^{\alpha_r}.$$
+De plus les $p_i$ et les $\alpha_i$ ($i=1,\ldots,r$) sont uniques.
+\end{theoreme}
+
+
+\vspace{5mm}
+\begin{remarque}
+Voici la raison pour laquelle on ne veut pas que $1$ soit un nombre premier. Si c'était le cas, il y aurait une infinité de façons de décomposer un nombre : $$24 = 2^3 \times 3 = 1 \times 2^3 \times 3 =
+1^2 \times 2^3 \times 3 = \cdots$$
+\end{remarque}
+
+
+
+\noindent{\it Démonstration:}
+
+\medskip
+\textbf{Existence.}
+
+\smallskip
+Nous allons démontrer l'existence de la décomposition par récurrence sur l'entier $n$.
+
+L'entier $n=2$ est déjà décomposé. Soit $n \geqslant 3$ et supposons que
+tout entier $< n$ admette une décomposition en facteurs premiers.
+
+\smallskip
+Notons $p_1$ le plus petit nombre premier divisant $n$ (voir le lemme \ref{lem:divpremier}).
+Si $n$ est un nombre premier alors $n=p_1$ et c'est fini. Sinon
+on définit l'entier $n'= \frac{n}{p_1} < n$ et on applique notre hypothèse de récurrence
+à $n'$ qui admet une décomposition en facteurs premiers. Alors $n = p_ 1 \times n'$ admet aussi
+une décomposition.
+
+\bigskip
+
+%\textbf{Unicité.}
+%
+%\smallskip
+%Nous allons démontrer qu'une telle décomposition est unique en effectuant cette fois
+%une récurrence sur la somme des exposants $\sigma = \sum_{i=1}^{r} \alpha_i$.
+%
+%Si $\sigma=1$ cela signifie $n=p_1$ qui est bien l'unique écriture possible.
+%
+%Soit $\sigma \ge 2$. On suppose que les entiers dont la somme des exposants est $< \sigma$
+%ont une unique décomposition. Soit $n$ un entier dont la somme des exposants vaut
+%$\sigma$. \'Ecrivons le avec deux décompositions :
+%$$n= p_1^{\alpha_1} \times p_2^{\alpha_2} \times \cdots \times p_r^{\alpha_r}
+% = q_1^{\beta_1} \times q_2^{\beta_2} \times \cdots \times q_s^{\beta_s}.$$
+%Sans perte de généralité, on peut supposer qu'on a $p_1< p_2 < \ldots$ et $q_1 < q_2 < \ldots$.
+%
+%\bigskip
+%Si $p_1 < q_1$ alors $p_1 < q_j$ pour tous les $j=1,\ldots,s$. Ainsi
+%$p_1$ divise $p_1^{\alpha_1} \times p_2^{\alpha_2} \times \cdots \times p_r^{\alpha_r} = n$
+%mais ne divise pas $q_1^{\beta_1} \times q_2^{\beta_2} \times \cdots \times q_s^{\beta_s} = n$. Ce qui est absurde.
+%Donc $p_1 \ge q_1$.
+%
+%\bigskip
+%Si $p_1 > q_1$ le même raisonnement conduit aussi à une contradiction. On conclut que $p_1=q_1$.
+%
+%\bigskip
+%On pose alors
+%$$n' = \frac{n}{p_1} = \frac{n}{q_1} = p_1^{\alpha_1-1} \times p_2^{\alpha_2} \times \cdots \times p_r^{\alpha_r}
+% = q_1^{\beta_1-1} \times q_2^{\beta_2} \times \cdots \times q_s^{\beta_s}$$
+%L'hypothèse de récurrence qui s'applique à $n'$ implique que ces deux décompositions sont les mêmes.
+%Ainsi $r=s$ et $p_i=q_i$, $\alpha_i = \beta_i$ pour tout $i=1,\ldots,r$.
+
+
+
+\bigskip
+
+\begin{proposition}[Lemme d'Euclide]
+\index{lemme!d'Euclide}
+Soit $p$ un nombre premier.
+Si $p | ab$ alors $p|a$ ou $p | b$.
+\end{proposition}
+
+\begin{demonstration}
+Si $p$ ne divise pas $a$ alors $p$ et $a$ sont premiers entre eux
+(en effet les diviseurs de $p$ sont $1$ et $p$, mais seul $1$ divise aussi $a$, donc $\pgdc(a,p)=1$).
+Ainsi par le lemme de Gauss $p | b$.
+\end{demonstration}
+
+\bigskip
+%EXERCICES (voir théorie arithmétique 19-20)
+
+
+\begin{exstheorie}
+\exo
+Démontrer que si un nombre entier $n$ peut s'écrire comme le produit de 2 nombres entiers $a$ et $b$ ($n=a\cdot b$) alors $a\leqslant \sqrt{n}$ ou $b\leqslant\sqrt{n}$.
+
+\bigskip
+\textit{\small\textbf{Remarque :}
+Il découle de cet exercice que, pour déterminer si un nombre est premier par divisions successives des entiers qui lui sont inférieurs, il suffit de tester jusqu'à $\sqrt{n}$. De plus il suffit de tester uniquement les nombres premiers.\\
+En particulier, pour déterminer si un nombre $n\leqslant 100$ est premier, il suffit de tester la divisibilité de $n$ par $2$, $3$, $5$ et $7$.
+}
+
+
+
+
+\eexo
+
+
+
+
+
+\exo
+Démonter que si $p$ est un nombre premier, alors $\sqrt{p}$ est irrationnel.
+
+\textit{\small\textbf{Remarque :}
+Raisonner par l'absurde et utiliser le lemme d'Euclide.}
+
+
+
+
+\eexo
+
+
+
+
+
+\exo
+On souhaite créer une fonction en Python qui simule le \textit{Crible d'Eratosthène}. On utilisera un $0$ pour représenter les nombres censés être barrés dans la liste puis on veillera à supprimer ces zéros pour que la fonction renvoie au final une liste ne contenant que les nombres premiers.
+
+\medskip
+Dans un en premier temps, il s'agit de générer une liste ``\comp{liste\_entiers}'' qui contient tous les entiers de $0$ à $n$ à l'aide de l'instruction Python
+
+\begin{center}
+\comp{liste\_entiers = list(range(n+1))}
+\end{center}
+
+Remarquons que chaque entier de la liste est égal à sa position (indice) dans la liste. Les étapes à réaliser sont les suivantes :
+
+\begin{enumerate}[label=\roman*),itemsep=0mm,left=-2mm]
+\item Une boucle d'indice $k$ qui va parcourir les positions (nombres entiers) de la liste.
+\item Vérifier si la position contient un ``nombre non-barré''.
+\item A l'aide d'une deuxième boucle (imbriquée dans la première), parcourir tous les indices qui sont des multiples du nombre $k$ (et plus grands que $k$) et leur attribuer la valeur $0$.
+\item Utiliser les commandes spécifiques aux listes pour enlever les $0$ de la liste.
+\end{enumerate}
+
+\end{exstheorie}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

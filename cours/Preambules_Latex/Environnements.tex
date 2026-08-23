@@ -1,0 +1,1192 @@
+% La différence entre \arabic{compteur} et \thecompteur se remarque si compteur est « lié » à un autre compteur. Un compteur est lié à un autre si ce premier est réinitialisé lorsque le second est incrémenté. Par exemple dans la classe book, les figures sont numérotées en commençant par le numéro du chapitre. Ainsi, la deuxième figure du chapitre 3 est numérotée « 3.2 », et la valeur de \arabic{figure} est alors « 2 », tandis que celle de \thefigure est « 3.2 ».
+
+%La différence étant que refstepcounter donne à la commande \ref{label} la même que \thecompteur (au lieu de \arabic{compteur}, vous suivez ?).
+
+% informations provenant de : http://blog.dorian-depriester.fr/latex/les-compteurs-sous-latex#Personnaliser_lrsquoaffichage_du_compteur
+
+\tcbuselibrary{theorems, skins, breakable} % Pour utiliser certaines commandes du package "tcolorbox"
+
+\usetikzlibrary{shadows}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% Personalisations de tcolorbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbset{
+	semiboxedshadow/.style 2 args={
+			enhanced, colback=gray!20, colframe=gray!10,rounded corners, arc=3mm, left=4mm,top=4mm, bottom=3mm,%boxrule=0pt,
+			%borderline west={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			%borderline south={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			fuzzy shadow={1mm}{-1mm}{0mm}{0.3mm}{fill=black,opacity=0.25},			
+			%drop fuzzy shadow,
+			after skip=5mm
+			},
+	leftlined/.style 2 args={
+			blanker, breakable,
+			borderline west={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			},
+    exstyle/.style={enhanced, colback=Indigo!5, colframe=Indigo, 
+           fonttitle=\bfseries, 
+           colbacktitle=Indigo, coltitle=white,  
+           top=2mm,
+           boxed title style={},
+           attach boxed title to top left={yshift=-\tcboxedtitleheight/2,xshift=4mm}%
+           },
+    teostyle/.style={enhanced, colback=white, colframe=White, 
+           fonttitle=\bfseries, sharp corners, boxrule=0pt,
+           colbacktitle=Red!100, coltitle=white,
+           drop fuzzy shadow,  
+           top=2mm,
+           boxed title style={sharp corners},
+           attach boxed title to top left={}%
+           },
+	indented/.style={
+			blanker, breakable,left=#1, colback=white, %colframe=white,
+			%borderline west={#1}{0cm}{#2},left={#1*30/10+7pt},top=1ex, bottom=1ex,
+			}, 
+}
+
+
+%\newtcbtheorem[number within=section]{miTeorema}{Teorema}{teostyle}{teo}
+
+% CI DESSOUS UN EXEMPLE D'UTILISATION DU STYLE "THEOSTYLE" CI-DESSUS :
+%\begin{miTeorema}{Un teorema}{label}
+%Sean $a, b\in \mathbb{Z}$ con $b\neq 0$ . Sea $q\in \mathbb{Z}$ \dots
+%\end{miTeorema}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% DEFINITION 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{definition}% name
+{3pt}% Space above  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+{3pt}% Space below  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+{}% Body font \itshape
+{}% Indent amount
+{\bfseries\large}% Theorem head font
+{\vspace{1mm}\newline}% Punctuation after theorem head
+{1mm}%{0pt\Needspace{3\baselineskip}}% Space after theorem head % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+%
+%\newtheoremstyle{definitions}% name
+%{3pt}% Space above  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{3pt}% Space below  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{}% Body font \itshape
+%{}% Indent amount
+%{\bfseries}% Theorem head font
+%{\vspace{1mm}\newline}% Punctuation after theorem head
+%{1mm}%{0pt\Needspace{3\baselineskip}}% Space after theorem head % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+%\tcolorboxenvironment{definition}{exstyle}
+%\tcolorboxenvironment{definition}{teostyle}
+
+
+\tcolorboxenvironment{definition}{semiboxedshadow}
+\tcolorboxenvironment{definitions}{semiboxedshadow}
+\tcolorboxenvironment{definitiond}{semiboxedshadow}
+\tcolorboxenvironment{definitionsd}{semiboxedshadow}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Définition}[chapter]
+\newtheorem{definitiond}[definition]{Définition*}
+\newtheorem{definitions}[definition]{Définitions}
+\newtheorem{definitionsd}[definition]{Définitions*}
+
+
+%\newenvironment{importantbarre}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% THEOREME - PROPOSITION - LEMME %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{theoreme}% name
+	{3pt}% Space above
+	{3pt}% Space below
+	{\itshape}% Body font
+	{}% Indent amount
+	{\bfseries\large}% Theorem head font
+	{\vspace{1mm}\newline}% Punctuation after theorem head
+	{1cm}%{0pt\Needspace{3\baselineskip}}% Space after theorem head
+	{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+
+\newtheoremstyle{theoremeavance}% name
+    {3pt}%   Space above
+    {3pt}%   Space below
+    {\itshape}%  Body font
+    {}%          Indent amount
+    {\bfseries\large}% Theorem head font
+    {\vspace{1mm}\newline}%          Punctuation after theorem head -- blank
+    {1cm}%     Space after theorem head (0.5em is the default)
+    {{\thmname{#1}\thmnumber{ #2$^{\bm*}\!$}\thmnote{\ \textmd{(#3)}}}}% Theorem head spec 
+
+\theoremstyle{theoreme}
+\newtheorem{theoreme}{Théorème}[chapter]
+\newtheorem{proposition}[theoreme]{Proposition}
+\newtheorem{lemme}[theoreme]{Lemme}
+\newtheorem{corolaire}[theoreme]{Corolaire}
+
+\theoremstyle{theoremeavance}
+\newtheorem{theoremed}[theoreme]{Théorème}
+\newtheorem{propositiond}[theoreme]{Proposition}
+\newtheorem{lemmed}[theoreme]{Lemme}
+\newtheorem{corolaired}[theoreme]{Corolaire}
+
+\tcolorboxenvironment{theoreme}{leftlined={5pt}{red!40!darkgray}}
+\tcolorboxenvironment{theoremed}{leftlined={5pt}{red!40!darkgray}}
+\tcolorboxenvironment{proposition}{leftlined={5pt}{red!40!darkgray}}
+\tcolorboxenvironment{propositiond}{leftlined={5pt}{red!40!darkgray}}
+\tcolorboxenvironment{lemme}{leftlined={5pt}{red!40!darkgray}}
+\tcolorboxenvironment{lemmed}{leftlined={5pt}{red!40!darkgray}}
+\tcolorboxenvironment{corolaire}{leftlined={5pt}{red!40!darkgray}}
+\tcolorboxenvironment{corolaired}{leftlined={5pt}{red!40!darkgray}}
+%\newtcbtheorem[number within=chapter]{proposition}{Proposition}
+%\declaretheorem[style=proposition]{named}
+
+%\theoremstyle{theoremeavance}
+%\newtheorem{theoremeavance}[theoreme]{Théorème}
+%\newtheorem{propositionavancee}[theoreme]{Proposition}
+
+
+\newtheoremstyle{demonstration}% name
+{3pt}% Space above
+{3pt}% Space below
+{}% Body font
+{-10pt}% Indent amount
+{\itshape}% Theorem head font
+{\vspace{1mm}\newline}% Punctuation after theorem head
+{1cm}%{0pt\Needspace{3\baselineskip}}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+
+\theoremstyle{demonstration}
+\newtheorem*{demonstration}{Démonstration :}
+\newtheorem*{demonstrationd}{Démonstration$^{*}\!$ :}
+
+\tcolorboxenvironment{demonstration}{indented={10pt}}
+\tcolorboxenvironment{demonstrationd}{indented={10pt}}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% CONFLIT AVEC L'ENVIRONNEMENT DES ALGORItHMES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%-----------------------
+%%---- Démonstration ----
+%%-----------------------
+%\newtheoremstyle{demonstration}% name
+%{3pt}% Space above  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{3pt}% Space below  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{}% Body font \itshape
+%{-10mm}% Indent amount
+%{\itshape}% Theorem head font
+%{\vspace{2.5mm}\newline}% Punctuation after theorem head
+%{1mm}%{0pt\Needspace{3\baselineskip}}% Space after theorem head % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+%
+%\theoremstyle{demonstration}
+%\tcolorboxenvironment{demonstration}{indented={8mm}}
+%\newtheorem*{demonstration}{Démonstration :}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% EXERCICES 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tikzset{
+     shadowed/.style={preaction={transform canvas={shift={(-1pt,-1pt)}},draw=gray,very thick}},
+  }
+\newcounter{exercice}
+% couleurchapitre est définit dans le préambule du document maître
+%\newtcolorbox[use counter=exercice]{exstheorie}{
+\newtcolorbox{boxexstheorie}{
+empty,
+coltext=gray!10!black,
+title={Exercices},
+attach boxed title to top left,
+boxed title style={
+	toprule=2pt,top=2pt,left=0cm,overlay={
+		\path[left color=white, right color=couleurchapitre,rounded corners=5pt]([yshift=0pt]frame.north east)+(0cm,-23pt) rectangle +(-4.5cm,0pt);}
+},
+coltitle=white,fonttitle=\Large\bfseries\itshape,
+before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=0cm,right=3mm,top=2mm,bottom=5mm,
+breakable, pad at break*=0mm,vfill before first,
+%overlay unbroken={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=0mm,yshift=0pt]title.south east)--([xshift=0mm]title.south-|frame.east); },
+%([xshift=-15mm,yshift=-1pt]title.south-|frame.west)--([xshift=-15mm]frame.south west); },%--(frame.south),
+%overlay first={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-15mm,yshift=-1pt]title.south-|frame.west)--([xshift=-15mm]frame.south west); },
+%overlay middle={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-15pt]frame.north west)--([xshift=-15pt]frame.south west); },
+%overlay last={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-25pt]frame.north west)--([xshift=-25pt]frame.south west)--(frame.south);},%
+}
+
+\newenvironment{exstheorie}
+	{
+         \begin{boxexstheorie}%
+            \raggedcolumns
+			\columnseprule=1.pt
+			\columnsep=40pt
+			\renewcommand{\columnseprulecolor}{\color{gray}}
+			\vspace*{-3mm}
+			\begin{multicols*}{2}
+				\flushcolumns
+				\columnseprule=0pt
+    }
+	{                		
+			\end{multicols*}
+		\end{boxexstheorie}%
+	}
+	
+\newenvironment{exstheoriesansligne}
+	{
+         \begin{boxexstheorie}%
+            \raggedcolumns
+			\columnsep=40pt
+			\begin{multicols*}{2}
+				\flushcolumns
+				\columnseprule=0pt
+    }
+	{                		
+			\end{multicols*}
+		\end{boxexstheorie}%
+	}
+
+%\newenvironment{exstheorie}
+%	{
+%		\begin{multicols*}{2}
+%         \begin{boxexstheorie}%
+%            \raggedcolumns
+%			\columnseprule=1.pt
+%			\columnsep=40pt
+%			\renewcommand{\columnseprulecolor}{\color{gray}}
+%				\flushcolumns
+%				\columnseprule=0pt
+%    }
+%	{
+%		\end{boxexstheorie}%                		
+%		\end{multicols*}
+%	}
+
+
+
+%\newtcolorbox{boxexstheorieligne}{
+%empty,
+%coltext=gray!10!black,
+%title={Exercices},
+%attach boxed title to top left,
+%boxed title style={
+%	toprule=2pt,top=2pt,left=-0.3cm,overlay={
+%		\path[left color=white, right color=couleurchapitre,rounded corners=5pt]([yshift=0pt]frame.north east)+(0.5cm,-23pt) rectangle +(-4.5cm,0pt);}
+%},
+%coltitle=white,fonttitle=\Large\bfseries\itshape,
+%before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=-1.3cm,right=3mm,top=2mm,bottom=5mm,
+%breakable, pad at break*=0mm,vfill before first,
+%overlay unbroken={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=0mm,yshift=0pt]title.south east)--([xshift=0mm]title.south-|frame.east); ,
+%([xshift=-15mm,yshift=-1pt]title.south-|frame.west)--([xshift=-15mm]frame.south west); },%--(frame.south),
+%overlay first={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-15mm,yshift=-1pt]title.south-|frame.west)--([xshift=-15mm]frame.south west); },
+%overlay middle={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-15pt]frame.north west)--([xshift=-15pt]frame.south west); },
+%overlay last={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-25pt]frame.north west)--([xshift=-25pt]frame.south west)--(frame.south);},%
+%}
+
+
+
+%\newtcolorbox{boxexstheorieligne}{
+%empty,
+%coltext=gray!10!black,
+%title={Exercices},
+%attach boxed title to top left,
+%boxed title style={
+%	toprule=2pt,top=2pt,left=-1.3cm,overlay={
+%		\path[left color=white, right color=couleurchapitre,rounded corners=5pt]([yshift=0pt]frame.north east)+(0.5cm,-23pt) rectangle +(-4.5cm,0pt);}
+%},
+%coltitle=white,fonttitle=\Large\bfseries\itshape,
+%before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=-1.3cm,right=3mm,top=2mm,bottom=5mm,
+%breakable, pad at break*=0mm,vfill before first,
+%overlay unbroken={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=0mm,yshift=0pt]title.south east)--([xshift=0mm]title.south-|frame.east); ,
+%([xshift=-15mm,yshift=-1pt]title.south-|frame.west)--([xshift=-15mm]frame.south west); },%--(frame.south),
+%overlay first={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-15mm,yshift=-1pt]title.south-|frame.west)--([xshift=-15mm]frame.south west); },
+%overlay middle={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-15pt]frame.north west)--([xshift=-15pt]frame.south west); },
+%overlay last={\draw[couleurchapitre,line width=1pt,shadowed]
+%([xshift=-25pt]frame.north west)--([xshift=-25pt]frame.south west)--(frame.south);},%
+%}
+
+
+
+%%%\newcounter{exercices}
+%\newtcolorbox[use counter=exercice]{boxexstheorieligne}{%
+%empty,
+%title={Example \thetcbcounter},
+%attach boxed title to top left,
+%boxed title style={
+%	toprule=2pt,top=2pt,left=-0.6cm,overlay={
+%		\path[left color=white,right color=couleurchapitre,rounded corners=5pt]([yshift=0pt]frame.north east)+(0cm,-23pt) rectangle +(-5cm,0pt);}
+%},
+%coltitle=couleurchapitre,fonttitle=\Large\bfseries,
+%before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=0pt,right=3mm,top=4pt,
+%breakable,pad at break*=1mm,vfill before first,
+%overlay unbroken={\draw[couleurchapitre,line width=1pt]
+%([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east)--(frame.south west); },
+%overlay first={\draw[couleurchapitre,line width=1pt,shadowed]
+%([yshift=-1pt]title.south-|frame.west)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east); },
+%overlay middle={\draw[couleurchapitre,line width=1pt]
+%([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east); },
+%overlay last={\draw[couleurchapitre,line width=1pt]
+%([xshift=-10pt]frame.north west)--([xshift=-10pt]frame.south west)--(frame.south);},%
+%}
+
+
+
+
+%%\newcounter{exercices}
+%\tikzset{
+%     shadowed/.style={preaction={transform canvas={shift={(-1pt,-1pt)}},draw=gray,very thick}},
+%  }
+\newtcolorbox[use counter=exercice]{boxexstheorieligne}{%
+empty,
+title={Exercices},
+attach boxed title to top left,
+boxed title style={
+	toprule=2pt,top=2pt,left=-0.1cm,overlay={
+		\path[left color=white, right color=couleurchapitre,rounded corners=5pt]([yshift=0pt]frame.north east)+(0cm,-23pt) rectangle +(-5cm,0pt);}
+},
+coltitle=white,fonttitle=\Large\bfseries\itshape,
+before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=0pt,right=3mm,top=12pt,
+breakable,pad at break*=1mm,vfill before first,
+overlay unbroken={\draw[couleurchapitre,line width=2pt,shadowed]
+([xshift=-15pt,yshift=-1pt]title.south-|frame.west)--([xshift=-15pt,yshift=-5pt]frame.south west)--([xshift=-0.5pt,yshift=-5pt]frame.south);},%--(frame.south west); },
+%-------------------------------------------------------------------------
+overlay first={\draw[couleurchapitre,line width=2pt,shadowed]
+([xshift=-15pt,yshift=-1pt]title.south-|frame.west)--([xshift=-15pt,yshift=-10pt]frame.south west);},%--([xshift=-0.5pt,yshift=-10pt]frame.south);}--(frame.south west); },
+%-------------------------------------------------------------------------
+overlay middle={\draw[couleurchapitre,line width=2pt,shadowed]
+([xshift=-15pt]frame.north west)--([xshift=-15pt]frame.south west); },
+%-------------------------------------------------------------------------
+overlay last={\draw[couleurchapitre,line width=2pt,shadowed]
+([xshift=-15pt]frame.north west)--([xshift=-15pt]frame.south west)--(frame.south);},%
+}
+
+
+
+%\newenvironment{exstheorieligne}
+%	{
+%         \begin{boxexstheorieligne}%
+%
+%		\end{boxexstheorieligne}%
+%	}
+
+%%% LA VERSION CI-DESSOUS (exstheorieligne) EST L'ORIGINALE QUI N'EST PLUS UTILISEE. PAR AILLEURS, IL Y A UN PROBLEME LORS DU CHAGMENT DE PAGE CAR LES TRAITS DECORATIFS NE SE FONT PAS SUR LA 2EME PAGE.
+%\newcounter{exercices}
+\colorlet{colexam}{gray!75!black}
+\newtcolorbox[use counter=exercice]{exstheorieligne}{%
+empty,title={Exercices},attach boxed title to top left,
+boxed title style={empty,size=minimal,toprule=2pt,top=6pt,overlay={\draw[colexam,line width=2.5pt]([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);}},
+coltitle=black,fonttitle=\Large\bfseries\itshape,
+before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=10pt,right=3mm,top=10pt,
+breakable,pad at break*=0mm,vfill before first,
+overlay unbroken={\draw[colexam,line width=1pt]
+([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+--([xshift=-0.5pt]frame.south east)--(frame.south west); },
+overlay first={\draw[colexam,line width=1pt]
+([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+--([xshift=-0.5pt]frame.south east); }%,
+overlay middle={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+--([xshift=-0.5pt]frame.south east); }%,
+overlay last={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+--([xshift=-0.5pt]frame.south east)--(frame.south west);}%,%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%D'autres possibilités pour les exercices. A travailler.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{tcolorbox}[enhanced,colframe=gray!75!white,interior style={left color=gray!30,right color=white},leftrule=3mm,title=Exercices]
+%This is the upper part.
+%
+%This is the lower part.
+%\end{tcolorbox}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{tcolorbox}[enhanced,sharp corners=south,
+%colframe=red!75!black,interior style={top color=white,bottom color=red!50}]
+%This is an example for 'spread downwards'.
+%\end{tcolorbox}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\newtheoremstyle{exercice}% name
+%{3pt}% Space above  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{3pt}% Space below  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{\itshape}% Body font \itshape
+%{-2mm}% Indent amount
+%{\bfseries\itshape}% Theorem head font
+%{\newline}% Punctuation after theorem head
+%{1mm}%{0pt\Needspace{3\baselineskip}}% Space after theorem head % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+%
+%\theoremstyle{exercice}
+%\tcolorboxenvironment{exercice}{exstyle}
+%\newtheorem*{exercice}{Exercice :}
+%
+%
+%%-------------------
+%%---- ExerciceS ----
+%%-------------------
+%\newtheoremstyle{exercices}% name
+%{3pt}% Space above  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{3pt}% Space below  % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{\itshape}% Body font \itshape
+%{-2mm}% Indent amount
+%{\bfseries\itshape}% Theorem head font
+%{\newline}% Punctuation after theorem head
+%{1mm}%{0pt\Needspace{3\baselineskip}}% Space after theorem head % -> NE MARCHE PAS - CERTAINEMENT A CAUSE DE TCB QUI DOIT "OVERRULER" LES DIMENSIONS
+%{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+%
+%\theoremstyle{exercices}
+%\tcolorboxenvironment{exercices}{indented={1mm}}
+%\newtheorem*{exercices}{Exercices :}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%---- Indications ----
+%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\indication}[2]{\footnotesize\textit{(\textbf{Indication :} \begin{minipage}[t]{#1\linewidth} #2)\end{minipage}}\normalsize}
+
+\newcommand{\indicationsansparentheses}[2]{\footnotesize\it\begin{minipage}[t]{#1\textwidth}
+ \textbf{Indication : } #2
+\end{minipage}\normalsize}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%  CODE POUR ENTRER DIRECTEMENT DES FICHIERS PYTHON  %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tcbuselibrary{skins,breakable}
+\usepackage{iftex}
+% définition de \myinputlisting
+\ifPDFTeX
+  \usepackage{listingsutf8}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting[inputencoding=utf8/latin1]{#1}
+  }
+\else
+  \usepackage{listings}
+  \newcommand{\myinputlisting}[1] {
+    \lstinputlisting{#1}
+  }
+\fi
+%% les languages de programation utilisés
+%\newcommand{\Python}{\texttt{Python}}
+%\newcommand{\Sage}{\texttt{Sage}}
+%% personalisations pour Python et Sage
+%% la package 'textcomp' est necessaire pour 'upquote=true' (il est automatiquement chargé par fancybox, mais fancybox arrive plus tard)
+\usepackage{textcomp}
+\lstset{
+  language=Python,
+  upquote=true,
+  columns=flexible,
+  keepspaces=true,
+  basicstyle=\ttfamily,
+  commentstyle=\color{gray},
+  showspaces=false,
+  showstringspaces=false
+}
+\lstset{moredelim=[is][\color{foncred}]{/*}{*/}}
+\lstdefinelanguage{Python}{morestring=[b]"}
+
+\lstset{morecomment=[s][\color{foncred}{/*+}{/*+}]}
+
+
+
+\tcbset{
+    algostyle/.style={enhanced, colback=white, colframe=gray!70, 
+           fonttitle=\bfseries, boxrule=1pt,
+           colbacktitle=Red!100,
+           %coltitle=white,
+           drop fuzzy shadow,  
+           top=2mm,
+           boxed title style={colframe=white!80!blue}
+          % boxed title style={sharp corners},
+           attach boxed title to top left={xshift=0.5cm,yshift=-3.5mm},%
+           }, 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newtheoremstyle{algorithmes}% name
+%{3pt}% Space above
+%{3pt}% Space below
+%{\ttfamily}% Body font
+%{}% Indent amount
+%{\bfseries}% Theorem head font
+%{.\newline}% Punctuation after theorem head
+%{5pt}% Space after theorem head
+%{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+%
+%
+%\theoremstyle{algorithmes}
+%\newtheorem{algo}{Code}
+%\tcolorboxenvironment{algo}{algostyle}
+%
+%% Algorithmes
+%% bloque de code (\insertcode)
+%\newcommand{\insertcode}[3] % #1:chemin d'accès %%% #2:nom du code %%% #3:largeur de la box
+%{
+%\begin{minipage}[t][][b]{#3\textwidth}
+%\begin{algo}[{\sl{\color{gray}#2}}]
+%\myinputlisting{#1}  
+%\end{algo}
+%\end{minipage}
+%}
+%
+%
+%\newcommand{\insertcodesansnom}[2]{
+%\begin{minipage}[t][][b]{#2\textwidth}
+%
+%
+%\begin{algo}
+%\myinputlisting{#1}  
+%\end{algo}
+%\end{minipage}
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newtcbtheorem[no counter]{CodePython}{Code}{
+lower separated=true,
+colback=gray!20,
+colframe=white,
+colbacktitle=gray!60,
+coltitle=black,
+enhanced,
+top=3mm,
+bottom=-2mm,
+%before=\hspace*{-5mm},
+%after=\hspace*{-5mm},
+boxed title style={colframe=white},
+attach boxed title to top left={xshift=0.3cm,yshift=-4mm},
+ }{def}
+
+
+% La commande suivante permet d'insérer du code PYTHON directement dans latex.
+\newcommand{\insertcode}[2]{
+\begin{minipage}[t][][b]{#2\textwidth}
+\begin{CodePython}{}{}
+\myinputlisting{#1}  
+\end{CodePython}
+\end{minipage}
+}
+
+
+% La commande suivante permet d'insérer du code PYTHON directement dans latex.
+% Afin de pouvoir avoir un argument qui permet de régler la hauteur , deux minipages sont nécessaire (un seul minipage à l'intérieur de "CodePython" est suffisant mais 
+\newcommand{\insertcodehauteur}[3][]{
+\begin{minipage}[t][][b]{#3\textwidth}
+\begin{CodePython}{}{}
+\begin{minipage}[t][#1]{#3\textwidth}
+
+\myinputlisting{#2} 
+\end{minipage} 
+\end{CodePython}
+\end{minipage}
+}
+
+
+
+
+
+
+\newtheoremstyle{algorithmes}% name
+{3pt}% Space above
+{3pt}% Space below
+{\ttfamily}% Body font
+{}% Indent amount
+{}% Theorem head font
+{}% Punctuation after theorem head
+{0pt}% Space after theorem head
+{}% Theorem head spec (can be left empty, meaning ‘normal’ )
+
+
+\theoremstyle{algorithmes}
+\newtheorem*{algo}{}
+\tcolorboxenvironment{algo}{algostyle}
+
+% bloque de code (\insertcode) SANS LE NOM
+\newcommand{\insertcodesansnom}[2]{
+\begin{minipage}[t][][b]{#2\textwidth}
+\begin{algo}
+\myinputlisting{#1}  
+\end{algo}
+\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%---- Affichage PYTHON : en encadré sur fond gris ----
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{compteurprogramme}
+\setcounter{compteurprogramme}{1}
+\newenvironment{affichage}[2][]
+	{
+%         \begin{center}%
+            \begin{tikzpicture}%
+                \node[rectangle, draw=black, fill=gray!20, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+                		\begin{minipage}[t][#1][b]{#2\linewidth}%\textbf{Programme P\arabic{compteurprogramme}}
+
+%\medskip
+\comp\bgroup
+
+    }
+	{                		
+                		\egroup\end{minipage}\egroup;%
+            \end{tikzpicture}\stepcounter{compteurprogramme}%
+%         \end{center}%
+	}
+
+
+\newcounter{compteuralgorithme}
+\setcounter{compteuralgorithme}{0}
+\newenvironment{affichagealgorithme}[2][]
+	{
+%         \begin{center}%
+            \begin{tikzpicture}%
+                \node[rectangle, draw=black, fill=white, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+						\refstepcounter{compteuralgorithme}                		
+                		\begin{minipage}[t][#1][b]{#2\linewidth}%\textbf{Algorithme \arabic{compteuralgorithme}}
+
+%\medskip
+\comp\bgroup
+
+    }
+	{                		
+                		\egroup\end{minipage}\egroup;%
+            \end{tikzpicture}%
+%         \end{center}%
+	}
+
+
+%\newenvironment{idalgo}
+%	{
+%		\setlength{\arrayrulewidth}{2pt}\begin{tabular}{|l}
+%	}
+%	{
+%	\end{tabular}
+%	}
+
+\newcommand{\idalgo}[1]{
+		\setlength{\arrayrulewidth}{2pt}	
+		\begin{minipage}{\textwidth}
+%		\renewcommand{\arraystretch}{2.5}
+		\vspace*{1.8mm}	
+		\begin{tabular}{|l}
+					\vspace*{2mm}\begin{minipage}{\textwidth}\setstretch{1.15}
+				#1
+			\end{minipage}
+			\end{tabular}
+			\end{minipage}
+		}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%------------------------
+%---- Démonstrations ----
+%------------------------
+\newenvironment{demo}[1]
+	{
+        \begin{center}%
+			\begin{minipage}{#1\linewidth}
+				\textit{Démonstration :}
+				
+				\vspace{1mm}
+    }
+	{
+			
+			%\vspace{-4mm}
+			\hfill \textit{CQFD}\hspace{1mm} $\blacksquare$
+        	\end{minipage}
+        \end{center}
+	}
+
+
+
+
+%-----------------------------------------------
+%---- RemarqueS : en encadré sur fond blanc ----
+%-----------------------------------------------
+\newcounter{compteuremarque}
+\setcounter{compteuremarque}{1}
+\newenvironment{remarques}[1][0mm]
+	{
+%         \begin{center}%
+%            \begin{tikzpicture}%
+%                \node[rectangle, draw=black, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+%                		\begin{minipage}{0.97\linewidth}
+                			\textbf{Remarques \thecompteuremarque.\;}
+                			\vspace*{-1mm}
+                			\begin{enumerate}[label=\roman*), itemsep=#1,left=-3mm]%\setlength{\itemsep}{1mm}
+    }
+	{                		
+                			\end{enumerate}\stepcounter{compteuremarque}
+%                		\end{minipage}%\egroup;%
+%            \end{tikzpicture}%
+%         \end{center}%
+	}
+
+
+
+
+%----------------------------------------------
+%---- Remarque : en encadré sur fond blanc ----
+%----------------------------------------------
+\newenvironment{remarque}
+	{
+%         \begin{center}%
+%            \begin{tikzpicture}%
+%                \node[rectangle, draw=black, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+%                		\begin{minipage}{0.97\linewidth}
+                			{\bf Remarque \thecompteuremarque.}
+                			
+                			\vspace{2mm}\hspace{7.5mm}
+                			\begin{minipage}{0.93\linewidth}
+
+    }
+	{                		
+                			\end{minipage}\stepcounter{compteuremarque}
+%                		\end{minipage}\egroup;%
+%            \end{tikzpicture}%
+%         \end{center}%
+	}
+
+
+
+
+
+%---------------------------------------------------------
+%---- Important : encadré gris avec symbôle attention ----
+%---------------------------------------------------------
+%\hspace{-1.5cm}\begin{minipage}[m]{0.09\textwidth}
+%\includegraphics[scale=0.2]{attention.jpg}
+%\end{minipage}\begin{minipage}[m]{1\textwidth}
+% Voici ce qu'il faut retenir des théorèmes \ref*{thm:lim_poly}, \ref*{thm:lim_frac_rationnel} et \ref*{thm:lim_fonc} : lorsque la fonction est polynômiale, rationnelle, trigonométrique, exponentielle, logarithmique ou racine, pour calculer un limite lorsque $x$ tend vers une valeur {\bf du domaine de définition} de la fonction, il suffit d'évaluer la fonction en cette valeur.
+%\end{minipage}
+\newenvironment{important}
+	{
+\hspace*{-1.5cm}\begin{minipage}[m]{0.09\textwidth}
+					\includegraphics[scale=0.2]{attention.jpg}
+				\end{minipage}\hspace*{-2mm}
+				\begin{minipage}[m]{1\textwidth}
+					\begin{tikzpicture}%
+						\node[rectangle, draw=gray, rounded corners=5pt, inner xsep=7pt, inner ysep=6pt, outer ysep=10pt, xshift=-10mm]\bgroup                     
+							\begin{minipage}[m]{1\textwidth}
+    }
+	{                		
+							\end{minipage}\egroup;
+					\end{tikzpicture}
+				\end{minipage}%
+	}
+%\newenvironment{important}[1]
+%	{
+%         \begin{center}%
+%            \begin{tikzpicture}%
+%                \node[rectangle, draw=gray, rounded corners=5pt, inner xsep=5pt, inner ysep=6pt, outer ysep=10pt]\bgroup                     
+%                		\begin{minipage}[t][][b]{0.08\linewidth}\centerline{\includegraphics[scale=0.15]{attention.jpg}}\end{minipage}
+%                		\begin{minipage}[t][][b]{#1\linewidth}
+%    }
+%	{                		
+%                		\end{minipage}\egroup;
+%            \end{tikzpicture}%
+%         \end{center}%
+%	}
+
+
+%\tcolorboxenvironment{importantbarre}{leftlined={5pt}{darkgray}}
+%\newtheorem{importantbarre}[definition]{Définitions}
+
+
+
+%------------------------------------------------------------
+%---- Important : barre verticale avec symbôle attention ----
+%------------------------------------------------------------
+\newenvironment{importantbarre}
+	{
+\hspace*{-1.5cm}\begin{minipage}[m]{0.09\textwidth}
+					\includegraphics[scale=0.2]{attention.jpg}
+				\end{minipage}\hspace*{-2mm}
+				\begin{minipage}[m]{1\textwidth}
+					\begin{tcolorbox}[leftlined={5pt}{gray}]
+    }
+	{                		
+					\end{tcolorbox}
+				\end{minipage}%
+	}
+
+
+
+
+
+
+
+
+
+
+%---------------------------------------------------------
+%---- Important : SANS CADRE avec symbôle attention ----
+%---------------------------------------------------------
+\newenvironment{importantsanscadre}[1]
+	{
+%         \begin{center}%
+            \begin{tikzpicture}%
+                \node[rectangle, rounded corners=5pt, inner xsep=1pt, inner ysep=5pt, outer ysep=10pt]\bgroup                     
+                		\begin{minipage}{0.06\linewidth}\centerline{\includegraphics[scale=0.15]{attention.jpg}}\end{minipage}
+                		\begin{minipage}{#1\linewidth}
+    }
+	{                		
+                		\end{minipage}\egroup;
+            \end{tikzpicture}%
+%         \end{center}%
+	}
+
+
+%---------------------------------------------------------
+%---- Important : SANS CADRE avec symbôle attention ----
+%---------------------------------------------------------
+%\tcolorboxenvironment{importantbarre}{leftlined={5pt}{red!40!darkgray}}
+%\newenvironment{importantbarre}[1]
+%	{
+%%         \begin{center}%
+%            \begin{tikzpicture}%
+%                \node[rectangle, rounded corners=5pt, inner xsep=1pt, inner ysep=5pt, outer ysep=10pt]\bgroup                     
+%                		\begin{minipage}{0.06\linewidth}\centerline{\includegraphics[scale=0.15]{attention_gris.jpg}}\end{minipage}
+%                		\begin{minipage}{#1\linewidth}
+%    }
+%	{                		
+%                		\end{minipage}\egroup;
+%            \end{tikzpicture}%
+%%         \end{center}%
+%	}
+
+
+
+
+
+
+%-------------------
+%---- Exemple : ----
+%-------------------
+\newenvironment{exemple}
+	{
+	\noindent\textbf{\textsc{Exemple :}}\hspace{2mm}\begin{minipage}[t]{0.9\textwidth}
+	}  
+	{
+	\end{minipage}
+	}
+
+
+
+
+%%--------------------------
+%%---- ExempleS : Liste ----
+%%--------------------------
+%\newenvironment{exemples}
+%	{
+%	\noindent\textit{Exemples :}\begin{minipage}[t][][b]{0.9\textwidth}\begin{enumerate}[label=\arabic*)]
+%	}  
+%	{
+%	\end{enumerate}
+%	\end{minipage}
+%	}
+%--------------------------
+%---- ExempleS : Liste ----
+%--------------------------
+\newenvironment{exemples}[1]
+	{
+	\noindent\textbf{\textsc{Exemples :}}\bgroup
+	\vspace*{-1mm}\begin{enumerate}[label=\arabic*),itemsep=#1,left=0mm]
+	}  
+	{
+	\end{enumerate}\egroup
+	}
+
+
+%---------------------------------------------------------
+%---- Exemple avec environnements sur plusieurs pages ----
+%---------------------------------------------------------
+\newtcolorbox{exemplesecable}{%
+empty,
+title={Exemple : },
+attach boxed title to top left={xshift=-3.4mm, yshift=0mm, yshifttext=9mm},
+coltitle=black,fonttitle=\bfseries\scshape,
+before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=1.8cm,right=3mm,top=12pt,
+breakable,pad at break*=1mm,vfill before first,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%-----------------------------------------------------------------
+%---- Choses semi-importantes (formules ou autres) en encadré ----
+%-----------------------------------------------------------------
+\newenvironment{encadreligne}[2]%#1 largeur (en proportion "minipage") , #2 shift sur y. +unités
+	{
+%         \begin{center}%
+            \begin{tikzpicture}[anchor=base, baseline,yshift=#2]%
+                \node[rectangle,
+                draw=gray!90,
+                line width=0.5mm,
+                fill=gray!20,
+                blur shadow={shadow blur steps=3,shadow xshift=-1.5mm,shadow yshift=-1.5mm,shadow opacity=40,shadow blur extra rounding},
+                rounded corners=3mm,
+                inner xsep=5pt,
+                inner ysep=6pt,
+                outer ysep=10pt]
+                \bgroup                     
+                		\begin{minipage}{#1\linewidth}
+							\begin{center}
+    }
+	{
+							\end{center}
+                		\end{minipage}
+                		\egroup;%
+            \end{tikzpicture}%
+%         \end{center}%
+	}
+
+
+\newenvironment{touchecalculatrice}[1]%#1 largeur (en proportion "minipage") , #2 shift sur y.
+	{
+%         \begin{center}%
+            \begin{tikzpicture}[anchor=base, baseline,yshift=#1]%
+                \node[rectangle,
+                draw=black!65,
+                line width=0.5mm,
+                fill=black!70,
+                blur shadow={shadow blur steps=4,shadow xshift=0.7mm,shadow yshift=-0.7mm,shadow opacity=40,shadow blur extra rounding},
+                rounded corners=1mm,
+                inner xsep=2pt,
+                inner ysep=6pt,
+                outer xsep=10pt,
+                outer ysep=8pt]
+                \bgroup                     
+                		%\begin{minipage}{#1\linewidth}
+							%\begin{center}
+							\textcolor{white}\bgroup\fontfamily{lmtt}\selectfont\small}
+	{\egroup
+							%\end{center}
+                		%\end{minipage}
+                		\egroup;%
+            \end{tikzpicture}%
+%         \end{center}%
+	}
+
+
+\newtcolorbox{encadre}[1]{enhanced, colback=gray!20, colframe=gray!10,rounded corners, arc=3mm, left=3mm,top=3mm, bottom=2mm,width=#1,center,%boxrule=0pt,
+			%borderline west={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			%borderline south={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			fuzzy shadow={1mm}{-1mm}{0mm}{0.3mm}{fill=black,opacity=0.25},			
+			%drop fuzzy shadow,
+			after skip=3mm
+			}
+
+\newtcolorbox{petitencadre}[1]{enhanced, colback=gray!20, colframe=black!40,rounded corners, arc=3mm, left=3mm,top=1.5mm, bottom=1.5mm,width=#1,halign=center,%boxrule=0pt,
+			%borderline west={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			%borderline south={#1}{0pt}{#2},left={#1*14/10+7pt},top=1ex, bottom=1ex,
+			fuzzy shadow={-1.5mm}{-1.5mm}{0mm}{0.3mm}{fill=black,opacity=0.25},			
+			%drop fuzzy shadow,
+			after skip=3mm
+			}
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%   COMMANDES PARAMETREES   %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newcommand{\fig}[1]{\begin{center} {\textbf{\textit{ Figure \thechapter.\thenfigure : }}}{\footnotesize{\it #1}\stepcounter{nfigure}}\end{center}} %la commande "the(compteur)" permet d'afficher ou en est le comteur.
+%\newenvironment{remarque}[1]{{\bf Remarque \thechapter.\thecompteurthm\;: }\\ \hspace*{1.1cm}\begin{minipage}{0.9\textwidth}{\vspace*{2mm} #1}\end{minipage}\stepcounter{compteurthm}}
+
+%%---- Choses semi-importantes (formules ou autres) en encadré ----
+%\newenvironment{encadre}[2]{\begin{center}\fbox{\begin{minipage}{#1\textwidth}{\begin{center}#2\end{center}}\end{minipage}}\end{center}}
+
+\newcounter{nfigure}%[chapter] % Ici on définit un nouveau compteur associé au compteur "chapter", i.e. quand "chapter" augmente de niveau, "nfigure" est remis à zéro.
+%\newcommand{\fig}[1]{\begin{center} {\textbf{\textit{ Figure \thechapter.\thenfigure : }}}{\footnotesize{\it #1}\stepcounter{nfigure}}\end{center}} %la commande "the(compteur)" permet d'afficher ou en est le comteur.
+%\setcounter{nfigure}{1}
+\newcommand{\fig}[1]{\refstepcounter{nfigure} \small\textit{\textbf{Figure \thenfigure : } #1}}
+\newcommand{\figsanslegende}{\refstepcounter{nfigure} \small\textit{\textbf{Figure \thenfigure}}}
+
+
+
+
+
+\newenvironment{changemargin}[3]{\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{0pt}%
+\setlength{\rightmargin}{0pt}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{0pt plus 1pt}%
+\addtolength{\leftmargin}{#1}%
+\addtolength{\rightmargin}{#2}%
+\addtolength{\textheight}{#3}%
+}\item }{\end{list}}
+
+
+
+%% L'environement "taligned" défini ci-dessous a le même effet que "aligned" mais reste en textstyle.
+%% (En effet, "aligned" ajoute un \displaystyle à chaque "cellule" automatiquement
+\newenvironment{taligned}
+ {\let\displaystyle\textstyle\aligned}
+ {\endaligned}
+%\newenvironment{talign*}
+% {\let\displaystyle\textstyle\csname align*\endcsname}
+% {\endalign}
+
+
+
+
+
+
+
+\newcounter{example}
+\colorlet{colexam}{red!75!black}
+\newtcolorbox[use counter=example]
+{myexample}
+{empty,title={Example \thetcbcounter},attach boxed title to top left,boxed title style={empty, size=minimal, toprule=2pt,top=4pt, overlay={\draw[colexam,line width=2pt]
+
+([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);}},
+coltitle=colexam,fonttitle=\Large\bfseries,
+before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=0pt,right=3mm,top=4pt,
+breakable,pad at break*=0mm,vfill before first,
+overlay unbroken={\draw[colexam,line width=1pt]
+([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+--([xshift=-0.5pt]frame.south east)--(frame.south west); },
+overlay first={\draw[colexam,line width=1pt]
+([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+--([xshift=-0.5pt]frame.south east); },
+overlay middle={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+--([xshift=-0.5pt]frame.south east); },
+overlay last={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+--([xshift=-0.5pt]frame.south east)--(frame.south west);},%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

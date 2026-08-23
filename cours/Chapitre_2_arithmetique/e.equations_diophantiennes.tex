@@ -1,0 +1,230 @@
+\section{Équations Diophantiennes}
+
+\begin{definition}
+On appelle \textbf{équation diophantienne} une équation linéaire à coefficients entiers et pour laquelle on cherche des solutions entières.
+
+\medskip
+Cas particulier : l'équation diophantienne à deux inconnues : 
+$$ax+by=c$$
+avec $a,b,c\in\Z$ et les inconnues $x,y$ sont des nombres entiers.
+
+\end{definition}
+
+En apparence simples, les équations diophantiennes sont en réalité complexes et leur résolution peut s'avérer très ardue, voir impossible en l'état des connaissances actuelles.
+
+\smallskip
+Des méthodes générales existent pour résoudre un système d'équations du premier degré, ou encore une équation du second degré. On dispose aussi de méthodes pour étudier une équation du troisième degré, mais déjà, là, les problèmes ouverts abondent. Quant aux équations de degré supérieur, il est significatif que beaucoup d'ouvrages consacrés aux équations diophantiennes n'apparaissent que comme une accumulation de résultats disparates.
+
+
+\smallskip
+Il a maintenant été établi (J. Robinson, Yu. V. Matijasevic, 1970) que le dixième problème de Hilbert a une réponse négative : il n'existe pas d'algorithme universel permettant de décider si une équation diophantienne a une solution en nombre entiers.
+
+\smallskip
+%Cependant la proposition suivante permet de résoudre une équation diophantienne à deux inconnues.
+
+
+
+%\subsection{\'Equations $ax+by=c$}
+\label{ssec:dioph}
+
+\begin{proposition}
+\label{prop:equations_diophantiennes}
+Considérons l'équation
+$$
+ax+by=c \textrm{\eh{3}où\eh{3} } a,b,c \in \Z$$
+\begin{enumerate}[label=\arabic*),left=0mm]
+  \item L'équation possède des solutions $(x,y)\in \Z^2$ si et seulement si
+pgdc$(a,b) | c$.
+  \item Si pgcd$(a,b)\ |\ c$ alors il existe une infinité de solutions entières et elles sont toutes de la forme $(x_0+ k\alpha, y_0 + k\beta)$ où $(x_0;y_0)$ est une solution particulière, $\alpha,\beta \in \Z$ sont fixés et $k$ {parcourt $\Z$}.
+\end{enumerate}
+\end{proposition}
+
+\begin{demo}{0.97}
+\textbf{Sens direct $(\Rightarrow)$} : Soit $(x_0;y_0)\in\Z^2$ tels que $ax_0+by_0=c$.
+
+\medskip
+Comme pgdc$(a;b)\ |\ a$ et pgdc$(a;b)\ |\ b$, alors pgcd$(a;b)\mid (ax_0+by_0)=c$ pour tout $a, b \in \Z$. (propriété \textit{v)})
+
+\medskip
+\textbf{Sens indirect $(\Leftarrow)$} : Soit $d=$ pgdc$(a;b)$.
+
+\medskip
+Par hypothèse, il existe $k\in \Z$ tel que $c=d\cdot k$ ($d\mid c$).
+
+Par le théorème de Bézout, il existe $\alpha, \beta \in \Z$ tels que :
+$$a\alpha +b\beta=d$$
+Ce qui en multipliant par $k$ nous donne :
+$$k(a\alpha +b\beta)=k\cdot d$$ 
+$$a(k\alpha)+b(k\beta)=c$$
+Donc $(k\alpha;k\beta)=(x_0;y_0)$ est une solution de l'équation $ax+by=c$.
+\end{demo}
+
+
+Nous allons voir sur un exemple comment prouver le second point et calculer explicitement les solutions.
+
+\smallskip
+\textbf{Il sera nécessaire de refaire toutes les étapes du calcul à chaque fois que l'on résoudra une équation diophantienne!} 
+
+\bigskip
+Cherchons les solutions entières de $161x+368y=115$.
+
+
+\begin{itemize}
+ \item  \textbf{Première étape. Y a-t-il des solutions ?}
+On effectue l'algorithme d'Euclide pour calculer le pgdc de $a=161$ et $b=368$.
+$$
+\begin{array}{rclclcl}
+368 & = & 161 & \cdot & 2 & + & 46 \\
+161 & = & 46 & \cdot & 3 & + & \textcolor{red}{23} \\
+46  & = & 23   & \cdot & 2 & + & 0 \\
+\end{array}
+$$
+Donc $\pgdc(368,161)=23$.
+Comme $115=5\cdot 23$ alors pgdc$(368,161) | 115$.
+
+\smallskip
+Par le point 1) de la proposition, l'équation admet des solutions entières.
+
+ \item  \textbf{Deuxième étape. Trouver une solution particulière.}
+On effectue la remontée de l'algorithme d'Euclide pour calculer les coefficients de Bézout.
+$$
+\begin{array}{rclclcl}
+&&&&&&\\
+368 & = & 161 & \times & 2 & + & 46 \\
+161 & = & 46 & \times & 3 & + & \textcolor{red}{23} \\
+46  & = & 23   & \times & 2 & + & 0 \\
+\end{array}
+\qquad
+\begin{array}{rcl}
+\textcolor{red}{23} &=&
+\left|\begin{array}{l}
+161 \fois \textcolor{blue}{7} + 368 \fois (\textcolor{blue}{-3})\\
+161 + (368-2\fois 161)\fois (-3)\\
+\end{array}\right.\\
+\textcolor{red}{23} &=& 161 -3 \fois 46  \\
+&& \\
+\end{array}
+$$
+
+On trouve donc $161\fois7 + 368\fois(-3)=23$.
+Comme $115=5\fois23$ en multipliant par $5$ on obtient :
+$$161\fois35 + 368\fois(-15)=115$$
+Ainsi $(x_0,y_0) = (35,-15)$ est une solution particulière de l'équation.
+
+ \item  \textbf{Troisième étape. Recherche de toutes les solutions.}
+Soit $(x,y) \in \Z^2$ une solution quelconque de l'équation.
+Nous savons que $(x_0,y_0)$ est aussi solution. Ainsi :
+$$161x+368y=115 \quad \text{ et } \quad 161x_0+368y_0=115$$
+(il ne faut pas remplacer $x_0$ et $y_0$ par leurs valeurs!).
+La différence de ces deux égalités conduit à
+\begin{align*}
+& 161 \fois (x-x_0) + 368 \fois (y-y_0) = 0 \\
+\implies \quad & 23 \fois 7 \fois (x-x_0) + 23 \fois 16 \fois  (y-y_0) = 0 \\
+\implies \quad & 7 (x-x_0) = -16 (y-y_0) \qquad  (*)\\
+\end{align*}
+Nous avons simplifié par $23$ qui est le pgcd de $161$ et $368$.
+(Attention de ne surtout pas oublier cette simplification, sinon la suite du raisonnement
+est fausse.)
+
+Ainsi $7 | 16(y-y_0)$, or pgcd$(7,16)=1$ (d'où l'importance de la simplification par le pgcd$(161;368)$) donc par le lemme de Gauss $7|y-y_0$.
+Il existe donc $k\in \Z$ tel que $y-y_0 = 7 \fois k$.
+
+\smallskip
+Repartant de l'équation $(*)$ : $7 (x-x_0) = -16 (y-y_0)$.
+On obtient maintenant $7(x-x_0)=-16\fois 7 \fois k$.
+D'où $x-x_0 = -16k$. (C'est le même $k$ pour $x$ et pour $y$!)
+
+\smallskip
+Nous avons donc $(x,y) = (x_0-16k,y_0+7k)$.
+Il est aisé de voir que tout couple de cette forme est solution de l'équation.
+Il reste donc juste à substituer $(x_0,y_0)$ par sa valeur pour obtenir :
+\begin{encadre}{15cm}{Les solutions entières de $161x+368y=115$
+sont : $$(x,y) = (35-16k,-15+7k)\;,\; k \textrm{ parcourant }\Z$$}\end{encadre}
+\end{itemize}
+
+
+
+\begin{exstheorie}
+\exo
+Déterminer une équation diophantienne telle que $(24;72)$ en soit une solution.
+
+
+
+
+
+\eexo
+
+
+
+
+
+\exo
+~
+
+\vspace{-7mm}
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=0mm]
+\item Déterminer une équation diophantienne telle que $(6;17)$ et $(-18;-23)$ soient des solutions de l'équation.
+\item Est-ce que cette équation est unique ?
+\end{enumerate}
+
+
+
+
+
+
+\eexo
+
+
+
+
+
+\exo
+Résoudre dans $\mathbb{Z}^2$ l'équation diophantienne: $$1665x+1035y=45$$ 
+
+
+
+
+
+
+\eexo
+
+
+
+
+\exo
+On trace la droite d'équation: $$35x+84y=150$$ sur une feuille quadrillée avec l'échelle \textit{1 carré : 1 unité}.\\
+Déterminer quand est-ce que la droite passera par un point d'intersection du quadrillage.
+%\columnbreak
+
+
+
+
+
+\eexo
+
+
+
+
+
+\exo
+28 personnes participent à un repas. Le prix normal est de $26.-$ par personne, sauf pour les étudiants et les enfants qui paient respectivement $17.-$ et $13.-$.\\
+L'addition s'élève alors à $613.-$.
+
+\begin{enumerate}[label=\alph*),left=0mm,itemsep=0mm]
+\item Établir une équation diophantienne représentant le problème.
+\item Calculer le nombre d'étudiants et d'enfants ayant participé au repas en résolvant l'équation de l'item a).
+\item Proposer un algorithme simple permettant de résoudre ce problème.
+
+\vspace{1pt}
+%{\indication{0.85}{Utiliser le fait que le nombre d'étudiants et d'enfants est inférieur à 28, et tester toutes les possibilités.}}
+\begin{spacing}{0.8}
+\textit{\footnotesize\textbf{Indication :} Utiliser le fait que le nombre d'étudiants et d'enfants est inférieur à 28, et tester toutes les possibilités.}
+\end{spacing}
+%\vspace{-2mm}
+
+
+\item Implémenter l'algorithme de l'item c) en Python.
+\end{enumerate}
+
+
+\end{exstheorie}
