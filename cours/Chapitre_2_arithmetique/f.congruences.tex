@@ -14,6 +14,28 @@ En d'autres termes : \eh{1}$a \equiv b \pmod n \quad \ssi \quad \exists k \in \Z
 
 Remarquons que $n$ divise $a$ si et seulement si $a\equiv 0 \pmod n$.
 
+\vspace{3mm}
+
+\begin{exemples}{1mm}
+	\item $59 \equiv 17 \pmod 7 \quad \text{car} \quad 59 = 7 \cdot 8 + \boxed{3} \quad \text{et} \quad 17 = 7 \cdot 2 + \boxed{3}$
+	
+	$59 \text{ est congru à } 17 \text{ modulo } 7 \text{ car ils ont le même reste.}$
+	
+	\item $3 \equiv -1 \pmod 2 \quad \text{car} \quad 3 = 2 \cdot 1 + \boxed{1} \quad \text{et} \quad -1 = 2 \cdot (-1) + \boxed{1}$
+	
+	\item$-14 \equiv -2 \pmod 4 \quad \text{car} \quad -14 = 4 \cdot (-4) + \boxed{2} \quad \text{et} \quad -2 = 4 \cdot (-1) + \boxed{2}$
+	
+	\item $-14 \not\equiv -2 \pmod 5 \quad \text{car} \quad -14 = 5 \cdot (-3) + \boxed{1} \quad \text{et} \quad -2 = 5 \cdot (-1) + \boxed{3}$
+	
+	$-14 \text{ n'est pas congru à } -2 \text{ modulo } 5 \text{ car ils n'ont pas le même reste.}$
+	
+	
+	\item $-15 \not\equiv -2 \pmod 4 \quad \text{car} \quad -15 = 4 \cdot (-4) + \boxed{1} \quad \text{et} \quad -2 = 4 \cdot (-1) + \boxed{2}$
+	
+	$-15 \text{ n'est pas congru à } -2 \text{ modulo } 4 \text{ car ils n'ont pas le même reste.}$
+\end{exemples}
+
+
 \begin{proposition}
 ~
 
@@ -22,80 +44,210 @@ Remarquons que $n$ divise $a$ si et seulement si $a\equiv 0 \pmod n$.
   \item La relation \og congru modulo $n$ \fg{} est une relation d'équivalence :
   
   \vspace{-1mm}
-  \begin{itemize}
+  \begin{enumerate}[label=\roman*),left=0mm]
     \item (Réflexivité) $a \equiv a \pmod n$,
     \item (Symétrie) si $a \equiv b \pmod n$ alors $b \equiv a \pmod n$,
     \item (Transitivité) si $a \equiv b \pmod n$ et $b \equiv c \pmod n$ alors $a \equiv c \pmod n$.
-  \end{itemize}
-  \item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors
-$a+c \equiv b+d \pmod n$.
-  \item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors
-$a\fois c \equiv b \fois d \pmod n$.
-  \item Si $a \equiv b \pmod n$ alors pour tout $k \geqslant 0$\; on a\; $a^k \equiv b^k \pmod n$.
+  \end{enumerate}
+  \item $a \equiv b \pmod n \iff a - b \equiv 0 \pmod n \iff n \mid (a - b) \iff a = nk + b \quad k \in \mathbb{Z}$
+  
+  \item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors  la congruence est compatible avec :
+  
+  \begin{enumerate}[label=\roman*),left=0mm]
+  	\item (l’addition) : $a \equiv a \pmod n$, $a+c \equiv b+d \pmod n$,
+  	\item (la multiplication) : $a \equiv a \pmod n$, $a\cdot c \equiv b\cdot d \pmod n$,
+  	\item (l'exponentiation) :  pour tout $k \geqslant 0$\; on a\; $a^k \equiv b^k \pmod n$.
+  \end{enumerate}
+  
 \end{enumerate}
 \end{proposition}
-
-
-
-\begin{exemples}{1mm}
-  \item $15 \equiv 1 \pmod 7$, $72 \equiv 2 \pmod {7}$, $3 \equiv -11 \pmod{7}$,
-  \item $5x+8 \equiv 3 \pmod 5$ \quad pour tout $x \in \Z$,
-  \item $11^{20xx} \equiv 1^{20xx} \equiv 1 \pmod {10}$, où $20xx$ est l'année en cours.
-\end{exemples}
 
 
 
 \vspace{4mm}
 \noindent{\it Démonstration:}
 \begin{enumerate}
-  \item Utiliser la définition.
-  \item Idem.
-  \item Soit $a$ et $b$ tels que $a \equiv b \pmod n$, donc il existe $k \in \Z$ tel que $a=b + kn$.
+  \item \textbf{1.i)} A voir que : $a \equiv a \pmod n \quad (\text{\textit{réflexive}})$
+  
+  Evident : Il existe des nombres $q \text{ et } r$ uniques tel que : $a = nq + r \quad \text{avec } 0 \le r < n$
+  
+  \vspace{0.3cm}
+  
+  \textbf{1.ii)} A voir que : Si $a \equiv b  \pmod n$ alors $b \equiv a  \pmod n \quad (\text{\textit{symétrique}})$
+  
+  Evident : Si $a \equiv b  \pmod n$ alors existe des nombres $q, q' \text{ et } r$ uniques tel que :
+  
+  $$a = nq + r \quad \text{et} \quad b = nq' + r \quad \text{avec } 0 \le r < n \quad \text{donc } b \equiv a  \pmod n$$
+  
+  \vspace{0.3cm}
+  
+  \textbf{1.iii)} A voir que : Si $a \equiv b  \pmod n$ et $b \equiv c  \pmod n$ alors $a \equiv c  \pmod n \quad (\text{\textit{transitive}})$
+  
+  $$\text{Si } a \equiv b  \pmod n \implies \begin{cases} a = nq + r & 0 \le r < n \\ b = nq' + r & 0 \le r < n \end{cases} \quad r \text{ unique}$$
+  
+  $$\text{et } b \equiv c  \pmod n \implies \begin{cases} b = nq' + r & 0 \le r < n \\ c = nq'' + r & 0 \le r < n \end{cases} \quad r \text{ unique}$$
+  
+  On constate que $a$ et $c$ ont le même reste lorsque l'on effectue une division euclidienne par $n$ d'où $a \equiv c  \pmod n$.
+  \item  En Utilisant la définition,
+  \begin{align*}
+  	a \equiv b  \pmod n &\iff \begin{cases} a = nq + r \\ b = nq' + r \end{cases} \quad q \text{ et } q' \in \mathbb{Z} \text{ et } 0 < r \le n \\
+  	&\iff a - b = (nq + r) - (nq' + r)\\
+  	&\iff a - b = n \underbrace{(q - q')}_{\in \mathbb{Z}} + 0\\
+  	&\iff a - b = n \underbrace{(q - q')}_{\in \mathbb{Z}} + 0\\
+  	&\iff n \mid (a - b)\\
+  	&\iff a - b \equiv 0  \pmod n\\
+  	&\iff a - b = nk + 0 \quad k \in \mathbb{Z}\\
+  	&\iff a = nk + b \quad k \in \mathbb{Z}
+  \end{align*}
+
+  \item i) Par hypothèse :
+  
+  $$a \equiv b  \pmod n \quad \text{et} \quad c \equiv d  \pmod n \overset{P2)}{\iff} \exists\, k, k' \in \mathbb{Z} \text{ tel que : } a = kn + b \quad \text{et} \quad c = k'n + d .$$
+  
+  \indent En additionnant ces deux égalités, on obtient :  
+  $a + c = \underbrace{(k + k')}_{\in \mathbb{Z}} n + b + d \iff a + c \equiv b + d  \pmod n$\\
+  
+  \smallskip
+  
+  ii) Soit $a$ et $b$ tels que $a \equiv b \pmod n$, donc il existe $k \in \Z$ tel que $a=b + kn$.
   
 %  \smallskip
-   Soit $c$ et $d$ tels que $c \equiv d \pmod n$, donc il existe $\ell \in \Z$ tel que $c \equiv d + \ell n$.
+   \indent Soit $c$ et $d$ tels que $c \equiv d \pmod n$, donc il existe $\ell \in \Z$ tel que $c \equiv d + \ell n$.
    
-   \smallskip
-Alors $a\fois c = (b+kn)\fois(d+\ell n) = bd + (b \ell + d k + k\ell n)\fois n$ qui est bien de la forme
+ \indent \indent Alors $a\fois c = (b+kn)\fois(d+\ell n) = bd + (b \ell + d k + k\ell n)\fois n$ qui est bien de la forme
 $bd + m n$ avec $m\in \Z$. On conclut donc que  $a\fois c \equiv b\fois d \pmod n$.
-  \item C'est une conséquence du point précédent : avec $a=c$ et $b=d$ on obtient
+
+   \smallskip
+    iii) C'est une conséquence du point précédent : avec $a=c$ et $b=d$ on obtient
 $a^2 \equiv b^2 \pmod n$. On continue par récurrence.
 \end{enumerate}
 
+\vspace{5mm}
 
-
-\begin{remarque}
-Pour trouver un \og bon \fg{} représentant de $a \pmod n$ on peut aussi faire la division euclidienne
-de $a$ par $n$ : $a = bn + r$ alors $a \equiv r \pmod n$ et $0 \le r < n$.
-\end{remarque}
-
+La compatibilité de la relation de congruence avec l'addition, la multiplication et l’exponentiation permet de grandement simplifier les calculs de reste.
 
 \vspace{5mm}
+
+\begin{exemples}{1mm}
+	\item  On a $50^{100} \equiv 1 \pmod 7$.
+	 
+	 En effet, comme  $50 \equiv 1 \pmod 7$ (car $50 = 7  \cdot 7 + 1$).	\\
+	 De plus, d'après la compatibilité avec les puissances, on a : $50^{100} \equiv 1^{100} \equiv 1 \pmod 7$.
+	
+	
+	\vspace{0.3cm}
+	
+	\item  On a $100^{3} \equiv 1 \pmod 7$.
+	
+	 En effet, comme $100 \equiv 2 \pmod 7$ (car $100 \equiv 2\cdot 50 \equiv 2\cdot 1 \pmod 7$), d'après la compatibilité avec les puissances, on a :
+	$100^3 \equiv 2^3 \equiv 8 \equiv 1 \pmod 7$.
+	
+	\vspace{0.3cm}
+	
+	\item  On a $50^{100} + 100^{100} \equiv  3 \pmod 7$.
+	
+	 En effet, comme $100^{100} = 100^{3  \cdot 33 + 1} = \left(100^3\right)^{33}  \cdot 100$, donc d'après la compatibilité avec les puissances et la multiplication, on a : $100^{100} \equiv 1^{33} \cdot 2 \equiv 2 \pmod 7$.
+	
+	D'après la compatibilité avec l'addition, on a alors : $50^{100} + 100^{100} \equiv 1 + 2 \equiv 3 \pmod 7$.
+	
+	Le reste est 3.
+\end{exemples}
+
+\vspace{5mm}
+
+De même, on peut utiliser ces relations pour déterminer si on nombre est un diviseur (ou un multiple) d'un autre.
+
+\vspace{5mm}
+
+\begin{exemple}
+	On peut montrer que $\forall n \in \mathbb{N}$, le nombre $3^{n+3}-4^{4 n+2}$  est divisible par 11.
+	
+	\smallskip \smallskip
+	
+	
+	En effet, on a : $3^{n+3} = 3^n \cdot 3^3 = 27 \cdot 3^n$.
+	
+	Or $27 \equiv 5 \pmod{11}$, donc d'après la compatibilité avec la multiplication, on a :
+	
+	$$\forall n \in \mathbb{N}, \quad 3^{n+3} \equiv 5 \cdot 3^n \pmod{11}$$
+	
+	On a : $4^{4n+2} = \left(4^4\right)^n \cdot 4^2$, or $4^2 \equiv 5 \pmod{11}$ donc $4^4 \equiv 5^2 \equiv 3 \pmod{11}$, donc :
+	
+	$$\forall n \in \mathbb{N}, \quad 4^{4n+2} \equiv 3^n \cdot 5 \pmod{11}$$
+	
+	On en déduit donc que :
+	
+	$$3^{n+3} - 4^{4n+2} \equiv 0 \pmod{11}$$
+	
+	La proposition est donc vérifiée pour tout entier naturel $n$.
+\end{exemple}
+
+%\begin{remarque}
+%Pour trouver un \og bon \fg{} représentant de $a \pmod n$ on peut aussi faire la division euclidienne
+%de $a$ par $n$ : $a = bn + r$ alors $a \equiv r \pmod n$ et $0 \le r < n$.
+%\end{remarque}
+
+
+
 \begin{exstheorie}
-\exo
-Trouver le plus petit nombre supérieur ou égal à 0 qui est congru à $a$ modulo $m$.
+	\exo
+	Trouver le plus petit nombre supérieur ou égal à 0 qui est congru à $a$ modulo $m$.
+	
+	
+	\begin{enumerate}[label=\roman*),left=0mm]
+		\item $a=3412$ et $m=4$
+		\item $a=177$ et $m=9$
+		\item $a=31$ et $m=31$
+		\item $a=31$ et $m=25$
+		\item $a=365$ et $m=5$
+		\item $a=-3122$ et $m=3$
+		\item $a=31458687312$ et $m=10$
+		\item $a=-259874629$ et $m=10$
+	\end{enumerate}
+	
+	
+	
+	\eexo
+	\pagebreak[3]
+	
+	\exo
+	\noindent Les affirmations suivantes sont-elles vraies ou fausses ? Justifier vos réponses.
+	
+	\begin{enumerate}
+		\item[\textbf{a)}] $471 \equiv 11 \pmod {23}$
+		\item[\textbf{b)}] $370 \equiv 17 \pmod {13}$
+		\item[\textbf{c)}] $29 \equiv -121 \pmod 5$
+		\item[\textbf{d)}] $-30 \equiv -1 \pmod {26}$
+		\item[\textbf{e)}] L'égalité $914 = 19 \cdot 47 + 21$ permet de déduire les congruences :
+		
+		$914 \equiv 21 \pmod {19} \quad$ et $\quad 914 \equiv 21 \pmod {47}$
+		
+		\item[\textbf{f)}] Soit $n \in \mathbb{N}$ avec $n \ge 2$ et $a \in \mathbb{N}^*$. \\
+		Si $a \mid b \iff b \equiv 0 \pmod a$
+		\item[\textbf{g)}] Soit $n \in \mathbb{N}$ avec $n \ge 2$ et $a \in \mathbb{N}^*$. \\
+		Si $b \equiv 0 \pmod a$ et $c \equiv 0 \pmod a$ alors $\alpha \cdot b + \beta \cdot c \equiv 0 \pmod a$ avec $\alpha, \beta \in \mathbb{N}^*$ \\
+		Autrement dit : Si $a$ divise $b$ et $a$ divise $c$ alors $a$ divise toute combinaison linéaire de $b$ et de $c$
+	\end{enumerate}
+	\eexo
+	\pagebreak[3]	
+	\exo
+	Trouver les restes de la division euclidienne par $7$ des nombres :
+	$351^{12} \cdot 85^{15}$ et $\quad 16^{12} - 23^{12}$.
+	
+	
+	
+	\eexo
+	\pagebreak[3]
+	
+	
+	\exo
+	Démontrer que pour tout entier naturel $n$, $5^{2n} - 14^n$ est divisible par $11$.
+	
+	\eexo
+	\pagebreak[3]
+\end{exstheorie}
 
-
-\begin{enumerate}[label=\roman*),left=0mm]
-\item $a=3412$ et $m=4$
-\item $a=177$ et $m=9$
-\item $a=31$ et $m=31$
-\item $a=31$ et $m=25$
-\item $a=365$ et $m=5$
-\item $a=-3122$ et $m=3$
-\item $a=31458687312$ et $m=10$
-\item $a=-259874629$ et $m=10$
-\end{enumerate}
-
-
-
-
-\eexo
-\pagebreak[3]
-
-
-
-
+\begin{exstheorie}
 
 \exo
 Trouver tous les nombres compris entre $1950$ et $2000$ qui sont congrus à $a$ modulo $m$.
@@ -107,13 +259,8 @@ Trouver tous les nombres compris entre $1950$ et $2000$ qui sont congrus à $a$ 
 \end{enumerate}
 
 
-
-
-
 \eexo
 \pagebreak[3]
-
-
 
 
 
@@ -122,12 +269,8 @@ Démontrer par récurrence que $6\cdot 4^n \equiv 6 \pmod{9}$ pour tout $n\geqsl
 
 
 
-
-
 \eexo
 \pagebreak[3]
-
-
 
 
 
@@ -135,22 +278,16 @@ Démontrer par récurrence que $6\cdot 4^n \equiv 6 \pmod{9}$ pour tout $n\geqsl
 Trouver le reste de la division par $13$ du nombre $100^{1000}$.
 
 
-
-
-
 \eexo
 \pagebreak[3]
-
-
-
 
 
 \exo
 Démontrer que le nombre $7^n+1$ est divisible par $8$ si $n$ est impair ; dans le cas où $n$ est pair, donner le reste de la division.
 \end{exstheorie}
-\clearpage
 
 
+\medskip
 
 %\begin{exemple}{0.9} \textbs{Exponentiation rapide (\guillemets{square-and-multiply})}
 %

@@ -1,9 +1,12 @@
 \section{Introduction}
-L'arithmétique\footnote{Du grec ancien \guillemets{arithmos} qui signifie \guillemets{nombre}.} est l'étude des propriétés des nombres et des opérations élémentaires entre eux. Elle est, avec la géométrie, une des plus anciennes branches des mathématiques et son origine remonte déjà à l'époque des égyptiens et des babyloniens, qui utilisaient des tables numériques pour calculer et résoudre des problèmes.
-%\textgreek{'arijm'os}
+L'arithmétique\footnote{Du grec ancien \guillemets{arithmos} qui signifie \guillemets{nombre}.} a pour objet l'étude des nombres entiers.
+Ces entiers peuvent être naturels $(\mathbb{N}=\{0,1,2,3, \ldots\})$ ou relatifs $(\mathbb{Z}=\{\ldots,-3,-2,-1,0,1,2,3, \ldots\})$.
 
 \smallskip
-Bien que l'arithmétique, dans son sens large, ne se limite pas qu'aux nombres entiers, c'est bien l'étude de ces derniers qui a révélé de grands défis en mathématiques. Certains problèmes d'une grande importance n'ont à ce jour toujours pas été résolus ou démontrés. 
+
+L'arithmétique est, avec la géométrie, une des plus anciennes branches des mathématiques et son origine remonte déjà à l'époque des égyptiens et des babyloniens, qui utilisaient des tables numériques pour calculer et résoudre des problèmes.
+%\textgreek{'arijm'os}
+
 
 \smallskip
 Les intérêts de l'arithmétique sont multiples. Par exemple, considérons la situation suivante :
@@ -21,7 +24,7 @@ Un autre domaine d'importance de l'arithmétique est son application en \textit{
 \section{Division Euclidienne}
 \subsection{Définition de la division euclidienne}
 
-La division euclidienne, ou division avec reste, est nommée ainsi en hommage et mathématicien grec Euclide\footnote{Euclide d'Alexandrie était un mathématicien de la Grèce antique qui vécut aux environs de 300 av. JC. Son ouvrage \textit{Les Eléments}  est un des plus anciens et plus célèbres ouvrages des mathématiques.} qui en a posé les fondements.
+La division euclidienne, ou division avec reste, est nommée ainsi en hommage au mathématicien grec Euclide\footnote{Euclide d'Alexandrie était un mathématicien de la Grèce antique qui vécut aux environs de 300 av. JC. Son ouvrage \textit{Les Eléments}  est un des plus anciens et plus célèbres ouvrages des mathématiques.} qui  a été le premier (\textit{connu}) à formaliser et à prouver mathématiquement les propriétés fondamentales de cette opération dans son livre \textit{Les Éléments}.
 
 \medskip
 La division euclidienne, plus particulièrement l'algorithme permettent d'effectuer la dite division, est connue depuis l'école primaire. Cependant, à notre niveau il sera  nécessaire de présenter certains résultats de manière plus rigoureuse. Nous allons commencer par démontrer que le \\\guillemets{quotient} et le \guillemets{reste} de la division euclidienne existent toujours et sont uniques. C'est l'objet du théorème qui suit. %nous allons étudier
@@ -65,17 +68,13 @@ L'ensemble $S$ vérifie les 3 conditions suivantes :
 Donc $S$ possède un plus grand élément qu'on note $q=max(S)$.
 
 \medskip
-{\footnotesize Contre-exemple : \begin{minipage}[t]{0.85\textwidth}
-$T=\lbrace 2-\frac{1}{n} \eh{2}\vert\eh{2} n\in \N^{\ast}\rbrace$. Bien qu'il vérifie les conditions 1) et 2), cet ensemble n'a pas de plus grand élément (il est infini).
-\end{minipage} }
 
-\bigskip
 De plus on a : \hspace{2mm}\begin{minipage}[t]{0.8\textwidth}$d q \leqslant n$ \eh{1}(car $q\in S$) \et{1} $d (q+1)>n$ \eh{1}(car $(q+1)\notin S$).\end{minipage}
 
 \smallskip
-Donc : $$d q \leqslant n \leqslant d (q+1) \ssi[2]$$
-$$d q \leqslant n \leqslant d q+d \ssi[2]$$
-$$0\leqslant \underbrace{n-dq}_{=r}<d$$
+Donc : $$d q \leqslant n \leqslant d (q+1)$$
+$$\ssi[2]d q \leqslant n \leqslant d q+d $$
+$$\ssi[2]0\leqslant \underbrace{n-dq}_{=r}<d$$
 
 Finalement nous obtenons : 
 $$n=\overbrace{d q+\underbrace{(n-dq)}_{=r}}^{=n}\eh{4}\textrm{avec }\eh{2} 0\leqslant n-dq<d$$
@@ -113,7 +112,21 @@ Finalement, on conclut que nécessairement $q_1=q_2$ et par suite, en remplaçan
 \hfill $\blacksquare$
 \end{demonstration}
 
+\begin{exemples}{1mm}
+	\item  La division euclidienne de $114$ par $8$ correspond à : $114 = 8 \cdot 14 + 2$.
+	
+	Ainsi $q = 14$ et $r = 2$.
+	
+	\vspace{0.3cm}
+	
+	\item Pour avoir un reste positif dans la division euclidienne de $-114$ par $8$, on écrit : $-2 = 6 - 8$.
+	
+	On obtient alors : $-114 = 8 \cdot (-14) - 2 = 8 \cdot (-14) - 8 + 6 = 8 \cdot (-15) + 6$.
+	
+	Ainsi $q = -15$ et $r = 6$.
+\end{exemples}
 
+\medskip
 \begin{definition}
 \textbf{Diviser} un nombre relatif $n$ par un nombre naturel $d$ c'est déterminer les nombres $q$ et $r$ comme dans le théorème \ref*{thm:div_eucl}.
 
@@ -144,6 +157,7 @@ Si $d$ ne divise pas $n$ on note $d\nmid n$
 \begin{exemples}{0mm}
 \item $5\mid 20\;$ car $\;20=5\cdot \underbrace{4}_{=q}$
 \item $-2\mid 6\;$ car $\;6=(-2)\cdot \underbrace{(-3)}_{=q}$
+
 \end{exemples}
 
 
@@ -202,13 +216,41 @@ Par définition cela veut dire que $a\mid (xb+yc)$.
 \hfill $\blacksquare$
 \end{enumerate}
 
+\medskip
 
+\begin{remarque}
+	Lorsque l'on  cherche à résoudre des problèmes en arithmétique, on peut traduire la situations en équations, mais pour la résolution en essayera de faire apparaître des expressions faisant intervenir des produits de nombres entiers comme dans l'exemple suivant.
+\end{remarque}
+
+\medskip
+
+\begin{exemple}
+	On veut résoudre le problème suivant:
+	
+	\begin{quote}
+		Lorsqu'on divise $a$ par $b$, le reste est 8 et lorsqu'on divise $2a$ par $b$, le reste est 5. Déterminer le diviseur $b$.
+	\end{quote} 
+	
+	
+	Écrivons chacune des deux divisions euclidiennes, en notant $q$ et $q'$ les quotients respectifs :
+	
+	$$\begin{cases} a = b \cdot q + 8 \quad \text{avec} \quad b > 8 \\ 2a = b \cdot q' + 5 \quad \text{avec} \quad b > 5 \end{cases}$$
+	
+	En multipliant la première division par 2 et en égalisant avec la deuxième, on obtient :
+	
+	$$2b \cdot q + 16 = b \cdot q' + 5 \quad \text{avec} \quad b > 8$$
+	
+	$$b \cdot (2q - q') = -11$$
+	
+	$$b \cdot (q' - 2q) = 11$$
+	
+	$b$ est donc un multiple positif non nul de 11, supérieur à 8, donc l'unique possibilité est $b = 11$.
+\end{exemple}
 
 \begin{exstheorie}
 \renewcommand{\eexo}{\vspace{4mm}}
 \exo
 Sans calculatrice, effectuer la division euclidienne de \nombre{91239123} par \nombre{8924}.
-
 
 
 \eexo
@@ -220,10 +262,29 @@ Sans calculatrice, effectuer la division euclidienne de \nombre{91239123} par \n
 Déterminer le quotient et le reste de la division euclidienne de $-17$ par $3$.
 
 
-
 \eexo
 \pagebreak[3]
 
+\exo
+
+\vspace{-0.8cm}
+\begin{enumerate}
+	\item[\textbf{a)}] Écrire la division euclidienne de : 
+	\begin{enumerate}
+		\item[\textbf{1)}] $23$ par $4$.
+		\item[\textbf{2)}] $-23$ par $4$.
+	\end{enumerate}
+	
+	\item[\textbf{b)}] La différence entre deux entiers naturels est $538$. Si l'on divise l'un par l'autre le quotient est $13$ et le reste $34$. Quels sont ces deux entiers naturels ?
+	
+	\item[\textbf{c)}] Déterminer un entier naturel $n$ qui, divisé par $23$ donne pour reste $1$ et, divisé par $17$ donne le même quotient et pour reste $13$.
+	
+	\item[\textbf{d)}] Le quotient d'un entier naturel $x$ par $3$ est $7$. Quels sont les restes possibles ? \\
+	En déduire quelles sont les valeurs de $x$ possibles.
+\end{enumerate}
+
+\eexo
+\pagebreak[3]
 
 
 \exo
@@ -351,7 +412,7 @@ Sachant que $\nombre{96842}=256 \cdot 375+842$, déterminer, sans effectuer la d
 
 
 \exo
-Sans utiliser d'identités remarquables ou la formule de Viète, déterminer tous les nombres relatifs qui sont solution de :
+Sans utiliser d'identités remarquables ou la formule du discriminant, déterminer tous les nombres relatifs qui sont solution de :
 
 \medskip
 \begin{tasks}[after-item-skip=2mm,before-skip=0mm,debug=false](2)%[before-skip=0mm,after-item-skip=-1mm,debug=false](2)
@@ -437,13 +498,13 @@ $$\pgdc(n;d)=\pgdc(d;r)$$
 \begin{demonstration}
 Nous allons démontrer que les diviseurs communs de $n$ et $d$ sont les mêmes que les diviseurs communs de $d$ et $r$.
 
-\medskip
+\smallskip
 Soit $a$ un diviseur de $d$ et de $n$ ($a\mid d$ et $a\mid n$). Par définition $a\mid d$, il faut montrer que $a\mid r$. 
 
 Comme $a\mid d$ alors $a\mid q\cdot d$. De plus on sait que $a\mid n$. Donc :
 $$a\mid \underbrace{n-q\cdot d}_{\textrm{\footnotesize comb. liné.}}=r \textrm{\eh{3}et donc \eh{3}} a\mid r$$
 
-\medskip 
+\smallskip 
 Soit $b$ un diviseur de $d$ et de $r$ ($b\mid d$ et $b\mid r$). Par définition $b\mid d$, il faut montrer que $b\mid n$. 
 
 Comme $b\mid d$ alors $b\mid q\cdot d$. De plus on sait que $b\mid r$. Donc :
@@ -523,7 +584,7 @@ En appliquant cette algorithme, nous obtenons nécessairement un reste de $0$ en
 En effet, nous engendrons une suite strictement décroissante de \guillemets{restes} tous entiers et positifs. Par ailleurs, il est possible de continuer l'algorithme tant que le reste ne vaut pas $0$. Nous arriverons donc obligatoirement à un reste de $0$ à une certaine étape.
 
 
-\medskip
+\smallskip
 \begin{exemple}
 Calculons le $\pgdc(600;124)$ :
 
@@ -599,7 +660,7 @@ $$
 \end{exemples}
 
 
-\vspace{5mm}
+\vspace{1mm}
 
 
 \begin{exstheorie}
@@ -613,36 +674,44 @@ Les quotients successifs obtenus par l'algorithme d'Euclide sont : 8, 2 et 7.
 Déterminer $a$ et $b$.
 
 
-
-
-\eexo
-
-
-
+\medskip
 
 
 \exo
 A l'aide de l'algorithme d'Euclide, calculer :
-%\begin{multicols}{2}
-\begin{enumerate}[label=\alph*), left=0mm,itemsep=2mm]
+\begin{multicols}{2}
+\begin{enumerate}[label=\alph*), left=0mm, itemsep=0mm]
 \item $\pgdc(9945;3003)$. 
 \item $\pgdc(18480;9828)$.
+\item $\pgdc(-286, 390)$.
 \end{enumerate}
-%\end{multicols}
+\end{multicols}
+
+\smallskip
+
+\exo
+Les entiers suivants sont-ils premiers entre eux ?
+\begin{enumerate}[label=\alph*), left=0mm]
+	\item  4 847 et 5 633.
+	\item  5 617 et 813.
+\end{enumerate}
+
+\exo
+Déterminer tous les entiers naturels $n$ inférieurs à $200$ tels que :
+$\text{PGCD}(n; 324) = 12$
 
 
 
+\exo En divisant 1809 et 2527 par un même entier naturel, les restes sont respectivement 9 et 7.
 
-
-\eexo
-
+Quel est le plus grand nombre que l'on peut obtenir comme diviseur?
 
 
 
 \exo
 Déterminer les couples d'entiers naturels de \textit{plus grand diviseur commun} 14 et dont le produit vaut 7056.
 
-\medskip
+
 {\footnotesize \textsl{(\textbs{Indications :} %\begin{minipage}{0.5\textwidth}
 Soit un couple $\pt{a}{b}$ comme dans\\ l'énoncé. Alors :
 $$\left.\begin{tabular}{r}

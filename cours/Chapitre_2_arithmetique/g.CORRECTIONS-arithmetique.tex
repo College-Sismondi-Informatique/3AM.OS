@@ -15,8 +15,79 @@ $\nombre{91239123}=\nombre{8924}\cdot \nombre{10224}+147$
 \item
 Le quotient est $-6$ et reste est $1$.
 
+\item 
 
 
+\begin{enumerate}[label=\alph*),itemsep=0mm,left=0mm]
+	\item  \textbf{Divisions euclidiennes}
+	\begin{enumerate}
+		\item[\textbf{1)}] Pour $23$ par $4$ : \\
+		On cherche $q$ et $r$ tels que $23 = 4 \cdot q + r$ avec $0 \le r < 4$. \\
+		$$23 = 4 \cdot 5 + 3$$
+		Le quotient est $q = 5$ et le reste est $r = 3$.
+		
+		\item[\textbf{2)}] Pour $-23$ par $4$ : \\
+		Le reste doit vérifier $0 \le r < 4$. \\
+		On a $-23 = 4 \cdot (-5) - 3 = 4 \cdot (-5) - 4 + 1 = 4 \cdot (-6) + 1$.
+		$$-23 = 4 \cdot (-6) + 1$$
+		Le quotient est $q = -6$ et le reste est $r = 1$.
+	\end{enumerate}
+	
+	\item  \textbf{Recherche des deux entiers naturels}
+	
+	Soient $a$ et $b$ deux entiers naturels. Supposons $a > b$.
+	\begin{itemize}
+		\item La différence est $538 \implies a - b = 538 \implies a = b + 538$.
+		\item La division euclidienne de $a$ par $b$ donne : $a = 13 \cdot b + 34$ (avec $34 < b$).
+	\end{itemize}
+	
+	On égalise les deux expressions de $a$ :
+	$$13b + 34 = b + 538$$
+	$$12b = 504$$
+	$$b = \frac{504}{12} = 42$$
+	
+	On vérifie que la condition sur le reste est respectée ($34 < 42$). \\
+	On calcule ensuite $a$ :
+	$$a = 42 + 538 = 580$$
+	
+	Les deux entiers naturels sont \textbf{$580$} et \textbf{$42$}.
+	
+	\item  \textbf{Détermination de l'entier naturel $n$}
+	
+	Soit $q$ le quotient commun. Traduisons les deux divisions euclidiennes de $n$ :
+	\begin{itemize}
+		\item Par $23$ : $n = 23 \cdot q + 1$
+		\item Par $17$ : $n = 17 \cdot q + 13$
+	\end{itemize}
+	
+	On égalise les deux expressions de $n$ :
+	$$23q + 1 = 17q + 13$$
+	$$6q = 12$$
+	$$q = 2$$
+	
+	On en déduit la valeur de $n$ :
+	$$n = 23 \cdot 2 + 1 = 47$$
+	(\textit{Vérification avec la 2\textsuperscript{e} division :} $17 \cdot 2 + 13 = 34 + 13 = 47$).
+	
+	L'entier naturel $n$ recherché est \textbf{$47$}.
+	
+	\item \textbf{Recherche des restes et des valeurs de $x$}
+	
+	La division euclidienne de $x$ par $3$ a pour quotient $7$ :
+	$$x = 3 \cdot 7 + r = 21 + r \quad \text{avec} \quad 0 \le r < 3$$
+	
+	\begin{itemize}
+		\item Le diviseur étant $3$, les restes possibles sont : \textbf{$r \in \{0, 1, 2\}$}.
+		\item On en déduit les valeurs possibles pour $x$ :
+		\begin{itemize}
+			\item Si $r = 0$, $x = 21 + 0 = 21$
+			\item Si $r = 1$, $x = 21 + 1 = 22$
+			\item Si $r = 2$, $x = 21 + 2 = 23$
+		\end{itemize}
+	\end{itemize}
+	
+	Les valeurs de $x$ possibles sont \textbf{$21$, $22$ et $23$}.
+\end{enumerate}
 
 
 %3
@@ -240,9 +311,69 @@ Calculons $\pgdc(9945;3003)$ :
 Donc $\pgdc(9945;3003)=39$
 \item 
 $\pgdc(18480;9828)=84$
+\item Par propriété du $\text{pgcd}$, pour tout entier $a$, $\text{pgcd}(-a; b) = \text{pgcd}(a; b)$.  
+
+On a donc $\text{pgcd}(-286; 390) = \text{pgcd}(286; 390)$.
+
+On effectue les divisions euclidiennes successives :
+\begin{align*}
+	390 &= 286 \cdot 1 + 104 \\
+	286 &= 104 \cdot 2 + 78 \\
+	104 &= 78 \cdot 1 + 26 \\
+	78 &= 26 \cdot 3 + 0
+\end{align*}
+
+Le dernier reste non nul est $26$.  
+Ainsi, $\text{pgcd}(-286; 390) = 26$.
 \end{enumerate}
 
 
+%EXERCICE
+\item
+\begin{itemize}\item[1)] Non car $\operatorname{PGCD}(4847 ; 5633)=131$
+	
+	$$
+	\begin{aligned}
+		5633 & =4847 \cdot 1+786 \\
+		4847 & =786 \cdot 6+131 \\
+		786 & =131 \cdot 6
+	\end{aligned}
+	$$
+	
+	\item[2)] Oui car $\operatorname{PGCD}(5617 ; 813)=1$
+	
+	$$
+	\begin{aligned}
+		5617 & =813 \cdot 6+739 \\
+		813 & =739 \cdot 1+74 \\
+		739 & =74 \cdot 9+73 \\
+		74 & =73 \cdot 1+1
+	\end{aligned}
+	$$
+\end{itemize}
+
+
+%EXERCICE
+\item $324=12 \cdot 27=12 \cdot 3^3$
+$n$ doit être un multiple de 12 , mais pas un multiple de 36 sinon le $\operatorname{PGCD}(n ; 324)$ serait supérieur ou égal à 36 . Les entiers $n$ appartiennent à l'ensemble :
+$\{12 ; 24 ; 48 ; 60 ; 84 ; 96 ; 120 ; 132 ; 156 ; 168 ; 192\}$.
+
+
+%EXERCICE
+\item On cherche le diviseur $b>9$ tel que :
+
+$$
+\left\{\begin{array} { l } 
+	{ 1 8 0 9 = b q + 9 } \\
+	{ 2 5 2 7 = b q ^ { \prime } + 7 }
+\end{array} \Leftrightarrow \left\{\begin{array}{l}
+	1800=b q \\
+	2520=b q^{\prime}
+\end{array} \Leftrightarrow\right.\right.
+$$
+
+$b>9$ et divise $\operatorname{PGCD}(4284 ; 3510)=360$
+Le plus grand diviseur $b$ possible est donc 360 .
 
 
 
@@ -293,6 +424,86 @@ Il y a alors deux couples vérifiant les conditions : $\pt{14}{504}$ et $\pt{56}
 	\end{enumerate}
 \end{multicols}
 
+%17
+\item 
+\begin{enumerate}[label=\roman*),itemsep=5mm,left=-1mm,labelsep*=2mm]
+	\item[\textbf{a)}] \textbf{Vrai.} \\
+	\textit{Justification :} $471 - 11 = 460$. Or $460 = 23 \cdot 20$, ce qui signifie que $23 \mid (471 - 11)$.
+	
+	\item[\textbf{b)}] \textbf{Faux.} \\
+	\textit{Justification :} $370 - 17 = 353$. Or $353 = 13 \cdot 27 + 2$, donc $13 \nmid (370 - 17)$. \\
+	(\textit{Autre méthode :} $370 = 13 \cdot 28 + 6 \implies 370 \equiv 6 \pmod {13}$ et $17 = 13 \cdot 1 + 4 \implies 17 \equiv 4 \pmod {13}$. Comme $6 \neq 4$, l'affirmation est fausse).
+	
+	\item[\textbf{c)}] \textbf{Vrai.} \\
+	\textit{Justification :} $29 - (-121) = 29 + 121 = 150$. Or $150 = 5 \cdot 30$, donc $5 \mid (29 - (-121))$.
+	
+	\item[\textbf{d)}] \textbf{Faux.} \\
+	\textit{Justification :} $-30 - (-1) = -30 + 1 = -29$. Or $-29$ n'est pas un multiple de $26$.
+	
+	\item[\textbf{e)}] \textbf{Vrai.} \\
+	\textit{Justification :} Par définition de la congruence :
+	\begin{itemize}
+		\item $914 - 21 = 19 \cdot 47$, donc $19 \mid (914 - 21)$, d'où $914 \equiv 21 \pmod {19}$.
+		\item De même, $47 \mid (914 - 21)$, d'où $914 \equiv 21 \pmod {47}$.
+	\end{itemize}
+	\textit{Remarque :} Bien que $21 \ge 19$ (ce n'est donc pas le reste de la division euclidienne par 19), l'égalité de congruence reste tout à fait exacte.
+	
+	\item[\textbf{f)}] \textbf{Vrai.} \\
+	\textit{Justification :} Par définition, $b \equiv 0 \pmod a \iff b - 0 = k \cdot a \iff b = k \cdot a \iff a \mid b$.
+	
+	\item[\textbf{g)}] \textbf{Vrai.} \\
+	\textit{Justification :} Si $b \equiv 0 \pmod a$ et $c \equiv 0 \pmod a$, alors $a \mid b$ et $a \mid c$. Par propriété de la divisibilité, $a$ divise toute combinaison linéaire $\alpha b + \beta c$ pour tous entiers $\alpha, \beta$, d'où $\alpha b + \beta c \equiv 0 \pmod a$.
+\end{enumerate}
+
+\item
+
+\begin{itemize}
+	\item \textbf{Étude de $351$ :}
+	$$351 = 7 \cdot 50 + 1 \implies 351 \equiv 1 \pmod 7$$
+	Par compatibilité avec les puissances :
+	$$351^{12} \equiv 1^{12} \equiv 1 \pmod 7$$
+	
+	\item \textbf{Étude de $85$ :}
+	$$85 = 7 \cdot 12 + 1 \implies 85 \equiv 1 \pmod 7$$
+	Par compatibilité avec les puissances :
+	$$85^{15} \equiv 1^{15} \equiv 1 \pmod 7$$
+	
+	\item \textbf{Produit :}
+	Par compatibilité avec la multiplication :
+	$$351^{12} \cdot 85^{15} \equiv 1 \cdot 1 \equiv 1 \pmod 7$$
+\end{itemize}
+
+
+
+% exo
+\item
+
+\begin{enumerate}
+	\item \textbf{Étude du premier terme $5^{2n}$ :}
+	On réécrit la puissance à l'aide des règles de calcul :
+	$$5^{2n} = \left(5^2\right)^n = 25^n$$
+	
+	Or, $25 = 11 \cdot 2 + 3$, donc :
+	$$25 \equiv 3 \pmod{11}$$
+	
+	Par compatibilité de la congruence avec les puissances, on a :
+	$$5^{2n} \equiv 3^n \pmod{11}$$
+	
+	\item \textbf{Étude du second terme $14^n$ :}
+	On effectue la division euclidienne de $14$ par $11$ :
+	$$14 = 11 \cdot 1 + 3 \implies 14 \equiv 3 \pmod{11}$$
+	
+	Par compatibilité de la congruence avec les puissances, on a :
+	$$14^n \equiv 3^n \pmod{11}$$
+	
+	\item \textbf{Soustraction des congruences :}
+	Par compatibilité avec la soustraction :
+	$$5^{2n} - 14^n \equiv 3^n - 3^n \pmod{11}$$
+	$$5^{2n} - 14^n \equiv 0 \pmod{11}$$
+\end{enumerate}
+
+\textbf{Conclusion :} 
+Pour tout entier naturel $n$, $5^{2n} - 14^n$ est divisible par $11$.
 
 
 %17
