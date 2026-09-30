@@ -32,27 +32,60 @@ Bien que de prime abord les nombres entiers semblent être des objets simples, b
 
 
 \begin{lemme}\label{lem:divpremier}
-Tout entier $n \geqslant 2$ admet un diviseur qui est un nombre premier.
+Tout entier $n \geqslant 2$ admet un diviseur qui est un nombre premier. De plus, si $n$ n'est pas premier, alors il admet un diviseur premier $p$ tel que $p \leq \sqrt{n}$.
 \end{lemme}
 
-\noindent{\it Démonstration:}
+\begin{demonstration}
+	
 
-Soit $\mathcal{D}$ l'ensemble des diviseurs de $n$ qui sont $\geqslant 2$ :
-$$\mathcal{D} = \big\{ k \geqslant 2 \mid \  k | n \big\}.$$
-L'ensemble $\mathcal{D}$ est non vide (car $n \in \mathcal{D}$) et $\mathcal{D}$ est fini (car il ne peut pas contenir plus de $n$ éléments).
-
-Donc $\mathcal{D}$ possède un plus petit élément qu'on note $p = \min \mathcal{D}$.
+ Si $n$ est premier, il admet donc un seul diviseur premier : lui-même.
 
 \smallskip
-Supposons, par l'absurde, que $p$ ne soit pas un nombre premier. Alors $p$ admet un diviseur
-$q$ tel que $1 < q < p$. Mais si $q|p$ et $p|n$ alors $q|n$. Donc $q\in \mathcal{D}$ et $q<p$ ce qui contredit la minimalité de $p$.
+
+Si $n$ n'est pas premier, l'ensemble $E$ des diviseurs $d$ de $n$ tel que : $2 \le d < n$ n'est pas vide.
+Il admet donc un plus petit élément $p$. Supposons que $p$ n'est pas premier, il admet alors un diviseur $d'$ tel que : $2 \le d' < p$ qui divise $n$. On a une contradiction avec le fait que $p$ est le plus petit diviseur de $n$ de l'ensemble $E$. Donc $p$ est un nombre premier.
 
 \smallskip
-Conclusion : $p$ est un nombre premier. Et comme $p \in \mathcal{D}$, $p$ divise $n$.
+
+De plus, comme $p$ est un diviseur de $n$, il existe un $q \in \mathbb{N}$ tel que $n = p \cdot q$.
+
+\smallskip
+
+Par construction de $p$ on a $p \le q$. Si on multiplie cette inégalité on a $p^2 \le p \cdot q = n$.
+
+\smallskip
+
+En prenant la racine carré (qui préserve la relation d'ordre), on obtient $p \le \sqrt{n}$.
+
 
 \hfill $\blacksquare$
+\
+\end{demonstration}
 
 \vspace{5mm}
+
+\begin{remarque}
+	On peut utiliser ce Lemme pour vérifier si un nombre est premier en testant si le nombre est divisible par les nombres premiers plus petit que $\sqrt{n}$
+\end{remarque}
+
+\begin{exemple}
+	Le nombre 661 est-il premier? Il suffit de vérifier si il est divisible par les nombres premiers plus petit que $\sqrt{661} \approx 25{,}71$ :
+	\begin{enumerate}[label=\textnormal{(\alph*)}, leftmargin=1.5cm]
+		\item $661 \equiv 1 \not\equiv 0 \pmod 2$
+		\item $661 \equiv 1 \not\equiv 0 \pmod 3$
+		\item $661 \equiv 1 \not\equiv 0 \pmod 5$
+		\item $661 \equiv 3 \not\equiv 0 \pmod 7$
+		\item $661 \equiv 1 \not\equiv 0 \pmod{11}$
+		\item $661 \equiv 11 \not\equiv 0 \pmod{13}$
+		\item $661 \equiv 15 \not\equiv 0 \pmod{17}$
+		\item $661 \equiv 15 \not\equiv 0 \pmod{19}$
+		\item $661 \equiv 17 \not\equiv 0 \pmod{23}$
+	\end{enumerate}
+	
+	\vspace{0.2cm}
+	On en conclut que $661$ est premier.
+	
+\end{exemple}
 
 \begin{proposition}
 Il existe une infinité de nombres premiers.
@@ -71,6 +104,7 @@ Cette contradiction nous permet de conclure qu'il existe une infinité de nombre
 
 \hfill $\blacksquare$
 
+\bigskip
 
 \newcommand{\entourer}[1]{\ovalbox{\color{blue}#1}}
 \newcommand{\barrer}[1]{{\cancel{\color{gray} #1}}}
@@ -107,7 +141,7 @@ $$\entourer{2}\ \ \entourer{3}\ \ \barrer{4}\ \ \entourer{5}\ \ \barrer{6}\ \ \e
 %\ \ \barrer{24}\ \ \barrer{25}
 $$
 
-
+\clearpage
 
 \begin{theoreme}[\normalsize\textit{théorème fondamental de l'arithmétique}]\label{thm:TFA}
 Soit $n \ge 2$ un entier. Il existe des nombres premiers $p_1 < p_2 < \cdots < p_r$
@@ -197,23 +231,30 @@ Ainsi par le lemme de Gauss $p | b$.
 
 
 \begin{exstheorie}
+%\exo
+%Démontrer que si un nombre entier $n$ peut s'écrire comme le produit de 2 nombres entiers $a$ et $b$ ($n=a\cdot b$) alors $a\leqslant \sqrt{n}$ ou $b\leqslant\sqrt{n}$.
+%
+%\bigskip
+%\textit{\small\textbf{Remarque :}
+%Il découle de cet exercice que, pour déterminer si un nombre est premier par divisions successives des entiers qui lui sont inférieurs, il suffit de tester jusqu'à $\sqrt{n}$. De plus il suffit de tester uniquement les nombres premiers.\\
+%En particulier, pour déterminer si un nombre $n\leqslant 100$ est premier, il suffit de tester la divisibilité de $n$ par $2$, $3$, $5$ et $7$.
+%}
+%
+%
+%
+%
+%\eexo
+
 \exo
-Démontrer que si un nombre entier $n$ peut s'écrire comme le produit de 2 nombres entiers $a$ et $b$ ($n=a\cdot b$) alors $a\leqslant \sqrt{n}$ ou $b\leqslant\sqrt{n}$.
-
-\bigskip
-\textit{\small\textbf{Remarque :}
-Il découle de cet exercice que, pour déterminer si un nombre est premier par divisions successives des entiers qui lui sont inférieurs, il suffit de tester jusqu'à $\sqrt{n}$. De plus il suffit de tester uniquement les nombres premiers.\\
-En particulier, pour déterminer si un nombre $n\leqslant 100$ est premier, il suffit de tester la divisibilité de $n$ par $2$, $3$, $5$ et $7$.
-}
-
-
+Les entiers suivants sont-ils premiers ?
+\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=3mm,label-offset=2mm,label-align=right](3)
+	\task $61$
+	\task $6661$
+	\task $66\,661$
+\end{tasks}
 
 
 \eexo
-
-
-
-
 
 \exo
 Démonter que si $p$ est un nombre premier, alors $\sqrt{p}$ est irrationnel.
@@ -221,33 +262,35 @@ Démonter que si $p$ est un nombre premier, alors $\sqrt{p}$ est irrationnel.
 \textit{\small\textbf{Remarque :}
 Raisonner par l'absurde et utiliser le lemme d'Euclide.}
 
-
-
-
 \eexo
 
-
-
-
-
 \exo
-On souhaite créer une fonction en Python qui simule le \textit{Crible d'Eratosthène}. On utilisera un $0$ pour représenter les nombres censés être barrés dans la liste puis on veillera à supprimer ces zéros pour que la fonction renvoie au final une liste ne contenant que les nombres premiers.
 
-\medskip
-Dans un en premier temps, il s'agit de générer une liste ``\comp{liste\_entiers}'' qui contient tous les entiers de $0$ à $n$ à l'aide de l'instruction Python
+Montrer que tout nombre premier différent de $2$ et de $3$ est de la forme $6q \pm 1$, avec $q$ entier.[cite: 14]
 
-\begin{center}
-\comp{liste\_entiers = list(range(n+1))}
-\end{center}
+\textbf{Indication :} montrer qu'un entier $n$ n'est pas premier si $n \equiv 0 \pmod 6$, $n \equiv \pm 2 \pmod 6$ ou $n \equiv 3 \pmod 6$.[cite: 14]
 
-Remarquons que chaque entier de la liste est égal à sa position (indice) dans la liste. Les étapes à réaliser sont les suivantes :
 
-\begin{enumerate}[label=\roman*),itemsep=0mm,left=-2mm]
-\item Une boucle d'indice $k$ qui va parcourir les positions (nombres entiers) de la liste.
-\item Vérifier si la position contient un ``nombre non-barré''.
-\item A l'aide d'une deuxième boucle (imbriquée dans la première), parcourir tous les indices qui sont des multiples du nombre $k$ (et plus grands que $k$) et leur attribuer la valeur $0$.
-\item Utiliser les commandes spécifiques aux listes pour enlever les $0$ de la liste.
-\end{enumerate}
+
+
+%\exo
+%On souhaite créer une fonction en Python qui simule le \textit{Crible d'Eratosthène}. On utilisera un $0$ pour représenter les nombres censés être barrés dans la liste puis on veillera à supprimer ces zéros pour que la fonction renvoie au final une liste ne contenant que les nombres premiers.
+%
+%\medskip
+%Dans un en premier temps, il s'agit de générer une liste ``\comp{liste\_entiers}'' qui contient tous les entiers de $0$ à $n$ à l'aide de l'instruction Python
+%
+%\begin{center}
+%\comp{liste\_entiers = list(range(n+1))}
+%\end{center}
+%
+%Remarquons que chaque entier de la liste est égal à sa position (indice) dans la liste. Les étapes à réaliser sont les suivantes :
+%
+%\begin{enumerate}[label=\roman*),itemsep=0mm,left=-2mm]
+%\item Une boucle d'indice $k$ qui va parcourir les positions (nombres entiers) de la liste.
+%\item Vérifier si la position contient un ``nombre non-barré''.
+%\item A l'aide d'une deuxième boucle (imbriquée dans la première), parcourir tous les indices qui sont des multiples du nombre $k$ (et plus grands que $k$) et leur attribuer la valeur $0$.
+%\item Utiliser les commandes spécifiques aux listes pour enlever les $0$ de la liste.
+%\end{enumerate}
 
 \end{exstheorie}
 

@@ -5,12 +5,50 @@ Soient $a;b \in \Z$. Alors il existe des entiers $\alpha$ et $\beta$ tels que
 $$\pgdc(a;b)=\alpha\fois a + \beta\fois b$$
 \end{theoreme}
 
-\medskip
-La preuve de ce théorème découle directement de l'algorithme d'Euclide.
+
+\begin{demonstration}
+Soient $a, b \in \mathbb{N}^*$. Considérons l'ensemble $E = \{ am + bn > 0 \mid m, n \in \mathbb{Z} \} \subset \mathbb{N}^*$ .
+
+On remarque que $a$ et $b$ appartiennent à $E$ car $a = a \cdot 1 + b \cdot 0 > 0$ et $b = a \cdot 0 + b \cdot 1 > 0$.
+
+Donc $E$ est non vide et $E\subset \mathbb{N}^*$. D'après le principe du bon ordre (tout ensemble non vide d'entiers naturels possède un plus petit élément), $E$ admet un plus petit élément strictement positif.
+Notons
+De plus, $E$ est un ensemble non vide dont chaque élément est plus grand que $0$. Il contient donc un plus petit élément strictement positif (car plus grand que $0$) notons-le $d = au + bv$.
+
+\begin{itemize}
+	\item \textbf{Démontrons que $pgcd(a;b) \le d$ :}
+	
+	Par définition $pgcd(a;b)$ divise $a$ et $b \underset{\text{Prop. \ref{prop_div_comb_lin}}}{\Rightarrow} pgcd(a;b)$ divise $au + bv = d$
+	
+	On a donc $pgcd(a;b) \le d$.
+	
+	\item \textbf{Démontrons que $pgcd(a;b) \ge d$ :}
+	
+	On effectue la division euclidienne de $a$ par $d$ et on obtient un unique couple d'entiers $(q;r)$ tel que $a = dq + r$ avec $0 \le r < d$. 
+	
+	Mais on a $r = a - dq = a - (au + bv)q = a - auq - bvq = a \cdot (1 - uq) + b \cdot (-vq)$
+	
+	Par conséquent, la seule possibilité est d'avoir $r = 0$, car sinon on a $0 < r < d$ ce qui voudrait dire que $r \in E$, mais par construction on ne peut pas avoir $r < d$, car $d$ est le plus petit élément de $E$.
+	
+	Comme $r = 0$, on a que $d$ divise $a$. Similairement, on peut montrer de même que $d$ divise $b$.
+	
+	Comme $d$ divise $a$ et $d$ divise $b$ on a $d \le pgcd(a;b)$.
+	
+	\item \textbf{Pour finir}, la seule possibilité est $d = pgcd(a;b)$ et donc il existe bien deux entiers relatifs $u$ et $v$ tels que $a \cdot u + b \cdot v = pgcd(a;b)$.
+	
+\end{itemize}
+\vspace{-3mm}\hfill $\blacksquare$
+\end{demonstration}	
+
 
 \medskip
-Les entiers $\alpha$ et $\beta$ s'appellent les \textbf{coefficients de Bézout} et s'obtiennent en \guillemets{remontant} l'algorithme d'Euclide.
-Il faut noter que les entiers $\alpha$ et $\beta$ ne sont pas uniques.
+
+\begin{remarques}
+	\item Les entiers $\alpha$ et $\beta$ s'appellent les \textbf{coefficients de Bézout} et ils peuvent s’obtenir en \guillemets{remontant} l'algorithme d'Euclide.
+	
+	\item Il faut noter que les entiers $\alpha$ et $\beta$ ne sont pas uniques.
+\end{remarques}
+
 
 \bigskip
 \begin{exemple}
@@ -55,7 +93,7 @@ $$\pgdc(600;124)=4=\bm{6}\fois 600 + (\bm{-29})\fois 124$$
 \end{exemple}
 
 
-\smallskip
+\pagebreak
 \begin{corolaire}\label{cor:diviseur_pgcd}
 Si $d|a$ et $d|b$ alors $d | \pgdc(a,b)$.
 \end{corolaire}
@@ -75,6 +113,7 @@ Comme $d|a$ et $d|b$ alors $d | (\alpha\fois a+\beta\fois b)=\pgdc(a,b)$ (combin
 
 \bigskip
 \begin{corolaire}
+	\label{cor-Bezout}
 Soient $a, b$ deux entiers. $a$ et $b$ sont premiers entre eux
 \textbf{si et seulement si} il existe $u,v \in \Z$ tels que
 $$ua+vb=1$$
@@ -131,8 +170,10 @@ $a$ divise $acu+bcv=c$.
 \vspace{-3mm}\hfill $\blacksquare$
 \end{demonstration}
 
+\pagebreak
 
-\bigskip
+\subsection*{Le plus petit multiple commun}
+
 \begin{definition}
 Le \textbf{plus petit multiple commun} de deux nombres $a$ et $b$, noté $\ppmc(a,b)$,
 est le plus petit entier positif divisible à la fois par $a$ et par $b$.
@@ -184,7 +225,7 @@ $$\pgdc(a,b) \cdot  \ppmc(a,b) = |ab|$$
  
 \end{demonstration}
 
-Voici un autre résultat concernant le ppcm qui se démontre en utilisant la décomposition en facteurs premiers (que nous étudierons à la section suivante):
+Voici un autre résultat concernant le ppmc qui se démontre en utilisant la décomposition en facteurs premiers (que nous étudierons à la section suivante):
 \begin{proposition}
 Si $a|c$ et $b|c$ alors $\ppmc(a,b)|c$.
 \end{proposition}
@@ -196,6 +237,70 @@ Il serait faux de penser que $ab|c$.
 Par exemple $6|36$, $9|36$ mais $6\cdot 9$ ne divise pas $36$.
 Par contre $\ppmc(6,9)=18$ divise bien $36$.
 \end{remarque}
+
+
+\subsection*{L'inverse dans $\mathbb{Z}_n$}
+\textbf{Question} : Comment déterminer si un élément $\cl{a} \in  \mathbb{Z}_n$ admet un inverse ? \\
+
+On cherche un élément $\cl{b}$ tel que $$\cl{a}\cdot \cl{b} = \cl{a\cdot b} = \cl{1}$$
+
+Ce qui est équivalent à trouver un $b \in \mathbb{Z}$ tel que 
+$$a \cdot b \equiv 1 \pmod n \ssi a \cdot b = q\cdot n + 1 \text{ avec } q\in \mathbb{Z} $$
+La dernière égalité peut se réécrire $ a \cdot b + (-q)\cdot n + 1 $, ce qui ressemble fortement au corollaire \ref{cor-Bezout} du théorème de Bézout.
+
+\begin{proposition}
+  Soit $\cl{a} \in \mathbb{Z}_n$ où $a$ est un représentant principal ( $0 \leq a<n$ ).
+L'élément $\bar{a}$ possède un inverse si et seulement si $a$ et $n$ sont premiers entre eux (c'est-à-dire si $pgcd(a ; n)=1$ ).
+\end{proposition}
+
+\medskip
+
+\begin{demonstration}
+$$
+\begin{aligned}
+	\operatorname{pgcd}(a ; n)=  1 &\stackrel{\text {Cor. \ref{cor-Bezout} }}{\Leftrightarrow} \exists(u ; v) \in \mathbb{Z}^2 \text { tel que au }+n v=1 \\
+	& \Leftrightarrow a \cdot u=n \cdot(-v)+1 \text { avec }-v \in \mathbb{Z} \\
+	& \Leftrightarrow a \cdot u \equiv 1 \bmod n \\
+	& \Leftrightarrow \cl{a} ^{-1} = \cl{u}
+\end{aligned}
+$$
+\vspace{-3mm}\hfill $\blacksquare$
+\end{demonstration}	
+
+\medskip
+
+\begin{remarque}
+	Pour calculer l'inverse d'un élément $\cl{a} \in \mathbb{Z}_n$, il suffit de calculer les coefficients de Bézout.
+\end{remarque}
+
+
+\medskip
+
+\begin{exemple}
+	On veut calculer $\cl[26]{5} ^{-1}$ dans $\mathbb{Z}_{26}$.\\
+	
+
+		On calcule le $pgcd(5;26)$ à l'aide de \textit{l'algorithme d'Euclide} afin de vérifier si $\cl[26]{5}$ admet un inverse. Si le $pgcd(5;26) = 1$ alors on calcule \textit{les coefficients de Bézout} à l'aide de \textit{l'algorithme d'Euclide (étendu)}.
+		
+		\begin{itemize}[label=$\bullet$]
+			\item $26 = 5 \cdot 5 + \fbox{1} \quad \Rightarrow \quad \fbox{1} = 5 \cdot \underbrace{(-5)}_{=u} + 26 \cdot \underbrace{(1)}_{=v}$
+			\item $5 = 1 \cdot 5 + 0$
+		\end{itemize}
+		
+		Comme $pgcd(5;26) = 1$ on a que $\cl[26]{5}$ possède un inverse.
+		
+		On obtient alors $5 \cdot (-5) = 26 \cdot (-1) + 1 \quad 0 \le 1 < 26 \quad \Leftrightarrow 5 \cdot (-5) \equiv 1 \bmod 26$
+		
+		Donc on a que $\cl[26]{5} ^{-1}= \cl[26]{-5}$.
+		
+		Si on souhaite exprimer l’inverse avec un représentant principal, on effectue une \textit{division Euclidienne} de $-5$ par $26$ :
+		\[
+		-5 = 26 \cdot (-1) + 21 \quad 0 \le 21 < 26 \quad \text{donc } 21 \equiv -5 \bmod 26
+		\]
+		
+		\textbf{Conclusion} : $\cl[26]{5} ^{-1}= \cl[26]{21}$
+
+\end{exemple}
 
 %---------------------------------------------------------------
 %\subsection{Mini-exercices}
@@ -224,31 +329,73 @@ $$\pgdc(a,a+1)=1$$
 
 
 
-
 \eexo
 
+\exo
+Dire si les affirmations suivantes sont vraies ou fausses. Justifier chaque réponse. 
 
+\begin{tasks}[after-item-skip=2mm,item-indent=5mm,column-sep=1mm,label-offset=1mm](1)
+	\task Si $a \cdot 3 + b \cdot (-4) = 1$ alors $a$ et $b$ sont premiers entre eux.
+	
+	\task Sachant que $\text{pgcd}(5;11) = 1$, $\exists$ un couple $(x; y)$ d'entiers relatifs tels que $5x + 11y = 1$.
+	
+	\task Si $a \cdot 3 + b \cdot (-4) = 5$ alors $\text{pgcd}(a;b) = 5$.
+	
+	\task Si $a \cdot 3 + b \cdot (-4) = 5$ alors $\text{pgcd}(a;b) \mid 5$.
+	
+	\task Si $\text{pgcd}(a;b) = 4$ alors il existe un couple $(u; v)$ d'entiers relatifs tels que $a \cdot u + b \cdot v = 12$.
+	
+	\task Si $d \mid a$ et $d \mid b$ alors $d \mid \text{pgcd}(a;b)$.
+\end{tasks}
 
+\columnbreak
 
+\exo
+\begin{tasks}[after-item-skip=2mm,item-indent=5mm,column-sep=1mm,label-offset=1mm](1)
+	\task $873x+578y=1$
+	\task $315x+572y=5$
+	\task $6x+20y=3$
+\end{tasks}
+
+\eexo
 
 \exo
 Trouver une solution aux équations suivantes : 
 \begin{tasks}[after-item-skip=2mm,item-indent=5mm,column-sep=1mm,label-offset=1mm](1)
-\task $873x+578y=1$
-\task $315x+572y=5$
-\task $6x+20y=3$
+\task Calculer le $\text{ppmc}(1008; 540)$ en utilisant le $\text{pgcd}$ via \textit{l'algorithme d'Euclide}
+
+\task Trouver tous les couples $(a,b) \in \mathbb{N}^2$ vérifiant $\text{pgcd}(a,b) = 12$ et $\text{ppmc}(a,b) = 432$.
+
+\task Déterminer les entiers naturels $a$ et $b$ sachant que
+\begin{enumerate}[label=\textbf{\arabic*)}, leftmargin=*]
+	\item $a \cdot b = 1350$ et $\text{ppmc}(a,b) = 90$
+	\item $a \cdot b = 2352$ et $\text{ppmc}(a,b) = 168$
+\end{enumerate}
 \end{tasks}
 
 
 
 \eexo
 
-
-
-
-
 \exo
 Trouver tous les couples $(a,b)\in\Z^2$ vérifiant $\pgdc(a,b)=12$ et $\ppmc(a,b)=432$.
+
+
+
+\eexo
+
+\exo
+Calculer l'inverse $\cl{a}^{-1}$ (s'il existe) de la classe $\cl{a}$ dans  $\mathbb{Z}_n$ :
+\begin{tasks}[after-item-skip=2mm,item-indent=5mm,column-sep=1mm,label-offset=1mm](1)
+	\task $\cl[171]{a} = \cl[171]{13}$ dans $\mathbb{Z}_{171}$
+	
+	\task $\cl[26]{a} = \cl[26]{25}$ dans $\mathbb{Z}_{26}$
+
+	\task $\cl[271]{a} = \cl[271]{13}$ dans $\mathbb{Z}_{271}$
+	
+	\task $\cl[30]{a} = \cl[30]{15}$ dans $\mathbb{Z}_{30}$
+\end{tasks}
 \end{exstheorie}
 
+\pagebreak
 

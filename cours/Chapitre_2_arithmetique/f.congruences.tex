@@ -39,6 +39,8 @@ Remarquons que $n$ divise $a$ si et seulement si $a\equiv 0 \pmod n$.
 \begin{proposition}
 ~
 
+\label{thm-cong}
+
 \vspace{-8mm}
 \begin{enumerate}
   \item La relation \og congru modulo $n$ \fg{} est une relation d'équivalence :
@@ -54,8 +56,8 @@ Remarquons que $n$ divise $a$ si et seulement si $a\equiv 0 \pmod n$.
   \item Si $a \equiv b \pmod n$ et $c \equiv d \pmod n$ alors  la congruence est compatible avec :
   
   \begin{enumerate}[label=\roman*),left=0mm]
-  	\item (l’addition) : $a \equiv a \pmod n$, $a+c \equiv b+d \pmod n$,
-  	\item (la multiplication) : $a \equiv a \pmod n$, $a\cdot c \equiv b\cdot d \pmod n$,
+  	\item (l’addition) :  $a+c \equiv b+d \pmod n$,
+  	\item (la multiplication) : $a\cdot c \equiv b\cdot d \pmod n$,
   	\item (l'exponentiation) :  pour tout $k \geqslant 0$\; on a\; $a^k \equiv b^k \pmod n$.
   \end{enumerate}
   
@@ -318,17 +320,53 @@ Démontrer que le nombre $7^n+1$ est divisible par $8$ si $n$ est impair ; dans 
 %Nous obtenons $2^{21} \equiv  2^{16} \cdot 2^{4} \cdot 2^{1} \equiv 9 \times 16 \times 2 \equiv 288 \equiv 29 \pmod {37}$.
 %\end{enumerate}
 %\end{exemple}
-
+\subsection{L’ensemble des entiers modulo n}
 
 \begin{definition}
-Une classe d'équivalence \guillemets{$a$ modulo $n$} ($n\geqslant 2$), notée $[a]_n$, est l'ensemble de tous les nombres entiers dont la division euclidienne par $n$ donne le même reste que la division de $a$ par $n$.
+\ \vspace{-0.5cm}
+\begin{enumerate}
+	\item On appelle \textbf{classe de congruence} de $a$ modulo $n$ l'ensemble de tous les entiers qui sont congrus à $a$ modulo $n$ ; on la note $[a]_n$ ou $\overline{a}_n$ (ou simplement $\overline{a}$ s'il n'y a aucune ambiguïté sur $n$).
+	$$[a]_n = \overline{a}_n = \{b \in \mathbb{Z} \mid a \equiv b \bmod n\} = \{a + kn \mid k \in \mathbb{Z}\}$$
+	
+	\item On note $\mathbb{Z}_n$ l'ensemble de toutes les classes modulo $n$ :
+	$$\mathbb{Z}_n = \{[0]_n; [1]_n; [2]_n; [3]_n; \dots; [n-2]_{n-1}; [n-1]_n\}$$
+\end{enumerate}
 
-\smallskip
-On note la classe d'équivalence de $a$ \textit{modulo} $n$ : $[a]_n$
 \end{definition}
 
+\medskip
+
+Essentiellement on regroupe dans la même classe de congruence tous les entiers qui aurons le même reste dans la division entière ou dit autrement tous les entiers qui sont séparés d'un multiple du diviseurs.
 
 \medskip
+
+\begin{exemple}
+	L'ensemble $\mathbb{Z}_5$ est composé des 5 éléments suivants :
+	\begin{align*}
+		[0]_5 &= \{\dots; -5; 0; 5; 10; 15; \dots\} = \{x \in \mathbb{Z} \mid x \equiv 0 \bmod 5\} \\
+		[1]_5 &= \{\dots; -4; 1; 6; 11; 16; \dots\} = \{x \in \mathbb{Z} \mid x \equiv 1 \bmod 5\} \\
+		[2]_5 &= \{\dots; -3; 2; 7; 12; 17; \dots\} = \{x \in \mathbb{Z} \mid x \equiv 2 \bmod 5\} \\
+		[3]_5 &= \{\dots; -2; 3; 8; 13; 18; \dots\} = \{x \in \mathbb{Z} \mid x \equiv 3 \bmod 5\} \\
+		[4]_5 &= \{\dots; -1; 4; 9; 14; 19; \dots\} = \{x \in \mathbb{Z} \mid x \equiv 4 \bmod 5\}
+	\end{align*}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Chapitre_2_arithmetique/figures/fig_congruences/fig_congruences.pdf}
+	\end{center}
+
+\end{exemple}
+
+\clearpage
+
+\begin{remarques}
+	\item L’élément dans les crochet est un \textbf{représentant} de l’ensemble, c’est un nombre quelconque de l’ensemble (par exemple $[1]_5=[6]_5=[-4]_5\neq [3]_5$ ) bien qu’à l’usage on préfère choisir des représentant entre 0 et n-1, dans ce cas on parle de \textbf{représentant principal}.
+	
+	\item Comme deux représentant de la même classe identifie la même classe de congruence on peut utiliser le symbole d'égalité  $[7]_{11}=[-4]_{11}$.
+	
+	\item L'ensemble $\mathbb{Z}_n$ possède toujours $n$ éléments.
+\end{remarques}
+
+\medskip
+
 \begin{exemple}
 $[0]_3=[3]_3=[6]_3=\ldots$
 
@@ -339,7 +377,358 @@ $[1]_3=[4]_3=[7]_3=\ldots$
 $[2]_3=[5]_3=[8]_3=\ldots$
 \end{exemple}
 
+\medskip
 
+La proposition \ref{thm-cong}, nous permet de définir une multiplication et une addition $\mathbb{Z}_.$ 
+
+\begin{definition}
+	%	\ \vspace{-0.5cm}
+Soit $\cl{a}$ et $\cl{b} \in \mathbb{Z}_n$, alors on peut définir deux opérations internes sur $\mathbb{Z}_n$ :
+
+\begin{enumerate}[label=\textbf{\arabic*)}, leftmargin=*]
+	\item une \textbf{addition} : $\cl{a} + \cl{b} := \cl{a + b}$ \hfill (\text{on calcule le reste de } $a + b \bmod n$)
+	\item une \textbf{multiplication} : $\cl{a} \cdot \cl{b} := \cl{a \cdot b}$ \hfill (\text{on calcule le reste de } $a \cdot b \bmod n$)
+\end{enumerate}
+	
+\end{definition}
+
+\medskip
+
+\begin{remarque}
+	La proposition \ref{thm-cong} nous assure que les opérations sont bien définies car elles ne dépendent pas du choix des représentants des classes utilisés. En effet, prenons deux couples qui représentent la même classe, par exemple $a \equiv b \pmod n$ et $c \equiv d \pmod n$, la proposition \ref{thm-cong} nous assure que  $a+c \equiv b+d \pmod n$ et  $a\cdot c \equiv b\cdot d \pmod n$, ce qui veut dire que $\cl{a+b}=\cl{c+d}$ et $\cl{a\cdot  b}=\cl{c\cdot d}$	
+\end{remarque}
+
+\bigskip
+
+\begin{exemple}
+	Regardons les tables de multiplications et d'additions dans $\mathbb{Z}_5$
+	
+	\begin{minipage}[t]{0.48\linewidth}
+		\vspace{0pt} % Aligne le haut de la minipage
+		\centering
+		\textbf{1. Table d'addition $(+)$}
+		\vspace{0.3cm}
+		
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{c|ccccc}
+			$+$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\ \hline
+			$\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\
+			$\cl[5]{1}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ & $\cl[5]{0}$ \\
+			$\cl[5]{2}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{1}$ \\
+			$\cl[5]{3}$ & $\cl[5]{3}$ & $\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ \\
+			$\cl[5]{4}$ & $\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ \\
+		\end{tabular}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[t]{0.48\linewidth}
+		\vspace{0pt} % Aligne le haut de la minipage
+		\centering
+		\textbf{2. Table de multiplication $(\cdot)$}
+		\vspace{0.3cm}
+		
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{c|ccccc}
+			$\cdot$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\ \hline
+			$\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ \\
+			$\cl[5]{1}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\
+			$\cl[5]{2}$ & $\cl[5]{0}$ & $\cl[5]{2}$ & $\cl[5]{4}$ & $\cl[5]{1}$ & $\cl[5]{3}$ \\
+			$\cl[5]{3}$ & $\cl[5]{0}$ & $\cl[5]{3}$ & $\cl[5]{1}$ & $\cl[5]{4}$ & $\cl[5]{2}$ \\
+			$\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{4}$ & $\cl[5]{3}$ & $\cl[5]{2}$ & $\cl[5]{1}$ \\
+		\end{tabular}
+	\end{minipage}
+\end{exemple}
+
+\clearpage
+En s'appuyant des propriétés de l'addition et de la multiplication des nombres entier, ainsi que la proposition \ref{thm-cong}, on peut démontrer les propriétés suivantes:
+\begin{proposition}
+	~
+	
+	Les \textbf{\textit{entiers modulo $n$}} jouissent des \textbf{\textit{propriétés}} ci-dessous, c'est-à-dire que quelles que soient les entiers $\cl{a}, \cl{b}$ et $\cl{c} \in \mathbb{Z}_n$, les relations suivantes sont toujours vraies :
+	
+	\begin{description}[font=\normalfont\bfseries, leftmargin=1.2cm, style=nextline]
+		\item[P1)] Si $\cl{a}, \cl{b} \in \mathbb{Z}_n$ alors $\cl{a} + \cl{b} \in \mathbb{Z}_n$. \hfill \textit{L'addition est une opération interne.}
+		\item[P2)] $\cl{a} + \cl{b} = \cl{b} + \cl{a}$ \hfill \textit{Commutativité de l'addition.}
+		\item[P3)] $\cl{a} + (\cl{b} + \cl{c}) = (\cl{a} + \cl{b}) + \cl{c}$ \hfill \textit{Associativité de l'addition.}
+		\item[P4)] $\cl{0} + \cl{a} = \cl{a} + \cl{0} = \cl{a}$ \hfill \textit{Existence d'un élément neutre pour l'addition.}
+		\item[P5)] $\forall \cl{a} \in \mathbb{Z}_n, \exists\,\text{unique } \cl{b} \in \mathbb{Z}_n \text{ tel que } \cl{a} + \cl{b} = \cl{b} + \cl{a} = \cl{0}$ \hfill \textit{Existence d'un unique opposé.}
+		\item[P6)] Si $\cl{a}, \cl{b} \in \mathbb{Z}_n$ alors $\cl{a} \cdot \cl{b} \in \mathbb{Z}_n$. \hfill \textit{La multiplication est une opération interne.}
+		\item[P7)] $\cl{a} \cdot \cl{b} = \cl{b} \cdot \cl{a}$ \hfill \textit{Commutativité de la multiplication.}
+		\item[P8)] $\cl{a} \cdot (\cl{b} \cdot \cl{c}) = (\cl{a} \cdot \cl{b}) \cdot \cl{c}$ \hfill \textit{Associativité de la multiplication.}
+		\item[P9)] $\cl{a} \cdot \cl{1} = \cl{1} \cdot \cl{a} = \cl{a}$ \hfill \textit{Existence d'un élément neutre pour la multiplication.}
+		\item[P10)] $\cl{a} \cdot (\cl{b} + \cl{c}) = \cl{a} \cdot \cl{b} + \cl{a} \cdot \cl{c}$ \hfill \textit{La multiplication est distributive sur l'addition.}
+	\end{description}
+\end{proposition}
+
+\medskip
+
+\begin{remarques}
+	\item Les propriétés 1) à 5) précisent que $\mathbb{Z}_n$ est une structure algébrique appelée : \\
+	\textbf{groupe commutatif} vis-à-vis de l'addition et on note alors $(\mathbb{Z}_n\, ; +)$.
+	
+	\item Les propriétés 1) à 10) précisent que $\mathbb{Z}_n$ est un \textbf{anneau commutatif} et on note alors $(\mathbb{Z}_n\, ; +, \cdot)$.
+	
+	\item Si $\forall \cl{a} \neq \cl{0} \in \mathbb{Z}_n, \, \exists\,\text{\textit{unique}} \, \cl{b} \in \mathbb{Z}_n \text{ tel que } \cl{a} \cdot \cl{b} = \cl{b} \cdot \cl{a} = \cl{1} \quad (\textit{existence d'un unique inverse})$ \\
+	alors $\mathbb{Z}_n$ est appelé \textbf{un corps}. \\
+	Exemple : $(\mathbb{Z}_3\, ; +, \cdot)$ est un corps mais pas $(\mathbb{Z}_4\, ; +, \cdot)$.
+\end{remarques}
+
+\medskip
+
+Dans $(\mathbb{Z}$, la soustraction ou la division ne sont pas de opérations proprement dites, il en est de même dans $(\mathbb{Z}_n$, on parle plutôt d'addition par l'inverse pour la multiplication, et de multiplication pas l'inverse (lorsqu'il existe) pour la division.
+
+\medskip
+
+\begin{definition}
+%	\ \vspace{-0.5cm}
+Soit $\cl{a}, \cl{b} \in \mathbb{Z}_n$.
+
+\begin{enumerate}[label=\textbf{\arabic*)}, leftmargin=*]
+	\item $\cl{b}$ est \textbf{l'opposé} de $\cl{a}$ si $\cl{a} + \cl{b} = \cl{b} + \cl{a} = \cl{0}$ \hfill ($a + b \equiv b + a \equiv 0 \pmod n$)
+	\item $\cl{b}$ est \textbf{l'inverse} de $\cl{a}$ si $\cl{a} \cdot \cl{b} = \cl{b} \cdot \cl{a} = \cl{1}$ \hfill ($a \cdot b \equiv b \cdot a \equiv 1 \pmod n$)\\
+	Notation: Si $\cl{a}$ possède un inverse on le note $\cl{a}^{-1}$.
+\end{enumerate}
+	
+\end{definition}
+
+\begin{remarques}
+	\item Dans $\mathbb{Z}_n$, chaque élément possède un opposé. En effet, il trivial de vérifier que $\cl{-a}$ est l'opposé de $\cl{a}$.
+	
+	\item Dans $\mathbb{Z}_n$, il peut y avoir des éléments qui ne possède pas d'inverse.
+	
+\end{remarques}
+
+\pagebreak
+
+\begin{exemple}
+	Prenons les tables d'addition et de multiplication de $\mathbb{Z}_8$:
+	\begin{minipage}[t]{0.45\linewidth}
+		\vspace{0pt} % Aligne le haut de la minipage
+		\centering
+		\textbf{1. Table d'addition $(+)$}
+		\vspace{0.3cm}
+		
+		\renewcommand{\arraystretch}{1.2}
+		\setlength{\tabcolsep}{3pt}
+		\footnotesize 
+		\begin{tabular}{c|cccccccc}
+			$+$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ \\ \hline
+			$\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ \\
+			$\cl[8]{1}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ & $\cl[8]{0}$ \\
+			$\cl[8]{2}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ & $\cl[8]{0}$ & $\cl[8]{1}$ \\
+			$\cl[8]{3}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ \\
+			$\cl[8]{4}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ \\
+			$\cl[8]{5}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ \\
+			$\cl[8]{6}$ & $\cl[8]{6}$ & $\cl[8]{7}$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ \\
+			$\cl[8]{7}$ & $\cl[8]{7}$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ \\
+		\end{tabular}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[t]{0.45\linewidth}
+		\vspace{0pt} % Aligne le haut de la minipage
+		\centering
+		\textbf{2. Table de multiplication $(\cdot)$}
+		\vspace{0.3cm}
+		
+		\renewcommand{\arraystretch}{1.2}
+		\setlength{\tabcolsep}{3pt}
+		\footnotesize 
+		\begin{tabular}{c|cccccccc}
+			$\cdot$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ \\ \hline
+			$\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{0}$ & $\cl[8]{0}$ \\
+			$\cl[8]{1}$ & $\cl[8]{0}$ & $\cl[8]{1}$ & $\cl[8]{2}$ & $\cl[8]{3}$ & $\cl[8]{4}$ & $\cl[8]{5}$ & $\cl[8]{6}$ & $\cl[8]{7}$ \\
+			$\cl[8]{2}$ & $\cl[8]{0}$ & $\cl[8]{2}$ & $\cl[8]{4}$ & $\cl[8]{6}$ & $\cl[8]{0}$ & $\cl[8]{2}$ & $\cl[8]{4}$ & $\cl[8]{6}$ \\
+			$\cl[8]{3}$ & $\cl[8]{0}$ & $\cl[8]{3}$ & $\cl[8]{6}$ & $\cl[8]{1}$ & $\cl[8]{4}$ & $\cl[8]{7}$ & $\cl[8]{2}$ & $\cl[8]{5}$ \\
+			$\cl[8]{4}$ & $\cl[8]{0}$ & $\cl[8]{4}$ & $\cl[8]{0}$ & $\cl[8]{4}$ & $\cl[8]{0}$ & $\cl[8]{4}$ & $\cl[8]{0}$ & $\cl[8]{4}$ \\
+			$\cl[8]{5}$ & $\cl[8]{0}$ & $\cl[8]{5}$ & $\cl[8]{2}$ & $\cl[8]{7}$ & $\cl[8]{4}$ & $\cl[8]{1}$ & $\cl[8]{6}$ & $\cl[8]{3}$ \\
+			$\cl[8]{6}$ & $\cl[8]{0}$ & $\cl[8]{6}$ & $\cl[8]{4}$ & $\cl[8]{2}$ & $\cl[8]{0}$ & $\cl[8]{6}$ & $\cl[8]{4}$ & $\cl[8]{2}$ \\
+			$\cl[8]{7}$ & $\cl[8]{0}$ & $\cl[8]{7}$ & $\cl[8]{6}$ & $\cl[8]{5}$ & $\cl[8]{4}$ & $\cl[8]{3}$ & $\cl[8]{2}$ & $\cl[8]{1}$ \\
+		\end{tabular}
+	\end{minipage}
+	
+	\bigskip
+	
+	On peut vérifier que 
+	\begin{itemize}
+		\item L'opposé de $[5]_8$ est $[3]_8$ car $[5]_8 + [3]_8 = [8]_8 = [0]_8$. On a bien $[3]_8 = [-5]_8$.
+		
+		\item L'inverse de $[5]_8$ est lui même car $[5]_8 \cdot [5]_8 = [25]_8 = [1]_8 $. On note $[5]_8 ^{-1} = [5]_8 $.
+		
+		\item L'élément $\cl[8]{6}$ n'a pas d'inverse. En effet, on remarque  que  $[1]_8$ n’apparaît pas dans la ligne (ou la colonne) correspondant à $[6]_8$ dans la table de multiplication de $\mathbb{Z}_8$.
+	\end{itemize}
+\end{exemple}
+
+
+\begin{exstheorie}
+	\vspace*{0.5cm}
+	\exo
+	\vspace*{-0.5cm}
+	\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=1mm,label-offset=2mm,label-align=right](1)
+		\task Etablir les tables d'addition et de multiplication respectives de : $\mathbb{Z}_2, \mathbb{Z}_3, \mathbb{Z}_4$ et $\mathbb{Z}_5$.
+		\task Dans $\mathbb{Z}_3$ :
+		\begin{enumerate}[label=\arabic*)]
+			\item Quel est l'opposé de $\cl[3]{2}$ ? 
+			\item Quel est l'inverse de $\cl[3]{2}$ ? 
+			\item Est-ce que tout entier $\cl[3]{a} \in \mathbb{Z}_3$ possède un unique opposé $\cl[3]{b} \in \mathbb{Z}_3$ ? 
+			\item Est-ce que tout entier $\cl[3]{a} \neq \cl[3]{0} \in \mathbb{Z}_3$ possède un unique inverse $\cl[3]{b} \in \mathbb{Z}_3$ ? 
+			\item Est-ce que $\mathbb{Z}_3$ possède une structure de corps ? 
+		\end{enumerate}
+		\task Mêmes questions que b) mais pour $\mathbb{Z}_4$.
+		
+		\task Calculer \\ $\scriptstyle \left(\cl[5]{2} \cdot (\cl[5]{2} + \cl[5]{4})\right) \cdot \cl[5]{3} + \cl[5]{0} \cdot \cl[5]{2} + \cl[5]{1}$.
+		
+		\task Calculer \\ $\scriptstyle \cl[6]{5} + \cl[6]{1} \cdot \left(\cl[6]{0} \cdot \cl[6]{3} + \cl[6]{1} + (\cl[6]{5} \cdot \cl[6]{4})\right)$.
+
+\columnbreak
+		
+		\task Calculer \\ $ \scriptstyle \cl[7]{5} + \cl[7]{1} \cdot \left(\cl[7]{0} \cdot \cl[7]{3} + \cl[7]{1} + (\cl[7]{5} \cdot \cl[7]{4})\right)$.
+		
+		\task Résoudre les équations suivantes dans $\mathbb{Z}_n$ :
+		\begin{enumerate}[label=\arabic*)]
+			\item $3 \equiv 3x + 2 \pmod 4$ \\ ou $\cl[4]{3} = \cl[4]{3} \cdot \cl[4]{x} + \cl[4]{2}$.
+			\item $2x + 2 \equiv x + 8 \pmod 4$ \\ ou $\cl[4]{2} \cdot \cl[4]{x} + \cl[4]{2} = \cl[4]{x} + \cl[4]{8}$.
+			\item $2x \equiv 2 \pmod 4$ ou $\cl[4]{2} \cdot \cl[4]{x} = \cl[4]{2}$.
+			\item $2x \equiv 1 \pmod 4$ ou $\cl[4]{2} \cdot \cl[4]{x} = \cl[4]{1}$.
+			\item $2x \equiv 2 \pmod 5$ ou $\cl[5]{2} \cdot \cl[5]{x} = \cl[5]{2}$.
+			\item $2x \equiv 1 \pmod 5$ ou  $\cl[5]{2} \cdot \cl[5]{x} = \cl[5]{1}$.
+		\end{enumerate}
+		
+	\end{tasks}
+	
+	
+	
+	\pagebreak[1]
+	\exo
+	Montrer que
+	
+	\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=1mm,label-offset=2mm,label-align=right](1)
+		\task Si $\cl{a}, \cl{b} \in \mathbb{Z}_n$ alors $\cl{a} + \cl{b} \in \mathbb{Z}_n$. \hfill \textit{L'addition est une opération interne.}
+		
+		\task $\cl{a} + \cl{b} = \cl{b} + \cl{a}$ \hfill \textit{Commutativité de l'addition.}
+		
+		\task Tout élément $\cl{a} \in \mathbb{Z}_n$ possède un unique opposé $\cl{b} \in \mathbb{Z}_n$, c'est-à-dire : $\cl{a} + \cl{b} = \cl{b} + \cl{a} = \cl{0}$. \hfill \textit{Unicité de l'opposé.}
+		
+		\task $\cl{a} \cdot \cl{1} = \cl{1} \cdot \cl{a} = \cl{a}$ \hfill \textit{Existence d'un élément neutre pour la multiplication.}
+		
+		\task Si un élément $\cl{a} \in \mathbb{Z}_n$ admet un inverse, alors cet inverse $\cl{b} \in \mathbb{Z}_n$ est unique, c'est-à-dire : $\cl{a} \cdot \cl{b} = \cl{b} \cdot \cl{a} = \cl{1}$. \hfill \textit{Unicité de l'inverse.}
+		
+	\end{tasks}
+	
+	
+
+\end{exstheorie}
+
+\pagebreak
+
+\begin{exstheorie}
+	
+	\vspace*{0.5cm}
+	
+	\exo
+	%	
+	Lesquels des ensembles suivants sont-ils des ensembles complets de représentants  de $\mathbb{Z}_7$ :
+
+	\begin{tasks}[label=\alph*),item-indent=8mm,column-sep=0mm ,after-item-skip=1mm,label-offset=2mm,label-align=right](1)
+		\task $\{1 ; 3 ; 5 ; 7 ; 9 ; 11 ; 13\}$
+		\task $\{1 ; 4 ; 9 ; 16 ; 25 ; 36 ; 49\}$
+		\task $\{1;8;27;64;125;216;343\}$
+		\task $\{0 ; 1 ; 3 ; 9 ; 27 ; 81 ; 243\}$
+		\task $\{0;1;4;16;128;512;2048\}$
+	\end{tasks}
+	
+	\eexo
+	
+	\pagebreak[1]
+	
+	\exo
+%	
+	Trouver les restes de la division euclidienne par 11 des nombres suivants :
+	\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=5mm,label-offset=2mm,label-align=right](3)
+		\task $12^{15}$
+		\task $10^7$
+		\task $78^{15}$
+		\task $13^{12}$
+		\task $(-2)^{19}$
+	\end{tasks}
+	
+	\eexo
+
+	\pagebreak[1]
+	
+
+	\exo
+	~
+	
+	\vspace{-6mm}
+	\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=3mm,label-offset=2mm,label-align=right](1)
+		\task Vérifier que $2^4 \equiv -1 \pmod{17}$ \eh{2}et que \eh{2}\\ $6^2 \equiv 2 \pmod{17}$.
+		\task Déterminer un représentant principal de la classe d'équivalence de $\left[1532\right]_{17}$ \et{2} $\left[346\right]_{17}$.
+		\task En déduire le reste de la division par 17 des nombres $1532^{20}$ \et{2} $346^{12}$.
+	\end{tasks}
+	
+	
+	
+	
+	
+	\eexo
+	\pagebreak[1]
+	
+	\columnbreak
+	
+	
+%	
+%	\exo
+%	Résoudre les équations de congruences suivantes :
+%	\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=3mm,label-offset=2mm,label-align=right](1)
+%		\task $3x \equiv 4 \pmod{7}$
+%		\task $4x \equiv 14 \pmod{30}$
+%	\end{tasks}
+%	
+%	
+%	
+%	
+%	\eexo
+%	
+%	\pagebreak[1]
+	
+	
+	\exo
+	~
+	
+	\vspace{-7mm}
+	\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=5mm,label-offset=2mm,label-align=right](1)
+		\task Montrer que le reste de la division euclidienne par $8$ du carré de tout
+		nombre impair est $1$.
+		\task Montrer de même que tout nombre pair vérifie :
+		$$x^{2}\equiv 0\pmod{8} \ou{4} x^{2}\equiv 4\pmod{8}$$\vspace{-4mm}
+		\task Soient $a$, $b$, $c$ trois entiers impairs.\\
+		Déterminer le reste modulo $8$ de :
+		\begin{enumerate}[itemsep=1mm]
+			\item[] $\bm{a^{2}+b^{2}+c^{2}}$
+			\item[] $\bm{2(ab+bc+ac)}$
+		\end{enumerate}
+		{\footnotesize \textsl{\textbs{Indications :} Utiliser l'item a) pour le premier et écrire $a$, $b$ et $c$ comme des nombres impairs pour le deuxième.}} 
+		\task En déduire que :
+		$$a^{2}+b^{2}+c^{2} \et{4} 2(ab+bc+ac)$$
+		ne sont pas des carrés.
+		
+		\medskip
+		Conclure que $ab+bc+ac$ non plus.
+	\end{tasks}
+	
+	
+	\eexo
+	
+	\exo
+	\begin{tasks}[after-item-skip=2mm,item-indent=5mm,column-sep=1mm,label-offset=1mm](1)
+		\task Dans $\mathbb{Z}_{12}$, trouver les éléments qui ont un inverse et, pour chacun des éléments trouvés, calculer l'inverse.
+		
+		\task Mêmes questions avec $\mathbb{Z}_{14}$.
+		
+		\task Mêmes questions avec $\mathbb{Z}_{20}$
+	\end{tasks}
+	
+\end{exstheorie}
+\pagebreak
 %\begin{definition}
 %Un groupe est la donnée d'une ensemble $G$ muni d'une opération $\ast$, qu'on note $(G,\ast)$ et qui possède les propriétés suivantes:
 %\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
@@ -351,41 +740,41 @@ $[2]_3=[5]_3=[8]_3=\ldots$
 %
 %\end{definition}
 
-\bigskip
-\begin{proposition}[\normalsize Équations de congruences]
-Soit $a \in \Z^*$, $b \in \Z$ fixés et $n \ge 2$.
-Considérons l'équation
-{$ax \equiv b \pmod n$} d'inconnue $x \in \Z$.
-\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
-  \item Il existe des solutions si et seulement si $\pgdc(a,n) | b$.
-  \item Les solutions sont de la forme $x = x_0 + \ell \frac{n}{\pgdc(a,n)}$, où $\ell \in \Z$
-et $x_0$ est une solution particulière.
-
-Il existe donc $\pgdc(a,n)$ classes d'équivalences solutions.
-\end{enumerate}
-\end{proposition}
-
-\vspace{1mm}
-\textit{Démonstration :}
-
-
-\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
-%\item $x \in \Z \text{ est solution de l'équation }   ax \equiv b \pmod{n}$
-%$\begin{aligned}[t]
-% \iff\   & \exists k \in \Z \quad ax = b +kn \\
-% \iff\   & \exists k \in \Z \quad ax - kn = b \\
+%\bigskip
+%\begin{proposition}[\normalsize Équations de congruences]
+%Soit $a \in \Z^*$, $b \in \Z$ fixés et $n \ge 2$.
+%Considérons l'équation
+%{$ax \equiv b \pmod n$} d'inconnue $x \in \Z$.
+%\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
+%  \item Il existe des solutions si et seulement si $\pgdc(a,n) | b$.
+%  \item Les solutions sont de la forme $x = x_0 + \ell \frac{n}{\pgdc(a,n)}$, où $\ell \in \Z$
+%et $x_0$ est une solution particulière.
+%
+%Il existe donc $\pgdc(a,n)$ classes d'équivalences solutions.
+%\end{enumerate}
+%\end{proposition}
+%
+%\vspace{1mm}
+%\textit{Démonstration :}
+%
+%
+%\begin{enumerate}[label=\textbf{(\arabic*)},left=0mm,itemsep=1mm]
+%%\item $x \in \Z \text{ est solution de l'équation }   ax \equiv b \pmod{n}$
+%%$\begin{aligned}[t]
+%% \iff\   & \exists k \in \Z \quad ax = b +kn \\
+%% \iff\   & \exists k \in \Z \quad ax - kn = b \\
+%% \iff\   &  \pgdc(a,n) | b \quad \text{(proposition \ref*{prop:equations_diophantiennes})}\\
+%%\end{aligned}$
+%\item Il suffit de remarquer que nous avons les équivalences suivantes :
+%
+%\smallskip
+%$x \in \Z \text{ est solution de l'équation }   ax \equiv b \pmod{n}$
+%$\setlength{\jot}{2mm}\begin{aligned}[t]
+% \iff\   & \exists k \in \Z \eh{1}\text{ tel que }\eh{1}  ax = b +kn \\
+% \iff\   & \exists k \in \Z \eh{1}\text{ tel que }\eh{1} ax - kn = b \\
 % \iff\   &  \pgdc(a,n) | b \quad \text{(proposition \ref*{prop:equations_diophantiennes})}\\
 %\end{aligned}$
-\item Il suffit de remarquer que nous avons les équivalences suivantes :
-
-\smallskip
-$x \in \Z \text{ est solution de l'équation }   ax \equiv b \pmod{n}$
-$\setlength{\jot}{2mm}\begin{aligned}[t]
- \iff\   & \exists k \in \Z \eh{1}\text{ tel que }\eh{1}  ax = b +kn \\
- \iff\   & \exists k \in \Z \eh{1}\text{ tel que }\eh{1} ax - kn = b \\
- \iff\   &  \pgdc(a,n) | b \quad \text{(proposition \ref*{prop:equations_diophantiennes})}\\
-\end{aligned}$
-\smallskip
+%\smallskip
 %
 %Nous avons juste transformé notre équation $ax\equiv b \pmod n$
 %en une équation $ax-kn=b$ étudiée auparavant (voir section ),
@@ -393,143 +782,57 @@ $\setlength{\jot}{2mm}\begin{aligned}[t]
 %$\textcolor{magenta}{a}\textcolor{red}{u}+\textcolor{blue}{b}\textcolor{orange}{v}=\textcolor{green}{c}$ devient
 %$\textcolor{magenta}{a}\textcolor{red}{x}-\textcolor{orange}{k}\textcolor{blue}{n}=\textcolor{green}{b}$.
 
-\item Supposons qu'il existe des solutions. On note  $d = \pgdc(a,n)$ et on peut écrire $a=da'$, $n = dn'$
-et $b = db'$ (car, par le premier point, $d|b$). Remarquons également que $\pgdc(a';n')=1$.
-
-\smallskip
-L'équation de congruence {$ax \equiv b \pmod n$} d'inconnue $x$ se ramène à l'équation diophantienne $ax-kn=b$ d'inconnues $x,k \in \Z$ qui est équivalente à
-l'équation $$a'x-kn'=b'$$ 
-Comme $\pgdc(a';n')=1 | b$, alors l'équation possède des solutions et sa résolution (voir les équations diophantiennes) donne que
-$$x = x_0 + \ell n'$$
-où $x_0$ est une solution particulière et $\ell$ parcourt $\Z$ (les $k$ ne nous intéressent pas ici).
-
-\smallskip
-Ainsi les solutions $x\in \Z$ sont de la forme 
-$$x = x_0 + \ell \frac{n}{\pgdc(a,n)} \virg[1]\ell \in \Z$$
-et modulo $n$ cela donne bien $\pgdc(a,n)$ classes d'équivalences distinctes.\hfill$\blacksquare$
-\end{enumerate}
-
-
-
-
-\begin{exemplesecable}
-Résolvons l'équation $9x \equiv 6 \pmod{24}$.
-
-\medskip
-Comme $\pgdc(9,24)=3$ divise $6$, la proposition ci-dessus nous affirme qu'il existe des solutions. Il faudra toujours refaire  les calculs et non reprendre directement la formule.
-
-\medskip
-Trouver $x$ tel que $9x \equiv 6 \pmod{24}$ est équivalent à trouver $x$ et $k$ tels que
-$9x = 6 + 24k$. Cette dernière équation peut s'écrire sous la forme $9x-24k=6$. (qui possède bien des solutions car $\pgdc(9,24)=3$ divise $6$)
-
-\medskip
-En divisant par le pgdc on obtient l'équation diophantienne équivalente :
- $$3x-8k=2.$$
-
-Pour le calcul du pgdc et d'une solution particulière nous utilisons normalement l'algorithme d'Euclide et sa remontée.
-Ici il est facile de trouver une solution particulière :
-$$(x_0=6\pvirg{0.5}k_0=2)$$
-
-\medskip
-On termine comme pour les équations diophantiennes. Si $(x\pvirg{0.5}k)$ est une solution
-de l'équation alors par soustraction on obtient $3(x-x_0)-8(k-k_0)=0$. En suivant le raisonnement de résolution d'une équation diophantienne (laissée en exercice ici), on trouve :
-
-\vspace{-3mm}
-$$x = x_0 + 8\ell \eh{1}\text{ avec }\eh{1} \ell \in \Z$$ 
-
-(le terme $k$ ne nous intéresse pas).
-Nous avons donc trouvé les $x$ qui sont solutions de $9x-24k=6$, ce qui équivaut à $9x \equiv 6 \pmod{24}$. 
-
-\medskip
-Les solutions sont donc de la forme $x=6+ 8\ell$, ce qui en classes d'équivalences modulo $24$ donne :
-
-$$S=\left\lbrace [6]_{24} \pvirg{1} [14]_{24} \pvirg{1} [22]_{24} \right\rbrace$$
-\end{exemplesecable}
-
-
-
-
-
-\begin{exstheorie}
-\exo
-Trouver les restes de la division euclidienne par 11 des nombres suivants :
-\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=5mm,label-offset=2mm,label-align=right](3)
-\task $12^{15}$
-\task $10^7$
-\task $78^{15}$
-\task $13^{12}$
-\task $(-2)^{19}$
-\end{tasks}
-
-
-
-
-
-\eexo
-\pagebreak[3]
-
-
-
-
-
-\exo
-~
-
-\vspace{-6mm}
-\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=3mm,label-offset=2mm,label-align=right](1)
-\task Vérifier que $2^4 \equiv -1 \pmod{17}$ \eh{2}et que \eh{2}\\ $6^2 \equiv 2 \pmod{17}$.
-\task Déterminer la classe d'équivalence de $\left[1532\right]_{17}$ \et{2} $\left[346\right]_{17}$.
-\task En déduire le reste de la division par 17 des nombres $1532^{20}$ \et{2} $346^{12}$.
-\end{tasks}
-
-
-
-
-
-\eexo
-\pagebreak[3]
-
-
-
-
-
-\exo
-Résoudre les équations de congruences suivantes :
-\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=3mm,label-offset=2mm,label-align=right](1)
-\task $3x \equiv 4 \pmod{7}$
-\task $4x \equiv 14 \pmod{30}$
-\end{tasks}
-
-
-
-\columnbreak
-%\eexo
-
-
-
-
-\exo
-~
-
-\vspace{-7mm}
-\begin{tasks}[label=\alph*),item-indent=6mm,column-sep=0mm ,after-item-skip=5mm,label-offset=2mm,label-align=right](1)
-\task Montrer que le reste de la division euclidienne par $8$ du carré de tout
-nombre impair est $1$.
-\task Montrer de même que tout nombre pair vérifie :
-$$x^{2}\equiv 0\pmod{8} \ou{4} x^{2}\equiv 4\pmod{8}$$\vspace{-4mm}
-\task Soient $a$, $b$, $c$ trois entiers impairs.\\
-Déterminer le reste modulo $8$ de :
-\begin{enumerate}[itemsep=1mm]
-\item[] $\bm{a^{2}+b^{2}+c^{2}}$
-\item[] $\bm{2(ab+bc+ac)}$
-\end{enumerate}
-{\footnotesize \textsl{\textbs{Indications :} Utiliser l'item a) pour le premier et écrire $a$, $b$ et $c$ comme des nombres impairs pour le deuxième.}} 
-\task En déduire que :
-$$a^{2}+b^{2}+c^{2} \et{4} 2(ab+bc+ac)$$
-ne sont pas des carrés.
-
-\medskip
-Conclure que $ab+bc+ac$ non plus.
-\end{tasks}
-\end{exstheorie}
+%\item Supposons qu'il existe des solutions. On note  $d = \pgdc(a,n)$ et on peut écrire $a=da'$, $n = dn'$
+%et $b = db'$ (car, par le premier point, $d|b$). Remarquons également que $\pgdc(a';n')=1$.
+%
+%\smallskip
+%L'équation de congruence {$ax \equiv b \pmod n$} d'inconnue $x$ se ramène à l'équation diophantienne $ax-kn=b$ d'inconnues $x,k \in \Z$ qui est équivalente à
+%l'équation $$a'x-kn'=b'$$ 
+%Comme $\pgdc(a';n')=1 | b$, alors l'équation possède des solutions et sa résolution (voir les équations diophantiennes) donne que
+%$$x = x_0 + \ell n'$$
+%où $x_0$ est une solution particulière et $\ell$ parcourt $\Z$ (les $k$ ne nous intéressent pas ici).
+%
+%\smallskip
+%Ainsi les solutions $x\in \Z$ sont de la forme 
+%$$x = x_0 + \ell \frac{n}{\pgdc(a,n)} \virg[1]\ell \in \Z$$
+%et modulo $n$ cela donne bien $\pgdc(a,n)$ classes d'équivalences distinctes.\hfill$\blacksquare$
+%\end{enumerate}
+%
+%
+%
+%
+%\begin{exemplesecable}
+%Résolvons l'équation $9x \equiv 6 \pmod{24}$.
+%
+%\medskip
+%Comme $\pgdc(9,24)=3$ divise $6$, la proposition ci-dessus nous affirme qu'il existe des solutions. Il faudra toujours refaire  les calculs et non reprendre directement la formule.
+%
+%\medskip
+%Trouver $x$ tel que $9x \equiv 6 \pmod{24}$ est équivalent à trouver $x$ et $k$ tels que
+%$9x = 6 + 24k$. Cette dernière équation peut s'écrire sous la forme $9x-24k=6$. (qui possède bien des solutions car $\pgdc(9,24)=3$ divise $6$)
+%
+%\medskip
+%En divisant par le pgdc on obtient l'équation diophantienne équivalente :
+% $$3x-8k=2.$$
+%
+%Pour le calcul du pgdc et d'une solution particulière nous utilisons normalement l'algorithme d'Euclide et sa remontée.
+%Ici il est facile de trouver une solution particulière :
+%$$(x_0=6\pvirg{0.5}k_0=2)$$
+%
+%\medskip
+%On termine comme pour les équations diophantiennes. Si $(x\pvirg{0.5}k)$ est une solution
+%de l'équation alors par soustraction on obtient $3(x-x_0)-8(k-k_0)=0$. En suivant le raisonnement de résolution d'une équation diophantienne (laissée en exercice ici), on trouve :
+%
+%\vspace{-3mm}
+%$$x = x_0 + 8\ell \eh{1}\text{ avec }\eh{1} \ell \in \Z$$ 
+%
+%(le terme $k$ ne nous intéresse pas).
+%Nous avons donc trouvé les $x$ qui sont solutions de $9x-24k=6$, ce qui équivaut à $9x \equiv 6 \pmod{24}$. 
+%
+%\medskip
+%Les solutions sont donc de la forme $x=6+ 8\ell$, ce qui en classes d'équivalences modulo $24$ donne :
+%
+%$$S=\left\lbrace [6]_{24} \pvirg{1} [14]_{24} \pvirg{1} [22]_{24} \right\rbrace$$
+%\end{exemplesecable}
+%
 

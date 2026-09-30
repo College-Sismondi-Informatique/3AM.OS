@@ -596,7 +596,185 @@ Le reste de la division euclidienne de $7^n+1$ par $8$ est $r(n)=(-1)^n+1$.
 \end{itemize}
 
 
+%21
+\item
+\begin{enumerate}[label=\alph*),itemsep=5mm,left=-1mm,labelsep*=2mm]
+	\item a) Tables d'addition et de multiplication :
 
+\noindent
+\begin{minipage}[t]{0.48\linewidth}
+	\vspace{0pt}\centering
+	\textbf{Tables dans $\mathbb{Z}_2$} \\ \vspace{0.2cm}
+	\renewcommand{\arraystretch}{1.1}
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{c|cc}
+		$+$ & $\cl[2]{0}$ & $\cl[2]{1}$ \\ \hline
+		$\cl[2]{0}$ & $\cl[2]{0}$ & $\cl[2]{1}$ \\
+		$\cl[2]{1}$ & $\cl[2]{1}$ & $\cl[2]{0}$
+	\end{tabular}
+	\quad
+	\begin{tabular}{c|cc}
+		$\cdot$ & $\cl[2]{0}$ & $\cl[2]{1}$ \\ \hline
+		$\cl[2]{0}$ & $\cl[2]{0}$ & $\cl[2]{0}$ \\
+		$\cl[2]{1}$ & $\cl[2]{0}$ & $\cl[2]{1}$
+	\end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+	\vspace{0pt}\centering
+	\textbf{Tables dans $\mathbb{Z}_3$} \\ \vspace{0.2cm}
+	\renewcommand{\arraystretch}{1.1}
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{c|ccc}
+		$+$ & $\cl[3]{0}$ & $\cl[3]{1}$ & $\cl[3]{2}$ \\ \hline
+		$\cl[3]{0}$ & $\cl[3]{0}$ & $\cl[3]{1}$ & $\cl[3]{2}$ \\
+		$\cl[3]{1}$ & $\cl[3]{1}$ & $\cl[3]{2}$ & $\cl[3]{0}$ \\
+		$\cl[3]{2}$ & $\cl[3]{2}$ & $\cl[3]{0}$ & $\cl[3]{1}$
+	\end{tabular}
+	\quad
+	\begin{tabular}{c|ccc}
+		$\cdot$ & $\cl[3]{0}$ & $\cl[3]{1}$ & $\cl[3]{2}$ \\ \hline
+		$\cl[3]{0}$ & $\cl[3]{0}$ & $\cl[3]{0}$ & $\cl[3]{0}$ \\
+		$\cl[3]{1}$ & $\cl[3]{0}$ & $\cl[3]{1}$ & $\cl[3]{2}$ \\
+		$\cl[3]{2}$ & $\cl[3]{0}$ & $\cl[3]{2}$ & $\cl[3]{1}$
+	\end{tabular}
+\end{minipage}
+
+\vspace{0.4cm}
+
+\noindent
+\begin{minipage}[t]{0.48\linewidth}
+	\vspace{0pt}\centering
+	\textbf{Tables dans $\mathbb{Z}_4$} \\ \vspace{0.2cm}
+	\renewcommand{\arraystretch}{1.1}
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{c|cccc}
+		$+$ & $\cl[4]{0}$ & $\cl[4]{1}$ & $\cl[4]{2}$ & $\cl[4]{3}$ \\ \hline
+		$\cl[4]{0}$ & $\cl[4]{0}$ & $\cl[4]{1}$ & $\cl[4]{2}$ & $\cl[4]{3}$ \\
+		$\cl[4]{1}$ & $\cl[4]{1}$ & $\cl[4]{2}$ & $\cl[4]{3}$ & $\cl[4]{0}$ \\
+		$\cl[4]{2}$ & $\cl[4]{2}$ & $\cl[4]{3}$ & $\cl[4]{0}$ & $\cl[4]{1}$ \\
+		$\cl[4]{3}$ & $\cl[4]{3}$ & $\cl[4]{0}$ & $\cl[4]{1}$ & $\cl[4]{2}$
+	\end{tabular}
+	\quad
+	\begin{tabular}{c|cccc}
+		$\cdot$ & $\cl[4]{0}$ & $\cl[4]{1}$ & $\cl[4]{2}$ & $\cl[4]{3}$ \\ \hline
+		$\cl[4]{0}$ & $\cl[4]{0}$ & $\cl[4]{0}$ & $\cl[4]{0}$ & $\cl[4]{0}$ \\
+		$\cl[4]{1}$ & $\cl[4]{0}$ & $\cl[4]{1}$ & $\cl[4]{2}$ & $\cl[4]{3}$ \\
+		$\cl[4]{2}$ & $\cl[4]{0}$ & $\cl[4]{2}$ & $\cl[4]{0}$ & $\cl[4]{2}$ \\
+		$\cl[4]{3}$ & $\cl[4]{0}$ & $\cl[4]{3}$ & $\cl[4]{2}$ & $\cl[4]{1}$
+	\end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+	\vspace{0pt}\centering
+	\textbf{Tables dans $\mathbb{Z}_5$} \\ \vspace{0.2cm}
+	\renewcommand{\arraystretch}{1.1}
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{c|ccccc}
+		$+$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\ \hline
+		$\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\
+		$\cl[5]{1}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ & $\cl[5]{0}$ \\
+		$\cl[5]{2}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{1}$ \\
+		$\cl[5]{3}$ & $\cl[5]{3}$ & $\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ \\
+		$\cl[5]{4}$ & $\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$
+	\end{tabular}
+	\quad
+	\begin{tabular}{c|ccccc}
+		$\cdot$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\ \hline
+		$\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ & $\cl[5]{0}$ \\
+		$\cl[5]{1}$ & $\cl[5]{0}$ & $\cl[5]{1}$ & $\cl[5]{2}$ & $\cl[5]{3}$ & $\cl[5]{4}$ \\
+		$\cl[5]{2}$ & $\cl[5]{0}$ & $\cl[5]{2}$ & $\cl[5]{4}$ & $\cl[5]{1}$ & $\cl[5]{3}$ \\
+		$\cl[5]{3}$ & $\cl[5]{0}$ & $\cl[5]{3}$ & $\cl[5]{1}$ & $\cl[5]{4}$ & $\cl[5]{2}$ \\
+		$\cl[5]{4}$ & $\cl[5]{0}$ & $\cl[5]{4}$ & $\cl[5]{3}$ & $\cl[5]{2}$ & $\cl[5]{1}$
+	\end{tabular}
+\end{minipage}
+
+\vspace{0.4cm}
+
+\item Dans $\mathbb{Z}_3$ :
+\begin{enumerate}[label=\arabic*)]
+	\item L'opposé de $\cl[3]{2}$ est $\cl[3]{1}$, car $\cl[3]{2} + \cl[3]{1} = \cl[3]{0}$.
+	\item L'inverse de $\cl[3]{2}$ est $\cl[3]{2}$, car $\cl[3]{2} \cdot \cl[3]{2} = \cl[3]{1}$.
+	\item Oui, $(\mathbb{Z}_3, +)$ est un groupe commutatif : $\cl[3]{0} \mapsto \cl[3]{0}$, $\cl[3]{1} \mapsto \cl[3]{2}$, et $\cl[3]{2} \mapsto \cl[3]{1}$.
+	\item Oui, tout élément non nul a un inverse unique : le symétrique de $\cl[3]{1}$ est $\cl[3]{1}$ et celui de $\cl[3]{2}$ est $\cl[3]{2}$.
+	\item Oui, $\mathbb{Z}_3$ est un anneau commutatif unitaire et tout élément non nul y est inversible, c'est donc un corps.
+\end{enumerate}
+
+\item Dans $\mathbb{Z}_4$ :
+\begin{enumerate}[label=\arabic*)]
+	\item L'opposé de $\cl[4]{2}$ est $\cl[4]{2}$, car $\cl[4]{2} + \cl[4]{2} = \cl[4]{0}$.
+	\item $\cl[4]{2}$ n'a pas d'inverse, car pour tout $\cl[4]{x} \in \mathbb{Z}_4$, $\cl[4]{2} \cdot \cl[4]{x} \in \{\cl[4]{0}, \cl[4]{2}\} \neq \cl[4]{1}$.
+	\item Oui, tout élément possède un unique opposé : $\cl[4]{0} \mapsto \cl[4]{0}$, $\cl[4]{1} \mapsto \cl[4]{3}$, $\cl[4]{2} \mapsto \cl[4]{2}$, $\cl[4]{3} \mapsto \cl[4]{1}$.
+	\item Non, l'élément non nul $\cl[4]{2}$ n'a pas d'inverse.
+	\item Non, $\mathbb{Z}_4$ n'est pas un corps car $\cl[4]{2} \neq \cl[4]{0}$ n'est pas inversible.
+\end{enumerate}
+
+\item Calcul dans $\mathbb{Z}_5$ :
+\[
+\left(\cl[5]{2} \cdot (\cl[5]{2} + \cl[5]{4})\right) \cdot \cl[5]{3} + \cl[5]{0} \cdot \cl[5]{2} + \cl[5]{1} = \left(\cl[5]{2} \cdot \cl[5]{1}\right) \cdot \cl[5]{3} + \cl[5]{0} + \cl[5]{1} = \cl[5]{2} \cdot \cl[5]{3} + \cl[5]{1} = \cl[5]{1} + \cl[5]{1} = \cl[5]{2}
+\]
+
+\item Calcul dans $\mathbb{Z}_6$ :
+\[
+\cl[6]{5} + \cl[6]{1} \cdot \left(\cl[6]{0} + \cl[6]{1} + \cl[6]{2}\right) = \cl[6]{5} + \cl[6]{3} = \cl[6]{2}
+\]
+
+\item Calcul dans $\mathbb{Z}_7$ :
+\[
+\cl[7]{5} + \cl[7]{1} \cdot \left(\cl[7]{0} + \cl[7]{1} + \cl[7]{6}\right) = \cl[7]{5} + \cl[7]{0} = \cl[7]{5}
+\]
+
+\item Résolution d'équations :
+\begin{enumerate}[label=\arabic*)]
+	\item $\cl[4]{3} \cdot \cl[4]{x} = \cl[4]{1} \iff \cl[4]{x} = \cl[4]{3}^{-1} \cdot \cl[4]{1} = \cl[4]{3} \implies S = \{\cl[4]{3}\}$
+	\item $\cl[4]{2} \cdot \cl[4]{x} + \cl[4]{2} = \cl[4]{x} \iff \cl[4]{x} = \cl[4]{2} \implies S = \{\cl[4]{2}\}$
+	\item $\cl[4]{2} \cdot \cl[4]{x} = \cl[4]{2} \implies S = \{\cl[4]{1}, \cl[4]{3}\}$ (en testant les 4 valeurs de $\mathbb{Z}_4$)
+	\item $\cl[4]{2} \cdot \cl[4]{x} = \cl[4]{1} \implies S = \emptyset$ (car $\cl[4]{2}$ n'est pas inversible)
+	\item $\cl[5]{2} \cdot \cl[5]{x} = \cl[5]{2} \iff \cl[5]{x} = \cl[5]{2}^{-1} \cdot \cl[5]{2} = \cl[5]{3} \cdot \cl[5]{2} = \cl[5]{1} \implies S = \{\cl[5]{1}\}$
+	\item $\cl[5]{2} \cdot \cl[5]{x} = \cl[5]{1} \iff \cl[5]{x} = \cl[5]{2}^{-1} = \cl[5]{3} \implies S = \{\cl[5]{3}\}$
+\end{enumerate}
+\end{enumerate}
+
+
+%exo
+\item
+\begin{enumerate}[label=\alph*),itemsep=5mm,left=-1mm,labelsep*=2mm]
+	\item Voir la remarque du cours qui utilise les propriétés des congruences.
+	
+	\item On a $\cl{a} + \cl{b} = \cl{a + b}$. Dans $\mathbb{Z}$, l'addition est commutative donc $a + b = b + a$. Ainsi, $\cl{a+b} = \cl{b+a} = \cl{b} + \cl{a}$.
+	
+	\item \textbf{Existence :} Soit $\cl{a} \in \mathbb{Z}_n$. L'élément $\cl{-a} = \cl{n - a} \in \mathbb{Z}_n$ vérifie :
+	\[
+	\cl{a} + \cl{-a} = \cl{a + (-a)} = \cl{0}
+	\]
+	\textbf{Unicité :} Supposons qu'il existe deux opposés $\cl{b_1}$ et $\cl{b_2}$ de $\cl{a}$. Alors :
+	\[
+	\cl{b_1} = \cl{b_1} + \cl{0} = \cl{b_1} + (\cl{a} + \cl{b_2}) = (\cl{b_1} + \cl{a}) + \cl{b_2} = \cl{0} + \cl{b_2} = \cl{b_2}
+	\]
+	L'opposé est donc unique.
+	
+	\item On a $\cl{a} \cdot \cl{1} = \cl{a \cdot 1} = \cl{a}$ et $\cl{1} \cdot \cl{a} = \cl{1 \cdot a} = \cl{a}$, car $1$ est l'élément neutre de la multiplication dans $\mathbb{Z}$.
+
+	\item Supposons que $\cl{a}$ possède deux inverses $\cl{b_1}, \cl{b_2} \in \mathbb{Z}_n$, c'est-à-dire :
+	\[
+	\cl{a} \cdot \cl{b_1} = \cl{1} \quad \text{et} \quad \cl{a} \cdot \cl{b_2} = \cl{1}
+	\]
+	En utilisant l'associativité de la multiplication et l'élément neutre $\cl{1}$ :
+	\[
+	\cl{b_1} = \cl{b_1} \cdot \cl{1} = \cl{b_1} \cdot (\cl{a} \cdot \cl{b_2}) = (\cl{b_1} \cdot \cl{a}) \cdot \cl{b_2} = \cl{1} \cdot \cl{b_2} = \cl{b_2}
+	\]
+	L'inverse de $\cl{a}$ (lorsqu'il existe) est donc nécessairement unique.
+\end{enumerate}
+
+
+\item
+\begin{enumerate}[label=\alph*),itemsep=1mm,left=-1mm,labelsep*=2mm]
+	\item Oui
+	\item Non
+	\item Non
+	\item Oui
+	\item Non
+\end{enumerate}
 
 %21
 \item
@@ -658,18 +836,18 @@ Le reste de la division euclidienne de $7^n+1$ par $8$ est $r(n)=(-1)^n+1$.
 \end{enumerate}
 
 
-
-
-%23
-\item
-\begin{multicols}{3}
-	\begin{enumerate}[label=\alph*)]
-		\item $S= \lbrace \left[6\right]_7\rbrace$
-		\item $S= \lbrace \left[11\right]_{30} \; ; \; \left[26\right]_{30} \rbrace$
-		\item[]
-	\end{enumerate}
-\end{multicols}
-
+%
+%
+%%23
+%\item
+%\begin{multicols}{3}
+%	\begin{enumerate}[label=\alph*)]
+%		\item $S= \lbrace \left[6\right]_7\rbrace$
+%		\item $S= \lbrace \left[11\right]_{30} \; ; \; \left[26\right]_{30} \rbrace$
+%		\item[]
+%	\end{enumerate}
+%\end{multicols}
+%
 
 
 
@@ -741,7 +919,53 @@ Le reste de la division euclidienne de $7^n+1$ par $8$ est $r(n)=(-1)^n+1$.
 	\end{enumerate}
 \end{enumerate}
 
-
+%exercice
+\item
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=*]
+	\item Dans $\mathbb{Z}_{12}$:
+	
+	Les entiers compris entre $0$ et $11$ premiers avec $12$ sont $1, 5, 7, 11$.
+	
+	Les éléments inversibles de $\mathbb{Z}_{12}$ sont donc $\{\cl[12]{1}, \cl[12]{5}, \cl[12]{7}, \cl[12]{11}\}$.
+	
+	Calcul de leurs inverses :
+	\begin{itemize}
+		\item $\cl[12]{1} \cdot \cl[12]{1} = \cl[12]{1} \implies \cl[12]{1}^{-1} = \cl[12]{1}$
+		\item $\cl[12]{5} \cdot \cl[12]{5} = \cl[12]{25} = \cl[12]{1} \implies \cl[12]{5}^{-1} = \cl[12]{5}$
+		\item $\cl[12]{7} \cdot \cl[12]{7} = \cl[12]{49} = \cl[12]{1} \implies \cl[12]{7}^{-1} = \cl[12]{7}$
+		\item $\cl[12]{11} \cdot \cl[12]{11} = (-\cl[12]{1}) \cdot (-\cl[12]{1}) = \cl[12]{1} \implies \cl[12]{11}^{-1} = \cl[12]{11}$
+	\end{itemize}
+	
+	\item Dans $\mathbb{Z}_{14}$:
+	Les entiers compris entre $0$ et $13$ premiers avec $14$ sont $1, 3, 5, 9, 11, 13$.
+	
+	Les éléments inversibles de $\mathbb{Z}_{14}$ sont donc $\{\cl[14]{1}, \cl[14]{3}, \cl[14]{5}, \cl[14]{9}, \cl[14]{11}, \cl[14]{13}\}$.
+	
+	Calcul de leurs inverses :
+	\begin{itemize}
+		\item $\cl[14]{1}^{-1} = \cl[14]{1}$
+		\item $\cl[14]{3} \cdot \cl[14]{5} = \cl[14]{15} = \cl[14]{1} \implies \cl[14]{3}^{-1} = \cl[14]{5}$ et $\cl[14]{5}^{-1} = \cl[14]{3}$
+		\item $\cl[14]{9} \cdot \cl[14]{11} = \cl[14]{99} = 7 \cdot 14 + 1 = \cl[14]{1} \implies \cl[14]{9}^{-1} = \cl[14]{11}$ et $\cl[14]{11}^{-1} = \cl[14]{9}$
+		\item $\cl[14]{13}^{-1} = (-\cl[14]{1})^{-1} = -\cl[14]{1} = \cl[14]{13}$
+	\end{itemize}
+	
+	\item Dans $\mathbb{Z}_{20}$:
+	
+	Les entiers compris entre $0$ et $19$ premiers avec $20$ sont $1, 3, 7, 9, 11, 13, 17, 19$.
+	
+	Les éléments inversibles de $\mathbb{Z}_{20}$ sont donc $\{\cl[20]{1}, \cl[20]{3}, \cl[20]{7}, \cl[20]{9}, \cl[20]{11}, \cl[20]{13}, \cl[20]{17}, \cl[20]{19}\}$.
+	
+	Calcul de leurs inverses :
+	\begin{itemize}
+		\item $\cl[20]{1}^{-1} = \cl[20]{1}$
+		\item $\cl[20]{3} \cdot \cl[20]{7} = \cl[20]{21} = \cl[20]{1} \implies \cl[20]{3}^{-1} = \cl[20]{7}$ et $\cl[20]{7}^{-1} = \cl[20]{3}$
+		\item $\cl[20]{9} \cdot \cl[20]{9} = \cl[20]{81} = \cl[20]{1} \implies \cl[20]{9}^{-1} = \cl[20]{9}$
+		\item $\cl[20]{11} \cdot \cl[20]{11} = \cl[20]{121} = \cl[20]{1} \implies \cl[20]{11}^{-1} = \cl[20]{11}$
+		\item $\cl[20]{13} \cdot \cl[20]{17} = (-\cl[20]{7}) \cdot (-\cl[20]{3}) = \cl[20]{21} = \cl[20]{1} \implies \cl[20]{13}^{-1} = \cl[20]{17}$ et $\cl[20]{17}^{-1} = \cl[20]{13}$
+		\item $\cl[20]{19}^{-1} = (-\cl[20]{1})^{-1} = -\cl[20]{1} = \cl[20]{19}$
+	\end{itemize}
+	
+\end{enumerate}
 
 
 %16
@@ -763,8 +987,22 @@ $$\pgdc(9945;3003)=39=\bm{(-16)}\cdot 9945 + \bm{(53)}\cdot 3003$$
 \item
 On utilise le corolaire 2.6 et on pose $u=-1$ et $v=1$ : $(-1)\fois a+1\fois(a+1)=1$. Donc $\pgdc(a;a+1)=1$.
 
-
-
+%exercice
+\item
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=*]
+	\item \textbf{Vrai.} D'après le corollaire du théorème de Bézout, s'il existe deux entiers $u = 3$ et $v = -4$ tels que $a \cdot u + b \cdot v = 1$, alors $\text{PGCD}(a;b) = 1$, ce qui signifie que $a$ et $b$ sont premiers entre eux.
+	
+	\item \textbf{Vrai.} D'après le corollaire du théorème de Bézout, puisque $\text{PGCD}(5;11) = 1$, il existe nécessairement une combinaison linéaire entière $5x + 11y = 1$ (par exemple, $x = -2$ et $y = 1$ car $5 \cdot (-2) + 11 \cdot 1 = 1$).
+	
+	\item \textbf{Faux.} Une combinaison linéaire de la forme $a \cdot u + b \cdot v = 5$ implique seulement que $\text{PGCD}(a;b)$ divise 5, mais pas nécessairement qu'il est égal à 5. \\
+	\textit{Contre-exemple :} Soient $a = 1$ et $b = 1$. On a $1 \cdot 3 + 1 \cdot (-4) = -1 \neq 5$, mais pour $a = 3$ et $b = 1$, on a $3 \cdot 3 + 1 \cdot (-4) = 5$, alors que $\text{PGCD}(3;1) = 1 \neq 5$.
+	
+	\item \textbf{Vrai.} Tout diviseur commun à $a$ et $b$ divise leur combinaison linéaire $a \cdot 3 + b \cdot (-4)$. En particulier, $\text{PGCD}(a;b)$ divise $a$ et $b$, donc $\text{PGCD}(a;b)$ divise 5.
+	
+	\item \textbf{Vrai.} D'après l'identité de Bézout, si $\text{PGCD}(a;b) = 4$, alors il existe $(x_0, y_0) \in \mathbb{Z}^2$ tels que $a x_0 + b y_0 = 4$. En multipliant toute l'équation par $3$, on obtient $a (3 x_0) + b (3 y_0) = 12$. Il suffit donc de poser $u = 3 x_0$ et $v = 3 y_0$. Comme $12$ est un multiple du PGCD ($4 \mid 12$), cette équation admet bien des solutions entières.
+	
+	\item \textbf{Vrai.} C'est une propriété fondamentale du PGCD : si un entier $d$ est un diviseur commun à $a$ et $b$, alors $d$ divise nécessairement le plus grand commun diviseur de $a$ et $b$. En effet, d'après Bézout, $\text{PGCD}(a;b) = a u + b v$, et comme $d \mid a$ et $d \mid b$, $d$ divise aussi la combinaison linéaire $a u + b v$.
+\end{enumerate}
 
 \clearpage
 %18
@@ -775,7 +1013,69 @@ On utilise le corolaire 2.6 et on pose $u=-1$ et $v=1$ : $(-1)\fois a+1\fois(a+1
 \item Cette équation n'a pas de solution dans $\Z^2$. {\small(La somme ou la différence de deux nombres paires sera toujours paire)}
 \end{enumerate}
 
-
+%19
+\item
+\begin{enumerate}[label=\textbf{\alph*)}, leftmargin=*]
+	\item \textbf{Calcul du $\text{PPCM}(1008; 540)$ :}
+	
+	Appliquons d'abord l'algorithme d'Euclide pour trouver le $\text{PGCD}(1008; 540)$ :
+	\begin{align*}
+		1008 &= 540 \cdot 1 + 468 \\
+		540 &= 468 \cdot 1 + 72 \\
+		468 &= 72 \cdot 6 + 36 \\
+		72 &= 36 \cdot 2 + 0
+	\end{align*}
+	Le dernier reste non nul est $36$, donc $\text{PGCD}(1008; 540) = 36$.
+	
+	En utilisant la relation $\text{PPCM}(a,b) \cdot \text{PGCD}(a,b) = a \cdot b$ :
+	\[
+	\text{PPCM}(1008; 540) = \frac{1008 \cdot 540}{36} = 1008 \cdot 15 = 15120
+	\]
+	
+	\item \textbf{Couples $(a,b) \in \mathbb{N}^2$ vérifiant $\text{PGCD}(a,b) = 12$ et $\text{PPCM}(a,b) = 432$ :}
+	
+	Posons $a = 12a'$ et $b = 12b'$ avec $\text{PGCD}(a', b') = 1$.
+	On sait que :
+	\[
+	\text{PPCM}(a,b) = 12 \cdot a' \cdot b' = 432 \implies a' \cdot b' = \frac{432}{12} = 36
+	\]
+	Cherchons les couples de facteurs premiers entre eux $(a', b')$ dont le produit vaut $36$ (décomposition $36 = 2^2 \cdot 3^2$) :
+	\begin{itemize}
+		\item $(a', b') = (1, 36) \implies (a,b) = (12, 432)$
+		\item $(a', b') = (4, 9) \implies (a,b) = (48, 108)$
+		\item $(a', b') = (9, 4) \implies (a,b) = (108, 48)$
+		\item $(a', b') = (36, 1) \implies (a,b) = (432, 12)$
+	\end{itemize}
+	Les couples sont $S = \{(12, 432), (48, 108), (108, 48), (432, 12)\}$.
+	
+	\item \textbf{Détermination des entiers $a$ et $b$ :}
+	
+	En utilisant la formule $a \cdot b = \text{PGCD}(a,b) \cdot \text{PPCM}(a,b)$ :
+	
+	\begin{enumerate}[label=\textbf{\arabic*)}, leftmargin=*]
+		\item $a \cdot b = 1350$ et $\text{PPCM}(a,b) = 90$ :
+		\[
+		\text{PGCD}(a,b) = \frac{a \cdot b}{\text{PPCM}(a,b)} = \frac{1350}{90} = 15
+		\]
+		Posons $a = 15a'$ et $b = 15b'$ avec $\text{PGCD}(a', b') = 1$.
+		\[
+		\text{PPCM}(a,b) = 15 \cdot a' \cdot b' = 90 \implies a' \cdot b' = 6
+		\]
+		Les couples d'entiers premiers entre eux $(a',b')$ tels que $a'b' = 6$ sont $(1,6), (2,3), (3,2), (6,1)$.
+		D'où les solutions $(a,b) \in \{(15, 90), (30, 45), (45, 30), (90, 15)\}$.
+		
+		\item $a \cdot b = 2352$ et $\text{PPCM}(a,b) = 168$ :
+		\[
+		\text{PGCD}(a,b) = \frac{a \cdot b}{\text{PPCM}(a,b)} = \frac{2352}{168} = 14
+		\]
+		Posons $a = 14a'$ et $b = 14b'$ avec $\text{PGCD}(a', b') = 1$.
+		\[
+		\text{PPCM}(a,b) = 14 \cdot a' \cdot b' = 168 \implies a' \cdot b' = 12
+		\]
+		Les couples d'entiers premiers entre eux $(a',b')$ tels que $a'b' = 12$ sont $(1,12), (3,4), (4,3), (12,1)$.
+		D'où les solutions $(a,b) \in \{(14, 168), (42, 56), (56, 42), (168, 14)\}$.
+	\end{enumerate}
+\end{enumerate}
 
 
 %19
@@ -786,22 +1086,219 @@ Il faut utiliser le fait que\eh{1} $\pgdc(a;b)\fois \ppmc(a;b)=\vert ab\vert$. O
 On fait le même raisonnement qu'à l'exercice \ref*{exer:pgdc_et_produit} et on trouve: $\pt{\pm 12}{\pm 432}$ et $\pt{\pm 48}{\pm 108}$ {\small (soit $8$ couples)}. 
 
 
-
-%20
+%solution d'exercice
 \item
+\begin{enumerate}[label=\textbf{\arabic*)}, leftmargin=*]
+	\item \textbf{$\cl[171]{a} = \cl[171]{13}$ dans $\mathbb{Z}_{171}$ :}
+	
+	\textit{Algorithme d'Euclide :}
+	\begin{align*}
+		171 &= 13 \cdot 13 + 2 \\
+		13 &= 2 \cdot 6 + 1 \\
+		2 &= 1 \cdot 2 + 0
+	\end{align*}
+	$\text{PGCD}(13, 171) = 1$, donc $\cl[171]{13}$ est inversible dans $\mathbb{Z}_{171}$.
+	
+	\textit{Remontée de Bézout :}
+	\begin{align*}
+		1 &= 13 - 2 \cdot 6 \\
+		1 &= 13 - (171 - 13 \cdot 13) \cdot 6 \\
+		1 &= 13 \cdot 79 - 171 \cdot 6
+	\end{align*}
+	En passant aux classes de congruence modulo $171$ :
+	\[
+	\cl[171]{13} \cdot \cl[171]{79} = \cl[171]{1} \quad \text{dans } \mathbb{Z}_{171}
+	\]
+	\textbf{Conclusion :} $\cl[171]{13}^{-1} = \cl[171]{79}$ dans $\mathbb{Z}_{171}$.
+	
+	\item \textbf{$\cl[26]{a} = \cl[26]{25}$ dans $\mathbb{Z}_{26}$ :}
+	
+	\textit{Algorithme d'Euclide :}
+	\[
+	26 = 25 \cdot 1 + 1 \implies 1 = 25 \cdot (-1) + 26 \cdot 1
+	\]
+	$\text{PGCD}(25, 26) = 1$, donc $\cl[26]{25}$ est inversible dans $\mathbb{Z}_{26}$.
+	
+	En passant aux classes modulo $26$ :
+	\[
+	\cl[26]{25} \cdot \cl[26]{-1} = \cl[26]{1} \quad \text{dans } \mathbb{Z}_{26}
+	\]
+	Comme $\cl[26]{-1} = \cl[26]{25}$ dans $\mathbb{Z}_{26}$ : \\
+	\textbf{Conclusion :} $\cl[26]{25}^{-1} = \cl[26]{25}$ dans $\mathbb{Z}_{26}$.
+	
+	\item \textbf{$\cl[271]{a} = \cl[271]{13}$ dans $\mathbb{Z}_{271}$ :}
+	
+	\textit{Algorithme d'Euclide :}
+	\begin{align*}
+		271 &= 13 \cdot 20 + 11 \\
+		13 &= 11 \cdot 1 + 2 \\
+		11 &= 2 \cdot 5 + 1 \\
+		2 &= 1 \cdot 2 + 0
+	\end{align*}
+	$\text{PGCD}(13, 271) = 1$, donc $\cl[271]{13}$ est inversible dans $\mathbb{Z}_{271}$.
+	
+	\textit{Remontée de Bézout :}
+	\begin{align*}
+		1 &= 11 - 2 \cdot 5 \\
+		1 &= 11 - (13 - 11 \cdot 1) \cdot 5 = 11 \cdot 6 - 13 \cdot 5 \\
+		1 &= (271 - 13 \cdot 20) \cdot 6 - 13 \cdot 5 \\
+		1 &= 271 \cdot 6 + 13 \cdot (-125)
+	\end{align*}
+	En passant aux classes de congruence modulo $271$ :
+	\[
+	\cl[271]{13} \cdot \cl[271]{-125} = \cl[271]{1} \quad \text{dans } \mathbb{Z}_{271}
+	\]
+	Comme $\cl[271]{-125} = \cl[271]{-125 + 271} = \cl[271]{146}$ dans $\mathbb{Z}_{271}$ : \\
+	\textbf{Conclusion :} $\cl[271]{13}^{-1} = \cl[271]{146}$ dans $\mathbb{Z}_{271}$.
+	
+	\item \textbf{$\cl[30]{a} = \cl[30]{15}$ dans $\mathbb{Z}_{30}$ :}
+	
+	\textit{Algorithme d'Euclide :}
+	\[
+	30 = 15 \cdot 2 + 0
+	\]
+	Le dernier reste non nul est $15$, donc $\text{PGCD}(15, 30) = 15 \neq 1$. \\
+	\textbf{Conclusion :} $15$ n'est pas premier avec $30$, donc la classe $\cl[30]{15}$ \textbf{n'est pas inversible} dans $\mathbb{Z}_{30}$.
+\end{enumerate}
+
+
+%exo
+\item Pour déterminer si un entier $n$ est premier, il suffit de tester sa divisibilité par tous les nombres premiers $p \le \sqrt{n}$.
+
+\begin{enumerate}[label=\textbf{\arabic*)}, leftmargin=*]
+	\item \textbf{Étude de $61$ :}
+	
+	$\sqrt{61} \approx 7{,}81$. Les nombres premiers à tester sont $2, 3, 5, 7$.
+	\begin{itemize}
+		\item $61 \equiv 1 \pmod 2$ (non divisible)
+		\item $61 \equiv 1 \pmod 3$ (non divisible)
+		\item $61 \equiv 1 \pmod 5$ (non divisible)
+		\item $61 = 7 \cdot 8 + 5 \equiv 5 \pmod 7$ (non divisible)
+	\end{itemize}
+	\textbf{Conclusion :} Aucun des nombres premiers $p \le \sqrt{61}$ ne divise $61$. Le nombre \textbf{$61$ est premier}.
+	
+	
+	\item \textbf{Étude de $6661$ :}
+	
+	$\sqrt{6661} \approx 81{,}61$. Testons la divisibilité par les premiers nombres premiers :
+	\begin{itemize}
+		\item Non divisible par $2, 3, 5$.
+		\item $6661 = 7 \cdot 951 + 4$ (non divisible par $7$)
+		\item $6661 = 11 \cdot 605 + 6$ (non divisible par $11$)
+		\item $6661 = 13 \cdot 512 + 5$ (non divisible par $13$)
+		\item $6661 = 17 \cdot 391 + 14$ (non divisible par $17$)
+		\item $6661 = 19 \cdot 350 + 11$ (non divisible par $19$)
+		\item $6661 = 23 \cdot 289 + 14$ (non divisible par $23$)
+		\item $6661 = 29 \cdot 229 + 20$ (non divisible par $29$)
+		\item $6661 = 31 \cdot 214 + 27$ (non divisible par $31$)
+		\item $6661 = 37 \cdot 180 + 1$ (non divisible par $37$)
+		\item $6661 = 41 \cdot 162 + 19$ (non divisible par $41$)
+		\item $6661 = 43 \cdot 154 + 39$ (non divisible par $43$)
+		\item $6661 = 47 \cdot 141 + 34$ (non divisible par $47$)
+		\item $6661 = 53 \cdot 125 + 36$ (non divisible par $53$)
+		\item $6661 = 59 \cdot 112 + 53$ (non divisible par $59$)
+		\item $6661 = 61 \cdot 109 + 12$ (non divisible par $61$)
+		\item $6661 = 67 \cdot 99 + 28$ (non divisible par $67$)
+		\item $6661 = 71 \cdot 93 + 58$ (non divisible par $71$)
+		\item $6661 = 73 \cdot 91 + 18$ (non divisible par $73$)
+		\item $6661 = 79 \cdot 84 + 25$ (non divisible par $79$)
+	\end{itemize}
+	\textbf{Conclusion :} Aucun nombre premier inférieur ou égal à $\sqrt{6661}$ ne le divise. Le nombre \textbf{$6661$ est premier}.
+	
+	\item \textbf{Étude de $66\,661$ :}
+	
+	Testons la divisibilité par les premiers nombres premiers :
+	\begin{itemize}
+		\item $66\,661$ n'est pas pair, ne se termine pas par $0$ ou $5$, et la somme de ses chiffres ($6+6+6+6+1 = 25$) n'est pas divisible par $3$.
+		\item $66\,661 = 7 \cdot 9523 + 0$.
+	\end{itemize}
+	On constate que $66\,661 = 7 \cdot 9523$. \\
+	\textbf{Conclusion :} $66\,661$ admet d'autres diviseurs que $1$ et lui-même. Le nombre \textbf{$66\,661$ n'est pas premier} (il est composé).
+\end{enumerate}
 
 
 
 %21
-\item
+\item Supposons que $\sqrt{p}$ soit un nombre rationnel.
+
+Il existe alors deux entiers naturels non nuls $a$ et $b$ tels que :
+\[
+\sqrt{p} = \frac{a}{b} \quad \text{avec } \text{PGCD}(a, b) = 1 \text{ (fraction irréductible)}
+\]
+
+En élevant cette égalité au carré, on obtient :
+\[
+p = \frac{a^2}{b^2} \iff a^2 = p \cdot b^2
+\]
+
+De cette égalité, il découle que $p$ divise $a^2$ (puisque $b^2$ est un entier).
+
+D'après le \textbf{lemme d'Euclide}, comme $p$ est un nombre premier et $p \mid a^2$, on en déduit que :
+\[
+p \mid a
+\]
+
+Puisque $p$ divise $a$, il existe un entier $k \in \mathbb{N}^*$ tel que $a = p \cdot k$.
+
+Remplaçons $a$ par $p \cdot k$ dans l'équation $a^2 = p \cdot b^2$ :
+\[
+(p \cdot k)^2 = p \cdot b^2 \iff p^2 \cdot k^2 = p \cdot b^2
+\]
+
+En divisant les deux membres par $p$ (qui est non nul car premier) :
+\[
+b^2 = p \cdot k^2
+\]
+
+Cette relation montre que $p$ divise également $b^2$.
+
+En appliquant de nouveau le \textbf{lemme d'Euclide}, comme $p$ est premier et $p \mid b^2$, on obtient :
+\[
+p \mid b
+\]
+
+\textbf{Conclusion et contradiction :}
+
+Nous avons montré que $p$ divise $a$ et que $p$ divise $b$. Ainsi, $p$ est un diviseur commun à $a$ et $b$.
+
+Ceci contredit l'hypothèse de départ selon laquelle la fraction $\frac{a}{b}$ est irréductible ($\text{PGCD}(a,b) = 1$).
+
+Par conséquent, l'hypothèse selon laquelle $\sqrt{p}$ est rationnel est fausse.
+
+\textbf{$\sqrt{p}$ est donc irrationnel.}
+
+% corr exo
+\item 
+Par la division euclidienne par $6$, tout entier $n$ peut s'écrire sous l'une des formes suivantes, où $q \in \mathbb{Z}$ :
+\[
+n = 6q, \quad n = 6q+1, \quad n = 6q+2, \quad n = 6q+3, \quad n = 6q+4, \quad n = 6q+5
+\]
+En utilisant les congruences modulo $6$, cela revient aux cas $n \equiv r \pmod 6$ avec $r \in \{0, 1, 2, 3, 4, 5\}$ (ou $r \in \{0, \pm 1, \pm 2, 3\}$).
+
+Analyse de chaque cas pour un entier $n > 3$ :
+
+\begin{enumerate}
+	\item \textbf{Si $n \equiv 0 \pmod 6$ :} $n = 6q$. Comme $n > 3$, $n$ est un multiple de $6$ supérieur à $6$. Il est donc divisible par $2$ et $3$, ce qui implique que $n$ n'est pas premier.
+	
+	\item \textbf{Si $n \equiv \pm 2 \pmod 6$ :} $n = 6q \pm 2 = 2(3q \pm 1)$. Comme $n > 3$, $n$ est un nombre pair strictement supérieur à $2$, donc $2 \mid n$ et $n$ n'est pas premier.
+	
+	\item \textbf{Si $n \equiv 3 \pmod 6$ :} $n = 6q + 3 = 3(2q + 1)$. Comme $n > 3$, $n$ est un multiple de $3$ strictement supérieur à $3$, donc $3 \mid n$ et $n$ n'est pas premier.
+\end{enumerate}
+
+\textbf{Conclusion :}
+
+Les seuls restes possibles modulo $6$ pour qu'un entier $n > 3$ puisse être premier sont $r = 1$ ou $r = 5 \equiv -1 \pmod 6$.
+
+Ainsi, tout nombre premier $p$ strictement supérieur à $3$ (c'est-à-dire différent de $2$ et de $3$) s'écrit sous la forme $6q + 1$ ou $6q - 1$, soit :
+\[
+p = 6q \pm 1 \quad \text{avec } q \in \mathbb{N}^* 
+\]
 
 
-
-
-%22
-\item \begin{minipage}[t][][b]{1\textwidth}
-\insertcode{Chapitre_2_arithmetique/Programmes/Eratosthene.py}{0.9}{}
-\end{minipage}
+%%22
+%\item \begin{minipage}[t][][b]{1\textwidth}
+%\insertcode{Chapitre_2_arithmetique/Programmes/Eratosthene.py}{0.9}{}
+%\end{minipage}
 
 
 
