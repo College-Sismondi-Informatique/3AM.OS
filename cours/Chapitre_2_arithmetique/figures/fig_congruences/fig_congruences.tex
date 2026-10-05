@@ -1,0 +1,132 @@
+%\documentclass{standalone}
+%\usepackage{pstricks,pst-plot,pstricks-add}
+%\usepackage{pst-func}
+%\usepackage{pst-eucl}
+%\definecolor{cgrille}{gray}{0.3}
+%\usepackage{graphicx}
+%\usepackage{amsmath}
+%\usepackage{bm}
+%\newcommand{\degre}{\ensuremath{^\circ} }
+%
+%%\uput{distance}[direction]{rotation}(x,y){texte}
+%%\pstMarkAngle[linecolor=red, arrows=->]{B}{A}{C}{$\gamma$} Permet de marquer les angles!
+%%	Option a mettre entre [] :
+%%		LabelSep : (1 unité par défaut) 
+%%		MarkAngleRadius : Rayon pour marquer les angles
+%
+%\begin{document}
+%\psset{yunit=1cm,xunit=1cm
+%,plotpoints=1000,algebraic=true,
+%subgriddiv=1, griddots=5, gridlabels=0pt,
+%labels=all, labelFontSize=\tiny , ticks=all, ticksize=3pt , tickstyle=full,  Dy=1,Dx=1}
+%\begin{pspicture*}(0,0)(5.5,3)
+%%\psgrid[subgriddiv=1,griddots=7,gridlabels=0pt](0,0)(6,3)
+%%\psaxes[Dy=1, Dx=1, labelFontSize=\scriptstyle]{->}(0,0)(10,4)
+%\uput{0}[0]{0}(0,2.5){$\underline{1524}=\bm{8}\cdot 180+84$}
+%\psline{->}(0.5,1.8)(1.85,2.28)
+%\psline{->}(1.9,1.8)(2.7,2.28)
+%\uput{0}[0]{0}(0,1.5){$\phantom{1}\underline{180}=\bm{2}\cdot 84+\boxed{12}$}
+%\psline{->}(0.5,0.8)(1.75,1.25)
+%\psline{->}(2,0.75)(2.7,1.25)
+%\uput{0}[0]{0}(0,0.5){$\phantom{15}\underline{84}=\bm{7}\cdot \boxed{12}+0$}
+%\psline{->}(3,1.5)(3.5,1.5)
+%\uput{0}[0]{0}(3.6,1.5){\begin{minipage}{3cm}\footnotesize Dernier reste\\  non-nul\end{minipage}}
+%\end{pspicture*}
+%\end{document}
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{xcolor}
+
+% Définition des couleurs exactes de l'image
+\definecolor{modBlue}{RGB}{25, 80, 205}
+\definecolor{modGold}{RGB}{204, 163, 82}
+\definecolor{modGreen}{RGB}{18, 150, 100}
+\definecolor{modRed}{RGB}{220, 80, 70}
+\definecolor{modGray}{RGB}{128, 128, 128}
+
+\begin{document}
+	
+	\begin{tikzpicture}[x=1.1cm, y=1cm]
+		
+		% Ligne d'axe horizontale
+		\draw[line width=0.8pt, gray!70] (-0.8, 0) -- (14.8, 0);
+		
+		% Arc de cercle reliants les entiers congrus mod 5
+		% Modulo 0 (Bleu)
+		\draw[very thick, modBlue] (0, 0) to[out=60, in=120] (5, 0);
+		\draw[very thick, modBlue] (5, 0) to[out=60, in=120] (10, 0);
+		
+		% Modulo 1 (Doré)
+		\draw[very thick, modGold] (1, 0) to[out=60, in=120] (6, 0);
+		\draw[very thick, modGold] (6, 0) to[out=60, in=120] (11, 0);
+		
+		% Modulo 2 (Vert)
+		\draw[very thick, modGreen] (2, 0) to[out=60, in=120] (7, 0);
+		\draw[very thick, modGreen] (7, 0) to[out=60, in=120] (12, 0);
+		
+		% Modulo 3 (Rouge)
+		\draw[very thick, modRed] (3, 0) to[out=60, in=120] (8, 0);
+		\draw[very thick, modRed] (8, 0) to[out=60, in=120] (13, 0);
+		
+		% Modulo 4 (Gris)
+		\draw[very thick, modGray] (4, 0) to[out=60, in=120] (9, 0);
+		\draw[very thick, modGray] (9, 0) to[out=60, in=120] (14, 0);
+		
+		% Nœuds des nombres et points colorés
+		% r = 0
+		\foreach \x in {0, 5, 10} {
+			\fill[modBlue] (\x, 0) circle (4.5pt);
+		}
+		% r = 1
+		\foreach \x in {1, 6, 11} {
+			\fill[modGold] (\x, 0) circle (4.5pt);
+		}
+		% r = 2
+		\foreach \x in {2, 7, 12} {
+			\fill[modGreen] (\x, 0) circle (4.5pt);
+		}
+		% r = 3
+		\foreach \x in {3, 8, 13} {
+			\fill[modRed] (\x, 0) circle (4.5pt);
+		}
+		% r = 4
+		\foreach \x in {4, 9, 14} {
+			\fill[modGray] (\x, 0) circle (4.5pt);
+		}
+		
+		% Nombres sous l'axe
+		\foreach \x in {0,...,14} {
+			\node[anchor=north, font=\bfseries\sffamily\large] at (\x, -0.3) {\x};
+		}
+		
+		% Légende des restes (r = 0, 1, 2, 3, 4)
+		\begin{scope}[shift={(0.5, -1.7)}, font=\sffamily\bfseries]
+			% r = 0
+			\fill[modBlue] (0, 0) circle (4pt);
+			\node[anchor=west, modBlue] at (0.2, 0) {r = 0};
+			
+			% r = 1
+			\fill[modGold] (2.8, 0) circle (4pt);
+			\node[anchor=west, modGold] at (3.0, 0) {r = 1};
+			
+			% r = 2
+			\fill[modGreen] (5.6, 0) circle (4pt);
+			\node[anchor=west, modGreen] at (5.8, 0) {r = 2};
+			
+			% r = 3
+			\fill[modRed] (8.4, 0) circle (4pt);
+			\node[anchor=west, modRed] at (8.6, 0) {r = 3};
+			
+			% r = 4
+			\fill[modGray] (11.2, 0) circle (4pt);
+			\node[anchor=west, modGray] at (11.4, 0) {r = 4};
+		\end{scope}
+		
+		% Texte explicatif sous la figure
+		\node[font=\sffamily\itshape\large, text=black!80] at (7, -3.0) 
+		{Entiers de même couleur = même reste mod 5 = même classe de congruence};
+		
+	\end{tikzpicture}
+	
+\end{document}
