@@ -48,7 +48,8 @@ De plus $q$ et $r$ \textbs{sont uniques}.
 Soient $n$ et $d$ des entiers comme dans l'hypothèse du théorème.
 
 \smallskip
-Pour simplifier et sans perte de généralité nous allons supposer que $n\geqslant 0$.
+%Pour simplifier et sans perte de généralité nous allons supposer que $n\geqslant 0$.
+Commençons par supposer que $n\geqslant 0$.
 
 \bigskip
 Considérons l'ensemble $S$ suivant :
@@ -72,8 +73,8 @@ Donc $S$ possède un plus grand élément qu'on note $q=max(S)$.
 De plus on a : \hspace{2mm}\begin{minipage}[t]{0.8\textwidth}$d q \leqslant n$ \eh{1}(car $q\in S$) \et{1} $d (q+1)>n$ \eh{1}(car $(q+1)\notin S$).\end{minipage}
 
 \smallskip
-Donc : $$d q \leqslant n \leqslant d (q+1)$$
-$$\ssi[2]d q \leqslant n \leqslant d q+d $$
+Donc : $$d q \leqslant n < d (q+1)$$
+$$\ssi[2]d q \leqslant n < d q+d $$
 $$\ssi[2]0\leqslant \underbrace{n-dq}_{=r}<d$$
 
 Finalement nous obtenons : 
@@ -82,6 +83,9 @@ $$n=\overbrace{d q+\underbrace{(n-dq)}_{=r}}^{=n}\eh{4}\textrm{avec }\eh{2} 0\le
 Et donc :
 $$n=d q+r\eh{4}\textrm{avec }\eh{2} 0\leqslant r<d$$
 
+Supposons maintenant que $a<0$. Alors il existe $q,r$ tels que
+$-a=b\cdot q+r \Leftrightarrow a = b\cdot (-q)+(-r)$. Si $r=0$, l'existence est démontrée, sinon :
+$a= b(-q-1)+(-r+b)$. Or $q'=-q-1\in \mathbb{Z}$ et $r'=-r+b \in ]0;b[$ donc l'existence est démontrée également.
 
 \vspace{2mm}
 \centerline{\textbsc{Unicité de $\bm{q}$ et $\bm{r}$}}
@@ -301,7 +305,13 @@ L'aiguille des secondes d'une montre indique 17 secondes. Combien de secondes in
 \eexo
 \pagebreak[3]
 
+\exordi Division euclidienne (voir le notebook).
 
+\eexo
+
+\exordi Ensemble de diviseurs (voir le notebook).
+
+\eexo
 
 \exo
 %Sachant que $96842=256 \cdot 375+842$, déterminer, sans effectuer la division, le reste de la division de 96842 par :
@@ -665,6 +675,11 @@ $$
 
 
 \begin{exstheorie}
+
+\exordi PGDC  (voir le notebook)
+
+\eexo
+
 \exo
 Soit $a$ et $b$ $\in\N$ et tels que $\pgdc(a;b)=12$.
 
@@ -688,7 +703,8 @@ A l'aide de l'algorithme d'Euclide, calculer :
 \end{enumerate}
 \end{multicols}
 
-\smallskip
+\eexo
+\pagebreak[3]
 
 \exo
 Les entiers suivants sont-ils premiers entre eux ?
@@ -697,17 +713,22 @@ Les entiers suivants sont-ils premiers entre eux ?
 	\item  5 617 et 813.
 \end{enumerate}
 
+\eexo
+\pagebreak[3]
+
 \exo
 Déterminer tous les entiers naturels $n$ inférieurs à $200$ tels que :
 $\text{PGCD}(n; 324) = 12$
 
-
+\eexo
+\pagebreak[3]
 
 \exo En divisant 1809 et 2527 par un même entier naturel, les restes sont respectivement 9 et 7.
 
 Quel est le plus grand nombre que l'on peut obtenir comme diviseur?
 
-
+\eexo
+\pagebreak[3]
 
 \exo
 Déterminer les couples d'entiers naturels de \textit{plus grand diviseur commun} 14 et dont le produit vaut 7056.

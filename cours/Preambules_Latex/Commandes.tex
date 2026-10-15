@@ -1,6 +1,3 @@
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%   NOUVELLES COMMANDES : RACCOURCIS   %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,7 +30,10 @@
 \newcommand{\eexocourt}{\vspace{7mm}}
 \newcommand{\eu}[1][2]{\hspace*{#1pt}}
 
-
+%------------------------------
+%---- Raccourcis : EMOJI ----
+%------------------------------
+\newcommand{\computeremoji}{\includegraphics[scale=0.15]{figures/computer.png}}
 
 %---------------------------------------------
 %---- Raccourcis : symboles mathématiques ----
@@ -378,8 +378,16 @@
 \newcommand{\exodnomme}[1]{\refstepcounter{compteurexo}\textbf{\textsl{Exercice \thechapter.\arabic{compteurexo}* {\textsl{\footnotesize (#1)}}}} \vspace*{1mm}\\}
 \newcounter{compteurexo}
 %\setcounter{compteurexo}{1}
-	
-	
+
+
+% Pour rajouter des exo ordinateur
+\newcommand{\exordi}{%
+	\refstepcounter{compteurexo}%
+	\noindent
+	\textbf{\textsl{Exercice \thechapter.\arabic{compteurexo}}}%
+	\,\computeremoji
+	\vspace*{1mm}\\
+}		
 
 %-------------------------------------------
 %---- Mises en formes pour les réponses ----
