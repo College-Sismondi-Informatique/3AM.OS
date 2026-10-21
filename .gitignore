@@ -10,6 +10,5 @@
 *.nav
 *.snm
 *.vrb
-*.pdf
 *.synctex(busy)
 .ipynb_checkpoints/
