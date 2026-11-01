@@ -92,9 +92,8 @@ Remarquons que $n$ divise $a$ si et seulement si $a\equiv 0 \pmod n$.
   On constate que $a$ et $c$ ont le même reste lorsque l'on effectue une division euclidienne par $n$ d'où $a \equiv c  \pmod n$.
   \item  En Utilisant la définition,
   \begin{align*}
-  	a \equiv b  \pmod n &\iff \begin{cases} a = nq + r \\ b = nq' + r \end{cases} \quad q \text{ et } q' \in \mathbb{Z} \text{ et } 0 < r \le n \\
+  	a \equiv b  \pmod n &\iff \begin{cases} a = nq + r \\ b = nq' + r \end{cases} \quad q \text{ et } q' \in \mathbb{Z} \text{ et } 0 \le r < n \\
   	&\iff a - b = (nq + r) - (nq' + r)\\
-  	&\iff a - b = n \underbrace{(q - q')}_{\in \mathbb{Z}} + 0\\
   	&\iff a - b = n \underbrace{(q - q')}_{\in \mathbb{Z}} + 0\\
   	&\iff n \mid (a - b)\\
   	&\iff a - b \equiv 0  \pmod n\\
@@ -329,7 +328,7 @@ Démontrer que le nombre $7^n+1$ est divisible par $8$ si $n$ est impair ; dans 
 	$$[a]_n = \overline{a}_n = \{b \in \mathbb{Z} \mid a \equiv b \bmod n\} = \{a + kn \mid k \in \mathbb{Z}\}$$
 	
 	\item On note $\mathbb{Z}_n$ l'ensemble de toutes les classes modulo $n$ :
-	$$\mathbb{Z}_n = \{[0]_n; [1]_n; [2]_n; [3]_n; \dots; [n-2]_{n-1}; [n-1]_n\}$$
+	$$\mathbb{Z}_n = \{[0]_n; [1]_n; [2]_n; [3]_n; \dots; [n-2]_n; [n-1]_n\}$$
 \end{enumerate}
 
 \end{definition}
@@ -395,7 +394,7 @@ Soit $\cl{a}$ et $\cl{b} \in \mathbb{Z}_n$, alors on peut définir deux opérati
 \medskip
 
 \begin{remarque}
-	La proposition \ref{thm-cong} nous assure que les opérations sont bien définies car elles ne dépendent pas du choix des représentants des classes utilisés. En effet, prenons deux couples qui représentent la même classe, par exemple $a \equiv b \pmod n$ et $c \equiv d \pmod n$, la proposition \ref{thm-cong} nous assure que  $a+c \equiv b+d \pmod n$ et  $a\cdot c \equiv b\cdot d \pmod n$, ce qui veut dire que $\cl{a+b}=\cl{c+d}$ et $\cl{a\cdot  b}=\cl{c\cdot d}$	
+	La proposition \ref{thm-cong} nous assure que les opérations sont bien définies car elles ne dépendent pas du choix des représentants des classes utilisés. En effet, prenons deux couples qui représentent la même classe, par exemple $a \equiv b \pmod n$ et $c \equiv d \pmod n$, la proposition \ref{thm-cong} nous assure que  $a+c \equiv b+d \pmod n$ et  $a\cdot c \equiv b\cdot d \pmod n$, ce qui veut dire que $\cl{a+c}=\cl{b+d}$ et $\cl{a\cdot  c}=\cl{b\cdot d}$	
 \end{remarque}
 
 \bigskip

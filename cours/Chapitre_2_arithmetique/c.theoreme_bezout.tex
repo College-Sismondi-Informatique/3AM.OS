@@ -7,13 +7,14 @@ $$\pgdc(a;b)=\alpha\fois a + \beta\fois b$$
 
 
 \begin{demonstration}
-Soient $a, b \in \mathbb{N}^*$. Considérons l'ensemble $E = \{ am + bn > 0 \mid m, n \in \mathbb{Z} \} \subset \mathbb{N}^*$ .
+Si $a=0$ ou $b=0$, le résultat est immédiat (par exemple $\pgdc(a;0)=|a|=\pm 1\fois a+0\fois 0$). De plus, comme $\pgdc(a;b)=\pgdc(|a|;|b|)$, il suffit de changer le signe de $\alpha$ ou de $\beta$ pour passer de $|a|,|b|$ à $a,b$. On peut donc supposer $a, b \in \mathbb{N}^*$.
+
+\medskip
+Considérons l'ensemble $E = \{ am + bn > 0 \mid m, n \in \mathbb{Z} \} \subset \mathbb{N}^*$ .
 
 On remarque que $a$ et $b$ appartiennent à $E$ car $a = a \cdot 1 + b \cdot 0 > 0$ et $b = a \cdot 0 + b \cdot 1 > 0$.
 
-Donc $E$ est non vide et $E\subset \mathbb{N}^*$. D'après le principe du bon ordre (tout ensemble non vide d'entiers naturels possède un plus petit élément), $E$ admet un plus petit élément strictement positif.
-Notons
-De plus, $E$ est un ensemble non vide dont chaque élément est plus grand que $0$. Il contient donc un plus petit élément strictement positif (car plus grand que $0$) notons-le $d = au + bv$.
+Donc $E$ est non vide et $E\subset \mathbb{N}^*$. D'après le principe du bon ordre (tout ensemble non vide d'entiers naturels possède un plus petit élément), $E$ admet un plus petit élément, strictement positif ; notons-le $d = au + bv$.
 
 \begin{itemize}
 	\item \textbf{Démontrons que $pgcd(a;b) \le d$ :}
@@ -104,7 +105,7 @@ Si $d|a$ et $d|b$ alors $d | \pgdc(a,b)$.
 
 \smallskip
 \begin{demonstration}
-Par le théorème de Bézout, il existe $\alpha,\,\beta\in\N$ tels que $\alpha\fois a + \beta\fois b=\pgdc(a,b)$.
+Par le théorème de Bézout, il existe $\alpha,\,\beta\in\Z$ tels que $\alpha\fois a + \beta\fois b=\pgdc(a,b)$.
 
 \medskip
 Comme $d|a$ et $d|b$ alors $d | (\alpha\fois a+\beta\fois b)=\pgdc(a,b)$ (combinaison linéaire).

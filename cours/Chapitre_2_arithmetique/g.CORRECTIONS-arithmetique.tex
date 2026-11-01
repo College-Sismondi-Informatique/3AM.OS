@@ -378,7 +378,7 @@ $$
 \end{array} \Leftrightarrow\right.\right.
 $$
 
-$b>9$ et divise $\operatorname{PGCD}(4284 ; 3510)=360$
+$b>9$ et divise $\operatorname{PGCD}(1800 ; 2520)=360$
 Le plus grand diviseur $b$ possible est donc 360 .
 
 
@@ -477,6 +477,12 @@ Il y a alors deux couples vérifiant les conditions : $\pt{14}{504}$ et $\pt{56}
 	\item \textbf{Produit :}
 	Par compatibilité avec la multiplication :
 	$$351^{12} \cdot 85^{15} \equiv 1 \cdot 1 \equiv 1 \pmod 7$$
+	Le reste de la division de $351^{12} \cdot 85^{15}$ par $7$ est $1$.
+	\item \textbf{Étude de $16^{12}-23^{12}$ :}
+	$$16 = 7 \cdot 2 + 2 \implies 16 \equiv 2 \pmod 7 \quad \text{et} \quad 23 = 7 \cdot 3 + 2 \implies 23 \equiv 2 \pmod 7$$
+	Par compatibilité avec les puissances et la soustraction :
+	$$16^{12}-23^{12} \equiv 2^{12}-2^{12} \equiv 0 \pmod 7$$
+	Le reste de la division de $16^{12}-23^{12}$ par $7$ est $0$.
 \end{itemize}
 
 
@@ -992,7 +998,7 @@ $$\pgdc(9945;3003)=39=\bm{(-16)}\cdot 9945 + \bm{(53)}\cdot 3003$$
 
 %17
 \item
-On utilise le corolaire 2.6 et on pose $u=-1$ et $v=1$ : $(-1)\fois a+1\fois(a+1)=1$. Donc $\pgdc(a;a+1)=1$.
+On utilise le corolaire \ref{cor-Bezout} et on pose $u=-1$ et $v=1$ : $(-1)\fois a+1\fois(a+1)=1$. Donc $\pgdc(a;a+1)=1$.
 
 %exercice
 \item
@@ -1002,7 +1008,7 @@ On utilise le corolaire 2.6 et on pose $u=-1$ et $v=1$ : $(-1)\fois a+1\fois(a+1
 	\item \textbf{Vrai.} D'après le corollaire du théorème de Bézout, puisque $\text{PGCD}(5;11) = 1$, il existe nécessairement une combinaison linéaire entière $5x + 11y = 1$ (par exemple, $x = -2$ et $y = 1$ car $5 \cdot (-2) + 11 \cdot 1 = 1$).
 	
 	\item \textbf{Faux.} Une combinaison linéaire de la forme $a \cdot u + b \cdot v = 5$ implique seulement que $\text{PGCD}(a;b)$ divise 5, mais pas nécessairement qu'il est égal à 5. \\
-	\textit{Contre-exemple :} Soient $a = 1$ et $b = 1$. On a $1 \cdot 3 + 1 \cdot (-4) = -1 \neq 5$, mais pour $a = 3$ et $b = 1$, on a $3 \cdot 3 + 1 \cdot (-4) = 5$, alors que $\text{PGCD}(3;1) = 1 \neq 5$.
+	\textit{Contre-exemple :} pour $a = 3$ et $b = 1$, on a $3 \cdot 3 + 1 \cdot (-4) = 5$, alors que $\text{PGCD}(3;1) = 1 \neq 5$.
 	
 	\item \textbf{Vrai.} Tout diviseur commun à $a$ et $b$ divise leur combinaison linéaire $a \cdot 3 + b \cdot (-4)$. En particulier, $\text{PGCD}(a;b)$ divise $a$ et $b$, donc $\text{PGCD}(a;b)$ divise 5.
 	
@@ -1360,7 +1366,7 @@ On conclut que toute équation de la forme $-5\beta\cdot x+ 3\beta\cdot y = 21\b
 
 %25
 \item 
-Grâce à l'algorithme d'Euclide nous trouvons que pgcd$(1665;1035)=45$. Comme $45\ | \ 45$, la proposition 2.14 assure que cette équation possède des solutions. La remontée de l'algorithme fourni une solution particulière à l'équation (les coefficients de Bézout) : 
+Grâce à l'algorithme d'Euclide nous trouvons que pgcd$(1665;1035)=45$. Comme $45\ | \ 45$, la proposition \ref{prop:equations_diophantiennes} assure que cette équation possède des solutions. La remontée de l'algorithme fourni une solution particulière à l'équation (les coefficients de Bézout) : 
 $$1665\cdot \bm{5} + 1035 \cdot \bm{(-8)} = 45$$
 Une solution particulière de $(E)$ est donc $(x_0,y_0) = (5,-8)$.
 
